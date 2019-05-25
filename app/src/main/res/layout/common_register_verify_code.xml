@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verify_code_hassend"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/context_bg_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus_please_check_receive"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <com.easysoft.widget.edittextview.ValidateEdittextView
+        android:id="@+id/etview_validate_code"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/margin_register_vali_left_right"
+        android:layout_marginRight="@dimen/margin_register_vali_left_right"
+        android:layout_marginTop="5dp" >
+    </com.easysoft.widget.edittextview.ValidateEdittextView>
+
+    <Button
+        android:id="@+id/bt_getcode_register"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="@dimen/margin_register_vali_left_right"
+        android:background="@drawable/transparent"
+        android:gravity="center"
+        android:text="@string/get_identifying_code"
+        android:textColor="@color/common_bt_enable_press_color"
+        android:textSize="12dp" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_marginLeft="@dimen/margin_register_vali_left_right"
+        android:layout_marginRight="@dimen/margin_register_vali_left_right"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/login_et_slider_line" />
+
+        <com.easysoft.widget.edittextview.BoundEditText
+            android:id="@+id/edit_relality_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_login_slide"
+            android:layout_marginLeft="10dip"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/public_edit_text_clear"
+            android:ellipsize="end"
+            android:focusableInTouchMode="true"
+            android:gravity="bottom"
+            android:hint="@string/name"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/login_edittext_txt"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_marginLeft="@dimen/margin_register_vali_left_right"
+        android:layout_marginRight="@dimen/margin_register_vali_left_right"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/login_et_slider_line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_login_slide"
+            android:orientation="horizontal" >
+
+            <com.easysoft.widget.edittextview.BoundEditText
+                android:id="@+id/edit_pwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:drawableRight="@drawable/public_edit_text_clear"
+                android:ellipsize="end"
+                android:focusableInTouchMode="true"
+                android:gravity="bottom"
+                android:hint="@string/login_pwd"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:password="true"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_txt"
+                android:textSize="14sp"
+                android:imeOptions="actionDone">
+
+                <requestFocus />
+            </com.easysoft.widget.edittextview.BoundEditText>
+
+            <RelativeLayout
+                android:id="@+id/rl_changeshow"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
+
+                <ImageView
+                    android:id="@+id/img_visualized"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/not_visualized" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="@dimen/margin_register_vali_left_right"
+        android:text="@string/login_input_pwd"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/login_edittext_txt"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/bt_next_step"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/margin_register_vali_left_right"
+        android:layout_marginRight="@dimen/margin_register_vali_left_right"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/common_button_selector"
+        android:gravity="center"
+        android:text="@string/next_step"
+        android:textColor="@color/white"
+        android:textSize="@dimen/wode_title_text_size_17sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/margin_register_vali_left_right"
+        android:layout_marginRight="@dimen/margin_register_vali_left_right"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textSize="15sp" />
+
+</LinearLayout>

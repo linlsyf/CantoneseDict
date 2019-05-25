@@ -1,0 +1,108 @@
+{
+    "project_type": "gradle",
+    "android_gradle_plugin_version": "3.0.1",
+    "freeline_gradle_plugin_version": "0.8.8",
+    "java_home": "D:\\java\\jdk1.8.0",
+    "freeline_cache_dir": "D:\\Area",
+    "auto_dependency": true,
+    "product_flavor": "",
+    "build_script": "gradlew.bat :app:assembleDebug",
+    "build_script_work_directory": "",
+    "root_dir": "D:\\Area",
+    "main_project_name": "app",
+    "main_project_dir": "app",
+    "build_directory": "D:\\Area\\app\\build",
+    "build_cache_dir": "D:\\Area\\app\\build\\freeline",
+    "build_tools_version": "26.0.2",
+    "sdk_directory": "D:\\adt-bundle-windows-x86_64-20140702\\sdk",
+    "build_tools_directory": "D:\\adt-bundle-windows-x86_64-20140702\\sdk\\build-tools\\26.0.2",
+    "compile_sdk_version": "android-26",
+    "compile_sdk_directory": "D:\\adt-bundle-windows-x86_64-20140702\\sdk\\platforms\\android-26",
+    "package": "com.linlsyf.area",
+    "debug_package": "com.linlsyf.area",
+    "main_manifest_path": "D:\\Area\\app\\src\\main\\AndroidManifest.xml",
+    "launcher": "com.ui.WellComeActivity",
+    "apk_path": "D:\\Area\\app\\build\\outputs\\apk\\app1\\debug\\app-app1-debug.apk",
+    "extra_dep_res_paths": [
+        
+    ],
+    "exclude_dep_res_paths": [
+        
+    ],
+    "main_r_path": "D:\\Area\\app\\build\\generated\\source\\r\\debug\\R.java",
+    "use_jdk8": true,
+    "ignore_resource_ids": [
+        "avd_hide_password_1",
+        "avd_hide_password_2",
+        "avd_hide_password_3",
+        "avd_show_password_1",
+        "avd_show_password_2",
+        "avd_show_password_3"
+    ],
+    "use_system_gradle": false,
+    "check_sources_md5": [
+        
+    ],
+    "main_src_directory": [
+        "D:\\Area\\app\\src\\debug\\java",
+        "D:\\Area\\app\\src\\main\\java"
+    ],
+    "main_res_directory": [
+        "D:\\Area\\app\\src\\debug\\res",
+        "D:\\Area\\app\\src\\main\\res"
+    ],
+    "main_assets_directory": [
+        "D:\\Area\\app\\src\\debug\\assets",
+        "D:\\Area\\app\\src\\main\\assets"
+    ],
+    "main_jni_directory": [
+        "D:\\Area\\app\\src\\debug\\jni",
+        "D:\\Area\\app\\src\\main\\jni"
+    ],
+    "main_jniLibs_directory": [
+        "D:\\Area\\app\\src\\debug\\jniLibs",
+        "D:\\Area\\app\\libs"
+    ],
+    "project_source_sets": {
+        "app": {
+            "main_src_directory": [
+                "D:\\Area\\app\\src\\debug\\java",
+                "D:\\Area\\app\\src\\main\\java"
+            ],
+            "main_res_directory": [
+                "D:\\Area\\app\\src\\debug\\res",
+                "D:\\Area\\app\\src\\main\\res"
+            ],
+            "main_assets_directory": [
+                "D:\\Area\\app\\src\\debug\\assets",
+                "D:\\Area\\app\\src\\main\\assets"
+            ],
+            "main_jni_directory": [
+                "D:\\Area\\app\\src\\debug\\jni",
+                "D:\\Area\\app\\src\\main\\jni"
+            ],
+            "main_jniLibs_directory": [
+                "D:\\Area\\app\\src\\debug\\jniLibs",
+                "D:\\Area\\app\\libs"
+            ],
+            "main_manifest_path": "D:\\Area\\app\\src\\main\\AndroidManifest.xml"
+        }
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "D:\\Area\\app"
+        }
+    ],
+    "module_dependencies": {
+        "app": [
+            
+        ]
+    },
+    "databinding": [
+        
+    ],
+    "databinding_modules": [
+        
+    ]
+}

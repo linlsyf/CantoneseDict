@@ -1,0 +1,143 @@
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation" >
+    <!--登录界面-->
+    <string name="login_confireuser">请填写账号</string>
+    <string name="input_password">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="dict">词典</string>
+    <string name="inserting_coil_notification">下线通知</string>
+
+    <!-- 注册界面-->
+    <string name="next_step">下一步</string>
+    <string name="new_account_register">新用户注册</string>
+    <string name="verify_code_hassend">验证码已发送至</string>
+    <string name="plus_please_check_receive">,请查收</string>
+    <string name="login_pwd">登录密码</string>
+    <string name="register_sucess">注册成功</string>
+    <string name="you_have_no_compny">您暂无企业</string>
+    <string name="phone_mail_cant_not_null">手机号码或者邮箱不能为空</string>
+    <string name="phone_mail_format_error">当前手机号码或者邮箱格式不正确</string>
+    <string name="cannot_receive_sms">收不到短信验证码?</string>
+    <string name="resend_sms">重发短信</string>
+    <string name="get_validatecode">获取验证码</string>
+    <string name="check_no_input">请检查未填项</string>
+    <string name="pwd_format_is_error">密码格式错误,长度为6–18位,必须包含字母、数字、符号中的两种</string>
+    <string name="verify_code_no_complete">验证码位数不正确</string>
+
+    <!--聊天界面-->
+
+    <!--转发主界面-->
+
+    <!--文件预览界面-->
+
+    <!--群共享文件界面-->
+
+    <!--通讯录界面 -->
+    <!--通讯录界面 -->
+    <!--服务器设置界面-->
+    <string name="message_server">消息服务器</string>
+    <string name="port">端口号</string>
+
+    <!--应用中心界面-->
+    <string name="notice">提示</string>
+
+    <!--我的界面-->
+    <string name="name">姓名</string>
+    <string name="setting">设置</string>
+
+    <!-- 通讯录界面 -->
+    <string name="delete">"删除"</string>
+
+    <string name="resend_validate_code">重新获取验证码</string>
+
+
+    <!-- 通讯录相关 -->
+
+    <string name="no_data_show">没有数据显示</string>
+    <string name="data_loading_error">点击重新加载</string>
+
+
+
+    <string name="navigationbarbean_titletext_textsize">18</string>
+    <string name="navigationbarbean_arrowtext_padding">5</string>
+    <string name="navigationbarbean_buttontext_textsize">18</string>
+    <string name="navigationbarbean_onlyimage_padding">5</string>
+    <string name="navigationbarbean_onlytext_padding">5</string>
+    <!-- 注册界面 -->
+
+    <string name="forget_pwd">忘记密码</string>
+    <string name="get_identifying_code">获取验证码</string>
+    <string name="input_phone_mail">输入手机号码\\邮箱</string>
+    <string name="register_newuser">新用户注册</string>
+    <string name="use_immediately">立即使用</string>
+
+
+    <string name="register_complete">注册完成</string>
+    <string name="login_input_pwd">登录密码(6-18位至少为数字/字母/符号中2种组合)</string>
+
+
+    <string name="username_has_exit">用户名已经存在！</string>
+    <string name="username_cannot_null">姓名不能为空！</string>
+
+    <string name="connet_server_error">请求服务器响应失败</string>
+
+
+    <string name="confirm">确定</string>
+
+
+    <!--主窗口-->
+
+    <!--各种广告形式窗口展示按钮-->
+
+    <string name="cancel">取消</string>
+
+    <string name="just_now">刚刚</string>
+    <string name="minuites_ago">分钟前</string>
+    <string name="hours_ago">小时前</string>
+    <string name="yestoday">昨天</string>
+    <string name="the_day_before_yestoday">前天</string>
+    <string name="wait_dict_init_please">请等待字典加载完成</string>
+    <string name="dict_init_error">初始化词典数据失败</string>
+    <string name="dict_init_sucess">词典加载完成</string>
+    <string name="test">测试</string>
+    <string name="change_theme">修改主题</string>
+    <string name="share_lange_app">分享APP到微信</string>
+    <string name="search_null">搜索结果为空</string>
+
+    <string name="search">搜索</string>
+    <string name="tv_ch">电视</string>
+    <string name="tv_ch_cate">电视分类</string>
+    <string name="hide">隐藏</string>
+    <string name="reback">还原</string>
+    <string name="news">新闻</string>
+    <string name="film">电影</string>
+    <string name="tv_film">连续剧</string>
+    <string name="custom_edit">自定义</string>
+    <string name="response_error">返回数据错误</string>
+    <string name="about">粤语开发词典只用于android 开发粤语交流，不用于盈利。必须遵守Apache开源协议（禁止让作者承担责任，可以理解为免责）</string>
+    <string name="notice_yy">资料来自粤语学习网（外链）</string>
+    <string name="yp_sm">声母</string>
+    <string name="yp_ym">韵母</string>
+    <string name="yp_sd">声调</string>
+
+
+    <string name="about_title">关于</string>
+    <string name="today_staduy">今天已学</string>
+    <string name="yesday_book">昨日已学</string>
+    <string name="app_home">官网</string>
+    <string name="app_home_link">官网(链接)</string>
+    <string name="start">开始</string>
+
+    <string name="translate">翻译</string>
+    <string name="yueyutranslate">粤语翻译(百度接口)</string>
+    <string name="change">切换</string>
+    <string name="translate_result">搜索结果：</string>
+    <string name="sentence">例句</string>
+    <string name="init_sentence">重新导入例句</string>
+    <string name="exec_sucess">操作成功</string>
+    <string name="learn_base_yp">粤拼基础学习</string>
+    <string name="learn_yp">粤拼学习</string>
+</resources>
+
+
+

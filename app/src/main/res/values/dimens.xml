@@ -1,0 +1,14 @@
+<resources>
+    <!-- 注册界面 -->
+    <dimen name="margin_login_slide">5dp</dimen>
+    <dimen name="margin_register_vali_left_right">13dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+ 
+    <dimen name="wode_title_text_size_17sp">17sp</dimen>
+
+    <dimen name="spacing_line_hight">0.5dp</dimen>
+    <dimen name="navigationbar_height">45dp</dimen>
+</resources>

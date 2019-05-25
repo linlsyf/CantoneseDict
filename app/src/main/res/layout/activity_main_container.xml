@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+    <com.easysoft.widget.tabview.widget.TabContainerView
+        android:id="@+id/tab_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tabTextColor="@color/common_title_color"
+        app:selectedTextColor="@color/common_title_color"
+        app:tabTextSize="12sp"
+        app:drawablePadding="1dp"
+        app:iconHeight="22dp"
+        app:iconWidth="22dp"
+        android:background="@android:color/white"
+        app:divideLineColor="@color/common_title_color"
+        app:divideLineHeight="0.3dp"/>
+    <FrameLayout 
+        
+          android:id="@+id/container_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        
+        ></FrameLayout>
+
+</RelativeLayout>

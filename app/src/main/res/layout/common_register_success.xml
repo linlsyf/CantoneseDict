@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.easysoft.widget.toolbar.NavigationBar
+        android:id="@+id/topbar_register"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp" />
+
+    <ImageView
+        android:id="@+id/register_success_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topbar_register"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/register_success" />
+
+    <TextView
+        android:id="@+id/register_success_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_success_imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/register_sucess"
+        android:textColor="@color/black"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/tv_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_success_textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/you_have_no_compny"
+        android:textColor="#b8b8b8"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/bt_touse"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_notice"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="90dp"
+        android:background="#e5626b"
+        android:text="@string/use_immediately"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+    
+</RelativeLayout>

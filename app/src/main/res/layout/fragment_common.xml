@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+     android:id="@+id/rootLayout"
+    android:background="?attr/main_bg"
+    android:orientation="vertical"
+                >
+
+    <com.easysoft.widget.toolbar.NavigationBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:background="?attr/main_bg"
+        android:layout_height="35dp"
+        ></com.easysoft.widget.toolbar.NavigationBar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <com.easysoft.widget.search.SearchHeadView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"            android:visibility="gone"
+
+            android:layout_height="wrap_content"/>
+        <com.easy.recycleview.DyLayout
+            android:id="@+id/dyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/editLayout"
+            android:orientation="horizontal"
+             android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            >
+         <TextView     android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:text="添加"
+             android:gravity="center"
+             android:textColor="@color/white"
+             android:background="@drawable/common_button_selector"
+             android:layout_weight="1"
+             android:id="@+id/add"
+             />
+            <TextView     android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="全选"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_button_selector"
+
+                android:id="@+id/selectAll"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+</LinearLayout>

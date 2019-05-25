@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:id="@+id/rootLayout"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:id="@+id/yesdayLayout"
+                    android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:id="@+id/tvYestoday"
+                            android:textSize="17sp"
+                            android:text="@string/yesday_book"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <TextView
+                            android:id="@+id/unlearn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:textSize="16sp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_gravity="center_horizontal"
+                             />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:id="@+id/todayLayout"
+                    android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:textSize="17sp"
+                            android:id="@+id/tvToday"
+                            android:text="@string/today_staduy"
+                            android:textColor="@color/black"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/today"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:textSize="16sp"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_gravity="center_horizontal"
+                             />
+                </LinearLayout>
+        </LinearLayout>
+
+
+</LinearLayout>

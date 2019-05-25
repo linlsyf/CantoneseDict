@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <drawable name="transparent">#00000000</drawable>
+
+    <!-- 用户头像颜色值 -->
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorLightTranslucentBlack">#30000000</color>
+    <color name="colorLightGray">#cecece</color>
+    <color name="colorNaviSvCurrent">#494949</color>
+    <color name="white">#FFF</color>
+    <color name="context_bg_grey">#F2F2F2</color>
+
+    <!--主色调-->
+    <color name="blue_theme">#1cccdd</color>
+    <color name="deep_blue_theme">#1cb3dd</color>
+    <color name="deepest_blue_theme">#ff159cea</color>
+    <color name="colorPrimary">#00b38b</color>
+    <color name="colorPrimaryDark">#00b38b</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="nav_bottom_normal">#999999</color>
+    <color name="nav_bottom_select">#00b38b</color>
+    <color name="nav_top_tvcoloe">#ffffff</color>
+
+    <color name="recommend_activity">#383838</color>
+    <color name="more_color">#999999</color>
+    <color name="recommend_first_message">#33000000</color>
+
+
+
+    <!--断网提示背景颜色-->
+
+    <!--登录界面-->
+    <color name="login_edittext_txt">#979797</color>
+    <color name="common_bt_unable_text_color">#f3f3f3</color>
+    <color name="transparent">#00000000</color>
+    <color name="context_bg_blue">#30d0df</color>
+    <color name="common_bt_enable_press_color">#7ab0b8</color>
+
+    <!--应用中心-->
+
+    <color name="common_hint_color">#AEAEAE</color>
+
+    <color name="common_title_color">#4F5158</color>
+    <!-- 分割线颜色  灰色-->
+    <color name="spacing_line_color">#cecfda</color>
+    <!-- 分割线颜色  灰色-->
+    <!-- 搜索基于灰色背景下仍可见的灰色颜色，全局用到的地方也多 -->
+
+    <!--个人信息页-->
+
+    <!--文件管理器-->
+    <!--文件管理器-->
+
+    <!--我的界面-->
+    <color name="my_info_hint">#979797</color>
+ <color name="black">#000</color>
+
+    <color name="gray_color">#fff0f0f0</color>
+    <!-- 透明玻璃黑 -->
+
+    <!-- 子Fragment内部背景颜色值 -->
+
+    <!--MessageItemVIew-->
+    <!-- lisview item 默认点击效果 -->
+
+    <!--MessageItemLayout-->
+   <color name="common_hint_gray">#ff777777</color>
+    <!-- 注册界面颜色 -->
+    <color name="common_text_green_color">#7ab0b8</color>
+
+    <color name="common_bt_enable_normel_color">#10bdcc</color>
+    <color name="common_blue">#288BDD</color>
+
+    <color name="bg_main_normal">#ffffff</color>
+    <color name="textcolor_main_normal">#ff0000</color>
+    <color name="bg_main_dark">#000000</color>
+    <color name="textcolor_main_dark">#ffffff</color>
+    <color name="bg_second_normal">#0000ff</color>
+    <color name="textcolor_second_normal">#00ff00</color>
+    <color name="bg_second_dark">#ffffff</color>
+    <color name="textcolor_second_dark">#000000</color>
+
+
+    <color name="color_dark">#000000</color>
+    <color name="color_white">#ffffff</color>
+</resources>
