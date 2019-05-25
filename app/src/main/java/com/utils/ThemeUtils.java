@@ -32,7 +32,6 @@ public class ThemeUtils {
 
     public static  WidgetConfig getThemeConfig(Context context, int themeType) {
 //      int themeType=R.style.theme_light;
-
         WidgetConfig  widgetConfig=WidgetConfig.getInstance();
 
         switch (themeType) {
@@ -41,8 +40,16 @@ public class ThemeUtils {
                 widgetConfig.setTextColor(context.getResources().getColor(R.color.color_dark));
                 break;
             case R.style.theme_dark:
-                widgetConfig.setBgColor(context.getResources().getColor(R.color.common_hint_gray));
+                widgetConfig.setBgColor(context.getResources().getColor(R.color.color_dark));
                 widgetConfig.setTextColor(context.getResources().getColor(R.color.color_white));
+                break;
+            case R.style.theme_green:
+                widgetConfig.setBgColor(context.getResources().getColor(R.color.color_eye_green));
+                widgetConfig.setTextColor(context.getResources().getColor(R.color.common_title_color));
+                break;
+            case R.style.theme_easy:
+                widgetConfig.setBgColor(context.getResources().getColor(R.color.color_lightcyan));
+                widgetConfig.setTextColor(context.getResources().getColor(R.color.common_title_color));
                 break;
 
 //            default:

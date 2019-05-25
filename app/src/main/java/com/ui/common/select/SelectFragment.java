@@ -87,8 +87,8 @@ public class SelectFragment extends BaseFragment implements ISelectView {
 
                      TopBarBuilder.buildOnlyText(toolbar, getActivity(), NavigationBar.Location.LEFT_FIRST, "返回", 0);
 
-      		   TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), "输入内容", 0);
-      		   TopBarBuilder.buildOnlyText(toolbar, getActivity(), NavigationBar.Location.RIGHT_FIRST, "确定", 0);
+      		   TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), "选择", 0);
+//      		   TopBarBuilder.buildOnlyText(toolbar, getActivity(), NavigationBar.Location.RIGHT_FIRST, "确定", 0);
                      inputPresenter=new SelectPresenter(this);
                      inputPresenter.setViewType(viewType);
 
@@ -142,7 +142,17 @@ public class SelectFragment extends BaseFragment implements ISelectView {
             recycleView.updateSection(section);
 
     }
-	@Override
+
+    @Override
+    public void select(List<IDyItemBean> selectList) {
+
+        listener.updateSuccess(selectList);
+        FragmentHelper.popBackFragment(activity);
+
+
+    }
+
+    @Override
 	public void getBroadcastReceiverMessage(String type, Object mode) {
 		// TODO Auto-generated method stub
 		

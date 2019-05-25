@@ -29,7 +29,7 @@ public class InformationInputPresenter   {
             String value= it.getHint().replace("\"","");
              DyItemBean itemBean=new DyItemBean();
 
-              if (mViewType.equals("TYPE_EDIT")){
+//              if (mViewType.equals("TYPE_EDIT")){
                   AddressEditSettings editSettings=new AddressEditSettings();
                   editSettings.setShowEdittext(true);
                   itemBean.setTitle(it.getTitle()+": ");
@@ -38,13 +38,13 @@ public class InformationInputPresenter   {
                       editSettings.setOpenKeybord(true);
                   }
                   itemBean.setEidtSettings(editSettings);
-              }
-             else  if (mViewType.equals("TYPE_SELECT")){
-                  itemBean.setShowLeftCheckBox(true);
-                  itemBean.setTitle(it.getTitle()+":"+((DyItemBean) item).getHint());
-                  itemBean.setSelectType(CommonConstran.KEY_SETTING);//选择类型
-
-              }
+//              }
+//             else  if (mViewType.equals("TYPE_SELECT")){
+//                  itemBean.setShowLeftCheckBox(true);
+//                  itemBean.setTitle(it.getTitle()+":"+((DyItemBean) item).getHint());
+//                  itemBean.setSelectType(CommonConstran.KEY_SETTING);//选择类型
+//
+//              }
 
 
               itemBean.setId(id);

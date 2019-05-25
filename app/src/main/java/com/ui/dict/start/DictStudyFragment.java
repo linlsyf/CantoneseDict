@@ -55,26 +55,12 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
     }
     @Override
     public void initUIView() {
-
         recycleView = getViewById(R.id.dyLayout);
-
-//        recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
-//            @Override
-//            public View getCustomView(Context context, int type) {
-//                View  itemView ;
-//
-//                    itemView=new ContentItemView(context);
-//
-//                return itemView;
-//
-//            }
-//        });
         toolbar=getViewById(R.id.toolbar);
         searchHeadView=getViewById(R.id.searchView);
         searchHeadView.setVisibility(View.VISIBLE);
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
-        TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
-
+//        TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
         searchHeadView.getBackLayout().setVisibility(View.GONE);
 
         searchHeadView.getSearchEditText().setFocusable(true);

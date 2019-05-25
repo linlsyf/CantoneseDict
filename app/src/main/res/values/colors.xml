@@ -7,6 +7,7 @@
     <color name="colorLightTranslucentBlack">#30000000</color>
     <color name="colorLightGray">#cecece</color>
     <color name="colorNaviSvCurrent">#494949</color>
+    <color name="color_eye_green"> #C7EDCC</color>
     <color name="white">#FFF</color>
     <color name="context_bg_grey">#F2F2F2</color>
 
@@ -82,6 +83,8 @@
     <color name="textcolor_second_normal">#00ff00</color>
     <color name="bg_second_dark">#ffffff</color>
     <color name="textcolor_second_dark">#000000</color>
+    <color name="color_gold">#FFD700</color>
+    <color name="color_lightcyan">#F8EBB6</color>
 
 
     <color name="color_dark">#000000</color>

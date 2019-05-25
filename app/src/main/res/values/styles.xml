@@ -55,5 +55,21 @@
         <item name="second_bg">@color/bg_second_dark</item>
         <item name="second_textcolor">@color/textcolor_second_dark</item>
     </style>
+    <style name="theme_green" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="main_bg">@color/color_eye_green</item>
+        <item name="main_textcolor">@color/color_dark</item>
+        <item name="second_bg">@color/bg_second_dark</item>
+        <item name="second_textcolor">@color/textcolor_second_dark</item>
+    </style>
+    <style name="theme_easy" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="main_bg">@color/color_lightcyan</item>
+        <item name="main_textcolor">@color/common_title_color</item>
+        <item name="second_bg">@color/bg_second_dark</item>
+        <item name="second_textcolor">@color/textcolor_second_dark</item>
+    </style>
 
 </resources >

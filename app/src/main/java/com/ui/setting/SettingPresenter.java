@@ -265,32 +265,32 @@ public class SettingPresenter   {
 		  themeBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-
-//				  SelectFragment
-
-				  iSafeSettingView.selectTheme();
-
-				  int type= ThemeUtils.getStoreTheme(iSafeSettingView.getContext());
-				  WidgetConfig widgetConfig;
-				   if (type==0||type==R.style.theme_light){
-					   widgetConfig= ThemeUtils.getThemeConfig(iSafeSettingView.getContext(),R.style.theme_dark);
-					   type=R.style.theme_dark;
+				  List<DyItemBean> dataList=new ArrayList<>();
 
 
-				   }else{
-					   widgetConfig= ThemeUtils.getThemeConfig(iSafeSettingView.getContext(),R.style.theme_light);
-					   type=R.style.theme_light;
-				   }
+				  DyItemBean   itemBeanEdit=new DyItemBean();
+				  itemBeanEdit.setId(R.style.theme_dark+"");
+				  itemBeanEdit.setTitle("漆黑意志");
+				  dataList.add(itemBeanEdit);
 
 
-				  ThemeUtils.switchTheme(iSafeSettingView.getContext(),type);
-				  ThemeConfig themeConfig=new ThemeConfig();
-				  themeConfig.setBgColorResId(widgetConfig.getBgColor());
-				  themeConfig.setTitleColorResId(widgetConfig.getTextColor());
-				  RecycleConfig.getInstance().setThemeConfig(themeConfig);
 
-				   BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_CHANGE_THEME,type);
-				  init();
+				  DyItemBean   itemBeanWhite=new DyItemBean();
+				  itemBeanWhite.setId(R.style.theme_dark+"");
+				  itemBeanWhite.setTitle("白色相薄");
+				  dataList.add(itemBeanWhite);
+
+				  DyItemBean   itemBeanEye=new DyItemBean();
+				  itemBeanEye.setId(R.style.theme_green+"");
+				  itemBeanEye.setTitle("绿野仙踪");
+				  dataList.add(itemBeanEye);
+				  DyItemBean   itemBeanEasy=new DyItemBean();
+				  itemBeanEasy.setId(R.style.theme_green+"");
+				  itemBeanEasy.setTitle("系统推荐");
+				  dataList.add(itemBeanEasy);
+
+
+				  iSafeSettingView.selectTheme(dataList);
 
 			  }
 		  });
@@ -301,7 +301,6 @@ public class SettingPresenter   {
 		  testtBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-
 
 
 //				  WeixinShare.init(iSafeSettingView.getContext());
@@ -460,5 +459,24 @@ public class SettingPresenter   {
 		}
 		infoCardBean.setUserName(name);
 		iSafeSettingView.updateItem(infoCardBean);
+	}
+
+	public void updateSelectTheme(List<IDyItemBean> itemBeans) {
+
+
+		IDyItemBean  itemBean=itemBeans.get(0);
+
+		int type =Integer.parseInt(itemBean.getId());
+		WidgetConfig widgetConfig= ThemeUtils.getThemeConfig(iSafeSettingView.getContext(),type);
+
+		ThemeUtils.switchTheme(iSafeSettingView.getContext(),type);
+		ThemeConfig themeConfig=new ThemeConfig();
+		themeConfig.setBgColorResId(widgetConfig.getBgColor());
+		themeConfig.setTitleColorResId(widgetConfig.getTextColor());
+		RecycleConfig.getInstance().setThemeConfig(themeConfig);
+
+		BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_CHANGE_THEME,type);
+		init();
+
 	}
 }

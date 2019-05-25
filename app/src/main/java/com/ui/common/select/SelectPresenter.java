@@ -1,9 +1,9 @@
 package com.ui.common.select;
 
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.AddressEditSettings;
 import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
+import com.easy.recycleview.inter.IItemView;
 import com.ui.common.CommonConstran;
 
 import java.util.ArrayList;
@@ -29,23 +29,18 @@ public class SelectPresenter {
             String value= it.getHint().replace("\"","");
              DyItemBean itemBean=new DyItemBean();
 
-              if (mViewType.equals("TYPE_EDIT")){
-                  AddressEditSettings editSettings=new AddressEditSettings();
-                  editSettings.setShowEdittext(true);
-                  itemBean.setTitle(it.getTitle()+": ");
-                  editSettings.setEditContent(value);
-                  if (i==0){
-                      editSettings.setOpenKeybord(true);
-                  }
-                  itemBean.setEidtSettings(editSettings);
-              }
-             else  if (mViewType.equals("TYPE_SELECT")){
-                  itemBean.setShowLeftCheckBox(true);
                   itemBean.setTitle(it.getTitle()+":"+((DyItemBean) item).getHint());
                   itemBean.setSelectType(CommonConstran.KEY_SETTING);//选择类型
 
-              }
+            itemBean.setOnItemListener(new IItemView.onItemClick() {
+                @Override
+                public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+                    List<IDyItemBean>  selectList=new ArrayList<>();
+                    selectList.add(iDyItemBean);
+                    iinputView.select(selectList);
 
+                }
+            });
 
               itemBean.setId(id);
             // itemBean.setEidtSettings(editSettings);

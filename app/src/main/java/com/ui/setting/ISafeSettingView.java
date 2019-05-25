@@ -4,6 +4,8 @@ import com.core.base.IBaseView;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.bean.DyItemBean;
 
+import java.util.List;
+
 
 public interface ISafeSettingView extends IBaseView{
 
@@ -20,5 +22,5 @@ public interface ISafeSettingView extends IBaseView{
 
 	void openUrl(String url);
 
-    void selectTheme();
+    void selectTheme(List<DyItemBean> dataList);
 }

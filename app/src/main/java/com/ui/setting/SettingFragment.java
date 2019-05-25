@@ -14,14 +14,18 @@ import com.core.update.UpdateAPK;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.inter.IDyItemBean;
 import com.easysoft.utils.lib.system.FragmentHelper;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.ui.common.select.SelectFragment;
 import com.ui.login.LoginActivity;
 import com.ui.setting.about.AboutFragment;
+
+import java.util.List;
 
 
 //import cn.smssdk.SMSSDK;
@@ -183,8 +187,22 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     }
 
     @Override
-    public void selectTheme() {
+    public void selectTheme(List<DyItemBean> dataList) {
+        SelectFragment inputFragment=new SelectFragment();
 
+        inputFragment.setOnUpdateSuccessListener(new SelectFragment.OnUpdateSuccessListener() {
+            @Override
+            public void updateSuccess( List<IDyItemBean> itemBeans) {
+                presenter.updateSelectTheme(itemBeans);
+//                persenter.updateMsg(itemBeans);
+            }
+        });
+
+        Bundle bundle=new Bundle();
+
+        inputFragment.initDataMap(dataList);
+
+        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);
     }
 }
 
