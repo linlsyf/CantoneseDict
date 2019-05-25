@@ -1,0 +1,15 @@
+*.iml
+.gradle
+*.db
+*.apk
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+app/src/main/assets/back.db
+/app/src/main/java/com/core/KeyStoreCommon.java
+/AreaKeyStore.jks
+/signing.properties
+/name.ts
