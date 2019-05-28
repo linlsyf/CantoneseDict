@@ -43,7 +43,16 @@ public class DictStudyPresenter {
 	}
     public void  initData(){
 		initAssets();
-     List<Dict>  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(0)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
+     List<Dict>  dictList ;
+      if (countRead==0){
+		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(0),DictDao.Properties.Count.eq(countRead)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
+	  }else  if(countRead==10){
+		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1),DictDao.Properties.Count.ge(1),DictDao.Properties.Count.le(10)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
+	  }
+	  else{
+		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1),DictDao.Properties.Count.gt(10)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
+	  }
+
 		settingSection=new Section(KEY_SETTING);
 //		settingSection.setShowSection(true);
 		List<IDyItemBean> settingMaps=new ArrayList<>();
@@ -86,16 +95,16 @@ public class DictStudyPresenter {
 		settingMaps.add(sectionBean);
 		int i=0;
 		for (final Dict dict:dictList ) {
-			if (i > 1) {
-				VideoBussinessItem splitBean = new VideoBussinessItem();
-				splitBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
-				settingMaps.add(splitBean);
-			}
+//			if (i > 1) {
+//				VideoBussinessItem splitBean = new VideoBussinessItem();
+//				splitBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
+//				settingMaps.add(splitBean);
+//			}
 			i=i+1;
 			final  VideoBussinessItem hideBean=new VideoBussinessItem();
 
 			hideBean.setTitle(dict.getName());
-			hideBean.setHint("粤语："+dict.getTranName()+"  粤拼："+dict.getTranPy());
+			hideBean.setHint("粤语："+dict.getTranName()+"  粤拼："+dict.getTranPy() +"\n次数："+dict.getCount());
 			hideBean.setHintShow(true);
 			hideBean.setRightFirstButtonText("标记已学");
 			hideBean.setRightCenterScaleImgResId(R.drawable.ic_filled_star);
@@ -290,37 +299,35 @@ public class DictStudyPresenter {
     public  List<DyItemBean> getReadListCount() {
 		List<DyItemBean> readList=new ArrayList<>();
 
-		 for (int i=0;i<10;i++){
 			 DyItemBean itemBeanNone=new DyItemBean();
-			 itemBeanNone.setId("type"+i);
-			 itemBeanNone.setTitle("已学次数");
-			 itemBeanNone.setHint(i+"");
+			 itemBeanNone.setId(0+"");
+			 itemBeanNone.setTitle("未学");
 			 readList.add(itemBeanNone);
-		 }
+			 DyItemBean itemBeanBetween=new DyItemBean();
+		  itemBeanBetween.setId(10+"");
+		  itemBeanBetween.setTitle("1-10次");
+			 readList.add(itemBeanBetween);
+
 
 
 
 		DyItemBean itemBeanTenAbove=new DyItemBean();
-		itemBeanTenAbove.setId("type_11");
-		itemBeanTenAbove.setTitle("未学");
-		itemBeanTenAbove.setHint("11");
+		itemBeanTenAbove.setId("11");
+		itemBeanTenAbove.setTitle("大于10次");
+		//itemBeanTenAbove.setHint("11");
 		readList.add(itemBeanTenAbove);
 
         return readList;
     }
 
-	public void updateReadConfig(List<IDyItemBean> itemBeans) {
 
-		for (IDyItemBean dyItem:itemBeans ) {
-			DyItemBean itemBean=(DyItemBean)dyItem;
-			 if (dyItem.isLeftCheckBoxIsChecked()){
-			 	String count=   itemBean.getEidtSettings().getEditContent();
-			 	countRead=Integer.parseInt(count);
 
-			 	break;
-			 }
+	public void chaneReadCount(List<IDyItemBean> itemBeans) {
+		IDyItemBean  itemBean=  itemBeans.get(0);
 
-		}
+		 countRead=Integer.parseInt(itemBean.getId());
+
+		 initData();
 
 	}
 }

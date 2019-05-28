@@ -3,12 +3,10 @@ package com.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.easy.recycleview.outinter.RecycleConfig;
+import com.easy.recycleview.outinter.ThemeConfig;
 import com.easysoft.widget.config.WidgetConfig;
 import com.linlsyf.area.R;
-
-/**
- * Created by Administrator on 2019/5/25 0025.
- */
 
 public class ThemeUtils {
 
@@ -30,8 +28,18 @@ public class ThemeUtils {
         return getThemeConfig( context,  type);
     }
 
+    public  static void  initConfig(Context context){
+        int type= ThemeUtils.getStoreTheme(context);
+
+        WidgetConfig widgetConfig=      getThemeConfig(context,type);
+        ThemeConfig themeConfig=new ThemeConfig();
+        themeConfig.setBgColorResId(widgetConfig.getBgColor());
+        themeConfig.setTitleColorResId(widgetConfig.getTextColor());
+        RecycleConfig.getInstance().setThemeConfig(themeConfig);
+
+    }
+
     public static  WidgetConfig getThemeConfig(Context context, int themeType) {
-//      int themeType=R.style.theme_light;
         WidgetConfig  widgetConfig=WidgetConfig.getInstance();
 
         switch (themeType) {
@@ -52,9 +60,6 @@ public class ThemeUtils {
                 widgetConfig.setTextColor(context.getResources().getColor(R.color.common_title_color));
                 break;
 
-//            default:
-//                widgetConfig.setBgColor(context.getResources().getColor(R.color.white));
-//                widgetConfig.setTextColor(context.getResources().getColor(R.color.color_dark));
         }
 
         return widgetConfig;

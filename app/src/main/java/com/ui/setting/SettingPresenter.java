@@ -276,7 +276,7 @@ public class SettingPresenter   {
 
 
 				  DyItemBean   itemBeanWhite=new DyItemBean();
-				  itemBeanWhite.setId(R.style.theme_dark+"");
+				  itemBeanWhite.setId(R.style.theme_light+"");
 				  itemBeanWhite.setTitle("白色相薄");
 				  dataList.add(itemBeanWhite);
 
@@ -307,7 +307,7 @@ public class SettingPresenter   {
 //				  WeixinShare.test("ldh test");
 			  }
 		  });
-		  newSectionList.add(testtBean);
+//		  newSectionList.add(testtBean);
 
 
 

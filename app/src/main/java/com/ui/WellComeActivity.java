@@ -11,11 +11,8 @@ import com.business.BusinessBroadcastUtils;
 import com.core.ServerUrl;
 import com.core.base.BasicActivity;
 import com.core.utils.SpUtils;
-import com.easy.recycleview.outinter.RecycleConfig;
-import com.easy.recycleview.outinter.ThemeConfig;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ThreadPoolUtils;
-import com.easysoft.widget.config.WidgetConfig;
 import com.linlsyf.area.R;
 import com.utils.ThemeUtils;
 
@@ -47,24 +44,8 @@ public class WellComeActivity extends BasicActivity    {
 			@Override
 			public void run() {
 
-				int type= ThemeUtils.getStoreTheme(WellComeActivity.this);
-				WidgetConfig widgetConfig;
 
-				if (type==0||type==R.style.theme_light){
-
-					widgetConfig= ThemeUtils.getThemeConfig(WellComeActivity.this,R.style.theme_light);
-					//type=R.style.theme_light;
-
-				}else{
-
-					widgetConfig= ThemeUtils.getThemeConfig(WellComeActivity.this,R.style.theme_dark);
-					//type=R.style.theme_dark;
-				}
-				ThemeConfig themeConfig=new ThemeConfig();
-				themeConfig.setBgColorResId(widgetConfig.getBgColor());
-				themeConfig.setTitleColorResId(widgetConfig.getTextColor());
-				RecycleConfig.getInstance().setThemeConfig(themeConfig);
-
+				ThemeUtils.initConfig(WellComeActivity.this);
 				BusinessBroadcastUtils.USER_VALUE_LOGIN_ID = SpUtils.getString(WellComeActivity.this, BusinessBroadcastUtils.STRING_LOGIN_ID,"");
 				BusinessBroadcastUtils.USER_VALUE_PWD 	   = SpUtils.getString(WellComeActivity.this, BusinessBroadcastUtils.STRING_LOGIN_USER_PWD,"");
 				BusinessBroadcastUtils.USER_VALUE_USER_ID  = SpUtils.getString(WellComeActivity.this, BusinessBroadcastUtils.STRING_LOGIN_USER_ID,"");

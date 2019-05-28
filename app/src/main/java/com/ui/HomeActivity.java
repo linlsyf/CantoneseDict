@@ -23,6 +23,7 @@ import com.ui.login.IlogInView;
 import com.ui.login.LoginActivity;
 import com.ui.login.LoginPresenter;
 import com.ui.setting.SettingFragment;
+import com.utils.ThemeUtils;
 
 
 public class HomeActivity extends BasicActivity implements IlogInView,IHomeView , BackHandledInterface {
@@ -35,6 +36,7 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 
 	@Override
     protected void onCreate( Bundle savedInstanceState) {
+		setTheme(ThemeUtils.getStoreTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_container);
          tabContainerView = (TabContainerView) findViewById(R.id.tab_container);

@@ -22,10 +22,11 @@ import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.ui.common.infoedit.InformationInputFragment;
+import com.ui.common.select.SelectFragment;
 import com.ui.dict.DictTypeEnum;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
-import com.ui.common.infoedit.InformationInputFragment;
 
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
         searchHeadView=getViewById(R.id.searchView);
         searchHeadView.setVisibility(View.VISIBLE);
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
-//        TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
+        TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
         searchHeadView.getBackLayout().setVisibility(View.GONE);
 
         searchHeadView.getSearchEditText().setFocusable(true);
@@ -90,15 +91,19 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
                 }   else if (location== NavigationBar.Location.RIGHT_FIRST) {
 
 
-                    List<DyItemBean> dataList= persenter.getReadListCount();
-                    InformationInputFragment inputFragment=new InformationInputFragment();
-                    inputFragment.setViewType("TYPE_SELECT");
-                    inputFragment.setOnUpdateSuccessListener(new InformationInputFragment.OnUpdateSuccessListener() {
+                    SelectFragment inputFragment=new SelectFragment();
+
+                    inputFragment.setOnUpdateSuccessListener(new SelectFragment.OnUpdateSuccessListener() {
                         @Override
-                        public void updateSuccess( List<IDyItemBean>  itemBeans) {
-                            persenter.updateReadConfig(itemBeans);
+                        public void updateSuccess( List<IDyItemBean> itemBeans) {
+                           // presenter.updateSelectTheme(itemBeans);
+                     persenter.chaneReadCount(itemBeans);
                         }
                     });
+
+
+                    List<DyItemBean> dataList=persenter.getReadListCount();
+
 
                     Bundle bundle=new Bundle();
 
