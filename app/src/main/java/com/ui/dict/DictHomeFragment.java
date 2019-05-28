@@ -61,6 +61,8 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         toolbar=getViewById(R.id.toolbar);
         searchHeadView=getViewById(R.id.searchView);
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
+        TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
+
         searchHeadView.getBackLayout().setVisibility(View.GONE);
 
         persenter=new DictHomePresenter(this);
@@ -101,6 +103,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
                 }
                 else if (location== NavigationBar.Location.RIGHT_FIRST) {
 
+                     BusinessBroadcastUtils.sendBroadcast(activity,BusinessBroadcastUtils.TYPE_CHANGE_THEME_WB,null);
                 }
             }
         });

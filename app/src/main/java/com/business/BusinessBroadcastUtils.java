@@ -21,6 +21,7 @@ public class BusinessBroadcastUtils {
 	/**有最新版本，需要更新*/
 	public final static String HAS_NEW_VERSION			= "has_new_version";
 	public static final String HTTP_ERROR ="http_error" ;
+	public static final String TYPE_CHANGE_THEME_WB ="TYPE_CHANGE_THEME_WB" ;
 	public static String TYPE_LOCAL_REGISTER="local_register";
 	public static String TYPE_LOCAL_REGISTER_SUCCESS_AUTOLOGIN="register_sucess_autologin";
     /**登录id*/

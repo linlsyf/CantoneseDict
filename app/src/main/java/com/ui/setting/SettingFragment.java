@@ -107,6 +107,10 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
 
             toolbar.resetConfig();
         }
+        else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME_WB)){
+
+            presenter.changeTemeWB();
+        }
 	}
 	@Override
 	public void initUI(Section section) {

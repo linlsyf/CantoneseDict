@@ -479,4 +479,19 @@ public class SettingPresenter   {
 		init();
 
 	}
+
+	public void changeTemeWB() {
+		int  type=ThemeUtils.getStoreTheme(iSafeSettingView.getContext());
+		List<IDyItemBean> itemBeans=new ArrayList<>();
+		DyItemBean itemBean=new DyItemBean();
+		  if (type== R.style.theme_light){
+			  itemBean.setId(R.style.theme_dark+"");
+
+		  }else{
+			  itemBean.setId(R.style.theme_light+"");
+
+		  }
+		itemBeans.add(itemBean);
+		updateSelectTheme(itemBeans);
+	}
 }
