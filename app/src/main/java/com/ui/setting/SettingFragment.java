@@ -20,10 +20,12 @@ import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
+import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.common.select.SelectFragment;
 import com.ui.login.LoginActivity;
 import com.ui.setting.about.AboutFragment;
+import com.webview.WebMainActivity;
 
 import java.util.List;
 
@@ -207,6 +209,12 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
         inputFragment.initDataMap(dataList);
 
         FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);
+    }
+
+    @Override
+    public void test() {
+        Intent intent = new Intent(activity, MainActivity.class);
+        startActivity(intent);
     }
 }
 

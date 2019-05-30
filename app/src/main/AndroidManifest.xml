@@ -71,7 +71,8 @@
 
     <uses-permission android:name="android.permission.MANAGE_USERS" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
-
+    <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <application
         tools:replace="android:icon, android:theme"
 
@@ -114,6 +115,39 @@
             android:launchMode="singleTask">
         </activity>
 
+        <activity
+            android:name="com.iflytek.voicedemo.MainActivity"
+         />
+
+        <activity android:name="com.iflytek.speech.setting.IatSettings" >
+        </activity>
+        <activity
+            android:name="com.iflytek.voicedemo.IatDemo"/>
+
+
+        <activity
+            android:name="com.iflytek.speech.setting.UrlSettings"/>
+
+
+        <activity
+            android:name="com.webview.FullScreenActivity"/>
+
+        <activity
+            android:name="com.webview.FilechooserActivity"/>
+        <activity
+            android:name="com.webview.BrowserActivity"/>
+
+        <activity
+            android:name="com.webview.WebMainActivity"/>
+
+
+        <!-- 移动统计分析 -->
+        <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="'5c83ca61'" />
+        <meta-data
+            android:name="IFLYTEK_CHANNEL"
+            android:value="Android_Demo" />
 
     </application >
 

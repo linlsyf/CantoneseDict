@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://G:\AreaAndroid\Area.iml" filepath="G:\AreaAndroid\Area.iml" />
-      <module fileurl="file://D:\Area\AreaAndroid.iml" filepath="D:\Area\AreaAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/CantoneseDict.iml" filepath="$PROJECT_DIR$/CantoneseDict.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

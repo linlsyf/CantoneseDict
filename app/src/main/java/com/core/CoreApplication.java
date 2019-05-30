@@ -16,7 +16,10 @@ import com.core.thunder.DelegateApplicationPackageManager;
 import com.core.utils.ImageLoadUtils;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.utils.lib.DebugUtlis.CrashHandler;
+import com.iflytek.cloud.SpeechUtility;
+import com.linlsyf.area.R;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.smtt.sdk.QbSdk;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -71,6 +74,46 @@ public class CoreApplication extends MultiDexApplication {
 		StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
 		StrictMode.setVmPolicy(builder.build());
 		CrashHandler.getInstance().init(this);
+
+
+
+
+		// 应用程序入口处调用，避免手机内存过小，杀死后台进程后通过历史intent进入Activity造成SpeechUtility对象为null
+		// 如在Application中调用初始化，需要在Mainifest中注册该Applicaiton
+		// 注意：此接口在非主进程调用会返回null对象，如需在非主进程使用语音功能，请增加参数：SpeechConstant.FORCE_LOGIN+"=true"
+		// 参数间使用半角“,”分隔。
+		// 设置你申请的应用appid,请勿在'='与appid之间添加空格及空转义符
+
+		// 注意： appid 必须和下载的SDK保持一致，否则会出现10407错误
+
+		SpeechUtility.createUtility(this, "appid=" + getString(R.string.app_id));
+
+		// 以下语句用于设置日志开关（默认开启），设置成false时关闭语音云SDK日志打印
+		// Setting.setShowLog(false);
+
+
+		//搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+
+		QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
+
+			@Override
+			public void onViewInitFinished(boolean arg0) {
+				// TODO Auto-generated method stub
+				//x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+				Log.d("app", " onViewInitFinished is " + arg0);
+			}
+
+			@Override
+			public void onCoreInitFinished() {
+				// TODO Auto-generated method stub
+			}
+		};
+		//x5内核初始化接口
+		QbSdk.initX5Environment(getApplicationContext(),  cb);
+
+
+
+
 	}
 
 

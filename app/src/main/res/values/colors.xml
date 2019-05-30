@@ -8,7 +8,6 @@
     <color name="colorLightGray">#cecece</color>
     <color name="colorNaviSvCurrent">#494949</color>
     <color name="color_eye_green"> #C7EDCC</color>
-    <color name="white">#FFF</color>
     <color name="context_bg_grey">#F2F2F2</color>
 
     <!--主色调-->
@@ -50,11 +49,16 @@
     <!-- 分割线颜色  灰色-->
     <!-- 搜索基于灰色背景下仍可见的灰色颜色，全局用到的地方也多 -->
 
-    <!--个人信息页-->
+    <!-- 画面背景色 -->
+    <drawable name="layout_backgroud">#000000</drawable>
 
-    <!--文件管理器-->
-    <!--文件管理器-->
+    <!-- 分割线背景色 -->
+    <drawable name="line_background">#161823</drawable>
 
+    <color name="white">#FFFFFF</color>
+
+    <!-- 控件按下时显示的颜色 -->
+    <color name="list_backgroud_color">#2fb3cb</color>
     <!--我的界面-->
     <color name="my_info_hint">#979797</color>
  <color name="black">#000</color>

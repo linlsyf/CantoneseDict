@@ -302,12 +302,13 @@ public class SettingPresenter   {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 
+			  	 iSafeSettingView.test();
 
 //				  WeixinShare.init(iSafeSettingView.getContext());
 //				  WeixinShare.test("ldh test");
 			  }
 		  });
-//		  newSectionList.add(testtBean);
+		  newSectionList.add(testtBean);
 
 
 

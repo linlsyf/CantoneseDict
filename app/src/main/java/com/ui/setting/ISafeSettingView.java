@@ -23,4 +23,6 @@ public interface ISafeSettingView extends IBaseView{
 	void openUrl(String url);
 
     void selectTheme(List<DyItemBean> dataList);
+
+    void test();
 }
