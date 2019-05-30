@@ -17,6 +17,7 @@ import com.easysoft.widget.tabview.adapter.MainViewAdapter;
 import com.easysoft.widget.tabview.listener.OnTabSelectedListener;
 import com.easysoft.widget.tabview.widget.Tab;
 import com.easysoft.widget.tabview.widget.TabContainerView;
+import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.dict.DictHomeFragment;
 import com.ui.login.IlogInView;
@@ -181,6 +182,18 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 
 			 setTheme((int)mode);
 			tabContainerView.resetConfig();
+		}
+		else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME_RESTART_ACTIVITY)){
+			setTheme((int)mode);
+			startActivity(new Intent(this, HomeActivity.class));
+
+			finish();
+
+			//覆盖activity动画效果
+
+			overridePendingTransition(0, 0);
+
+//		     onRestart();
 		}
 
 	}

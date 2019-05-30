@@ -297,7 +297,7 @@ public class SettingPresenter   {
 		  newSectionList.add(themeBean);
 		  DyItemBean  testtBean=new DyItemBean();
 		  testtBean.setId(KEY_TEST);
-		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.test));
+		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
 		  testtBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -476,8 +476,9 @@ public class SettingPresenter   {
 		themeConfig.setTitleColorResId(widgetConfig.getTextColor());
 		RecycleConfig.getInstance().setThemeConfig(themeConfig);
 
-		BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_CHANGE_THEME,type);
-		init();
+		BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_CHANGE_THEME_RESTART_ACTIVITY,type);
+//		BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_CHANGE_THEME,type);
+//		init();
 
 	}
 

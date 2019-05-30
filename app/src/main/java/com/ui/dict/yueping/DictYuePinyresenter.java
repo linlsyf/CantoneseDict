@@ -61,7 +61,7 @@ public class DictYuePinyresenter {
 				iVideoHomeView.getContext().startActivity(intent);
 			}
 		});
-		settingMaps.add(dictNoticeBean);
+//		settingMaps.add(dictNoticeBean);
 
 		final DictBusBean dictBusBean=new DictBusBean();
 		dictBusBean.setTitle(iVideoHomeView.getContext().getString(R.string.yp_sm));

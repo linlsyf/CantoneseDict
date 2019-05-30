@@ -33,8 +33,10 @@ public class BusinessBroadcastUtils {
 	public static String STRING_LOGIN_USER_PWD="login_user_pwd";
 	public static String STRING_LOGIN_ID="login_login_id";
 	public static User loginUser;
+    public static String TYPE_RESTART_ACTIVITY="TYPE_RESTART_ACTIVITY";
+    public static String TYPE_CHANGE_THEME_RESTART_ACTIVITY="TYPE_CHANGE_THEME_RESTART_ACTIVITY";
 
-	/**
+    /**
 	 * <br>创建者：ldh
 	 * <br>时间：2015-6-11 下午5:30:06
 	 * <br>注释： 发送广播给UI层
