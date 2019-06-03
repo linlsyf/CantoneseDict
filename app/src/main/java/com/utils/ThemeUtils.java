@@ -23,6 +23,17 @@ public class ThemeUtils {
        int themeType= sharedPreferences.getInt(THEME_NAME, R.style.theme_light);
        return themeType;
     }
+    public  static int getStoreThemeIcon(Context context) {
+        int themeType=       getStoreTheme(context);
+
+        int  themLogo=R.drawable.theme_night;
+          if (themeType==R.style.theme_dark){
+              themLogo=R.drawable.theme_day;
+          }
+       return themLogo;
+    }
+
+
     private WidgetConfig switchThemeConfig(Context context, int type) {
 
         return getThemeConfig( context,  type);

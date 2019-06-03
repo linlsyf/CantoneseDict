@@ -21,6 +21,7 @@ import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.ui.common.theme.ThemeConfig;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
 import com.ui.dict.start.DictStudyFragment;
@@ -28,6 +29,7 @@ import com.ui.dict.translate.TranslateFragment;
 import com.ui.dict.view.CentImgView;
 import com.ui.dict.view.DictHomeView;
 import com.ui.dict.yueping.DictYuePinyFragment;
+import com.utils.ThemeUtils;
 
 import static com.ui.dict.search.SearchDictFragment.DICT_NAME;
 
@@ -61,7 +63,9 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         toolbar=getViewById(R.id.toolbar);
         searchHeadView=getViewById(R.id.searchView);
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
-        TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
+
+
+        TopBarBuilder.buildOnlyImageById(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,ThemeUtils.getStoreThemeIcon(activity));
 
         searchHeadView.getBackLayout().setVisibility(View.GONE);
 
