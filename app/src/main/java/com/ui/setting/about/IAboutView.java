@@ -9,14 +9,6 @@ public interface IAboutView extends IBaseView{
 
 	 void initUI(Section section);
 
-	void showUpdate();
-
-	void logOut();
-	void updateItem(DyItemBean imgBean);
-	void showNews();
-	void showTest();
-
-    void clickAbout();
 
 	void openUrl(String url);
 }

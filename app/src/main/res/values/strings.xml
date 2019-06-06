@@ -101,6 +101,7 @@
     <string name="dict_init_sucess">词典加载完成</string>
     <string name="test">测试</string>
     <string name="laboratory_yueyu">粤语实验室</string>
+    <string name="develop_setting">开发者选项</string>
     <string name="change_theme">修改主题</string>
     <string name="share_lange_app">分享APP到微信</string>
     <string name="search_null">搜索结果为空</string>
@@ -123,6 +124,7 @@
 
 
     <string name="about_title">关于</string>
+    <string name="common_title">词典</string>
     <string name="today_staduy">今天已学</string>
     <string name="yesday_book">昨日已学</string>
     <string name="app_home">官网</string>
@@ -130,7 +132,7 @@
     <string name="start">开始</string>
 
     <string name="translate">翻译</string>
-    <string name="yueyutranslate">粤语翻译(百度接口)</string>
+    <string name="yueyutranslate">粤语翻译</string>
     <string name="change">切换</string>
     <string name="translate_result">搜索结果：</string>
     <string name="sentence">例句</string>
@@ -156,6 +158,7 @@
     <string name="pref_title_translate">翻译</string>
 
     <string name="action_settings">设置</string>
+    <string name="datasource_exec">数据源设置</string>
     <string name="title_activity_mini_qb">MiniQBActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="tag"> (X5内核功能演示)</string>

@@ -76,35 +76,7 @@ public class AboutFragment extends BaseFragment implements IAboutView {
 
     }
 
-    @Override
-    public void showUpdate() {
 
-    }
-
-    @Override
-    public void logOut() {
-
-    }
-
-    @Override
-    public void updateItem(DyItemBean imgBean) {
-
-    }
-
-    @Override
-    public void showNews() {
-
-    }
-
-    @Override
-    public void showTest() {
-
-    }
-
-    @Override
-    public void clickAbout() {
-
-    }
     @Override
     public void openUrl(String url) {
 //        Uri uri = Uri.parse(url);

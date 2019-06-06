@@ -92,14 +92,16 @@ public class DictHomeView extends LinearLayout implements IItemView {
             }
         });
 
+        todayLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
+        yesdayLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
+        mRootView.setBackgroundColor(getResources().getColor(R.color.color_eye_green));
+
         if (RecycleConfig.getInstance().getThemeConfig().getBgColorResId()!=0){
-            mRootView.setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());
-//           setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());
+//            mRootView.setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());
             unlearn.setTextColor(RecycleConfig.getInstance().getThemeConfig().getTitleColorResId());
             today.setTextColor(RecycleConfig.getInstance().getThemeConfig().getTitleColorResId());
             tvToday.setTextColor(RecycleConfig.getInstance().getThemeConfig().getTitleColorResId());
             tvYestoday.setTextColor(RecycleConfig.getInstance().getThemeConfig().getTitleColorResId());
-           // setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());
         }
 
     }

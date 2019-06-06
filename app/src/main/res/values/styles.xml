@@ -45,6 +45,7 @@
         <item name="main_textcolor">@color/common_title_color</item>
         <item name="second_bg">@color/bg_second_normal</item>
         <item name="second_textcolor">@color/textcolor_second_normal</item>
+        <item name="android:windowBackground">@drawable/welcome_page</item>
     </style>
 
     <style name="theme_dark" parent="Theme.AppCompat.Light.NoActionBar">
@@ -54,6 +55,8 @@
         <item name="main_textcolor">@color/textcolor_main_dark</item>
         <item name="second_bg">@color/bg_second_dark</item>
         <item name="second_textcolor">@color/textcolor_second_dark</item>
+        <item name="android:windowIsTranslucent">true</item>
+
     </style>
     <style name="theme_green" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>

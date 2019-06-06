@@ -17,6 +17,12 @@
     <color name="colorPrimary">#00b38b</color>
     <color name="colorPrimaryDark">#00b38b</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="bulugrey">#607D8B</color>
+    <color name="low_yellow">#FFEB3B</color>
+    <color name="low_red">#FF5722</color>
+    <color name="yellow">#FFD000</color>
+    <color name="low_sky">#303F9F</color>
+    <color name="low_blue">#75CCDE</color>
 
 
 

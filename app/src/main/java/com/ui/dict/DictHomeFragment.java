@@ -28,6 +28,7 @@ import com.ui.dict.start.DictStudyFragment;
 import com.ui.dict.translate.TranslateFragment;
 import com.ui.dict.view.CentImgView;
 import com.ui.dict.view.DictHomeView;
+import com.ui.dict.view.DictMainView;
 import com.ui.dict.yueping.DictYuePinyFragment;
 import com.utils.ThemeUtils;
 
@@ -79,6 +80,9 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
                 }
                 else if (type==4){
                     itemView=new CentImgView(context);
+                }
+                else if (type==7){
+                    itemView=new DictMainView(context);
                 }
                 return itemView;
             }

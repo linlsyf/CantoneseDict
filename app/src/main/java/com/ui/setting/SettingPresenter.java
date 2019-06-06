@@ -1,5 +1,8 @@
 package com.ui.setting;
 
+import android.content.Intent;
+import android.provider.Settings;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.business.BusinessBroadcastUtils;
@@ -26,10 +29,14 @@ import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
+import com.iflytek.voicedemo.IatDemo;
+import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBeanUtils;
+import com.utils.PermissionCheckUtils;
 import com.utils.ThemeUtils;
+import com.webview.WebMainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +59,6 @@ public class SettingPresenter   {
 	private String KEY_ABOUT="about";
 	private String KEY_TEST="test";
 	private DyItemBean exportBean;
-	private DyItemBean importBean;
 	SentenceYyDao sentenceYyDao;
 
 //	 int theme
@@ -83,21 +89,7 @@ public class SettingPresenter   {
 		  }
 
 
-		    DyItemBean updateBean=new DyItemBean();
-		    updateBean.setId(KEY_UPDATE);
-		    String  verson="检查更新（链接）";
-//		     verson=verson+"("+ AppInfo.getAppVersion(CoreApplication.getAppContext())+")";
-//		     verson=verson+"("+ AppInfo.getAppVersion(CoreApplication.getAppContext())+")";
-		    updateBean.setTitle(verson);
-		  updateBean.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-			  	String url="https://github.com/linlsyf/AreaAndroid/releases/download/1.0.0/cantonese.apk";
-			  	iSafeSettingView.openUrl(url);
-//				iSafeSettingView.showUpdate();
-			  }
-		  });
-		  settingMaps.add(updateBean);
+
 //
 //			DyItemBean itembeanSpace = new DyItemBean();
 //			itembeanSpace.setViewType(IItemView.ViewTypeEnum.SPLITE
@@ -116,56 +108,68 @@ public class SettingPresenter   {
 		  });
 		    settingMaps.add(aboutBean);
 
-		  DyItemBean spliteBean=new DyItemBean();
-		  spliteBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
-		  settingMaps.add(spliteBean);
-
-		  DyItemBean  itemBean=new DyItemBean();
-		  itemBean.setTitle(iSafeSettingView.getContext().getResources().getString(R.string.app_home_link));
-//		itemBean.setViewType(5);
-		  itemBean.setOnItemListener(new IItemView.onItemClick() {
+		    DyItemBean settingBean=new DyItemBean();
+//		  settingBean.setId(KEY_ABOUT);
+		  settingBean.setTitle(iSafeSettingView.getContext().getString(R.string.datasource_exec));
+		  settingBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-				  String url="http://kaifangcidian.com/han/yue";
-				  iSafeSettingView.openUrl(url);
+				  List<DyItemBean> dataListCustom=new ArrayList<>();
 
+				  DyItemBean importBean =new DyItemBean();
+				  importBean.setId(KEY_ABOUT);
+
+				  importBean.setTitle("覆盖当前进度（默认数据在SD上）");
+				  importBean.setOnItemListener(new IItemView.onItemClick() {
+					  @Override
+					  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+
+						  inportDictLJ();
+					  }
+				  });
+
+
+				  dataListCustom.add(importBean);
+
+				  DyItemBean  ljBean=new DyItemBean();
+				  ljBean.setTitle(iSafeSettingView.getContext().getString(R.string.init_sentence));
+				  ljBean.setOnItemListener(new IItemView.onItemClick() {
+					  @Override
+					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+
+						  DictBeanUtils.importDbSentence(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
+							  @Override
+							  public void parseDataBack(Object list) {
+
+								  List<SentenceYy> sentenceYys=(List<SentenceYy>)list;
+								  sentenceYyDao.insertOrReplaceInTx(sentenceYys);
+								  iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.exec_sucess));
+
+							  }
+
+							  @Override
+							  public void showMsg(String msg) {
+
+							  }
+						  });
+					  }
+				  });
+				  dataListCustom.add(ljBean);
+				  exportBean=new DyItemBean();
+				  exportBean.setId(KEY_ABOUT);
+				  exportBean.setTitle("备份字典数据库到SD卡");
+				  exportBean.setOnItemListener(new IItemView.onItemClick() {
+					  @Override
+					  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+						  exportDict();
+					  }
+				  });
+				  dataListCustom.add(exportBean);
+				  iSafeSettingView.openCustomView(dataListCustom);
 			  }
 		  });
-
-
-
-		  settingMaps.add(itemBean);
-
-		   exportBean=new DyItemBean();
-		  exportBean.setId(KEY_ABOUT);
-		  exportBean.setTitle("备份字典数据库到SD卡");
-		  exportBean.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-			  	exportDict();
-			  }
-		  });
-		  settingMaps.add(exportBean);
-
+		    settingMaps.add(settingBean);
 		   sentenceYyDao = CoreApplication.getInstance().getDaoSession().getSentenceYyDao();
-
-		   importBean =new DyItemBean();
-		  importBean.setId(KEY_ABOUT);
-//		  if (dataCount>0){
-//			  importBean.setTitle(iSafeSettingView.getContext().getString(R.string.dict_init_sucess));
-//
-//		  }else{
-			  importBean.setTitle("覆盖当前进度（默认数据在SD上）");
-			  importBean.setOnItemListener(new IItemView.onItemClick() {
-				  @Override
-				  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-
-					  inportDictLJ();
-				  }
-			  });
-//		  }
-
-		  settingMaps.add(importBean);
 
 		  Section nextSection=new Section(KEY_INFO);
 		
@@ -209,38 +213,6 @@ public class SettingPresenter   {
 		  if (GlobalConstants.getInstance().getAppType()==GlobalConstants.TYPE_SHOP_APP){
 			  newSectionList.add(exitBean);
 		  }
-		  DyItemBean  ljBean=new DyItemBean();
-		  ljBean.setTitle(iSafeSettingView.getContext().getString(R.string.init_sentence));
-		  ljBean.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-
-				  DictBeanUtils.importDbSentence(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
-					  @Override
-					  public void parseDataBack(Object list) {
-
-						  List<SentenceYy> sentenceYys=(List<SentenceYy>)list;
-						  sentenceYyDao.insertOrReplaceInTx(sentenceYys);
-						  iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.exec_sucess));
-
-					  }
-
-					  @Override
-					  public void showMsg(String msg) {
-
-					  }
-				  });
-			  }
-		  });
-
-
-		  newSectionList.add(ljBean);
-
-
-//		  DyItemBean split= new DyItemBean();
-//		  split.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
-//
-//		  newSectionList.add(split);
 		  DyItemBean  shareBean=new DyItemBean();
 		  shareBean.setId(KEY_TEST);
 		  shareBean.setTitle(iSafeSettingView.getContext().getString(R.string.share_lange_app));
@@ -258,22 +230,16 @@ public class SettingPresenter   {
 
 		  newSectionList.add(split);
 		  DyItemBean  themeBean=new DyItemBean();
-//		  themeBean.setId(KEY_TEST);
-
-
 		  themeBean.setTitle(iSafeSettingView.getContext().getString(R.string.change_theme));
 		  themeBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 				  List<DyItemBean> dataList=new ArrayList<>();
 
-
 				  DyItemBean   itemBeanEdit=new DyItemBean();
 				  itemBeanEdit.setId(R.style.theme_dark+"");
 				  itemBeanEdit.setTitle("漆黑意志");
 				  dataList.add(itemBeanEdit);
-
-
 
 				  DyItemBean   itemBeanWhite=new DyItemBean();
 				  itemBeanWhite.setId(R.style.theme_light+"");
@@ -289,12 +255,34 @@ public class SettingPresenter   {
 				  itemBeanEasy.setTitle("系统推荐");
 				  dataList.add(itemBeanEasy);
 
-
 				  iSafeSettingView.selectTheme(dataList);
 
 			  }
 		  });
 		  newSectionList.add(themeBean);
+
+		  DyItemBean  developBean=new DyItemBean();
+		  developBean.setTitle(iSafeSettingView.getContext().getString(R.string.develop_setting));
+		  developBean.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+
+//				  boolean enableAdb = (Settings.Secure.getInt(iSafeSettingView.getContext().getContentResolver(), Settings.Secure.ADB_ENABLED, 0) > 0);//判断adb调试模式是否打开
+//				  if (enableAdb) {
+//					  iSafeSettingView.showToast("adb调试模式已经打开");
+//				  } else {
+					  PermissionCheckUtils.startDevelopmentActivity(iSafeSettingView.getContext());//跳转到开发者选项界面
+//				  }
+
+
+
+			  }
+		  });
+
+
+		  newSectionList.add(developBean);
+
+
 		  DyItemBean  testtBean=new DyItemBean();
 		  testtBean.setId(KEY_TEST);
 		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
@@ -302,13 +290,45 @@ public class SettingPresenter   {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 
-			  	 iSafeSettingView.test();
+				  List<DyItemBean> dataList=new ArrayList<>();
+				  DyItemBean itemBeanListen=new DyItemBean();
+				  itemBeanListen.setTitle("语音接口");
+				   itemBeanListen.setOnItemListener(new IItemView.onItemClick() {
+					   @Override
+					   public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
-//				  WeixinShare.init(iSafeSettingView.getContext());
-//				  WeixinShare.test("ldh test");
+						   Intent intent = new Intent(iSafeSettingView.getContext(), IatDemo.class);
+						   iSafeSettingView.getContext().startActivity(intent);
+					   }
+				   });
+				  dataList.add(itemBeanListen);
+				  DyItemBean itemBeanWeb=new DyItemBean();
+				   itemBeanWeb.setTitle("网页测试");
+				  itemBeanWeb.setOnItemListener(new IItemView.onItemClick() {
+					  @Override
+					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+						  Intent intent = new Intent(iSafeSettingView.getContext(), WebMainActivity.class);
+						  iSafeSettingView.getContext(). startActivity(intent);
+					  }
+				  });
+				  dataList.add(itemBeanWeb);
+
+
+				  iSafeSettingView.openCustomView(dataList);
 			  }
 		  });
 		  newSectionList.add(testtBean);
+//		  DyItemBean  testtBean=new DyItemBean();
+//		  testtBean.setId(KEY_TEST);
+//		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
+//		  testtBean.setOnItemListener(new IItemView.onItemClick() {
+//			  @Override
+//			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+//
+//			  	 iSafeSettingView.test();
+//			  }
+//		  });
+//		  newSectionList.add(testtBean);
 
 
 

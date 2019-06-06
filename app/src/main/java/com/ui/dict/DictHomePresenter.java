@@ -7,6 +7,7 @@ import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.custom.bean.BgSetting;
 import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
@@ -25,15 +26,10 @@ public class DictHomePresenter {
 	public static  String KEY_SETTING="setting";
 	private Section settingSection;
 	private DictDao mDictDao;
-	public static String ID_NEWS="ID_FILMS";
-	public static String ID_SEARCH="ID_TV_FILM";
-	public static String ID_TV="ID_TV";
-	public static String ID_HIDE="ID_HIDE";
-	public static String ID_BTDOWNLOAD="ID_BTDOWNLOAD";
-	public static String ID_EMPTY="ID_EMPTY";
-	boolean isLoadDictSucess=false;
+
 	private boolean isIniting;
 	SentenceYyDao sentenceYyDao;
+	private boolean isLoadDictSucess;
 
 	public DictHomePresenter(IdictHomeView iSafeSettingView) {
     	this.idictHomeView =iSafeSettingView;
@@ -82,29 +78,13 @@ public class DictHomePresenter {
 	 String 	msg ="";
 
 	 long  readCount=readedCount+collectCount;
-//         if (totalCount>0){
-//         	if (readCount<2000){
-//				msg="   已学"+readCount;
-//			}
-//			else {
-//				percent= NumberUtils.accuracy(readCount,totalCount,2);
-//				msg="   已学"+percent;
-//			}
-//
-//		 }
 
-		DyItemBean leanYuePingBean=new DyItemBean();
-		leanYuePingBean.setViewType(IItemView.ViewTypeEnum.SECTION.value());
-		leanYuePingBean.setTitle(idictHomeView.getContext().getString(R.string.learn_base_yp));
-		leanYuePingBean.setOnItemListener(new IItemView.onItemClick() {
-			@Override
-			public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-				idictHomeView.toYuePing();
-			}
-		});
-		settingMaps.add(leanYuePingBean);
+
 
 		DyItemBean leanCountBean=new DyItemBean();
+		leanCountBean.setContentLayoutMagin(40);
+		 leanCountBean.getBgSetting().setContentBgResid(idictHomeView.getContext().getResources().getColor(R.color.bulugrey));
+//		leanCountBean.setBgSetting();
 		leanCountBean.setTitle("成语总数:"+totalCount+" 未学："+notReadCount);
 		leanCountBean.setHint("已学："+readCount +"  收藏:"+collectCount+" [点击查看收藏]");
 		leanCountBean.setOnItemListener(new IItemView.onItemClick() {
@@ -120,41 +100,42 @@ public class DictHomePresenter {
 		settingMaps.add(dictBusBean);
 
 
-
-//		DyItemBean sectionBean=new DyItemBean();
-//		sectionBean.setViewType(IItemView.ViewTypeEnum.SECTION.value());
-//		sectionBean.setTitle("点击下图start开始学习");
-//		settingMaps.add(sectionBean);
-
-		DyItemBean  itemBeanStart=new DyItemBean();
-		itemBeanStart.setViewType(4);
-				AddressHeadImgeSettings headImgeSettings=new AddressHeadImgeSettings();
-		headImgeSettings.setHeadImgDrawableId(R.drawable.start);
-		headImgeSettings.setHeadImgRadius(DensityUtil.dip2px(idictHomeView.getContext(),200));
-		itemBeanStart.setHeadImgeSettings(headImgeSettings);
-		itemBeanStart.setOnItemListener(new IItemView.onItemClick() {
+		DictBusBean  spliteDyItemBean=new DictBusBean();
+		spliteDyItemBean.setItemHight(200);
+		  spliteDyItemBean.setViewType(7);
+		spliteDyItemBean.setOnItemListener(new IItemView.onItemClick() {
 			@Override
-			public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-				idictHomeView.startStudy();
+			public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+
+				if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
+					idictHomeView.startStudy();
+				}else  if((clickTypeEnum== IItemView.ClickTypeEnum.ITEM_LONG)){
+					idictHomeView.toYuePing();
+				}
+				else{
+					idictHomeView.toTranslate();
+				}
+
+
 			}
 		});
-		settingMaps.add(itemBeanStart);
 
-		DyItemBean  spliteDyItemBean=new DyItemBean();
-		spliteDyItemBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
 		settingMaps.add(spliteDyItemBean);
-
-		DyItemBean toTranslateDyItemBean=new DyItemBean();
-		toTranslateDyItemBean.setTitle(idictHomeView.getContext().getString(R.string.yueyutranslate));
-		 toTranslateDyItemBean.setOnItemListener(new IItemView.onItemClick() {
-			 @Override
-			 public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-
-			 	idictHomeView.toTranslate();
-			 }
-		 });
-
-		settingMaps.add(toTranslateDyItemBean);
+//		DyItemBean  spliteDyItemBean=new DyItemBean();
+//		spliteDyItemBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
+//		settingMaps.add(spliteDyItemBean);
+//
+//		DyItemBean toTranslateDyItemBean=new DyItemBean();
+//		toTranslateDyItemBean.setTitle(idictHomeView.getContext().getString(R.string.yueyutranslate));
+//		 toTranslateDyItemBean.setOnItemListener(new IItemView.onItemClick() {
+//			 @Override
+//			 public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+//
+//			 	idictHomeView.toTranslate();
+//			 }
+//		 });
+//
+//		settingMaps.add(toTranslateDyItemBean);
 
     settingSection.setDataMaps(settingMaps);
 	idictHomeView.initUI(settingSection);

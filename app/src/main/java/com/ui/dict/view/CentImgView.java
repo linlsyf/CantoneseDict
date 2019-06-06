@@ -65,8 +65,11 @@ public class CentImgView extends LinearLayout implements IItemView {
             }
 
         img.setImageResource(settings.getHeadImgDrawableId());
+             if (itemBean.getBgSetting().getContentBgResid()!=0){
+                 mRootView.setBackgroundColor(itemBean.getBgSetting().getContentBgResid());
+             }
 
-            if (RecycleConfig.getInstance().getThemeConfig().getBgColorResId()!=0){
+          else  if (RecycleConfig.getInstance().getThemeConfig().getBgColorResId()!=0){
                 mRootView.setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());
 //                setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());
             }

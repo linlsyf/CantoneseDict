@@ -22,6 +22,7 @@ import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
+import com.ui.common.custom.CustomFragment;
 import com.ui.common.select.SelectFragment;
 import com.ui.login.LoginActivity;
 import com.ui.setting.about.AboutFragment;
@@ -184,11 +185,24 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
             }
         });
     }
+
+    @Override
+    public void openCustomView(List<DyItemBean> dataList) {
+        CustomFragment inputFragment=new CustomFragment();
+
+        Bundle bundle=new Bundle();
+
+        inputFragment.initDataMap(dataList);
+
+        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);
+    }
+
     @Override
     public void openUrl(String url) {
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+
 
     }
 
