@@ -4,6 +4,7 @@
 *.apk
 /local.properties
 /.idea
+/.idea/misc.xml
 .DS_Store
 /build
 /captures
@@ -12,3 +13,4 @@ app/src/main/assets/back.db
 /AreaKeyStore.jks
 /signing.properties
 /name.ts
+.idea/misc.xml
