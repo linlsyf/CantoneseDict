@@ -139,8 +139,10 @@
 
         <activity
             android:name="com.webview.WebMainActivity"/>
-
-
+         <service android:name="com.business.service.music.MusicService"
+      android:enabled="true"
+               android:exported="true"
+             />
         <!-- 移动统计分析 -->
         <meta-data
             android:name="IFLYTEK_APPKEY"
