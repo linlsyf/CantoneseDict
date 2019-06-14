@@ -3,79 +3,8 @@
     android:layout_width="fill_parent"
     android:id="@+id/rootLayout"
     android:background="@color/white"
-    android:layout_height="430dp"
+    android:layout_height="400dp"
     android:orientation="vertical">
-        <LinearLayout
-            android:background="@drawable/dict_home_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="1"
-                            android:id="@+id/yesdayLayout"
-                            android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:lines="1"
-                                    android:id="@+id/tvYestoday"
-                                    android:textSize="17sp"
-                                    android:text="@string/yesday_book"
-                                    android:ellipsize="end"
-                                    android:gravity="center"
-                                    android:textColor="@color/black"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_gravity="center_horizontal"/>
-
-                                <TextView
-                                    android:id="@+id/unlearn"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:lines="1"
-                                    android:textSize="16sp"
-                                    android:ellipsize="end"
-                                    android:gravity="center"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_gravity="center_horizontal"
-                                    />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="1"
-                            android:id="@+id/todayLayout"
-                            android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:lines="1"
-                                    android:textSize="17sp"
-                                    android:id="@+id/tvToday"
-                                    android:text="@string/today_staduy"
-                                    android:textColor="@color/black"
-                                    android:ellipsize="end"
-                                    android:gravity="center"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_gravity="center_horizontal" />
-
-                                <TextView
-                                    android:id="@+id/today"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:lines="1"
-                                    android:textSize="16sp"
-                                    android:ellipsize="end"
-                                    android:gravity="center"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_gravity="center_horizontal"
-                                    />
-                        </LinearLayout>
-                </LinearLayout>
 
 
         <LinearLayout
@@ -106,28 +35,59 @@
 
                             android:layout_gravity="center_horizontal"/>
 
-
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:textSize="17sp"
+                            android:layout_below="@id/imgStart"
+                            android:text="@string/startLearn"
+                            android:textColor="@color/black"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal" />
                 </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_weight="1"
-                    android:id="@+id/todayLayout"
+                    android:id="@+id/translateLayout"
                     android:layout_height="match_parent">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
                             android:layout_weight="2"
-                            android:lines="1"
-                            android:textSize="17sp"
-                            android:id="@+id/tvTranslate"
-                            android:text="@string/translate"
-                            android:textColor="@color/black"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:background="@color/low_sky"
-                            android:layout_gravity="center_horizontal" />
+                            android:background="@color/deep_blue"
+
+                            android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="140dp"
+                                    android:layout_height="140dp"
+                                    android:lines="1"
+                                    android:id="@+id/translateImg"
+                                    android:textSize="17sp"
+                                    android:ellipsize="end"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/translate"
+                                    android:textColor="@color/black"
+                                    android:layout_marginBottom="5dp"
+
+                                    android:layout_gravity="center_horizontal"/>
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                     android:layout_below="@id/translateImg"
+                                    android:lines="1"
+                                    android:gravity="center_horizontal"
+                                    android:textSize="17sp"
+                                    android:id="@+id/tvTranslate"
+                                    android:text="@string/translate"
+                                    android:textColor="@color/black"/>
+
+
+                        </RelativeLayout>
+
 
                         <TextView
                             android:id="@+id/tvBase"

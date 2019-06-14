@@ -13,15 +13,14 @@ import com.core.base.BaseFragment;
 import com.core.db.greenDao.entity.Dict;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
-import com.easysoft.utils.lib.system.FragmentHelper;
 import com.easysoft.utils.lib.system.KeyboardUtils;
 import com.easysoft.widget.config.WidgetConfig;
+import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.search.SearchHeadView;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
-import com.ui.common.theme.ThemeConfig;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
 import com.ui.dict.start.DictStudyFragment;
@@ -63,6 +62,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         mRootLayout = getViewById(R.id.rootLayout);
         toolbar=getViewById(R.id.toolbar);
         searchHeadView=getViewById(R.id.searchView);
+
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
 
 
@@ -200,6 +200,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
     @Override
     public void startStudy() {
       Bundle bundle=new Bundle();
+//       bundle.putInt(FragmentHelper.AnimationsType,FragmentTransactionExtended.CUBE);
         FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new DictStudyFragment(), bundle);
 
     }

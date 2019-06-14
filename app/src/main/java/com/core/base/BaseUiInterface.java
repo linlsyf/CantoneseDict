@@ -2,6 +2,8 @@ package com.core.base;
 
 import android.view.View;
 
+import java.net.MalformedURLException;
+
 /**
  * 创建者：zw
  * 修改时间：2015-5-20 下午3:24:33
@@ -17,7 +19,7 @@ public interface BaseUiInterface {
 	
 	String BROAD_CAST_RECEIVER_MESSAGE_PROGRESS = "com.miracle.broadCastReceiver";
 	
-	void initUIView();
+	void initUIView() throws MalformedURLException;
 	void initData();
 	void initListener();
 	

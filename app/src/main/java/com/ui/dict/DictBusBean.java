@@ -14,6 +14,13 @@ public class DictBusBean   extends DyItemBean {
 
     private  long unread=0;
     private  long today=0;
+    private String totalMsg="";
+    private String totalLearnMsg="";
+
+//    private  long today=0;
+
+
+
 
     List<DyItemBean> dataList=new ArrayList<>();
 
@@ -39,5 +46,21 @@ public class DictBusBean   extends DyItemBean {
 
     public void setToday(long today) {
         this.today = today;
+    }
+
+    public String getTotalMsg() {
+        return totalMsg;
+    }
+
+    public void setTotalMsg(String totalMsg) {
+        this.totalMsg = totalMsg;
+    }
+
+    public String getTotalLearnMsg() {
+        return totalLearnMsg;
+    }
+
+    public void setTotalLearnMsg(String totalLearnMsg) {
+        this.totalLearnMsg = totalLearnMsg;
     }
 }

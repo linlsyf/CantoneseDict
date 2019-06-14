@@ -12,16 +12,16 @@ import android.widget.TextView;
 
 import com.business.login.LoginPerson;
 import com.core.base.BaseFragment;
-import com.linlsyf.area.R;
-import com.easysoft.utils.lib.system.FragmentHelper;
 import com.easysoft.utils.lib.system.KeyboardUtils;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.dialog.ChatBaseDialog;
+import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.process.ProgressHUD;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
+import com.linlsyf.area.R;
 import com.ui.common.register.RegisterUserFragment;
 
 

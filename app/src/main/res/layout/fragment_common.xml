@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.easysoft.widget.fragment.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
@@ -14,7 +14,12 @@
         android:background="?attr/main_bg"
         android:layout_height="35dp"
         ></com.easysoft.widget.toolbar.NavigationBar>
-
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="3dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,43 +29,26 @@
         <com.easysoft.widget.search.SearchHeadView
             android:id="@+id/searchView"
             android:layout_width="match_parent"            android:visibility="gone"
+            android:layout_marginLeft="@dimen/comon_margin_left"
+            android:layout_marginRight="@dimen/comon_margin_right"
 
             android:layout_height="wrap_content"/>
         <com.easy.recycleview.DyLayout
             android:id="@+id/dyLayout"
             android:layout_width="match_parent"
+
             android:layout_height="match_parent"
             android:layout_weight="1"
             />
-        <LinearLayout
+        <com.easysoft.widget.fragment.SlidingLayout
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:id="@+id/editLayout"
-            android:orientation="horizontal"
-             android:layout_marginBottom="10dp"
-            android:visibility="gone"
-            >
-         <TextView     android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:text="添加"
-             android:gravity="center"
-             android:textColor="@color/white"
-             android:background="@drawable/common_button_selector"
-             android:layout_weight="1"
-             android:id="@+id/add"
-             />
-            <TextView     android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="全选"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/common_button_selector"
 
-                android:id="@+id/selectAll"
-                />
-        </LinearLayout>
+            android:visibility="gone"
+            android:layout_height="match_parent" >
+        </com.easysoft.widget.fragment.SlidingLayout>
+
+
 
     </LinearLayout>
 
@@ -68,4 +56,4 @@
 
     <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
-</LinearLayout>
+</com.easysoft.widget.fragment.SlidingLayout>

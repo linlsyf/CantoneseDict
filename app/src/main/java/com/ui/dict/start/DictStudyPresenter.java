@@ -11,9 +11,9 @@ import com.easy.recycleview.inter.IItemView;
 import com.easysoft.utils.lib.system.TimeUtils;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
-import com.ui.dict.DictBeanUtils;
 import com.ui.dict.DictBusBean;
 import com.ui.dict.DictTypeEnum;
+import com.utils.RecycleHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +42,8 @@ public class DictStudyPresenter {
 		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
 	}
     public void  initData(){
-		initAssets();
      List<Dict>  dictList ;
+
       if (countRead==0){
 		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(0),DictDao.Properties.Count.eq(countRead)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
 	  }else  if(countRead==10){
@@ -95,19 +95,15 @@ public class DictStudyPresenter {
 		settingMaps.add(sectionBean);
 		int i=0;
 		for (final Dict dict:dictList ) {
-//			if (i > 1) {
-//				VideoBussinessItem splitBean = new VideoBussinessItem();
-//				splitBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
-//				settingMaps.add(splitBean);
-//			}
+
 			i=i+1;
 			final  VideoBussinessItem hideBean=new VideoBussinessItem();
 
 			hideBean.setTitle(dict.getName());
-			hideBean.setHint("粤语："+dict.getTranName()+"  粤拼："+dict.getTranPy() +"\n次数："+dict.getCount());
+			hideBean.setHint("粤语："+dict.getTranName()+"\n粤拼："+dict.getTranPy() +"\n次数："+dict.getCount());
 			hideBean.setHintShow(true);
 			hideBean.setRightFirstButtonText("标记已学");
-			hideBean.setRightCenterScaleImgResId(R.drawable.ic_filled_star);
+			hideBean.getRightCenterScaleImgSettings().setRightCenterScaleImgResId(R.drawable.ic_filled_star);
 			hideBean.setOnItemListener(new IItemView.onItemClick() {
 
 				@Override
@@ -127,8 +123,6 @@ public class DictStudyPresenter {
 					}
 					else if (typeEnum== IItemView.ClickTypeEnum.ITEM_LONG){
 						longclick(dict);
-
-
 						//iVideoHomeView.showType(null,DictTypeEnum.YESDAY.value());
 					}
 					else if (typeEnum.value()==IItemView.ClickTypeEnum.ITEM.value()){
@@ -142,7 +136,7 @@ public class DictStudyPresenter {
 			settingMaps.add(hideBean);
 		}
 
-    settingSection.setDataMaps(settingMaps);
+    settingSection.setDataMaps(RecycleHelper.wrappingList(settingMaps));
 	iVideoHomeView.initUI(settingSection);
 	}
 
@@ -177,41 +171,6 @@ public class DictStudyPresenter {
 		dataList.add(itemBeanTranCount);
 
 		iVideoHomeView.editType(dataList);
-	}
-
-
-	public void initAssets() {
-		List<Dict>  dictList =   mDictDao.loadAll();
-		  if (dictList.size()>0) {
-			  isLoadDictSucess=true;
-		   return;
-		  }
-
-		  if (isIniting==false){
-			  iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
-
-			  isIniting=true;
-
-			  iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
-
-			  DictBeanUtils.copyDbFile(iVideoHomeView.getContext());
-			  DictBeanUtils.initDb(iVideoHomeView.getContext(), new DictBeanUtils.parseDictcallback() {
-				  @Override
-				  public void parseDataBack(Object obj) {
-//					  List<Dict> list= (List<Dict>) obj;
-				  }
-
-				  @Override
-				  public void showMsg(String msg) {
-					  iVideoHomeView.showToast(msg);
-
-				  }
-			  });
-
-		  }
-
-
-
 	}
 
 
@@ -324,10 +283,8 @@ public class DictStudyPresenter {
 
 	public void chaneReadCount(List<IDyItemBean> itemBeans) {
 		IDyItemBean  itemBean=  itemBeans.get(0);
-
 		 countRead=Integer.parseInt(itemBean.getId());
-
-		 initData();
+//		 initData();
 
 	}
 }

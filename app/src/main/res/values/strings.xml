@@ -102,6 +102,7 @@
     <string name="test">测试</string>
     <string name="laboratory_yueyu">粤语实验室</string>
     <string name="develop_setting">开发者选项</string>
+    <string name="radom_music">随机粤语歌曲</string>
     <string name="change_theme">修改主题</string>
     <string name="share_lange_app">分享APP到微信</string>
     <string name="search_null">搜索结果为空</string>
@@ -116,8 +117,9 @@
     <string name="tv_film">连续剧</string>
     <string name="custom_edit">自定义</string>
     <string name="response_error">返回数据错误</string>
-    <string name="about">粤语开发词典只用于android 开发粤语交流，不用于盈利。必须遵守Apache开源协议（禁止让作者承担责任，可以理解为免责）</string>
-    <string name="notice_yy">资料来自粤语学习网（外链）</string>
+    <string name="about">粤语开发词典只用于android 开发粤语交流，不用于盈利。必须遵守Apache开源协议</string>
+    <string name="notice_yy">资料来自粤语学习网</string>
+    <string name="yy_web">粤语开放平台网页</string>
     <string name="yp_sm">声母</string>
     <string name="yp_ym">韵母</string>
     <string name="yp_sd">声调</string>
@@ -128,8 +130,9 @@
     <string name="today_staduy">今天已学</string>
     <string name="yesday_book">昨日已学</string>
     <string name="app_home">官网</string>
-    <string name="app_home_link">官网(链接)</string>
+    <string name="app_home_link">官网</string>
     <string name="start">开始</string>
+    <string name="startLearn">开始学习</string>
 
     <string name="translate">翻译</string>
     <string name="yueyutranslate">粤语翻译</string>
@@ -138,6 +141,7 @@
     <string name="sentence">例句</string>
     <string name="init_sentence">重新导入例句</string>
     <string name="exec_sucess">操作成功</string>
+    <string name="exec_fail">操作失败</string>
     <string name="learn_base_yp">粤拼基础学习</string>
     <string name="learn_yp">粤拼学习</string>
     <!-- 请替换成在语音云官网申请的appid -->

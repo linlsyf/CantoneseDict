@@ -1,14 +1,12 @@
 package com.core.base;
 
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -20,13 +18,15 @@ import android.view.ViewGroup;
 import com.core.utils.BackHandledInterface;
 import com.easysoft.utils.lib.system.ToastUtils;
 
+import java.net.MalformedURLException;
+
 
 public abstract class BaseFragment extends Fragment implements BaseUiInterface,IBaseView{
 	
 	private View rootView =null;
 	public int tagId =0;
 	public boolean isshowdialog = true;
-    protected  FragmentActivity  activity;
+    protected FragmentActivity activity;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		activity=getActivity();
@@ -81,7 +81,7 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 	public void initFragment(){};
 	
 	@Override
-	public void initUIView() {
+	public void initUIView() throws MalformedURLException {
 		
 	}
 	

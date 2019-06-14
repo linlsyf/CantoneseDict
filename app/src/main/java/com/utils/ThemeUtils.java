@@ -44,7 +44,23 @@ public class ThemeUtils {
 
         WidgetConfig widgetConfig=      getThemeConfig(context,type);
         ThemeConfig themeConfig=new ThemeConfig();
+
+
+            if (type== R.style.theme_light){
+            themeConfig.setBgResourcResId(R.drawable.common_select);
+             }
+            else if (type== R.style.theme_green){
+            themeConfig.setBgResourcResId(R.drawable.common_select_green);
+             }
+            else if (type== R.style.theme_easy){
+            themeConfig.setBgResourcResId(R.drawable.item_select_easy);
+             }
+
+             else{
+                themeConfig.setBgResourcResId(R.drawable.common_select_dark);
+           }
         themeConfig.setBgColorResId(widgetConfig.getBgColor());
+
         themeConfig.setTitleColorResId(widgetConfig.getTextColor());
         RecycleConfig.getInstance().setThemeConfig(themeConfig);
 
@@ -56,6 +72,7 @@ public class ThemeUtils {
         switch (themeType) {
             case R.style.theme_light:
                 widgetConfig.setBgColor(context.getResources().getColor(R.color.white));
+//                widgetConfig.setBgColor(context.getResources().getColor(R.color.white));
                 widgetConfig.setTextColor(context.getResources().getColor(R.color.color_dark));
                 break;
             case R.style.theme_dark:

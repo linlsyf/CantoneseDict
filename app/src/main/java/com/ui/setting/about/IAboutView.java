@@ -2,7 +2,6 @@ package com.ui.setting.about;
 
 import com.core.base.IBaseView;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
 
 
 public interface IAboutView extends IBaseView{
@@ -11,4 +10,5 @@ public interface IAboutView extends IBaseView{
 
 
 	void openUrl(String url);
+	void openUrlByBroswer(String url);
 }

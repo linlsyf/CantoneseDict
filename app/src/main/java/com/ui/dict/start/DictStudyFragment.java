@@ -14,13 +14,13 @@ import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
-import com.easysoft.utils.lib.system.FragmentHelper;
-import com.easysoft.utils.lib.system.KeyboardUtils;
 import com.easysoft.utils.lib.system.StringUtils;
+import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.search.SearchHeadView;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
+import com.iflytek.IatDemoUtils;
 import com.linlsyf.area.R;
 import com.ui.common.infoedit.InformationInputFragment;
 import com.ui.common.select.SelectFragment;
@@ -67,7 +67,10 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
         searchHeadView.getSearchEditText().setFocusable(true);
         searchHeadView.getSearchEditText().setFocusableInTouchMode(true);
         searchHeadView.getSearchEditText().requestFocus();
-        persenter=new DictStudyPresenter(this);
+
+        if (persenter==null){
+            persenter=new DictStudyPresenter(this);
+        }
 
         persenter.initData();
     }
@@ -96,7 +99,6 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
                     inputFragment.setOnUpdateSuccessListener(new SelectFragment.OnUpdateSuccessListener() {
                         @Override
                         public void updateSuccess( List<IDyItemBean> itemBeans) {
-                           // presenter.updateSelectTheme(itemBeans);
                      persenter.chaneReadCount(itemBeans);
                         }
                     });
@@ -126,6 +128,19 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
                     persenter.searchByGY( text);
                 }
             }
+
+            @Override
+            public void onVoiceClick() {
+                IatDemoUtils utils=new IatDemoUtils();
+                utils.setcallBack(new IatDemoUtils.mcCallBack() {
+                    @Override
+                    public void call(String msg) {
+                        persenter.searchByGY(msg);
+                    }
+                });
+                utils.init(activity);
+                utils.onClick();
+            }
         });
 
     }
@@ -148,14 +163,9 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 
     @Override
     public void initUI(final Section nextSection) {
-        getActivity().runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                KeyboardUtils.closeKeybord(activity);
+                //KeyboardUtils.closeKeybord(activity);
                 recycleView.updateSection(nextSection,true);
-            }
-        });
+
 
     }
 

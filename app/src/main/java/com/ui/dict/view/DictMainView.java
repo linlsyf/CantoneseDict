@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easy.recycleview.outinter.RecycleConfig;
 import com.linlsyf.area.R;
 import com.ui.dict.DictBusBean;
 
@@ -34,8 +33,8 @@ public class DictMainView extends LinearLayout implements IItemView {
 
     @Bind(R.id.tvBase)
     TextView tvBase;
-    @Bind(R.id.todayLayout)
-    View todayLayout;
+    @Bind(R.id.translateLayout)
+    View translateLayout;
     @Bind(R.id.startLayout)
     View startLayout;
     @Bind(R.id.rootLayout)
@@ -89,7 +88,7 @@ public class DictMainView extends LinearLayout implements IItemView {
                 }
             }
         });
-        tvTranslate.setOnClickListener(new OnClickListener() {
+        translateLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (data.getOnItemListener()!=null){

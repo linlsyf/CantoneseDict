@@ -6,12 +6,8 @@ import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
-import com.easy.recycleview.custom.bean.BgSetting;
-import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easysoft.utils.lib.system.DensityUtil;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
 import com.utils.TimeAreaUtils;
@@ -64,10 +60,13 @@ public class DictHomePresenter {
 				if (typeEnum== IItemView.ClickTypeEnum.ITEM){
 					idictHomeView.showType(null,DictTypeEnum.YESDAY.value());
 				}
-				if (typeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
+				else if (typeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
 					idictHomeView.showType(null,DictTypeEnum.TODAY.value());
 				}
-				if (typeEnum== IItemView.ClickTypeEnum.RIGHT_SCALE_CENTER_IMG){
+				else if (typeEnum== IItemView.ClickTypeEnum.ITEM_LONG){
+					idictHomeView.showAllLearn();
+				}
+				else if (typeEnum== IItemView.ClickTypeEnum.RIGHT_SCALE_CENTER_IMG){
 					idictHomeView.showType(null,typeEnum.value());
 				}
 			}
@@ -80,23 +79,9 @@ public class DictHomePresenter {
 	 long  readCount=readedCount+collectCount;
 
 
+		dictBusBean.setTotalMsg("成语总数:"+totalCount+" 未学："+notReadCount);
+		dictBusBean.setTotalLearnMsg("已学："+readCount +"  收藏:"+collectCount+" [点击查看收藏]");
 
-		DyItemBean leanCountBean=new DyItemBean();
-		leanCountBean.setContentLayoutMagin(40);
-		 leanCountBean.getBgSetting().setContentBgResid(idictHomeView.getContext().getResources().getColor(R.color.bulugrey));
-//		leanCountBean.setBgSetting();
-		leanCountBean.setTitle("成语总数:"+totalCount+" 未学："+notReadCount);
-		leanCountBean.setHint("已学："+readCount +"  收藏:"+collectCount+" [点击查看收藏]");
-		leanCountBean.setOnItemListener(new IItemView.onItemClick() {
-			@Override
-			public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-            idictHomeView.showAllLearn();
-		}
-		});
-
-
-		leanCountBean.setHintShow(true);
-		settingMaps.add(leanCountBean);
 		settingMaps.add(dictBusBean);
 
 
@@ -121,21 +106,7 @@ public class DictHomePresenter {
 		});
 
 		settingMaps.add(spliteDyItemBean);
-//		DyItemBean  spliteDyItemBean=new DyItemBean();
-//		spliteDyItemBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
-//		settingMaps.add(spliteDyItemBean);
-//
-//		DyItemBean toTranslateDyItemBean=new DyItemBean();
-//		toTranslateDyItemBean.setTitle(idictHomeView.getContext().getString(R.string.yueyutranslate));
-//		 toTranslateDyItemBean.setOnItemListener(new IItemView.onItemClick() {
-//			 @Override
-//			 public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-//
-//			 	idictHomeView.toTranslate();
-//			 }
-//		 });
-//
-//		settingMaps.add(toTranslateDyItemBean);
+
 
     settingSection.setDataMaps(settingMaps);
 	idictHomeView.initUI(settingSection);

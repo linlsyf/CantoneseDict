@@ -80,7 +80,7 @@ public class SearchDictPresenter {
 			hideBean.setHint("粤语："+dict.getTranName()+"  粤拼："+dict.getTranPy());
 			hideBean.setHintShow(true);
 			hideBean.setRightFirstButtonText("标记已学");
-			hideBean.setRightCenterScaleImgResId(R.drawable.ic_filled_star);
+			hideBean.getRightCenterScaleImgSettings().setRightCenterScaleImgResId(R.drawable.ic_filled_star);
 
 			hideBean.setOnItemListener(new IItemView.onItemClick() {
 				@Override

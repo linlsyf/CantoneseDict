@@ -1,13 +1,13 @@
 package com.ui.setting;
 
 import android.content.Intent;
-import android.provider.Settings;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.business.BusinessBroadcastUtils;
 import com.business.bean.ResponseMsgData;
 import com.business.login.User;
+import com.business.service.music.MusiceHelper;
 import com.business.weixin.WeixinShare;
 import com.core.CoreApplication;
 import com.core.ServerUrl;
@@ -26,15 +26,15 @@ import com.easysoft.utils.lib.http.CallBackResult;
 import com.easysoft.utils.lib.http.EasyHttpCallback;
 import com.easysoft.utils.lib.http.IEasyResponse;
 import com.easysoft.utils.lib.http.ResponseMsg;
+import com.easysoft.utils.lib.system.AppInfo;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
-import com.iflytek.voicedemo.IatDemo;
-import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBeanUtils;
 import com.utils.PermissionCheckUtils;
+import com.utils.RecycleHelper;
 import com.utils.ThemeUtils;
 import com.webview.WebMainActivity;
 
@@ -71,7 +71,10 @@ public class SettingPresenter   {
 
       public void init(){
 		  List<IDyItemBean> dataMaps=new ArrayList<>();
-		  List<IDyItemBean> settingMaps=new ArrayList<>();
+//		  List<IDyItemBean> settingMaps=new ArrayList<>()
+
+		  List<IDyItemBean>  newSectionList=new ArrayList<>();
+		  ;
 		    infoCardBean=new InfoCardBean();
 		    infoCardBean.setId(KEY_USER_INFO);
 		  String loginName="用户";
@@ -89,16 +92,11 @@ public class SettingPresenter   {
 		  }
 
 
-
-//
-//			DyItemBean itembeanSpace = new DyItemBean();
-//			itembeanSpace.setViewType(IItemView.ViewTypeEnum.SPLITE
-//							.value());
-//			settingMaps.add(itembeanSpace);
-			
 		    DyItemBean aboutBean=new DyItemBean();
 		  aboutBean.setId(KEY_ABOUT);
-		  aboutBean.setTitle("关于");
+
+		 String abcout="关于("+ AppInfo.getAppVersion(CoreApplication.getAppContext())+")";
+		  aboutBean.setTitle(abcout);
 		  aboutBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -106,7 +104,7 @@ public class SettingPresenter   {
 //				  Logout();
 			  }
 		  });
-		    settingMaps.add(aboutBean);
+		  newSectionList.add(aboutBean);
 
 		    DyItemBean settingBean=new DyItemBean();
 //		  settingBean.setId(KEY_ABOUT);
@@ -168,14 +166,14 @@ public class SettingPresenter   {
 				  iSafeSettingView.openCustomView(dataListCustom);
 			  }
 		  });
-		    settingMaps.add(settingBean);
+		  newSectionList.add(settingBean);
 		   sentenceYyDao = CoreApplication.getInstance().getDaoSession().getSentenceYyDao();
 
 		  Section nextSection=new Section(KEY_INFO);
 		
     	  nextSection.setDataMaps(dataMaps);
     	  Section settingSection=new Section(KEY_SETTING);
-    	  settingSection.setDataMaps(settingMaps);
+//    	  settingSection.setDataMaps(settingMaps);
 
     	  iSafeSettingView.initUI(nextSection);
     	  iSafeSettingView.initUI(settingSection);
@@ -185,7 +183,6 @@ public class SettingPresenter   {
 		  newSection.setPosition(0);
 
 //		  newSection.setName("其他");
-		  List<IDyItemBean>  newSectionList=new ArrayList<>();
 
 		  DyItemBean newItemBean=new DyItemBean();
 		  newItemBean.setTitle("助手小Q");
@@ -195,12 +192,7 @@ public class SettingPresenter   {
 				  iSafeSettingView.showNews();
 			  }
 		  });
-//		  newSectionList.add(newItemBean);
 
-		  DyItemBean itembeanSpaceLogOut= new DyItemBean();
-		  itembeanSpaceLogOut.setViewType(IItemView.ViewTypeEnum.SPLITE
-				  .value());
-		  newSectionList.add(itembeanSpaceLogOut);
 		  DyItemBean exitBean=new DyItemBean();
 		  exitBean.setId(KEY_LOGOUT);
 		  exitBean.setTitle("退出登录");
@@ -211,7 +203,7 @@ public class SettingPresenter   {
 			  }
 		  });
 		  if (GlobalConstants.getInstance().getAppType()==GlobalConstants.TYPE_SHOP_APP){
-			  newSectionList.add(exitBean);
+//			  newSectionList.add(exitBean);
 		  }
 		  DyItemBean  shareBean=new DyItemBean();
 		  shareBean.setId(KEY_TEST);
@@ -225,10 +217,6 @@ public class SettingPresenter   {
 		  });
 		  newSectionList.add(shareBean);
 
-		   DyItemBean split= new DyItemBean();
-		    split.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
-
-		  newSectionList.add(split);
 		  DyItemBean  themeBean=new DyItemBean();
 		  themeBean.setTitle(iSafeSettingView.getContext().getString(R.string.change_theme));
 		  themeBean.setOnItemListener(new IItemView.onItemClick() {
@@ -282,6 +270,20 @@ public class SettingPresenter   {
 
 		  newSectionList.add(developBean);
 
+		  DyItemBean  musicBean=new DyItemBean();
+		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
+		  musicBean.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+//				  MusiceHelper.startService(iSafeSettingView.getContext());
+				  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay();
+
+//				  MusiceHelper.play(MusiceHelper.url);
+
+
+			  }
+		  });
+		  newSectionList.add(musicBean);
 
 		  DyItemBean  testtBean=new DyItemBean();
 		  testtBean.setId(KEY_TEST);
@@ -291,17 +293,17 @@ public class SettingPresenter   {
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 
 				  List<DyItemBean> dataList=new ArrayList<>();
-				  DyItemBean itemBeanListen=new DyItemBean();
-				  itemBeanListen.setTitle("语音接口");
-				   itemBeanListen.setOnItemListener(new IItemView.onItemClick() {
-					   @Override
-					   public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-
-						   Intent intent = new Intent(iSafeSettingView.getContext(), IatDemo.class);
-						   iSafeSettingView.getContext().startActivity(intent);
-					   }
-				   });
-				  dataList.add(itemBeanListen);
+//				  DyItemBean itemBeanListen=new DyItemBean();
+//				  itemBeanListen.setTitle("语音接口");
+//				   itemBeanListen.setOnItemListener(new IItemView.onItemClick() {
+//					   @Override
+//					   public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+//
+//						   Intent intent = new Intent(iSafeSettingView.getContext(), IatDemo.class);
+//						   iSafeSettingView.getContext().startActivity(intent);
+//					   }
+//				   });
+//				  dataList.add(itemBeanListen);
 				  DyItemBean itemBeanWeb=new DyItemBean();
 				   itemBeanWeb.setTitle("网页测试");
 				  itemBeanWeb.setOnItemListener(new IItemView.onItemClick() {
@@ -317,22 +319,10 @@ public class SettingPresenter   {
 				  iSafeSettingView.openCustomView(dataList);
 			  }
 		  });
-		  newSectionList.add(testtBean);
-//		  DyItemBean  testtBean=new DyItemBean();
-//		  testtBean.setId(KEY_TEST);
-//		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
-//		  testtBean.setOnItemListener(new IItemView.onItemClick() {
-//			  @Override
-//			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-//
-//			  	 iSafeSettingView.test();
-//			  }
-//		  });
 //		  newSectionList.add(testtBean);
 
 
-
-		  newSection.setDataMaps(newSectionList);
+		  newSection.setDataMaps(RecycleHelper.wrappingList(newSectionList));
 		  iSafeSettingView.initUI(newSection);
       }
 

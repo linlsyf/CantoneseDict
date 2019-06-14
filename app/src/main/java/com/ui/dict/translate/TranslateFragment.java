@@ -14,12 +14,13 @@ import com.core.base.BaseFragment;
 import com.core.db.greenDao.entity.Dict;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
-import com.easysoft.utils.lib.system.FragmentHelper;
 import com.easysoft.utils.lib.system.KeyboardUtils;
+import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.search.SearchHeadView;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
+import com.iflytek.IatDemoUtils;
 import com.linlsyf.area.R;
 import com.ui.dict.DictTypeEnum;
 import com.ui.dict.search.SearchDictFragment;
@@ -120,10 +121,20 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
                 persenter.search(text);
 
             }
+
+            @Override
+            public void onVoiceClick() {
+                IatDemoUtils  utils=new IatDemoUtils();
+                utils.setcallBack(new IatDemoUtils.mcCallBack() {
+                    @Override
+                    public void call(String msg) {
+                        persenter.search(msg);
+                    }
+                });
+                utils.init(activity);
+                utils.onClick();
+            }
         });
-
-
-
     }
 
     @Override

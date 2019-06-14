@@ -2,14 +2,48 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:id="@+id/rootLayout"
-    android:background="@color/white"
+    android:background="@drawable/dict_home_head"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/msgLayout"
+            android:orientation="vertical"
+            >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:id="@+id/tvCount"
+                    android:textSize="17sp"
+                    android:ellipsize="end"
+                    android:gravity="left|center_vertical"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/tvLearn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textSize="16sp"
+                    android:ellipsize="end"
+                    android:gravity="left|center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             >
                 <LinearLayout
@@ -29,7 +63,6 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:textColor="@color/black"
-                            android:layout_marginBottom="5dp"
                             android:layout_gravity="center_horizontal"/>
 
                         <TextView
@@ -40,7 +73,6 @@
                             android:textSize="16sp"
                             android:ellipsize="end"
                             android:gravity="center"
-                            android:layout_marginBottom="5dp"
                             android:layout_gravity="center_horizontal"
                              />
                 </LinearLayout>

@@ -15,9 +15,9 @@ import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
-import com.easysoft.utils.lib.system.FragmentHelper;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
+import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.iflytek.voicedemo.MainActivity;
@@ -26,7 +26,6 @@ import com.ui.common.custom.CustomFragment;
 import com.ui.common.select.SelectFragment;
 import com.ui.login.LoginActivity;
 import com.ui.setting.about.AboutFragment;
-import com.webview.WebMainActivity;
 
 import java.util.List;
 
@@ -45,10 +44,7 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
     	View rootView=inflater.inflate(R.layout.fragment_common, null);
-//    	if(recycleView==null){
-//    		recycleView=new MySettingContentView(getActivity());
-//    	}
-    	
+
     	setRootView(rootView);
        return rootView;
 
@@ -174,16 +170,11 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
 
     @Override
     public void clickAbout() {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
                 Bundle bundle=new Bundle();
 
                 FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new AboutFragment(), bundle);
 
-            }
-        });
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.ui.setting.about;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +11,14 @@ import android.view.ViewGroup;
 import com.core.base.BaseFragment;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
-import com.easysoft.utils.lib.system.FragmentHelper;
+import com.easy.recycleview.custom.baseview.item.ContentItemView;
+import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.ui.common.browser.CommonBrowserFrament;
 import com.ui.common.view.CommonTextItemView;
-import com.ui.setting.ISafeSettingView;
 
 
 public class AboutFragment extends BaseFragment implements IAboutView {
@@ -60,7 +62,13 @@ public class AboutFragment extends BaseFragment implements IAboutView {
         recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
             @Override
             public View getCustomView(Context context, int i) {
-                return new CommonTextItemView(context);
+                View itemView=null;
+                 if (i==4){
+                     itemView=new CommonTextItemView(context);
+                 }else{
+                     itemView=new ContentItemView(context);
+                 }
+                return itemView;
             }
         });
         presenter=new AboutPresenter(this);
@@ -79,11 +87,22 @@ public class AboutFragment extends BaseFragment implements IAboutView {
 
     @Override
     public void openUrl(String url) {
-//        Uri uri = Uri.parse(url);
-//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//        startActivity(intent);
+
+
+         Bundle  bundle=new Bundle();
+        bundle.putString("url",url);
+
+        FragmentHelper.showFrag(activity,R.id.container_framelayout,new CommonBrowserFrament(),bundle);
 
     }
+
+    @Override
+    public void openUrlByBroswer(String url) {
+                Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
     @Override
     public void getBroadcastReceiverMessage(String type, Object mode) {
 

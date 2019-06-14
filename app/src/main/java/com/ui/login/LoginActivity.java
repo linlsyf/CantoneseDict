@@ -17,27 +17,25 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
 import com.business.BusinessBroadcastUtils;
 import com.business.login.LoginPerson;
 import com.core.base.BasicActivity;
-import com.linlsyf.area.R;
 import com.easysoft.utils.lib.system.AppInfo;
-import com.easysoft.utils.lib.system.FragmentHelper;
 import com.easysoft.utils.lib.system.KeyboardUtils;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
-
 import com.easysoft.widget.dialog.CustomDialog;
 import com.easysoft.widget.edittextview.BoundEditText;
+import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.imgeview.MultiShapeView;
 import com.easysoft.widget.process.ProgressHUD;
+import com.easysoft.widget.statusview.SoftKeyBoardSatusView;
+import com.linlsyf.area.R;
 import com.ui.common.register.check.CheckUserExitFragment;
 import com.ui.common.setting.SettingActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import  com.easysoft.widget.statusview.SoftKeyBoardSatusView;
 
 /**
  * 登录界面类

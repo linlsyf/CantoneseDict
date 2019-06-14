@@ -2,12 +2,7 @@ package com.business.service.music;
 
 import android.media.MediaPlayer;
 import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.RemoteException;
 
-import java.io.FileDescriptor;
 import java.io.IOException;
 
 /**
@@ -27,12 +22,17 @@ public class MusicBinder extends Binder {
         return player.isPlaying();
     }
 
+
+      public  void stop(){
+          if (player.isPlaying()) {
+              player.pause();
+          }
+      }
+
+
     //播放或暂停歌曲
     public void play(String url) {
       
-        if (player.isPlaying()) {
-            player.pause();
-        } else {
 
             if (hasInit){
              player.start();
@@ -56,7 +56,7 @@ public class MusicBinder extends Binder {
                 }
             }
 
-        }
+
         //Log.e("服务", "播放音乐");
     }
 
@@ -75,6 +75,7 @@ public class MusicBinder extends Binder {
         player.seekTo(mesc);
     }
 
-
-
+    public MediaPlayer getPlayer() {
+        return player;
+    }
 }

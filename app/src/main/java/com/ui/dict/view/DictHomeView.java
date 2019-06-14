@@ -41,6 +41,12 @@ public class DictHomeView extends LinearLayout implements IItemView {
     View yesdayLayout;
     @Bind(R.id.rootLayout)
     View  mRootView;
+    @Bind(R.id.tvCount)
+    TextView  tvCount;
+    @Bind(R.id.tvLearn)
+    TextView  tvLearn;
+    @Bind(R.id.msgLayout)
+    View  countLayout;
 
     public DictHomeView(Context context) {
         super(context);
@@ -75,6 +81,18 @@ public class DictHomeView extends LinearLayout implements IItemView {
         today.setText(data.getToday()+"");
 
 
+        tvCount.setText(data.getTotalMsg());
+        tvLearn.setText(data.getTotalLearnMsg());
+        countLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (data.getOnItemListener()!=null){
+                    data.getOnItemListener().onItemClick(ClickTypeEnum.ITEM_LONG,data);
+                }
+            }
+        });
+
+
         todayLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,9 +110,9 @@ public class DictHomeView extends LinearLayout implements IItemView {
             }
         });
 
-        todayLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
-        yesdayLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
-        mRootView.setBackgroundColor(getResources().getColor(R.color.color_eye_green));
+//        translateLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
+//        yesdayLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
+//        mRootView.setBackgroundColor(getResources().getColor(R.color.color_eye_green));
 
         if (RecycleConfig.getInstance().getThemeConfig().getBgColorResId()!=0){
 //            mRootView.setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());

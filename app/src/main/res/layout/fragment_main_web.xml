@@ -2,44 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/navigation1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#ECF0F2"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:orientation="horizontal" >
-        <EditText
-            android:id="@+id/editUrl1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:singleLine="true"
-            android:textSize="35px" 
-            android:hint="请输入网址...">
-        </EditText>
 
-        <Button
-            android:id="@+id/btnGo1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="3dp"
-            android:background="#ECF0F2"
-            android:linksClickable="false"
-            android:text="GO"
-            android:textSize="35px"
-            android:visibility="gone" />
-                  
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -58,13 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
         </FrameLayout>
-        <TextView
-            android:id="@+id/logView1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:singleLine="false">
-        </TextView>
 
      
         

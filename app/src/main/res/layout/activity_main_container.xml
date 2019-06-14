@@ -19,12 +19,11 @@
         android:background="@android:color/white"
         app:divideLineColor="@color/common_title_color"
         app:divideLineHeight="0.3dp"/>
-    <FrameLayout 
-        
+    <com.easysoft.widget.fragment.SlidingLayout
           android:id="@+id/container_framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         
-        ></FrameLayout>
+       />
 
 </RelativeLayout>

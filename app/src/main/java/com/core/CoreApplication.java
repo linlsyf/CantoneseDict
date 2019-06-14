@@ -61,13 +61,7 @@ public class CoreApplication extends MultiDexApplication {
 			 initGlobalConstants();
 			init();
 		RecycleConfig.getInstance().setIloadImage(ImageLoadUtils.getInStance());
-//		RecycleConfig.getInstance().
 
-//		ThemeConfig themeConfig=new ThemeConfig();
-//		themeConfig.setTitleColorResId(this.getResources().getColor(R.color.textcolor_main_normal));
-//		themeConfig.setHintColorResId(this.getResources().getColor(R.color.bg_second_normal));
-//		themeConfig.setBgColorResId(this.getResources().getColor(R.color.bg_main_dark));
-//		RecycleConfig.getInstance().setThemeConfig(themeConfig);
 
 
 		GlobalConstants.getInstance().setAppType(TYPE_SYSTEM_APP);
