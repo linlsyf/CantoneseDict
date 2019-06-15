@@ -131,12 +131,13 @@ greendao {
 }
 
 dependencies {
-
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compile(name: 'dynamicrecycleview', ext: 'aar')//aar引用
-    compile(name: 'utils', ext: 'aar')//aar引用
-    compile(name: 'easywidget', ext: 'aar')//aar引用
-
+    implementation(name: 'dynamicrecycleview', ext: 'aar')
+    //aar引用
+    implementation(name: 'utils', ext: 'aar')
+    //aar引用
+    implementation(name: 'easywidget', ext: 'aar')
+    //aar引用
     implementation 'org.greenrobot:greendao:3.0.1'
     implementation 'org.greenrobot:greendao-generator:3.0.0'
     implementation 'com.jakewharton:butterknife:7.0.1'
@@ -148,9 +149,7 @@ dependencies {
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     implementation 'top.zibin:Luban:1.1.3'
     implementation 'com.android.support:multidex:1.0.2'
-//    implementation 'com.github.linlsyf:EasySoftUtils:1.0.1.3'
-    //implementation 'com.easysoft.widget.lib:easywidget:1.0.0'
-//    implementation 'com.dyhdyh.compat.mmrc:media-metadata-retriever-compat:1.0.6'
+    //    implementation 'com.dyhdyh.compat.mmrc:media-metadata-retriever-compat:1.0.6'
     //可选(全平台，如果不引入会自动使用原生API)
     implementation 'com.github.wseemann:FFmpegMediaMetadataRetriever:1.0.14'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
@@ -162,13 +161,7 @@ dependencies {
     // 如果需要额外的UI支持，请选择依赖对应的UI拓展库
     implementation 'com.github.qingmei2:rximagepicker_support_wechat:0.4.0'
     // 微信图片选择器
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-
-//    implementation 'com.ghost.thunder:minithunder:1.0.3'
-//    implementation 'com.github.dueeeke.dkplayer:dkplayer-java:2.5.3'
-//    implementation 'com.github.dueeeke.dkplayer:dkplayer-armv7a:2.5.3'
-////    implementation 'com.github.dueeeke.dkplayer:dkplayer-arm64:2.5.3'
-//    implementation 'com.github.dueeeke.dkplayer:dkplayer-ui:2.5.3'
-    //implementation 'com.github.linlsyf:BTDownload:0.0.0.1'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.3.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 
 }

@@ -308,10 +308,6 @@ public class DictBeanUtils {
             public void subscribe(ObservableEmitter< ArrayList<SentenceYy>  > emitter)
                     throws Exception {
 
-
-
-
-
                 ArrayList<SentenceYy>  dictNewList=new ArrayList<>();
 
                 emitter.onNext(dictNewList);

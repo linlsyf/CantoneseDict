@@ -157,6 +157,8 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     @Override
     public void updateItem(final DyItemBean imgBean) {
 
+       recycleView.updateItem(imgBean);
+
     }
     @Override
     public void showNews() {

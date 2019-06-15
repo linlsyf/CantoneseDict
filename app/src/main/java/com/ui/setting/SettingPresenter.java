@@ -8,6 +8,7 @@ import com.business.BusinessBroadcastUtils;
 import com.business.bean.ResponseMsgData;
 import com.business.login.User;
 import com.business.service.music.MusiceHelper;
+import com.business.service.music.server.SongBean;
 import com.business.weixin.WeixinShare;
 import com.core.CoreApplication;
 import com.core.ServerUrl;
@@ -58,8 +59,10 @@ public class SettingPresenter   {
 	private String SECTION_NEW="new";
 	private String KEY_ABOUT="about";
 	private String KEY_TEST="test";
+	private String KEY_SONG="KEY_SONG";
 	private DyItemBean exportBean;
 	SentenceYyDao sentenceYyDao;
+	private DyItemBean musicBean;
 
 //	 int theme
 
@@ -106,7 +109,7 @@ public class SettingPresenter   {
 		  });
 		  newSectionList.add(aboutBean);
 
-		    DyItemBean settingBean=new DyItemBean();
+		    final DyItemBean settingBean=new DyItemBean();
 //		  settingBean.setId(KEY_ABOUT);
 		  settingBean.setTitle(iSafeSettingView.getContext().getString(R.string.datasource_exec));
 		  settingBean.setOnItemListener(new IItemView.onItemClick() {
@@ -270,15 +273,22 @@ public class SettingPresenter   {
 
 		  newSectionList.add(developBean);
 
-		  DyItemBean  musicBean=new DyItemBean();
+		    musicBean=new DyItemBean();
+		    musicBean.setId(KEY_SONG);
 		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
 		  musicBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-//				  MusiceHelper.startService(iSafeSettingView.getContext());
-				  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay();
 
-//				  MusiceHelper.play(MusiceHelper.url);
+
+				  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
+					  @Override
+					  public void callBack(SongBean songBean) {
+						  musicBean.setTitle("正在播放"+songBean.getTitle()+" (点击暂停)");
+
+						  iSafeSettingView.updateItem(musicBean);
+					  }
+				  });
 
 
 			  }
