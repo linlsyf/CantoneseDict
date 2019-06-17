@@ -5,9 +5,9 @@ import android.view.ViewGroup;
 
 import com.core.base.BaseFragment;
 import com.easy.recycleview.DyLayout;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.EdittextLayoutView;
-import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easysoft.utils.lib.system.KeyboardUtils;
 import com.easysoft.widget.fragment.FragmentHelper;

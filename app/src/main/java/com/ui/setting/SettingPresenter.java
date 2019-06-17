@@ -17,8 +17,9 @@ import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.core.utils.SpUtils;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
@@ -35,7 +36,6 @@ import com.linlsyf.area.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBeanUtils;
 import com.utils.PermissionCheckUtils;
-import com.utils.RecycleHelper;
 import com.utils.ThemeUtils;
 import com.webview.WebMainActivity;
 
@@ -110,7 +110,6 @@ public class SettingPresenter   {
 		  newSectionList.add(aboutBean);
 
 		    final DyItemBean settingBean=new DyItemBean();
-//		  settingBean.setId(KEY_ABOUT);
 		  settingBean.setTitle(iSafeSettingView.getContext().getString(R.string.datasource_exec));
 		  settingBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
@@ -176,7 +175,6 @@ public class SettingPresenter   {
 		
     	  nextSection.setDataMaps(dataMaps);
     	  Section settingSection=new Section(KEY_SETTING);
-//    	  settingSection.setDataMaps(settingMaps);
 
     	  iSafeSettingView.initUI(nextSection);
     	  iSafeSettingView.initUI(settingSection);
@@ -185,7 +183,6 @@ public class SettingPresenter   {
 		  Section  newSection=new Section(SECTION_NEW);
 		  newSection.setPosition(0);
 
-//		  newSection.setName("其他");
 
 		  DyItemBean newItemBean=new DyItemBean();
 		  newItemBean.setTitle("助手小Q");
@@ -281,12 +278,30 @@ public class SettingPresenter   {
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
 
-				  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
+			 	  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
 					  @Override
-					  public void callBack(SongBean songBean) {
-						  musicBean.setTitle("正在播放"+songBean.getTitle()+" (点击暂停)");
+					  public void callBack(boolean isPlaying,SongBean songBean) {
+					  	  if (isPlaying){
+							  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
 
-						  iSafeSettingView.updateItem(musicBean);
+						  }else {
+					  	  	String  musicTitle=songBean.getTitle();
+					  	  	  if (musicTitle==null){
+					  	  	  	musicTitle=iSafeSettingView.getContext().getString(R.string.unknown);
+							  }
+							  AddressHeadImgeSettings  headImgeSettings=new AddressHeadImgeSettings();
+
+					  	  	  headImgeSettings.setHeadImgRadius((int)iSafeSettingView.getContext().getResources().getDimension(R.dimen.comon_head_radius));
+					  	  	       headImgeSettings.setHeadImgUrl(songBean.getPicture());
+							     musicBean.setHeadImgeSettings(headImgeSettings);
+
+								 musicBean.setTitle("正在播放:"+songBean.getArtist()+" 演唱的"+musicTitle+" (点击暂停)");
+
+						  }
+
+
+						  iSafeSettingView.updateUIItem(musicBean);
+
 					  }
 				  });
 
@@ -331,8 +346,7 @@ public class SettingPresenter   {
 		  });
 //		  newSectionList.add(testtBean);
 
-
-		  newSection.setDataMaps(RecycleHelper.wrappingList(newSectionList));
+		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);
       }
 

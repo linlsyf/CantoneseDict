@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.core.utils.ImageLoadUtils;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
-import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.linlsyf.area.R;

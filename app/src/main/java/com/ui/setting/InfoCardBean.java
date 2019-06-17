@@ -1,7 +1,7 @@
 package com.ui.setting;
 
 
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.bean.DyItemBean;
 
 /**
  * Created by ldh on 2017/5/11.

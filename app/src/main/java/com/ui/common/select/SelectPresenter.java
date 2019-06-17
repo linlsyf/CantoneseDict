@@ -1,7 +1,7 @@
 package com.ui.common.select;
 
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.ui.common.CommonConstran;

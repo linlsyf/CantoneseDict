@@ -4,8 +4,8 @@ import com.business.bean.VideoBussinessItem;
 import com.core.CoreApplication;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.utils.lib.system.TimeUtils;
@@ -13,7 +13,6 @@ import com.linlsyf.area.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBusBean;
 import com.ui.dict.DictTypeEnum;
-import com.utils.RecycleHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,7 +135,7 @@ public class DictStudyPresenter {
 			settingMaps.add(hideBean);
 		}
 
-    settingSection.setDataMaps(RecycleHelper.wrappingList(settingMaps));
+    settingSection.setDataMaps(settingMaps);
 	iVideoHomeView.initUI(settingSection);
 	}
 
@@ -177,9 +176,7 @@ public class DictStudyPresenter {
 	public void searchByGY(final  String text) {
 		List<Dict> dictlist = mDictDao.queryBuilder().where(DictDao.Properties.Name.like("%" +text+ "%")).list();
 
-		if (!isLoadDictSucess){
-		  	iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
-		  }else {
+
 			  if (dictlist.size()==0){
 				  iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.search_null));
 			  }else{
@@ -227,7 +224,7 @@ public class DictStudyPresenter {
 				  settingSection.setDataMaps(settingMaps);
 				  iVideoHomeView.initUI(settingSection);
 			  }
-		  }
+
 
 	}
 

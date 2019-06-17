@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 
@@ -24,7 +24,7 @@ public class CommonTextItemView extends TextView implements IItemView {
     public void initData(IDyItemBean IDyItemBean) {
 
          setText(IDyItemBean.getTitle());
-        DyItemBean  itemBean=(DyItemBean)IDyItemBean;
+        DyItemBean itemBean=(DyItemBean)IDyItemBean;
          if (itemBean.getTitleSettings().getTextSize()!=0){
              setTextSize(itemBean.getTitleSettings().getTextSize());
          }

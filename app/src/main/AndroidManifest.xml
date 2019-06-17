@@ -85,7 +85,7 @@
         <!--              com.ui.WellComeActivity"
           -->
         <activity
-            android:name="com.ui.WellComeActivity"
+            android:name="com.ui.HomeActivity"
 
             android:label="@string/app_name" >
             <intent-filter>
@@ -103,7 +103,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             ></activity>
-        <activity   android:name="com.ui.HomeActivity"></activity>
+        <!--<activity   android:name="com.ui.HomeActivity"></activity>-->
         <activity   android:name="com.ui.common.setting.SettingActivity"></activity>
 
         <activity

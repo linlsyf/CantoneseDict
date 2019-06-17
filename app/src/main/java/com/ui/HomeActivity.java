@@ -17,7 +17,6 @@ import com.easysoft.widget.tabview.adapter.MainViewAdapter;
 import com.easysoft.widget.tabview.listener.OnTabSelectedListener;
 import com.easysoft.widget.tabview.widget.Tab;
 import com.easysoft.widget.tabview.widget.TabContainerView;
-import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.dict.DictHomeFragment;
 import com.ui.login.IlogInView;
@@ -40,29 +39,40 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 		setTheme(ThemeUtils.getStoreTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_container);
-         tabContainerView = (TabContainerView) findViewById(R.id.tab_container);
-        MainViewAdapter mainViewAdapter=null;
-			mainViewAdapter=new MainViewAdapter(getSupportFragmentManager(),
-					new Fragment[] {new DictHomeFragment(),new SettingFragment()});
-
-			mainViewAdapter.setIconImageArray(new int[] {R.drawable.new_life_icon_grey, R.drawable.new_myhome_icon_grey});
-			mainViewAdapter.setSelectedIconImageArray(new int[] {R.drawable.new_life_icon,R.drawable.new_myhome_icon});
-			mainViewAdapter.setTabNameArray(new String[] {"首页","设置"});
-
-
-
-
-         mainViewAdapter.setHasMsgIndex(0);
-        tabContainerView.setAdapter(mainViewAdapter);
-        tabContainerView.setOnTabSelectedListener(new OnTabSelectedListener() {
+      getWindow().getDecorView().post(new Runnable() {
             @Override
-            public void onTabSelected(Tab tab) {
+            public void run() {
 
-            }
+				WellComeHelper  wellComeHelper=new WellComeHelper();
+				wellComeHelper.init(HomeActivity.this);
+
+
+
+				MainViewAdapter mainViewAdapter=new MainViewAdapter(getSupportFragmentManager(),
+						new Fragment[] {new DictHomeFragment(),new SettingFragment()});
+
+				mainViewAdapter.setIconImageArray(new int[] {R.drawable.new_life_icon_grey, R.drawable.new_myhome_icon_grey});
+				mainViewAdapter.setSelectedIconImageArray(new int[] {R.drawable.new_life_icon,R.drawable.new_myhome_icon});
+				mainViewAdapter.setTabNameArray(new String[] {"首页","设置"});
+
+
+				mainViewAdapter.setHasMsgIndex(0);
+				tabContainerView.setAdapter(mainViewAdapter);
+				tabContainerView.setOnTabSelectedListener(new OnTabSelectedListener() {
+					@Override
+					public void onTabSelected(Tab tab) {
+
+					}
+				});
+
+				homePresenter=new HomePresenter(HomeActivity.this);
+				tabContainerView.resetConfig();
+
+			}
         });
 
-		homePresenter=new HomePresenter(this);
-		tabContainerView.resetConfig();
+         tabContainerView = (TabContainerView) findViewById(R.id.tab_container);
+
 
 	}
 

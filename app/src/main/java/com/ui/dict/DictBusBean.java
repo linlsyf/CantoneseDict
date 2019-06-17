@@ -1,7 +1,7 @@
 package com.ui.dict;
 
 
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.bean.DyItemBean;
 
 import java.util.ArrayList;
 import java.util.List;

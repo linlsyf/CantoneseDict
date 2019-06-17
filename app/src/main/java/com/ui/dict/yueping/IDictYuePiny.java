@@ -2,8 +2,8 @@ package com.ui.dict.yueping;
 
 import com.business.bean.VideoBussinessItem;
 import com.core.base.IBaseView;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
 
 import java.util.List;
 

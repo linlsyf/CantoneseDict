@@ -7,7 +7,6 @@ import android.media.MediaPlayer;
 import com.alibaba.fastjson.JSON;
 import com.business.service.music.server.SongBean;
 import com.business.service.music.server.SongResponBean;
-import com.core.db.greenDao.entity.SentenceYy;
 import com.easysoft.utils.lib.http.CallBackResult;
 import com.easysoft.utils.lib.http.EasyHttpCallback;
 import com.easysoft.utils.lib.http.EasyHttpUtils;
@@ -16,16 +15,7 @@ import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.linlsyf.area.R;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by lindanghong on 2019/6/10.
@@ -33,8 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MusiceHelper {
     public static MusicServiceConnection musicServiceConnection;
-    public static String url="https://jirenguapi.applinzi.com/fm/getSong.php?channel=public_yuzhong_yueyu2";
-//    public static String url="http://zhangmenshiting.qianqian.com/data2/music/124822723/124822723.mp3?xcode=2c4474f89edc223f350a5c038dd045b5";
+    public static String url="https://jirenguapi.applinzi.com/fm/getSong.php?channel=public_yuzhong_yueyu";
     public  static Context mContext;
     public static MusiceHelper mHelper;
     public static playCallBack mPlayCallBack;
@@ -78,9 +67,14 @@ public class MusiceHelper {
         mPlayCallBack=callBack;
           if (musicServiceConnection.getMusicBinder() !=null&&musicServiceConnection.getMusicBinder().isPlaying()){
               musicServiceConnection.getMusicBinder().stop();
-              return ;
+
+              if (callBack!=null){
+                  callBack.callBack(true,null);
+              }
+              return;
           }
         getRadomAndPlay();
+
 
     }
 
@@ -97,12 +91,11 @@ public class MusiceHelper {
                 public void onResponse(CallBackResult callBackResult) {
 
                     final  ResponseMsg   msg = callBackResult.getResponseMsg();
-
-
-                    Observable.create(new ObservableOnSubscribe<ArrayList<SentenceYy>>() {
-                        @Override
-                        public void subscribe(ObservableEmitter< ArrayList<SentenceYy>  > emitter)
-                                throws Exception {
+                    
+//                    Observable.create(new ObservableOnSubscribe<ArrayList<SentenceYy>>() {
+//                        @Override
+//                        public void subscribe(ObservableEmitter< ArrayList<SentenceYy>  > emitter)
+//                                throws Exception {
                             try {
                                 SongResponBean songResponBeanBean = JSON.parseObject(msg.getData().toString(), SongResponBean.class);
                                 List<SongBean> songBeanList = JSON.parseArray(songResponBeanBean.getSong().toString(), SongBean.class);
@@ -118,31 +111,32 @@ public class MusiceHelper {
                                          }
                                      });
                                      if (mPlayCallBack!=null){
-                                         mPlayCallBack.callBack(playSong);
+                                         mPlayCallBack.callBack(false,playSong);
                                      }
                                  }
 
                             }catch (Exception e){
-                                ToastUtils.show(mContext,mContext.getString(R.string.exec_fail));
+
+//                                ToastUtils.show(mContext,mContext.getString(R.string.exec_fail));
                             }
-
-
-                        } })
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribeOn(Schedulers.io()).subscribe(new Observer< ArrayList<SentenceYy>  >() {
-                        @Override public void onSubscribe(Disposable d) {
-//				mDisposable=d;
-                        }
-                        @Override public void onNext( ArrayList<SentenceYy>  list) {
-
-                        }
-                        @Override public void onError(Throwable e) {
-                        }
-
-                        @Override public void onComplete() {
-
-                        }
-                    });
+//
+//                        }
+//            })
+//                            .observeOn(AndroidSchedulers.mainThread())
+//                            .subscribeOn(Schedulers.io()).subscribe(new Observer< ArrayList<SentenceYy>  >() {
+//                        @Override public void onSubscribe(Disposable d) {
+////				mDisposable=d;
+//                        }
+//                        @Override public void onNext( ArrayList<SentenceYy>  list) {
+//
+//                        }
+//                        @Override public void onError(Throwable e) {
+//                        }
+//
+//                        @Override public void onComplete() {
+//
+//                        }
+//                    });
 
 
 
@@ -157,7 +151,7 @@ public class MusiceHelper {
 
     public  interface  playCallBack{
 
-        void callBack(SongBean songBean);
+        void callBack(boolean isPlayIng,SongBean songBean);
 
     }
 

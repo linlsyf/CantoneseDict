@@ -1,7 +1,7 @@
 package com.ui.setting.about;
 
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
 import com.easy.recycleview.custom.bean.TitleSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
@@ -28,7 +28,7 @@ public class AboutPresenter {
 		  List<IDyItemBean> dataMaps=new ArrayList<>();
 
 
-		  DyItemBean  linkHomeBean=new DyItemBean();
+		  DyItemBean linkHomeBean=new DyItemBean();
 		  linkHomeBean.setTitle(iSafeSettingView.getContext().getResources().getString(R.string.app_home_link));
 //		itemBean.setViewType(5);
 		  linkHomeBean.setOnItemListener(new IItemView.onItemClick() {

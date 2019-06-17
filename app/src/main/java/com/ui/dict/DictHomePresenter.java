@@ -109,6 +109,7 @@ public class DictHomePresenter {
 
 
     settingSection.setDataMaps(settingMaps);
+    settingSection.setAutoAddSpliteLine(false);
 	idictHomeView.initUI(settingSection);
 	}
 	public void initAssets() {

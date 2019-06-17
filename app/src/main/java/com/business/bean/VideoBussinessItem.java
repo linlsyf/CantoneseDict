@@ -2,7 +2,7 @@ package com.business.bean;
 
 import android.graphics.Bitmap;
 
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.bean.DyItemBean;
 
 
 public class VideoBussinessItem extends DyItemBean {

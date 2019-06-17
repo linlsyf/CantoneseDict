@@ -1,8 +1,8 @@
 package com.ui.setting;
 
 import com.core.base.IBaseView;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ public interface ISafeSettingView extends IBaseView{
 
 	void logOut();
 	void updateItem(DyItemBean imgBean);
+	void updateUIItem(DyItemBean imgBean);
 	void showNews();
 	void showTest();
 

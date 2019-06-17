@@ -12,8 +12,9 @@ import com.business.BusinessBroadcastUtils;
 import com.core.base.BaseFragment;
 import com.core.update.UpdateAPK;
 import com.easy.recycleview.DyLayout;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.DyItemBean;
+import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
@@ -158,6 +159,26 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     public void updateItem(final DyItemBean imgBean) {
 
        recycleView.updateItem(imgBean);
+
+    }
+    @Override
+    public void updateUIItem(final DyItemBean imgBean) {
+
+
+          activity.runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                  View  itemView= recycleView.getItemView(imgBean);
+                  if(itemView!=null){
+                      ContentItemView  contentItemView=(ContentItemView) itemView;
+                      contentItemView.mTitleTextView.setText(imgBean.getTitle());
+
+//                      HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mImageView);
+                  }
+              }
+          });
+
+
 
     }
     @Override
