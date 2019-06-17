@@ -104,6 +104,8 @@
     <string name="develop_setting">开发者选项</string>
     <string name="radom_music">随机歌曲</string>
     <string name="unknown">未知</string>
+    <string name="radom_yuyu_music">随机粤语歌曲</string>
+    <string name="next_music">下一首</string>
     <string name="change_theme">修改主题</string>
     <string name="share_lange_app">分享APP到微信</string>
     <string name="search_null">搜索结果为空</string>

@@ -28,16 +28,14 @@ public class MusicBinder extends Binder {
               player.pause();
           }
       }
+      public void resumePlay(){
+              player.start();
+      }
 
 
     //播放或暂停歌曲
     public void play(String url) {
-      
 
-            if (hasInit){
-             player.start();
-
-            }else{
                 try {
                     player.setDataSource(url);
                     //异步准备
@@ -54,7 +52,7 @@ public class MusicBinder extends Binder {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
+
 
 
         //Log.e("服务", "播放音乐");
@@ -78,4 +76,9 @@ public class MusicBinder extends Binder {
     public MediaPlayer getPlayer() {
         return player;
     }
+
+    public boolean isHasInit() {
+        return hasInit;
+    }
+
 }

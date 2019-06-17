@@ -272,38 +272,31 @@ public class SettingPresenter   {
 
 		    musicBean=new DyItemBean();
 		    musicBean.setId(KEY_SONG);
-		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
+		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
+		  musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
 		  musicBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
 
-			 	  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
-					  @Override
-					  public void callBack(boolean isPlaying,SongBean songBean) {
-					  	  if (isPlaying){
-							  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
 
-						  }else {
-					  	  	String  musicTitle=songBean.getTitle();
-					  	  	  if (musicTitle==null){
-					  	  	  	musicTitle=iSafeSettingView.getContext().getString(R.string.unknown);
-							  }
-							  AddressHeadImgeSettings  headImgeSettings=new AddressHeadImgeSettings();
-
-					  	  	  headImgeSettings.setHeadImgRadius((int)iSafeSettingView.getContext().getResources().getDimension(R.dimen.comon_head_radius));
-					  	  	       headImgeSettings.setHeadImgUrl(songBean.getPicture());
-							     musicBean.setHeadImgeSettings(headImgeSettings);
-
-								 musicBean.setTitle("正在播放:"+songBean.getArtist()+" 演唱的"+musicTitle+" (点击暂停)");
-
+			  	  if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
+					  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
+						  @Override
+						  public void callBack(boolean isPlaying,SongBean songBean) {
+							  updateSongItemUI(songBean);
 						  }
+					  });
 
+				  }else if(clickTypeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
+					  MusiceHelper.getInstance(iSafeSettingView.getContext()).next(new MusiceHelper.playCallBack() {
+						  @Override
+						  public void callBack(boolean isPlaying,SongBean songBean) {
+							  updateSongItemUI(songBean);
+						  }
+					  });
+				  }
 
-						  iSafeSettingView.updateUIItem(musicBean);
-
-					  }
-				  });
 
 
 			  }
@@ -349,6 +342,27 @@ public class SettingPresenter   {
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);
       }
+
+	private void updateSongItemUI(SongBean songBean) {
+		if (isPlaying){
+			musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
+
+		}else {
+			String  musicTitle=songBean.getTitle();
+			if (musicTitle==null){
+				musicTitle=iSafeSettingView.getContext().getString(R.string.unknown);
+			}
+			AddressHeadImgeSettings  headImgeSettings=new AddressHeadImgeSettings();
+
+			headImgeSettings.setHeadImgRadius((int)iSafeSettingView.getContext().getResources().getDimension(R.dimen.comon_head_radius));
+			headImgeSettings.setHeadImgUrl(songBean.getPicture());
+			musicBean.setHeadImgeSettings(headImgeSettings);
+
+			musicBean.setTitle("正在播放:"+songBean.getArtist()+" 演唱的"+musicTitle+" (点击暂停)");
+
+		}
+
+	}
 
 	private void inportDictLJ() {
 
