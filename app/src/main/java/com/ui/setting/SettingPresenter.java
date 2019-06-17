@@ -275,20 +275,30 @@ public class SettingPresenter   {
 
 		    musicBean=new DyItemBean();
 		    musicBean.setId(KEY_SONG);
-		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
+		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
+		  musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
 		  musicBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
 
-				  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
-					  @Override
-					  public void callBack(SongBean songBean) {
-						  musicBean.setTitle("正在播放"+songBean.getTitle()+" (点击暂停)");
+			  	  if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
+					  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
+						  @Override
+						  public void callBack(SongBean songBean) {
+							  updateSongItemUI(songBean);
+						  }
+					  });
 
-						  iSafeSettingView.updateItem(musicBean);
-					  }
-				  });
+				  }else if(clickTypeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
+					  MusiceHelper.getInstance(iSafeSettingView.getContext()).next(new MusiceHelper.playCallBack() {
+						  @Override
+						  public void callBack(SongBean songBean) {
+							  updateSongItemUI(songBean);
+						  }
+					  });
+				  }
+
 
 
 			  }
@@ -335,6 +345,12 @@ public class SettingPresenter   {
 		  newSection.setDataMaps(RecycleHelper.wrappingList(newSectionList));
 		  iSafeSettingView.initUI(newSection);
       }
+
+	private void updateSongItemUI(SongBean songBean) {
+		musicBean.setHint("正在播放"+songBean.getTitle()+" (点击暂停)");
+
+		iSafeSettingView.updateItem(musicBean);
+	}
 
 	private void inportDictLJ() {
 

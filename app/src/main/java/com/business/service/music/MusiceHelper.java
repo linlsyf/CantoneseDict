@@ -80,9 +80,25 @@ public class MusiceHelper {
               musicServiceConnection.getMusicBinder().stop();
               return ;
           }
+
+          if (   musicServiceConnection.getMusicBinder()!=null&&musicServiceConnection.getMusicBinder().isHasInit()){
+              musicServiceConnection.getMusicBinder().resumePlay();
+        }else{
+            getRadomAndPlay();
+
+        }
+
+
+    }
+    public static  void next(playCallBack callBack)  {
+
+        mPlayCallBack=callBack;
+
         getRadomAndPlay();
 
     }
+
+
 
     private static void getRadomAndPlay() {
         try {
