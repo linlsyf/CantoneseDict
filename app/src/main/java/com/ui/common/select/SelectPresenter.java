@@ -18,6 +18,10 @@ public class SelectPresenter {
         this.iinputView =iSafeSettingView;
     }
 
+
+      public void refresh(){
+          iinputView.initUI(settingSection);
+      }
     public void init( List<DyItemBean> dataList) {
         settingSection=new Section(CommonConstran.KEY_SETTING);
         settingSection.setShowSection(false);

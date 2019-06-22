@@ -29,7 +29,7 @@ import com.ui.dict.view.CentImgView;
 import com.ui.dict.view.DictHomeView;
 import com.ui.dict.view.DictMainView;
 import com.ui.dict.yueping.DictYuePinyFragment;
-import com.utils.ThemeUtils;
+import com.utils.ThemeHelper;
 
 import static com.ui.dict.search.SearchDictFragment.DICT_NAME;
 
@@ -66,7 +66,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
 
 
-        TopBarBuilder.buildOnlyImageById(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,ThemeUtils.getStoreThemeIcon(activity));
+        TopBarBuilder.buildOnlyImageById(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST, ThemeHelper.getStoreThemeIcon(activity));
 
         searchHeadView.getBackLayout().setVisibility(View.GONE);
 

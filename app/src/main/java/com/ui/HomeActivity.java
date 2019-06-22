@@ -23,7 +23,7 @@ import com.ui.login.IlogInView;
 import com.ui.login.LoginActivity;
 import com.ui.login.LoginPresenter;
 import com.ui.setting.SettingFragment;
-import com.utils.ThemeUtils;
+import com.utils.ThemeHelper;
 
 
 public class HomeActivity extends BasicActivity implements IlogInView,IHomeView , BackHandledInterface {
@@ -36,7 +36,7 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 
 	@Override
     protected void onCreate( Bundle savedInstanceState) {
-		setTheme(ThemeUtils.getStoreTheme(this));
+		setTheme(ThemeHelper.getStoreTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_container);
       getWindow().getDecorView().post(new Runnable() {
@@ -51,8 +51,8 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 				MainViewAdapter mainViewAdapter=new MainViewAdapter(getSupportFragmentManager(),
 						new Fragment[] {new DictHomeFragment(),new SettingFragment()});
 
-				mainViewAdapter.setIconImageArray(new int[] {R.drawable.new_life_icon_grey, R.drawable.new_myhome_icon_grey});
-				mainViewAdapter.setSelectedIconImageArray(new int[] {R.drawable.new_life_icon,R.drawable.new_myhome_icon});
+				mainViewAdapter.setIconImageArray(new int[] {R.drawable.home_black, R.drawable.setting_black});
+				mainViewAdapter.setSelectedIconImageArray(new int[] {R.drawable.home_blue,R.drawable.setting_blue});
 				mainViewAdapter.setTabNameArray(new String[] {"首页","设置"});
 
 
@@ -194,11 +194,11 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 			tabContainerView.resetConfig();
 		}
 		else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME_RESTART_ACTIVITY)){
+
 			setTheme((int)mode);
+//			ThemeUtils.switchThemeConfig(this,(int)mode);
 			startActivity(new Intent(this, HomeActivity.class));
-
 			finish();
-
 			//覆盖activity动画效果
 
 			overridePendingTransition(0, 0);

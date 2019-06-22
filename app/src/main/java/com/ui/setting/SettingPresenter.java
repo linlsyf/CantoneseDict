@@ -22,8 +22,6 @@ import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.easy.recycleview.outinter.RecycleConfig;
-import com.easy.recycleview.outinter.ThemeConfig;
 import com.easysoft.utils.lib.http.CallBackResult;
 import com.easysoft.utils.lib.http.EasyHttpCallback;
 import com.easysoft.utils.lib.http.IEasyResponse;
@@ -31,12 +29,11 @@ import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.AppInfo;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
-import com.easysoft.widget.config.WidgetConfig;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBeanUtils;
 import com.utils.PermissionCheckUtils;
-import com.utils.ThemeUtils;
+import com.utils.ThemeHelper;
 import com.webview.WebMainActivity;
 
 import java.util.ArrayList;
@@ -74,32 +71,32 @@ public class SettingPresenter   {
 
       public void init(){
 		  List<IDyItemBean> dataMaps=new ArrayList<>();
-//		  List<IDyItemBean> settingMaps=new ArrayList<>()
-
 		  List<IDyItemBean>  newSectionList=new ArrayList<>();
-		  ;
-		    infoCardBean=new InfoCardBean();
-		    infoCardBean.setId(KEY_USER_INFO);
-		  String loginName="用户";
-		   if (BusinessBroadcastUtils.loginUser!=null){
-			   loginName=BusinessBroadcastUtils.loginUser.getName();
-			   if (BusinessBroadcastUtils.loginUser.getIsAdmin().equals("1")){
-				   loginName=loginName+" (管理)";
-			   }
-		   }
-		    infoCardBean.setUserName(loginName);
-		    infoCardBean.setViewType(3);
-		  if (GlobalConstants.getInstance().getAppType()==GlobalConstants.TYPE_SHOP_APP){
-			  dataMaps.add(infoCardBean);
+//		    infoCardBean=new InfoCardBean();
+//		    infoCardBean.setId(KEY_USER_INFO);
+//		  String loginName="用户";
+//		   if (BusinessBroadcastUtils.loginUser!=null){
+//			   loginName=BusinessBroadcastUtils.loginUser.getName();
+//			   if (BusinessBroadcastUtils.loginUser.getIsAdmin().equals("1")){
+//				   loginName=loginName+" (管理)";
+//			   }
+//		   }
+//		    infoCardBean.setUserName(loginName);
+//		    infoCardBean.setViewType(3);
+//		  if (GlobalConstants.getInstance().getAppType()==GlobalConstants.TYPE_SHOP_APP){
+//			  dataMaps.add(infoCardBean);
+//
+//		  }
 
-		  }
-
+		  int headRadius=(int)iSafeSettingView.getContext().getResources().getDimension(R.dimen.comon_setting_headimg_radius);
 
 		    DyItemBean aboutBean=new DyItemBean();
 		  aboutBean.setId(KEY_ABOUT);
 
 		 String abcout="关于("+ AppInfo.getAppVersion(CoreApplication.getAppContext())+")";
 		  aboutBean.setTitle(abcout);
+
+		  aboutBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
 		  aboutBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -111,6 +108,8 @@ public class SettingPresenter   {
 
 		    final DyItemBean settingBean=new DyItemBean();
 		  settingBean.setTitle(iSafeSettingView.getContext().getString(R.string.datasource_exec));
+		  settingBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_db).setHeadImgRadius(headRadius));
+
 		  settingBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -208,6 +207,8 @@ public class SettingPresenter   {
 		  DyItemBean  shareBean=new DyItemBean();
 		  shareBean.setId(KEY_TEST);
 		  shareBean.setTitle(iSafeSettingView.getContext().getString(R.string.share_lange_app));
+		  shareBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_share).setHeadImgRadius(headRadius));
+
 		  shareBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -219,6 +220,8 @@ public class SettingPresenter   {
 
 		  DyItemBean  themeBean=new DyItemBean();
 		  themeBean.setTitle(iSafeSettingView.getContext().getString(R.string.change_theme));
+		  themeBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_theme).setHeadImgRadius(headRadius));
+
 		  themeBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
@@ -251,6 +254,8 @@ public class SettingPresenter   {
 
 		  DyItemBean  developBean=new DyItemBean();
 		  developBean.setTitle(iSafeSettingView.getContext().getString(R.string.develop_setting));
+		  developBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_deve).setHeadImgRadius(headRadius));
+
 		  developBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
@@ -262,8 +267,6 @@ public class SettingPresenter   {
 					  PermissionCheckUtils.startDevelopmentActivity(iSafeSettingView.getContext());//跳转到开发者选项界面
 //				  }
 
-
-
 			  }
 		  });
 
@@ -273,18 +276,18 @@ public class SettingPresenter   {
 		    musicBean=new DyItemBean();
 		    musicBean.setId(KEY_SONG);
 		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
+		  musicBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_music).setHeadImgRadius(headRadius));
+
 		  musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
 		  musicBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
-
-
 			  	  if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
 					  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
 						  @Override
 						  public void callBack(boolean isPlaying,SongBean songBean) {
-							  updateSongItemUI(songBean);
+							  updateSongItemUI(isPlaying,songBean);
 						  }
 					  });
 
@@ -292,7 +295,7 @@ public class SettingPresenter   {
 					  MusiceHelper.getInstance(iSafeSettingView.getContext()).next(new MusiceHelper.playCallBack() {
 						  @Override
 						  public void callBack(boolean isPlaying,SongBean songBean) {
-							  updateSongItemUI(songBean);
+							  updateSongItemUI(isPlaying,songBean);
 						  }
 					  });
 				  }
@@ -343,10 +346,11 @@ public class SettingPresenter   {
 		  iSafeSettingView.initUI(newSection);
       }
 
-	private void updateSongItemUI(SongBean songBean) {
+	private void updateSongItemUI(boolean isPlaying,SongBean songBean) {
+		musicBean.setHintShow(true);
 		if (isPlaying){
-			musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_music));
-
+			musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
+			musicBean.setHint(iSafeSettingView.getContext().getString(R.string.click_play_music));
 		}else {
 			String  musicTitle=songBean.getTitle();
 			if (musicTitle==null){
@@ -358,9 +362,11 @@ public class SettingPresenter   {
 			headImgeSettings.setHeadImgUrl(songBean.getPicture());
 			musicBean.setHeadImgeSettings(headImgeSettings);
 
-			musicBean.setTitle("正在播放:"+songBean.getArtist()+" 演唱的"+musicTitle+" (点击暂停)");
+			musicBean.setTitle("正在播放:"+" (点击暂停)");
+			musicBean.setHint(musicTitle+" ("+songBean.getArtist()+")");
 
 		}
+		iSafeSettingView.updateUIItem(isPlaying,musicBean);
 
 	}
 
@@ -516,22 +522,16 @@ public class SettingPresenter   {
 		IDyItemBean  itemBean=itemBeans.get(0);
 
 		int type =Integer.parseInt(itemBean.getId());
-		WidgetConfig widgetConfig= ThemeUtils.getThemeConfig(iSafeSettingView.getContext(),type);
 
-		ThemeUtils.switchTheme(iSafeSettingView.getContext(),type);
-		ThemeConfig themeConfig=new ThemeConfig();
-		themeConfig.setBgColorResId(widgetConfig.getBgColor());
-		themeConfig.setTitleColorResId(widgetConfig.getTextColor());
-		RecycleConfig.getInstance().setThemeConfig(themeConfig);
+		ThemeHelper.changeTheme(iSafeSettingView.getContext(),type);
 
 		BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_CHANGE_THEME_RESTART_ACTIVITY,type);
-//		BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_CHANGE_THEME,type);
-//		init();
+		init();
 
 	}
 
 	public void changeTemeWB() {
-		int  type=ThemeUtils.getStoreTheme(iSafeSettingView.getContext());
+		int  type=ThemeHelper.getStoreTheme(iSafeSettingView.getContext());
 		List<IDyItemBean> itemBeans=new ArrayList<>();
 		DyItemBean itemBean=new DyItemBean();
 		  if (type== R.style.theme_light){

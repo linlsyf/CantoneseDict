@@ -14,6 +14,8 @@ import com.core.update.UpdateAPK;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
+import com.easy.recycleview.custom.baseview.config.HeadImageViewConfig;
+import com.easy.recycleview.custom.baseview.config.HintTextViewConfig;
 import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easysoft.utils.lib.system.ToastUtils;
@@ -162,7 +164,7 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
 
     }
     @Override
-    public void updateUIItem(final DyItemBean imgBean) {
+    public void updateUIItem(final boolean isPlaying, final DyItemBean imgBean) {
 
 
           activity.runOnUiThread(new Runnable() {
@@ -172,8 +174,12 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
                   if(itemView!=null){
                       ContentItemView  contentItemView=(ContentItemView) itemView;
                       contentItemView.mTitleTextView.setText(imgBean.getTitle());
+//                      contentItemView.mHintTextView.setText(imgBean.getHint());
+                      HintTextViewConfig.load(contentItemView,imgBean);
+                      if (!isPlaying){
+                          HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mImageView);
+                      }
 
-//                      HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mImageView);
                   }
               }
           });
@@ -223,7 +229,7 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     @Override
     public void selectTheme(List<DyItemBean> dataList) {
         SelectFragment inputFragment=new SelectFragment();
-
+//        inputFragment.setIsColse();
         inputFragment.setOnUpdateSuccessListener(new SelectFragment.OnUpdateSuccessListener() {
             @Override
             public void updateSuccess( List<IDyItemBean> itemBeans) {
@@ -233,7 +239,7 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
         });
 
         Bundle bundle=new Bundle();
-
+        bundle.putBoolean(SelectFragment.KEY_INTNET_CLOSE,false);
         inputFragment.initDataMap(dataList);
 
         FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);

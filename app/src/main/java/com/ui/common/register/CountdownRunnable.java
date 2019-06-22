@@ -56,7 +56,7 @@ public class CountdownRunnable implements Runnable {
 			 if (coundownColor!=0) {
 				coundownButton.setTextColor(coundownColor);
 			}else {
-				coundownButton.setTextColor(context.getResources().getColor(R.color.gray_color));
+				coundownButton.setTextColor(context.getResources().getColor(R.color.color_eye_green));
 			}
 		} else {
 			mReSendTime = 60;

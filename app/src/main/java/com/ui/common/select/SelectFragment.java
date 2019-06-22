@@ -46,10 +46,14 @@ public class SelectFragment extends BaseFragment implements ISelectView {
 
     public OnUpdateSuccessListener listener;
     private DyLayout recycleView;
-    public static final String KEY_INTNET_LIST="KEY_INTNET_LIST";
+    public static final String KEY_INTNET_CLOSE="KEY_INTNET_CLOSE";
+
+
     SelectPresenter inputPresenter;
     private List<DyItemBean> itemBeanList =new ArrayList<>();
     private String viewType="TYPE_EDIT";
+
+    private boolean isClose=true;
 
     public void setOnUpdateSuccessListener(OnUpdateSuccessListener listener) {
         this.listener = listener;
@@ -79,9 +83,7 @@ public class SelectFragment extends BaseFragment implements ISelectView {
 
                  @Override
               public void initUIView() {
-
                      recycleView = getViewById(R.id.dyLayout);
-
             	 toolbar=getViewById(R.id.toolbar);
                      Bundle bundle=   getArguments();
 
@@ -131,6 +133,7 @@ public class SelectFragment extends BaseFragment implements ISelectView {
         mTitle = bundle.getString(TITLE);
         mContent = bundle.getString(CONTENT);
         mId = bundle.getString(ID);
+        isClose=bundle.getBoolean(KEY_INTNET_CLOSE,true);
 
     }
         public void initDataMap(List<DyItemBean> dataList){
@@ -147,14 +150,32 @@ public class SelectFragment extends BaseFragment implements ISelectView {
     public void select(List<IDyItemBean> selectList) {
 
         listener.updateSuccess(selectList);
-        FragmentHelper.popBackFragment(activity);
+        if (isClose){
+
+            FragmentHelper.popBackFragment(activity);
+        }
 
 
     }
 
     @Override
 	public void getBroadcastReceiverMessage(String type, Object mode) {
-		// TODO Auto-generated method stub
+//        if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME_RESTART_ACTIVITY)) {
+//            Handler handler = new Handler();
+//
+//            handler.postDelayed(new Runnable() {
+//
+//                @Override
+//
+//                public void run() {
+//                    inputPresenter.refresh();
+//
+//                }
+//
+//            }, 500);
+//
+//
+//        }
 		
 	}
 

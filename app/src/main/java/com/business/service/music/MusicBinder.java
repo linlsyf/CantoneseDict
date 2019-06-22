@@ -37,6 +37,7 @@ public class MusicBinder extends Binder {
     public void play(String url) {
 
                 try {
+                    player.reset();
                     player.setDataSource(url);
                     //异步准备
                     player.prepareAsync();

@@ -52,7 +52,6 @@ public class CoreApplication extends MultiDexApplication {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-//		initTinkerPatch();
 		instance = this;
 		FreelineCore.init(this);
 		  JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
@@ -67,9 +66,6 @@ public class CoreApplication extends MultiDexApplication {
 		GlobalConstants.getInstance().setAppType(TYPE_SYSTEM_APP);
 		StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
 		StrictMode.setVmPolicy(builder.build());
-		CrashHandler.getInstance().init(this);
-
-
 
 
 		// 应用程序入口处调用，避免手机内存过小，杀死后台进程后通过历史intent进入Activity造成SpeechUtility对象为null
@@ -85,9 +81,7 @@ public class CoreApplication extends MultiDexApplication {
 		// 以下语句用于设置日志开关（默认开启），设置成false时关闭语音云SDK日志打印
 		// Setting.setShowLog(false);
 
-
 		//搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
-
 		QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 
 			@Override
@@ -105,9 +99,6 @@ public class CoreApplication extends MultiDexApplication {
 		//x5内核初始化接口
 		QbSdk.initX5Environment(getApplicationContext(),  cb);
 
-
-
-
 	}
 
 
@@ -118,7 +109,6 @@ public class CoreApplication extends MultiDexApplication {
 	 * <br>注释：初始化一些数据  如调试信息  jpush信息
 	 */
 	private void init() {
-//
 		 setDatabase();
 //		MobSDK.init(this,"2433f5d8b5a48","33927e698b643937655aa60604f7686e");
 		CrashHandler handler = CrashHandler.getInstance();

@@ -27,6 +27,8 @@ public class MusiceHelper {
     public  static Context mContext;
     public static MusiceHelper mHelper;
     public static playCallBack mPlayCallBack;
+    private static SongBean playSong;
+
     public static MusiceHelper getInstance(Context context){
 
           if (null==mHelper){
@@ -76,6 +78,9 @@ public class MusiceHelper {
 
           if (   musicServiceConnection.getMusicBinder()!=null&&musicServiceConnection.getMusicBinder().isHasInit()){
               musicServiceConnection.getMusicBinder().resumePlay();
+              if (callBack!=null){
+                  callBack.callBack(false,playSong);
+              }
         }else{
             getRadomAndPlay();
 
@@ -86,9 +91,7 @@ public class MusiceHelper {
     public static  void next(playCallBack callBack)  {
 
         mPlayCallBack=callBack;
-
         getRadomAndPlay();
-
 
     }
 
@@ -107,17 +110,13 @@ public class MusiceHelper {
                 public void onResponse(CallBackResult callBackResult) {
 
                     final  ResponseMsg   msg = callBackResult.getResponseMsg();
-                    
-//                    Observable.create(new ObservableOnSubscribe<ArrayList<SentenceYy>>() {
-//                        @Override
-//                        public void subscribe(ObservableEmitter< ArrayList<SentenceYy>  > emitter)
-//                                throws Exception {
+
                             try {
                                 SongResponBean songResponBeanBean = JSON.parseObject(msg.getData().toString(), SongResponBean.class);
                                 List<SongBean> songBeanList = JSON.parseArray(songResponBeanBean.getSong().toString(), SongBean.class);
 
                                  if (songBeanList.size()>0){
-                                     SongBean  playSong= songBeanList.get(0);
+                                       playSong= songBeanList.get(0);
 
                                      musicServiceConnection.getMusicBinder().play(playSong.getUrl());
                                      musicServiceConnection.getMusicBinder().getPlayer().setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -135,26 +134,6 @@ public class MusiceHelper {
 
 //                                ToastUtils.show(mContext,mContext.getString(R.string.exec_fail));
                             }
-//
-//                        }
-//            })
-//                            .observeOn(AndroidSchedulers.mainThread())
-//                            .subscribeOn(Schedulers.io()).subscribe(new Observer< ArrayList<SentenceYy>  >() {
-//                        @Override public void onSubscribe(Disposable d) {
-////				mDisposable=d;
-//                        }
-//                        @Override public void onNext( ArrayList<SentenceYy>  list) {
-//
-//                        }
-//                        @Override public void onError(Throwable e) {
-//                        }
-//
-//                        @Override public void onComplete() {
-//
-//                        }
-//                    });
-
-
 
 
                 }

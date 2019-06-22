@@ -10,7 +10,7 @@ import com.core.ServerUrl;
 import com.core.utils.SpUtils;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ThreadPoolUtils;
-import com.utils.ThemeUtils;
+import com.utils.ThemeHelper;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -40,8 +40,7 @@ public class WellComeHelper   {
 			@Override
 			public void run() {
 
-
-				ThemeUtils.initConfig(mContext);
+				ThemeHelper.initConfig(mContext);
 				BusinessBroadcastUtils.USER_VALUE_LOGIN_ID = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_ID,"");
 				BusinessBroadcastUtils.USER_VALUE_PWD 	   = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_USER_PWD,"");
 				BusinessBroadcastUtils.USER_VALUE_USER_ID  = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_USER_ID,"");

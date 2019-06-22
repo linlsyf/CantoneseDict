@@ -51,7 +51,7 @@
     <style name="theme_dark" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="main_bg">@color/common_hint_gray</item>
+        <item name="main_bg">@color/color_dark</item>
         <item name="main_textcolor">@color/textcolor_main_dark</item>
         <item name="second_bg">@color/bg_second_dark</item>
         <item name="second_textcolor">@color/textcolor_second_dark</item>
