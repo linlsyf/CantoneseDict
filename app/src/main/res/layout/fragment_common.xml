@@ -48,6 +48,11 @@
             android:layout_height="match_parent" >
         </com.easysoft.widget.fragment.SlidingLayout>
 
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>

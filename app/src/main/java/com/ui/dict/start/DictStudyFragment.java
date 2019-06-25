@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 import com.business.BusinessBroadcastUtils;
 import com.business.bean.VideoBussinessItem;
@@ -41,6 +43,8 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
     DyLayout recycleView;
     private NavigationBar toolbar;
     SearchHeadView searchHeadView;
+    private WebView webview;
+
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_common, null);
@@ -59,6 +63,7 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
         recycleView = getViewById(R.id.dyLayout);
         toolbar=getViewById(R.id.toolbar);
         searchHeadView=getViewById(R.id.searchView);
+        webview=getViewById(R.id.webview);
         searchHeadView.setVisibility(View.VISIBLE);
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
         TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
@@ -73,6 +78,16 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
         }
 
         persenter.initData();
+
+
+        WebSettings webSettings = webview.getSettings();
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setSupportZoom(true);
+        //与js交互必须设置
+        webSettings.setJavaScriptEnabled(true);
+        webview.loadUrl("file:///android_asset/cantonsprak.html");
+//        webview.loadUrl("file:///android_asset/html.html");
+//        webview.addJavascriptInterface(this,"android");
     }
 
     @Override
@@ -226,6 +241,11 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 
         FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);
 
+    }
+
+    @Override
+    public void speak(String textYuey) {
+        webview.loadUrl("javascript:speak(" + textYuey+ ")");
     }
 
 

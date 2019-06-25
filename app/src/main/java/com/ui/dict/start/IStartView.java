@@ -18,4 +18,6 @@ public interface IStartView extends IBaseView {
     void openVideo(VideoBussinessItem itemBean);
 
     void editType(List<DyItemBean> dataList);
+
+    void speak(String textYuey);
 }

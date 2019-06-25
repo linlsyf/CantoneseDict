@@ -8,6 +8,7 @@ import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.TimeUtils;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
@@ -34,6 +35,7 @@ public class DictStudyPresenter {
 	private boolean isIniting;
 	public Dict	mEditDict;
 	private int countRead=0;
+	private int countLimit=6;
 
 	public DictStudyPresenter(IStartView iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
@@ -44,12 +46,12 @@ public class DictStudyPresenter {
      List<Dict>  dictList ;
 
       if (countRead==0){
-		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(0),DictDao.Properties.Count.eq(countRead)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
+		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(0),DictDao.Properties.Count.eq(countRead)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(countLimit).list();
 	  }else  if(countRead==10){
-		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1),DictDao.Properties.Count.ge(1),DictDao.Properties.Count.le(10)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
+		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1),DictDao.Properties.Count.ge(1),DictDao.Properties.Count.le(10)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(countLimit).list();
 	  }
 	  else{
-		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1),DictDao.Properties.Count.gt(10)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(8).list();
+		  dictList = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1),DictDao.Properties.Count.gt(10)).orderAsc(DictDao.Properties.Id).orderDesc(DictDao.Properties.TranPy).limit(countLimit).list();
 	  }
 
 		settingSection=new Section(KEY_SETTING);
@@ -101,8 +103,11 @@ public class DictStudyPresenter {
 			hideBean.setTitle(dict.getName());
 			hideBean.setHint("粤语："+dict.getTranName()+"\n粤拼："+dict.getTranPy() +"\n次数："+dict.getCount());
 			hideBean.setHintShow(true);
-			hideBean.setRightFirstButtonText("标记已学");
+			hideBean.setRightFirstButtonText("已学");
 			hideBean.getRightCenterScaleImgSettings().setRightCenterScaleImgResId(R.drawable.ic_filled_star);
+//			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak);
+
+			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak).setRightFirstImgRadius(120);
 			hideBean.setOnItemListener(new IItemView.onItemClick() {
 
 				@Override
@@ -119,6 +124,13 @@ public class DictStudyPresenter {
 						dict.setStatus(2);
 						mDictDao.update(dict);
 						initData();
+					}
+					else if (typeEnum.value()==IItemView.ClickTypeEnum.RIGHT_FIRST_IMG.value()){
+						if (StringUtils.isNotEmpty(dict.getTranName())){
+							String textYuey=dict.getTranName().replace("\"","");
+							iVideoHomeView.speak(textYuey);
+						}
+
 					}
 					else if (typeEnum== IItemView.ClickTypeEnum.ITEM_LONG){
 						longclick(dict);
