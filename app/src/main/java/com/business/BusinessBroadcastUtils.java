@@ -53,9 +53,9 @@ public class BusinessBroadcastUtils {
 	/**添加订单成功*/
 	public static String  TYPE_GOODS_ADD_SUCESS="goodsAddSucess";
 //	/**登录成功*/
-//	public static String  TYPE_RELOGIN_SUCESS="HomeActivity.relogin.sucess";
+//	public static String  TYPE_RELOGIN_SUCESS="TestActivity.relogin.sucess";
 	/**登录失败*/
-//	public static String  TYPE_RELOGIN_FAILS="HomeActivity.relogin.fails";
+//	public static String  TYPE_RELOGIN_FAILS="TestActivity.relogin.fails";
 	/**重新登录失败*/
 	public static final String TYPE_RELOGIN ="home_relogin" ;
 	public static final String TYPE_LOGIN_SUCESS ="loginSucess" ;

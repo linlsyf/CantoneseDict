@@ -98,12 +98,13 @@
         </service>
 
 
+        <activity   android:name="com.TestActivity"></activity>
         <activity   android:name="com.core.db.greenDao.DbTestActivity"></activity>
         <activity   android:name="com.ui.login.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             ></activity>
-        <!--<activity   android:name="com.ui.HomeActivity"></activity>-->
+        <!--<activity   android:name="comHomeAutoActivityvity"></activity>-->
         <activity   android:name="com.ui.common.setting.SettingActivity"></activity>
 
         <activity

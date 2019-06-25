@@ -1,7 +1,9 @@
 package com.ui.setting;
 
 import android.content.Intent;
+import android.speech.tts.TextToSpeech;
 
+import com.TestActivity;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.business.BusinessBroadcastUtils;
@@ -34,7 +36,6 @@ import com.ui.HttpService;
 import com.ui.dict.DictBeanUtils;
 import com.utils.PermissionCheckUtils;
 import com.utils.ThemeHelper;
-import com.webview.WebMainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,8 +62,7 @@ public class SettingPresenter   {
 	SentenceYyDao sentenceYyDao;
 	private DyItemBean musicBean;
 
-//	 int theme
-
+	TextToSpeech  speaker;
 
 	public SettingPresenter(ISafeSettingView iSafeSettingView) {
     	this.iSafeSettingView=iSafeSettingView;
@@ -320,27 +320,38 @@ public class SettingPresenter   {
 //					   @Override
 //					   public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 //
-//						   Intent intent = new Intent(iSafeSettingView.getContext(), IatDemo.class);
-//						   iSafeSettingView.getContext().startActivity(intent);
+						   Intent intent = new Intent(iSafeSettingView.getContext(), TestActivity.class);
+						   iSafeSettingView.getContext().startActivity(intent);
+
+
+
+
+
+
+//				  String  url="http://www.eguidedog.net/cn/WebSpeech_cn.php";
+//				   iSafeSettingView.openUrl(url);
+
+
+
 //					   }
 //				   });
 //				  dataList.add(itemBeanListen);
-				  DyItemBean itemBeanWeb=new DyItemBean();
-				   itemBeanWeb.setTitle("网页测试");
-				  itemBeanWeb.setOnItemListener(new IItemView.onItemClick() {
-					  @Override
-					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-						  Intent intent = new Intent(iSafeSettingView.getContext(), WebMainActivity.class);
-						  iSafeSettingView.getContext(). startActivity(intent);
-					  }
-				  });
-				  dataList.add(itemBeanWeb);
-
-
-				  iSafeSettingView.openCustomView(dataList);
+//				  DyItemBean itemBeanWeb=new DyItemBean();
+//				   itemBeanWeb.setTitle("网页测试");
+//				  itemBeanWeb.setOnItemListener(new IItemView.onItemClick() {
+//					  @Override
+//					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+//						  Intent intent = new Intent(iSafeSettingView.getContext(), WebMainActivity.class);
+//						  iSafeSettingView.getContext(). startActivity(intent);
+//					  }
+//				  });
+//				  dataList.add(itemBeanWeb);
+//
+//
+//				  iSafeSettingView.openCustomView(dataList);
 			  }
 		  });
-//		  newSectionList.add(testtBean);
+		  newSectionList.add(testtBean);
 
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);

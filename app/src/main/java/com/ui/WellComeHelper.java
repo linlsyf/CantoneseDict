@@ -100,7 +100,7 @@ public class WellComeHelper   {
 //	 * 注释：判断是进入登录界面还是主界面
 //	 */
 //	public static void gotoMainOrloginUI(){
-//		Intent  homeIntent=new Intent(mContext,HomeActivity.class);
+//		Intent  homeIntent=new Intent(mContext,TestActivity.class);
 //		mContext.startActivity(homeIntent);
 //
 //	}
