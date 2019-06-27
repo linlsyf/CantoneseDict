@@ -1,7 +1,7 @@
 package com.ui.dict.start;
 
 import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.easy.recycleview.bean.DyItemBean;
@@ -25,14 +25,8 @@ public class DictStudyPresenter {
 	public static  String KEY_SETTING="setting";
 	private Section settingSection;
 	private DictDao mDictDao;
-	public static String ID_NEWS="ID_FILMS";
-	public static String ID_SEARCH="ID_TV_FILM";
-	public static String ID_TV="ID_TV";
-	public static String ID_HIDE="ID_HIDE";
-	public static String ID_BTDOWNLOAD="ID_BTDOWNLOAD";
-	public static String ID_EMPTY="ID_EMPTY";
-	boolean isLoadDictSucess=false;
-	private boolean isIniting;
+
+
 	public Dict	mEditDict;
 	private int countRead=0;
 	private int countLimit=6;
@@ -40,7 +34,7 @@ public class DictStudyPresenter {
 	public DictStudyPresenter(IStartView iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
+		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 	}
     public void  initData(){
      List<Dict>  dictList ;

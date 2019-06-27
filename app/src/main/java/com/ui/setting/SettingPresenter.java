@@ -168,7 +168,7 @@ public class SettingPresenter   {
 			  }
 		  });
 		  newSectionList.add(settingBean);
-		   sentenceYyDao = CoreApplication.getInstance().getDaoSession().getSentenceYyDao();
+		   sentenceYyDao = GlobalConstants.getInstance().getDaoSession().getSentenceYyDao();
 
 		  Section nextSection=new Section(KEY_INFO);
 		

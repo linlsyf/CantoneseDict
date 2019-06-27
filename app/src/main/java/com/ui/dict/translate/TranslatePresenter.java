@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.business.baidu.translate.SearchParam;
 import com.business.baidu.translate.TranSalteKey;
 import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.gen.DictDao;
@@ -44,8 +44,8 @@ public class TranslatePresenter {
 	public TranslatePresenter(ITranslateView iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
-		mSentenceYyDao = CoreApplication.getInstance().getDaoSession().getSentenceYyDao();
+		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
+		mSentenceYyDao = GlobalConstants.getInstance().getDaoSession().getSentenceYyDao();
 
 	}
     public void  search(String text){

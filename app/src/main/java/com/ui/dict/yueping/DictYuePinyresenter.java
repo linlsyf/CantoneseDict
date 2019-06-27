@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.easy.recycleview.bean.DyItemBean;
@@ -40,7 +40,7 @@ public class DictYuePinyresenter {
 	public DictYuePinyresenter(IDictYuePiny iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
+		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 	}
     public void  initData(){
 		initAssets();

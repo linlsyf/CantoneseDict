@@ -1,7 +1,7 @@
 package com.ui.dict;
 
 import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
@@ -25,13 +25,12 @@ public class DictHomePresenter {
 
 	private boolean isIniting;
 	SentenceYyDao sentenceYyDao;
-	private boolean isLoadDictSucess;
 
 	public DictHomePresenter(IdictHomeView iSafeSettingView) {
     	this.idictHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
-		sentenceYyDao = CoreApplication.getInstance().getDaoSession().getSentenceYyDao();
+		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
+		sentenceYyDao = GlobalConstants.getInstance().getDaoSession().getSentenceYyDao();
 
 
 	}
@@ -115,7 +114,6 @@ public class DictHomePresenter {
 	public void initAssets() {
 		List<Dict>  dictList =   mDictDao.loadAll();
 		  if (dictList.size()>0) {
-			  isLoadDictSucess=true;
 		   return;
 		  }
 

@@ -2,6 +2,7 @@ package com.ui.dict.dicttype;
 
 import com.business.bean.VideoBussinessItem;
 import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.DictType;
 import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.DictTypeDao;
@@ -40,7 +41,7 @@ public class DictTypePresenter {
 	public DictTypePresenter(IdictTypeView iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictTypeDao = CoreApplication.getInstance().getDaoSession().getDictTypeDao();
+		mDictTypeDao = GlobalConstants.getInstance().getDaoSession().getDictTypeDao();
 
 	}
 

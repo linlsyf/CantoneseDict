@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.gen.DaoMaster;
@@ -101,14 +101,14 @@ public class DictBeanUtils {
             if (size==0){
                 dictcallback.showMsg(context.getString(R.string.dict_init_error));
             }else {
-                DictDao mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
+                DictDao mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
                mDictDao.insertOrReplaceInTx(data);
 
 
         SentenceYyDao sentenceYyDao= daoSession.getSentenceYyDao();
           if (sentenceYyDao!=null){
               List<SentenceYy> datasSentenceYy=    sentenceYyDao.loadAll();
-              CoreApplication.getInstance().getDaoSession().getSentenceYyDao().insertOrReplaceInTx(datasSentenceYy);
+              GlobalConstants.getInstance().getDaoSession().getSentenceYyDao().insertOrReplaceInTx(datasSentenceYy);
             }
 
 
