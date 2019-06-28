@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
+import com.core.db.greenDao.gen.DaoSession;
 import com.easysoft.utils.lib.system.FileUtils;
 
 /**
@@ -20,9 +21,8 @@ import com.easysoft.utils.lib.system.FileUtils;
  */
 public class GlobalConstants {
 
-	public static Context processcontext;
-	public static String  key_SignInAccount="SignInAccount";
-	public static String  key_loginPwd="SignInKey";
+	private DaoSession mDaoSession;
+
 	/**临时文件夹名字，不同activity的保存路径可能不同须知*/
 	public static   String temp="temp";
 	public UserSession userSession = new UserSession();
@@ -107,7 +107,15 @@ public class GlobalConstants {
 		GlobalConstants.temp = temp;
 	}
 
-	public class UserSession {
+    public void setDaoSession(DaoSession daoSession) {
+        this.mDaoSession = daoSession;
+    }
+
+	public DaoSession getDaoSession() {
+		return mDaoSession;
+	}
+
+    public class UserSession {
 		String seesionId = "";
 
 		public String getSeesionId() {
@@ -236,28 +244,7 @@ public class GlobalConstants {
 
 	}
 
-	public void loadOSAndPhoneStatus() {
-		TelephonyManager phoneMgr = (TelephonyManager) this.applicationContext
-				.getSystemService(Context.TELEPHONY_SERVICE);
-		phoneModel = Build.MODEL; // 手机型号
-		phoneNumber = phoneMgr.getLine1Number();// 本机电话号码
-		// sdkVersion = Build.VERSION.SDK;// SDK版本号
-		osVersion = Build.VERSION.RELEASE;// Firmware/OS 版本号
-//		deviceId = phoneMgr.getDeviceId();// IMEI 作为 Device Id,
-											// 暂时发现若WIFI没有打开无法获取MAC地址
-		intSDKVersion = getAndroidSDKVersion();
 
-		try {
-			PackageInfo info = this.applicationContext
-					.getPackageManager()
-					.getPackageInfo(this.applicationContext.getPackageName(), 0);
-			osVersion = String.valueOf(info.versionCode);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		getAppWindowSize();
-	}
 
 	// 判断手机操作系统版本
 	public int getAndroidSDKVersion() {

@@ -1,7 +1,7 @@
 package com.ui.dict.search;
 
 import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
@@ -42,7 +42,7 @@ public class SearchDictPresenter {
 	public SearchDictPresenter(IdictView iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
+		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 
 	}
 

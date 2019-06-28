@@ -46,8 +46,6 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 				WellComeHelper  wellComeHelper=new WellComeHelper();
 				wellComeHelper.init(HomeActivity.this);
 
-
-
 				MainViewAdapter mainViewAdapter=new MainViewAdapter(getSupportFragmentManager(),
 						new Fragment[] {new DictHomeFragment(),new SettingFragment()});
 
@@ -73,7 +71,6 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 
          tabContainerView = (TabContainerView) findViewById(R.id.tab_container);
 
-
 	}
 
 	@Override
@@ -86,8 +83,6 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 		int num = getSupportFragmentManager().getBackStackEntryCount();
 
 		if (num==0&&keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-
-
 			exit();
 			return true;
 		}
@@ -100,7 +95,6 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 
 			mExitTime = System.currentTimeMillis();
 		} else {
-			//MyConfig.clearSharePre(this, "users");
 		BusinessBroadcastUtils.sendBroadcast(this,BusinessBroadcastUtils.TYPE_APP_EXIT,null);
 
 		}
@@ -110,9 +104,6 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 	protected void onResume() {
 		super.onResume();
 
-//		 if (CoreApplication.getInstance().isDubug){
-////		      gotoMainOrloginUI(wellComeActivity);
-//		 }else
 
 		if (GlobalConstants.getInstance().getAppType()==GlobalConstants.TYPE_SHOP_APP){
 			if(StringUtils.isEmpty(BusinessBroadcastUtils.USER_VALUE_LOGIN_ID)){
@@ -194,15 +185,12 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 			tabContainerView.resetConfig();
 		}
 		else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME_RESTART_ACTIVITY)){
-
 			setTheme((int)mode);
 //			ThemeUtils.switchThemeConfig(this,(int)mode);
 			startActivity(new Intent(this, HomeActivity.class));
 			finish();
 			//覆盖activity动画效果
-
 			overridePendingTransition(0, 0);
-
 //		     onRestart();
 		}
 

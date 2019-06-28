@@ -1,10 +1,10 @@
 package com.ui.dict;
 
-import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
@@ -25,68 +25,59 @@ public class DictHomePresenter {
 
 	private boolean isIniting;
 	SentenceYyDao sentenceYyDao;
-	private boolean isLoadDictSucess;
 
 	public DictHomePresenter(IdictHomeView iSafeSettingView) {
     	this.idictHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
-		sentenceYyDao = CoreApplication.getInstance().getDaoSession().getSentenceYyDao();
+		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
+		sentenceYyDao = GlobalConstants.getInstance().getDaoSession().getSentenceYyDao();
 
 
 	}
     public void  initData(){
 		initAssets();
-		long readedCount = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1)).count();
-		long   notReadCount = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(0)).count();
-		long   collectCount = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(2)).count();
 
-		String date =TimeAreaUtils.getToDayString();
-
-		long   todayCount = mDictDao.queryBuilder().where(DictDao.Properties.ModifyTime.like("%" +date+ "%")).count();
-		long   totalCount = mDictDao.count();
-		String yesday= TimeAreaUtils.getYesDayString();
-		long  yesdayCount =	 mDictDao.queryBuilder().where(DictDao.Properties.ModifyTime.like("%" +yesday+ "%")).orderAsc(DictDao.Properties.ModifyTime).count();
 		settingSection=new Section(KEY_SETTING);
 		List<IDyItemBean> settingMaps=new ArrayList<>();
-
-		final DictBusBean dictBusBean=new DictBusBean();
-		dictBusBean.setUnread(yesdayCount);
-		dictBusBean.setToday(todayCount);
-		dictBusBean.setViewType(3);
-		dictBusBean.setOnItemListener(new IItemView.onItemClick() {
-			@Override
-			public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-				if (typeEnum== IItemView.ClickTypeEnum.ITEM){
-					idictHomeView.showType(null,DictTypeEnum.YESDAY.value());
-				}
-				else if (typeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
-					idictHomeView.showType(null,DictTypeEnum.TODAY.value());
-				}
-				else if (typeEnum== IItemView.ClickTypeEnum.ITEM_LONG){
-					idictHomeView.showAllLearn();
-				}
-				else if (typeEnum== IItemView.ClickTypeEnum.RIGHT_SCALE_CENTER_IMG){
-					idictHomeView.showType(null,typeEnum.value());
-				}
-			}
-		});
-
-		final  VideoBussinessItem msgBean=new VideoBussinessItem();
-		String percent="";
-	 String 	msg ="";
-
-	 long  readCount=readedCount+collectCount;
-
-
-		dictBusBean.setTotalMsg("成语总数:"+totalCount+" 未学："+notReadCount);
-		dictBusBean.setTotalLearnMsg("已学："+readCount +"  收藏:"+collectCount+" [点击查看收藏]");
-
-		settingMaps.add(dictBusBean);
-
-
+//
+//		final DictBusBean dictBusBean=new DictBusBean();
+//		dictBusBean.setUnread(yesdayCount);
+//		dictBusBean.setToday(todayCount);
+//		dictBusBean.setViewType(3);
+//		dictBusBean.setOnItemListener(new IItemView.onItemClick() {
+//			@Override
+//			public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+//				if (typeEnum== IItemView.ClickTypeEnum.ITEM){
+//					idictHomeView.showType(null,DictTypeEnum.YESDAY.value());
+//				}
+//				else if (typeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
+//					idictHomeView.showType(null,DictTypeEnum.TODAY.value());
+//				}
+//				else if (typeEnum== IItemView.ClickTypeEnum.ITEM_LONG){
+//					idictHomeView.showAllLearn();
+//				}
+//				else if (typeEnum== IItemView.ClickTypeEnum.RIGHT_SCALE_CENTER_IMG){
+//					idictHomeView.showType(null,typeEnum.value());
+//				}
+//			}
+//		});
+//
+//		final  VideoBussinessItem msgBean=new VideoBussinessItem();
+//		String percent="";
+//	 String 	msg ="";
+//
+//	 long  readCount=readedCount+collectCount;
+//
+//
+//		dictBusBean.setTotalMsg("成语总数:"+totalCount+" 未学："+notReadCount);
+//		dictBusBean.setTotalLearnMsg("已学："+readCount +"  收藏:"+collectCount+" [点击查看收藏]");
+//
+//		settingMaps.add(dictBusBean);
+//		DictBusBean  headItemBean=new DictBusBean();
+//		headItemBean.setit
+//		settingMaps.add(headItemBean);
 		DictBusBean  spliteDyItemBean=new DictBusBean();
-		spliteDyItemBean.setItemHight(200);
+//		spliteDyItemBean.setItemHight(200);
 		  spliteDyItemBean.setViewType(7);
 		spliteDyItemBean.setOnItemListener(new IItemView.onItemClick() {
 			@Override
@@ -94,8 +85,46 @@ public class DictHomePresenter {
 
 				if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
 					idictHomeView.startStudy();
-				}else  if((clickTypeEnum== IItemView.ClickTypeEnum.ITEM_LONG)){
+
+				}
+				else  if((clickTypeEnum== IItemView.ClickTypeEnum.ITEM_LONG)){
 					idictHomeView.toYuePing();
+				}
+				else  if((clickTypeEnum== IItemView.ClickTypeEnum.CUSTOM)){
+					//idictHomeView.toYuePing();
+					List<DyItemBean> dataListCustom=new ArrayList<>();
+
+							long readedCount = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(1)).count();
+		long   notReadCount = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(0)).count();
+		long   collectCount = mDictDao.queryBuilder().where(DictDao.Properties.Status.eq(2)).count();
+
+		String date = TimeAreaUtils.getToDayString();
+
+		long   todayCount = mDictDao.queryBuilder().where(DictDao.Properties.ModifyTime.like("%" +date+ "%")).count();
+		long   totalCount = mDictDao.count();
+		String yesday= TimeAreaUtils.getYesDayString();
+		long  yesdayCount =	 mDictDao.queryBuilder().where(DictDao.Properties.ModifyTime.like("%" +yesday+ "%")).orderAsc(DictDao.Properties.ModifyTime).count();
+
+					final DictBusBean notReadBean=new DictBusBean();
+					notReadBean.setTitle("成语总数:"+totalCount+" 未学："+notReadCount);
+					long  readCount=readedCount+collectCount;
+					notReadBean.setHint("已学："+readCount +"  收藏:"+collectCount+" [点击查看收藏]");
+
+					dataListCustom.add(notReadBean);
+
+
+					final DictBusBean todayBean=new DictBusBean();
+					todayBean.setTitle("今日："+todayCount);
+					dataListCustom.add(todayBean);
+					final DictBusBean yesdayBean=new DictBusBean();
+					yesdayBean.setTitle("昨日："+todayCount);
+
+					dataListCustom.add(yesdayBean);
+
+
+					idictHomeView.openCustomView(dataListCustom);
+
+
 				}
 				else{
 					idictHomeView.toTranslate();
@@ -115,7 +144,6 @@ public class DictHomePresenter {
 	public void initAssets() {
 		List<Dict>  dictList =   mDictDao.loadAll();
 		  if (dictList.size()>0) {
-			  isLoadDictSucess=true;
 		   return;
 		  }
 
@@ -124,19 +152,20 @@ public class DictHomePresenter {
 			  isIniting=true;
 			  idictHomeView.showToast(idictHomeView.getContext().getString(R.string.wait_dict_init_please));
 
-			  DictBeanUtils.copyDbFile(idictHomeView.getContext());
-			  DictBeanUtils.initDb(idictHomeView.getContext(), new DictBeanUtils.parseDictcallback() {
-				  @Override
-				  public void parseDataBack(Object obj) {
-//				  	DictBeanUtils.initLJ(idictHomeView.getContext(),);
-				  }
-
-				  @Override
-				  public void showMsg(String msg) {
-					  idictHomeView.showToast(msg);
-
-				  }
-			  });
+			  DictBeanUtils.iniDbFile(idictHomeView);
+//			  DictBeanUtils.copyDbFile(idictHomeView.getContext());
+//			  DictBeanUtils.initDb(idictHomeView.getContext(), new DictBeanUtils.parseDictcallback() {
+//				  @Override
+//				  public void parseDataBack(Object obj) {
+////				  	DictBeanUtils.initLJ(idictHomeView.getContext(),);
+//				  }
+//
+//				  @Override
+//				  public void showMsg(String msg) {
+//					  idictHomeView.showToast(msg);
+//
+//				  }
+//			  });
 
 
 		  }

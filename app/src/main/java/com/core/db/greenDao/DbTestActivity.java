@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 
 import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.User;
 import com.core.db.greenDao.gen.UserDao;
 import com.linlsyf.area.R;
@@ -29,7 +30,7 @@ public class DbTestActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_db_test);
         initView();
         initEvent();
-        mUserDao = CoreApplication.getInstance().getDaoSession().getUserDao();
+        mUserDao = GlobalConstants.getInstance().getDaoSession().getUserDao();
          random=new Random();
 
     }

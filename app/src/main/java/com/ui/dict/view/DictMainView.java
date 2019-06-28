@@ -29,6 +29,8 @@ public class DictMainView extends LinearLayout implements IItemView {
 
     @Bind(R.id.tvTranslate)
     TextView tvTranslate;
+    @Bind(R.id.startPerLayout)
+    View startPerLayout;
 
 
     @Bind(R.id.tvBase)
@@ -93,6 +95,14 @@ public class DictMainView extends LinearLayout implements IItemView {
             public void onClick(View v) {
                 if (data.getOnItemListener()!=null){
                     data.getOnItemListener().onItemClick(ClickTypeEnum.RIGHTBUTTION,data);
+                }
+            }
+        });
+        startPerLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (data.getOnItemListener()!=null){
+                    data.getOnItemListener().onItemClick(ClickTypeEnum.CUSTOM,data);
                 }
             }
         });

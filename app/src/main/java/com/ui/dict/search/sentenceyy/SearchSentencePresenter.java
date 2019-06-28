@@ -1,7 +1,7 @@
 package com.ui.dict.search.sentenceyy;
 
 import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.easy.recycleview.bean.Section;
@@ -37,7 +37,7 @@ public class SearchSentencePresenter {
 
 	public void  initData(){
 		List<SentenceYy>  dictList =new ArrayList<>();
-			mSentenceYyDao = CoreApplication.getInstance().getDaoSession().getSentenceYyDao();
+			mSentenceYyDao = GlobalConstants.getInstance().getDaoSession().getSentenceYyDao();
 		   searchKey= searchKey.replace("\"", "").trim();
 		  String[] searchKeys=new String[]{};
 		  if (searchKey.contains(",")){

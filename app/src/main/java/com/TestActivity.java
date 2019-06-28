@@ -9,6 +9,7 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.linlsyf.area.R;
+import com.utils.ThreadPoolExecutorFactory;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -47,6 +48,8 @@ public class TestActivity extends AppCompatActivity {
                 webview.loadUrl("javascript:javacalljswith(" + "'Android传过来的参数'" + ")");
             }
         });
+
+//        ThreadPoolExecutorFactory.getInstance().getCachedThreadPool().ex
     }
 
     private void setWebview() {

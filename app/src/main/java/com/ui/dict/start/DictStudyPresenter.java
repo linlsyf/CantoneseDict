@@ -1,7 +1,7 @@
 package com.ui.dict.start;
 
 import com.business.bean.VideoBussinessItem;
-import com.core.CoreApplication;
+import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.easy.recycleview.bean.DyItemBean;
@@ -26,6 +26,7 @@ public class DictStudyPresenter {
 	public static  String KEY_SETTING="setting";
 	private Section settingSection;
 	private DictDao mDictDao;
+
 	public Dict	mEditDict;
 	private int countRead=0;
 	private int countLimit=6;
@@ -33,7 +34,7 @@ public class DictStudyPresenter {
 	public DictStudyPresenter(IStartView iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
 		service=new HttpService();
-		mDictDao = CoreApplication.getInstance().getDaoSession().getDictDao();
+		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 	}
     public void  initData(){
      List<Dict>  dictList ;
@@ -93,13 +94,15 @@ public class DictStudyPresenter {
 
 			i=i+1;
 			final  VideoBussinessItem hideBean=new VideoBussinessItem();
+			//String value= it.getHint().replace("\"","");
+			dict.setName(dict.getName().replace("\"",""));
+			dict.setTranName(dict.getTranName().replace("\"",""));
 
 			hideBean.setTitle(dict.getName());
 			hideBean.setHint("粤语："+dict.getTranName()+"\n粤拼："+dict.getTranPy() +"\n次数："+dict.getCount());
 			hideBean.setHintShow(true);
 			hideBean.setRightFirstButtonText("已学");
 			hideBean.getRightCenterScaleImgSettings().setRightCenterScaleImgResId(R.drawable.ic_filled_star);
-//			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak);
 
 
 

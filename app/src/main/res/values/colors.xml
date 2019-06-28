@@ -17,13 +17,7 @@
     <color name="colorPrimary">#00b38b</color>
     <color name="colorPrimaryDark">#00b38b</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="bulugrey">#607D8B</color>
-    <color name="low_yellow">#FFEB3B</color>
-    <color name="low_red">#FF5722</color>
     <color name="yellow">#FFD000</color>
-    <color name="low_sky">#303F9F</color>
-    <color name="low_blue">#75CCDE</color>
-
 
 
     <color name="nav_bottom_normal">#999999</color>
@@ -85,15 +79,11 @@
     <color name="common_blue">#288BDD</color>
     <color name="deep_blue">#1c98f7</color>
 
-    <color name="bg_main_normal">#ffffff</color>
-    <color name="textcolor_main_normal">#ff0000</color>
-    <color name="bg_main_dark">#000000</color>
     <color name="textcolor_main_dark">#ffffff</color>
     <color name="bg_second_normal">#0000ff</color>
     <color name="textcolor_second_normal">#00ff00</color>
     <color name="bg_second_dark">#ffffff</color>
     <color name="textcolor_second_dark">#000000</color>
-    <color name="color_gold">#FFD700</color>
     <color name="color_lightcyan">#F8EBB6</color>
 
 

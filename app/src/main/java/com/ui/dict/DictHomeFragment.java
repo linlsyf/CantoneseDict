@@ -12,6 +12,7 @@ import com.business.bean.VideoBussinessItem;
 import com.core.base.BaseFragment;
 import com.core.db.greenDao.entity.Dict;
 import com.easy.recycleview.DyLayout;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easysoft.utils.lib.system.KeyboardUtils;
 import com.easysoft.widget.config.WidgetConfig;
@@ -21,6 +22,7 @@ import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.ui.common.custom.CustomFragment;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
 import com.ui.dict.start.DictStudyFragment;
@@ -30,6 +32,8 @@ import com.ui.dict.view.DictHomeView;
 import com.ui.dict.view.DictMainView;
 import com.ui.dict.yueping.DictYuePinyFragment;
 import com.utils.ThemeHelper;
+
+import java.util.List;
 
 import static com.ui.dict.search.SearchDictFragment.DICT_NAME;
 
@@ -126,7 +130,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
     @Override
 	public void getBroadcastReceiverMessage(String type, Object mode) {
         if(type.equals(BusinessBroadcastUtils.TYPE_YY_REFRESH_HOME_COUNT)){
-            persenter.initData();
+//            persenter.initData();
         }
         else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME)){
             mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
@@ -137,7 +141,15 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         }
 
 	}
+    public void openCustomView(List<DyItemBean> dataList) {
+        CustomFragment inputFragment=new CustomFragment();
 
+        Bundle bundle=new Bundle();
+
+        inputFragment.initDataMap(dataList);
+
+        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);
+    }
     @Override
     public void initUI(final Section nextSection) {
         getActivity().runOnUiThread(new Runnable() {
