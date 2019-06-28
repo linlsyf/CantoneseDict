@@ -122,19 +122,20 @@ public class DictHomePresenter {
 			  isIniting=true;
 			  idictHomeView.showToast(idictHomeView.getContext().getString(R.string.wait_dict_init_please));
 
-			  DictBeanUtils.copyDbFile(idictHomeView.getContext());
-			  DictBeanUtils.initDb(idictHomeView.getContext(), new DictBeanUtils.parseDictcallback() {
-				  @Override
-				  public void parseDataBack(Object obj) {
-//				  	DictBeanUtils.initLJ(idictHomeView.getContext(),);
-				  }
-
-				  @Override
-				  public void showMsg(String msg) {
-					  idictHomeView.showToast(msg);
-
-				  }
-			  });
+			  DictBeanUtils.iniDbFile(idictHomeView);
+//			  DictBeanUtils.copyDbFile(idictHomeView.getContext());
+//			  DictBeanUtils.initDb(idictHomeView.getContext(), new DictBeanUtils.parseDictcallback() {
+//				  @Override
+//				  public void parseDataBack(Object obj) {
+////				  	DictBeanUtils.initLJ(idictHomeView.getContext(),);
+//				  }
+//
+//				  @Override
+//				  public void showMsg(String msg) {
+//					  idictHomeView.showToast(msg);
+//
+//				  }
+//			  });
 
 
 		  }

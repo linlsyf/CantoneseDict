@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.core.base.GlobalConstants;
+import com.core.base.IBaseView;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.gen.DaoMaster;
@@ -52,10 +53,30 @@ public class DictBeanUtils {
 
 //    private static String dbBackUpPath;
 
-    /**
-     * 将assets文件夹下文件拷贝到/databases/下
-     * @param context
-     */
+    public static void iniDbFile(final  IBaseView iBaseView) {
+        DictBeanUtils.copyDbFile(iBaseView.getContext());
+        DictBeanUtils.initDb(iBaseView.getContext(), new DictBeanUtils.parseDictcallback() {
+            @Override
+            public void parseDataBack(Object obj) {
+//				  	DictBeanUtils.initLJ(idictHomeView.getContext(),);
+                //iBaseView.showToast(iBaseView.getContext().getResources().getString(R.string.exec_sucess));
+
+            }
+
+            @Override
+            public void showMsg(String msg) {
+                iBaseView.showToast(msg);
+
+            }
+        });
+
+    }
+
+
+        /**
+         * 将assets文件夹下文件拷贝到/databases/下
+         * @param context
+         */
     public static void copyDbFile(Context context) {
         InputStream in = null;
         FileOutputStream out = null;
@@ -194,9 +215,11 @@ public class DictBeanUtils {
             }
         });
 
-
-
     }
+
+     public static void  emptyDb(){
+         GlobalConstants.getInstance().getDaoSession().getDictDao().deleteAll();
+     }
     public static  void exportDb(final Context context, final parseDictcallback dictcallback){
 
          String dbPath = "/data/data/com.linlsyf.cantonese/databases/"
