@@ -54,8 +54,6 @@
     <!-- 通讯录相关 -->
 
     <string name="no_data_show">没有数据显示</string>
-    <string name="data_loading_error">点击重新加载</string>
-
 
 
     <string name="navigationbarbean_titletext_textsize">18</string>
@@ -91,18 +89,10 @@
 
     <string name="cancel">取消</string>
 
-    <string name="just_now">刚刚</string>
-    <string name="minuites_ago">分钟前</string>
-    <string name="hours_ago">小时前</string>
-    <string name="yestoday">昨天</string>
-    <string name="the_day_before_yestoday">前天</string>
     <string name="wait_dict_init_please">请等待字典加载完成</string>
     <string name="dict_init_error">初始化词典数据失败</string>
-    <string name="dict_init_sucess">词典加载完成</string>
-    <string name="test">测试</string>
     <string name="laboratory_yueyu">粤语实验室</string>
     <string name="develop_setting">开发者选项</string>
-    <string name="radom_music">随机歌曲</string>
     <string name="click_play_music">点击播放歌曲</string>
     <string name="unknown">未知</string>
     <string name="radom_yuyu_music">随机粤语歌曲</string>
@@ -112,15 +102,6 @@
     <string name="search_null">搜索结果为空</string>
 
     <string name="search">搜索</string>
-    <string name="tv_ch">电视</string>
-    <string name="tv_ch_cate">电视分类</string>
-    <string name="hide">隐藏</string>
-    <string name="reback">还原</string>
-    <string name="news">新闻</string>
-    <string name="film">电影</string>
-    <string name="tv_film">连续剧</string>
-    <string name="custom_edit">自定义</string>
-    <string name="response_error">返回数据错误</string>
     <string name="about">粤语开发词典只用于android 开发粤语交流，不用于盈利。必须遵守Apache开源协议</string>
     <string name="notice_yy">资料来自粤语学习网</string>
     <string name="yy_web">粤语开放平台网页</string>
@@ -133,16 +114,12 @@
     <string name="common_title">词典</string>
     <string name="today_staduy">今天已学</string>
     <string name="yesday_book">昨日已学</string>
-    <string name="app_home">官网</string>
     <string name="app_home_link">官网</string>
-    <string name="start">开始</string>
     <string name="start_percent">学习进度</string>
     <string name="startLearn">开始学习</string>
 
     <string name="translate">翻译</string>
-    <string name="yueyutranslate">粤语翻译</string>
     <string name="change">切换</string>
-    <string name="translate_result">搜索结果：</string>
     <string name="sentence">例句</string>
     <string name="init_sentence">重新导入例句</string>
     <string name="empty_db">清除数据库数据</string>
@@ -150,7 +127,6 @@
     <string name="exec_sucess">操作成功</string>
     <string name="exec_fail">操作失败</string>
     <string name="learn_base_yp">粤拼基础学习</string>
-    <string name="learn_yp">粤拼学习</string>
     <!-- 请替换成在语音云官网申请的appid -->
     <string name="app_id">5c83ca61</string>
     <string name="example_explain">本示例为讯飞语音Android平台开发者提供语音听写、语法识别、语义理解和语音合成等代码样例，旨在让用户能够依据该示例快速开发出基于语音接口的应用程序。</string>
@@ -168,10 +144,7 @@
     <string name="pref_key_translate">translate</string>
     <string name="pref_title_translate">翻译</string>
 
-    <string name="action_settings">设置</string>
     <string name="datasource_exec">数据源设置</string>
-    <string name="title_activity_mini_qb">MiniQBActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="tag"> (X5内核功能演示)</string>
     <string name="tip">普通接入直接参考“APPApplication” “BrowserActivity” “X5WebView”中相关实现即可</string>
 

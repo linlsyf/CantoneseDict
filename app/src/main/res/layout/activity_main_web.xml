@@ -5,7 +5,6 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/navigation1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#ECF0F2"
@@ -59,7 +58,6 @@
             android:layout_height="match_parent" >
         </FrameLayout>
         <TextView
-            android:id="@+id/logView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
@@ -71,7 +69,6 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ECF0F2"
