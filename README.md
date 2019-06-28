@@ -1,4 +1,4 @@
-下载链接：
+下载链接：adb shell am start -S -R 10 -W com.linlsyf.cantonese/com.ui.HomeActivity
 https://www.coolapk.com/apk/224772
 
 
@@ -8,6 +8,6 @@ https://www.coolapk.com/apk/224772
 
 <img src="img/home.jpg" width="200" /><img src="img/voice.jpg" width="200" /><img src="img/setting.jpg" width="200" />
 
-测试启动时间：adb shell am start -S -R 10 -W com.linlsyf.cantonese/.HomeActivity
+测试启动时间：adb shell am start -S -R 10 -W com.linlsyf.cantonese/com.ui.HomeActivity
 
 

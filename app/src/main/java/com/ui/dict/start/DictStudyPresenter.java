@@ -93,13 +93,15 @@ public class DictStudyPresenter {
 
 			i=i+1;
 			final  VideoBussinessItem hideBean=new VideoBussinessItem();
+			//String value= it.getHint().replace("\"","");
+			dict.setName(dict.getName().replace("\"",""));
+			dict.setTranName(dict.getTranName().replace("\"",""));
 
 			hideBean.setTitle(dict.getName());
 			hideBean.setHint("粤语："+dict.getTranName()+"\n粤拼："+dict.getTranPy() +"\n次数："+dict.getCount());
 			hideBean.setHintShow(true);
 			hideBean.setRightFirstButtonText("已学");
 			hideBean.getRightCenterScaleImgSettings().setRightCenterScaleImgResId(R.drawable.ic_filled_star);
-//			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak);
 
 			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak).setRightFirstImgRadius(120);
 			hideBean.setOnItemListener(new IItemView.onItemClick() {

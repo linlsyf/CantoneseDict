@@ -63,33 +63,16 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     	   toolbar=getViewById(R.id.toolbar);
           mRootLayout = getViewById(R.id.rootLayout);
 
-		  TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), "设置", 0);
-//		  recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
-//              @Override
-//              public View getCustomView(Context context, int type) {
-//
-//                      View  itemView=null;
-//                      if (type== 3){
-//                          itemView=new InfoCardView(getContext());
-//                          return itemView;
-//                      }
-//
-//                      return itemView;
-//                  }
-//
-//          });
 
-          toolbar.resetConfig();
-          mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
-
-
-          toolbar.resetConfig();
-     
       }
       @Override
     public void initData() {
-    presenter=new SettingPresenter(this);
-    presenter.init();
+          TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), "设置", 0);
+
+          toolbar.resetConfig();
+          mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
+      presenter=new SettingPresenter(this);
+      presenter.init();
     		
     }
 

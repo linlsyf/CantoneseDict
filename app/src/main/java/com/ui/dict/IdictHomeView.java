@@ -2,7 +2,10 @@ package com.ui.dict;
 
 import com.business.bean.VideoBussinessItem;
 import com.core.base.IBaseView;
+import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2019/3/2 0002.
@@ -22,4 +25,6 @@ public interface IdictHomeView extends IBaseView {
     void toTranslate();
 
     void toYuePing();
+
+    void openCustomView(List<DyItemBean> dataListCustom);
 }

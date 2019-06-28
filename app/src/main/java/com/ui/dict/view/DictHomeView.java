@@ -39,8 +39,7 @@ public class DictHomeView extends LinearLayout implements IItemView {
     View todayLayout;
     @Bind(R.id.yesdayLayout)
     View yesdayLayout;
-    @Bind(R.id.rootLayout)
-    View  mRootView;
+
     @Bind(R.id.tvCount)
     TextView  tvCount;
     @Bind(R.id.tvLearn)
@@ -110,12 +109,7 @@ public class DictHomeView extends LinearLayout implements IItemView {
             }
         });
 
-//        translateLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
-//        yesdayLayout.setBackgroundColor(getResources().getColor(R.color.bulugrey));
-//        mRootView.setBackgroundColor(getResources().getColor(R.color.color_eye_green));
-
         if (RecycleConfig.getInstance().getThemeConfig().getBgColorResId()!=0){
-//            mRootView.setBackgroundColor(RecycleConfig.getInstance().getThemeConfig().getBgColorResId());
             unlearn.setTextColor(RecycleConfig.getInstance().getThemeConfig().getTitleColorResId());
             today.setTextColor(RecycleConfig.getInstance().getThemeConfig().getTitleColorResId());
             tvToday.setTextColor(RecycleConfig.getInstance().getThemeConfig().getTitleColorResId());

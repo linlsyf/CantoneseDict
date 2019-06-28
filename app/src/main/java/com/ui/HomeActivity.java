@@ -104,9 +104,6 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 	protected void onResume() {
 		super.onResume();
 
-//		 if (CoreApplication.getInstance().isDubug){
-////		      gotoMainOrloginUI(wellComeActivity);
-//		 }else
 
 		if (GlobalConstants.getInstance().getAppType()==GlobalConstants.TYPE_SHOP_APP){
 			if(StringUtils.isEmpty(BusinessBroadcastUtils.USER_VALUE_LOGIN_ID)){
