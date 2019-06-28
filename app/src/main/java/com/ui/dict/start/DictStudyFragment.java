@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.business.BusinessBroadcastUtils;
@@ -26,6 +25,7 @@ import com.iflytek.IatDemoUtils;
 import com.linlsyf.area.R;
 import com.ui.common.infoedit.InformationInputFragment;
 import com.ui.common.select.SelectFragment;
+import com.ui.common.tts.TtsHelper;
 import com.ui.dict.DictTypeEnum;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
@@ -78,16 +78,18 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
         }
 
         persenter.initData();
+        TtsHelper.initWeb(webview);
 
-
-        WebSettings webSettings = webview.getSettings();
-        webSettings.setBuiltInZoomControls(true);
-        webSettings.setSupportZoom(true);
-        //与js交互必须设置
-        webSettings.setJavaScriptEnabled(true);
-        webview.loadUrl("file:///android_asset/cantonsprak.html");
-//        webview.loadUrl("file:///android_asset/html.html");
+//        WebSettings webSettings = webview.getSettings();
+//        webSettings.setBuiltInZoomControls(true);
+//        webSettings.setSupportZoom(true);
+//        //与js交互必须设置
+//        webSettings.setJavaScriptEnabled(true);
+//        webview.loadUrl("file:///android_asset/cantonsprak.html");
+////        webview.loadUrl("file:///android_asset/html.html");
+////        webview.addJavascriptInterface(this,"android");
 //        webview.addJavascriptInterface(this,"android");
+
     }
 
     @Override
@@ -178,10 +180,7 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 
     @Override
     public void initUI(final Section nextSection) {
-                //KeyboardUtils.closeKeybord(activity);
                 recycleView.updateSection(nextSection,true);
-
-
     }
 
     @Override
@@ -245,12 +244,9 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 
     @Override
     public void speak(String textYuey) {
-        webview.loadUrl("javascript:speak(" + textYuey+ ")");
+
+        TtsHelper.speak(webview,textYuey);
+
     }
 
-
-//    @Override
-//    public void addLayoutHelper(LayoutHelper helper,boolean isRefresh) {
-//        recycleView.addLayoutHelper(helper,isRefresh);
-//    }
 }

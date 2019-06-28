@@ -1,12 +1,11 @@
 package com.ui.dict.translate;
 
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.business.baidu.translate.SearchParam;
 import com.business.bean.VideoBussinessItem;
@@ -22,10 +21,10 @@ import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.iflytek.IatDemoUtils;
 import com.linlsyf.area.R;
+import com.ui.common.tts.TtsHelper;
 import com.ui.dict.DictTypeEnum;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
-import com.ui.dict.start.DictStudyFragment;
 
 import static com.ui.dict.search.SearchDictFragment.DICT_NAME;
 
@@ -39,6 +38,7 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
     private NavigationBar toolbar;
     SearchHeadView searchHeadView;
     private int type;
+    private WebView webview;
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
@@ -70,6 +70,9 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
         searchHeadView.getSearchEditText().setFocusableInTouchMode(true);
         searchHeadView.getSearchEditText().requestFocus();
         persenter.search("不开心");
+        webview=getViewById(R.id.webview);
+
+        TtsHelper.initWeb(webview);
     }
 
     @Override
@@ -136,7 +139,12 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
             }
         });
     }
+    @Override
+    public void speak(String textYuey) {
 
+        TtsHelper.speak(webview,textYuey);
+
+    }
     @Override
     public boolean onBackPressed() {
         return false;
@@ -215,35 +223,6 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
 
     }
 
-    @Override
-    public void startStudy() {
-      Bundle bundle=new Bundle();
-        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new DictStudyFragment(), bundle);
-
-    }
-
-    @Override
-    public void showDictType() {
-
-
-//        Bundle bundle=new Bundle();
-//        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new DictTypeFragment(), bundle);
-    }
-
-    @Override
-    public void openUrl(String url) {
-        Uri uri = Uri.parse(url);
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
-
-    }
-
-    @Override
-    public void toTranslate() {
-        Bundle bundle=new Bundle();
-        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new DictStudyFragment(), bundle);
-
-    }
 
 
 }

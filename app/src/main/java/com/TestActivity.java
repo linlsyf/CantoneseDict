@@ -63,7 +63,7 @@ public class TestActivity extends AppCompatActivity {
 
     @JavascriptInterface
     public void jsCallAndroid(){
-        tvShowmsg.setText("Js调用Android方法");
+//        tvShowmsg.setText("Js调用Android方法");
     }
 
     @JavascriptInterface

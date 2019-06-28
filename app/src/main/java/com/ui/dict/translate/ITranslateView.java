@@ -15,11 +15,6 @@ public interface ITranslateView extends IBaseView {
     void openVideo(VideoBussinessItem itemBean);
 
 
-    void startStudy();
 
-    void showDictType();
-
-    void openUrl(String url);
-
-    void toTranslate();
+    void speak(String textYuey);
 }

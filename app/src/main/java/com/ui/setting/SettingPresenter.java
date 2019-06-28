@@ -351,7 +351,7 @@ public class SettingPresenter   {
 //				  iSafeSettingView.openCustomView(dataList);
 			  }
 		  });
-		  newSectionList.add(testtBean);
+//		  newSectionList.add(testtBean);
 
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);

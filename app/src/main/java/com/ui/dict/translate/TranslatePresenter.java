@@ -13,6 +13,7 @@ import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easysoft.utils.lib.system.DensityUtil;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
@@ -28,12 +29,7 @@ public class TranslatePresenter {
 	public static  String KEY_SETTING="setting";
 	private Section settingSection;
 	private DictDao mDictDao;
-	public static String ID_NEWS="ID_FILMS";
-	public static String ID_SEARCH="ID_TV_FILM";
-	public static String ID_TV="ID_TV";
-	public static String ID_HIDE="ID_HIDE";
-	public static String ID_BTDOWNLOAD="ID_BTDOWNLOAD";
-	public static String ID_EMPTY="ID_EMPTY";
+
 	private SentenceYyDao mSentenceYyDao;
 
 
@@ -95,51 +91,63 @@ public class TranslatePresenter {
 					    resultKey=itemBean.getDst();
 
 					dyItemBean.setTitle(resultKey);
-					 dyItemBean.setRightFirstButtonText("保存");
+					int voiceIconRadius= DensityUtil.dip2px(iVideoHomeView.getContext(),30);
+
+					dyItemBean.setRightFirstButtonText("保存");
+					dyItemBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak).setRightFirstImgRadius(voiceIconRadius);
+
 					dyItemBean.setOnItemListener(new IItemView.onItemClick() {
 						@Override
 						public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
 
-							List<Dict>  dictList =new ArrayList<>();
-							  String  isPtoYue="0";
-							  if (	orgType=="zh"&&toTranslateType=="yue"){
 
-									 dictList= mDictDao.queryBuilder().where(DictDao.Properties.Name.eq(tempSeachKey)).limit(1).list();
+							if (clickTypeEnum.value()==IItemView.ClickTypeEnum.RIGHTBUTTION.value()){
+								List<Dict>  dictList =new ArrayList<>();
+								String  isPtoYue="0";
+								if (	orgType=="zh"&&toTranslateType=="yue"){
 
-								    isPtoYue="1";
-							  }
-							  else{
-							  	String  yuyket=dyItemBean.getTitle();
-								  dictList= mDictDao.queryBuilder().where(DictDao.Properties.Name.eq(yuyket)).limit(1).list();
-								  isPtoYue="1";
-							  }
-							Dict dict;
-							   if (dictList.size()>0){
-								   dict= dictList.get(0);
-								   dict.setName(dict.getName().replace("\"", ""));
-								    dict.setCount(dict.getCount()+10);
-							   }else{
-							   	dict=new Dict();
-								   dict.setId(UUID.randomUUID().toString());
-							   	if (isPtoYue.equals("1")){
-									dict.setName(tempSeachKey);
-									 dict.setTranName(dyItemBean.getTitle());
+									dictList= mDictDao.queryBuilder().where(DictDao.Properties.Name.eq(tempSeachKey)).limit(1).list();
 
-								}else{
-									dict.setName(dyItemBean.getTitle());
-									dict.setTranName(tempSeachKey);
-
+									isPtoYue="1";
 								}
-							   }
-							if (dictList.size()>0){
-								mDictDao.update(dict);
-							}else{
-								mDictDao.insertOrReplaceInTx(dict);
+								else{
+									String  yuyket=dyItemBean.getTitle();
+									dictList= mDictDao.queryBuilder().where(DictDao.Properties.Name.eq(yuyket)).limit(1).list();
+									isPtoYue="1";
+								}
+								Dict dict;
+								if (dictList.size()>0){
+									dict= dictList.get(0);
+									dict.setName(dict.getName().replace("\"", ""));
+									dict.setCount(dict.getCount()+10);
+								}else{
+									dict=new Dict();
+									dict.setId(UUID.randomUUID().toString());
+									if (isPtoYue.equals("1")){
+										dict.setName(tempSeachKey);
+										dict.setTranName(dyItemBean.getTitle());
+
+									}else{
+										dict.setName(dyItemBean.getTitle());
+										dict.setTranName(tempSeachKey);
+
+									}
+								}
+								if (dictList.size()>0){
+									mDictDao.update(dict);
+								}else{
+									mDictDao.insertOrReplaceInTx(dict);
+								}
+								iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.exec_sucess));
 							}
-							iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.exec_sucess));
+	     else if (clickTypeEnum.value()==IItemView.ClickTypeEnum.RIGHT_FIRST_IMG.value()){
+								if (StringUtils.isNotEmpty(dyItemBean.getTitle())){
+									String textYuey=dyItemBean.getTitle().replace("\"","");
+									iVideoHomeView.speak(textYuey);
+								}
 
-
+							}
 
 
 						}

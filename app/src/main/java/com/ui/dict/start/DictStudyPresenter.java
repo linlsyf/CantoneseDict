@@ -8,6 +8,7 @@ import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easysoft.utils.lib.system.DensityUtil;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.TimeUtils;
 import com.linlsyf.area.R;
@@ -25,14 +26,6 @@ public class DictStudyPresenter {
 	public static  String KEY_SETTING="setting";
 	private Section settingSection;
 	private DictDao mDictDao;
-	public static String ID_NEWS="ID_FILMS";
-	public static String ID_SEARCH="ID_TV_FILM";
-	public static String ID_TV="ID_TV";
-	public static String ID_HIDE="ID_HIDE";
-	public static String ID_BTDOWNLOAD="ID_BTDOWNLOAD";
-	public static String ID_EMPTY="ID_EMPTY";
-	boolean isLoadDictSucess=false;
-	private boolean isIniting;
 	public Dict	mEditDict;
 	private int countRead=0;
 	private int countLimit=6;
@@ -55,7 +48,6 @@ public class DictStudyPresenter {
 	  }
 
 		settingSection=new Section(KEY_SETTING);
-//		settingSection.setShowSection(true);
 		List<IDyItemBean> settingMaps=new ArrayList<>();
 
 		final DictBusBean dictBusBean=new DictBusBean();
@@ -95,6 +87,8 @@ public class DictStudyPresenter {
 
 		settingMaps.add(sectionBean);
 		int i=0;
+
+		int voiceIconRadius= DensityUtil.dip2px(iVideoHomeView.getContext(),30);
 		for (final Dict dict:dictList ) {
 
 			i=i+1;
@@ -107,7 +101,9 @@ public class DictStudyPresenter {
 			hideBean.getRightCenterScaleImgSettings().setRightCenterScaleImgResId(R.drawable.ic_filled_star);
 //			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak);
 
-			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak).setRightFirstImgRadius(120);
+
+
+			hideBean.getRightFistImgeSettings().setRightFirstImgResId(R.drawable.voice_speak).setRightFirstImgRadius(voiceIconRadius);
 			hideBean.setOnItemListener(new IItemView.onItemClick() {
 
 				@Override
