@@ -71,7 +71,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
 
         TopBarBuilder.buildOnlyImageById(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST, ThemeHelper.getStoreThemeIcon(activity));
-
+        persenter=new DictHomePresenter(this);
     }
 
     @Override
@@ -91,17 +91,16 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
                 }
             }
         });
-        mainView.startPerLayout.setOnClickListener(new View.OnClickListener() {
+        mainView.tvBase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toYuePing();
+           	BusinessBroadcastUtils.sendBroadcast(activity,BusinessBroadcastUtils.Type_Local_HOME_PAGE_CHANGE,1);
             }
         });
         mainView.startLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startStudy();
+                persenter.initAssets();
 
             }
         });
@@ -126,7 +125,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME)){
             mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
             toolbar.resetConfig();
-            persenter.initData();
+//            persenter.initData();
         }
         else if(type.equals(BusinessBroadcastUtils.TYPE_RELOGIN)){
         }

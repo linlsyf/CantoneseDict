@@ -15,7 +15,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 24
         versionCode 1
-        versionName "1.1.1"
+        versionName "1.1.2"
         flavorDimensions "versionCode"
         multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }//butterKnife注入使用到

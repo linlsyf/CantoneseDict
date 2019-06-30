@@ -84,8 +84,8 @@
 
     <string name="cancel">取消</string>
     <string name="catelog">分类</string>
-
     <string name="wait_dict_init_please">请等待字典加载完成</string>
+    <string name="wait_dict_init_enter_please">首次加载缓慢,加载完后自动打开请等待</string>
     <string name="dict_init_error">初始化词典数据失败</string>
     <string name="laboratory_yueyu">粤语实验室</string>
     <string name="develop_setting">开发者选项</string>

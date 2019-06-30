@@ -30,7 +30,7 @@ public class DictMainView extends RelativeLayout  {
 
 
     @Bind(R.id.tvBase)
-    TextView tvBase;
+     public TextView tvBase;
     @Bind(R.id.translateLayout)
     public  View translateLayout;
     @Bind(R.id.startLayout)
