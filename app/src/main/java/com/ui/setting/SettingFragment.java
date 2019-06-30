@@ -14,9 +14,9 @@ import com.core.update.UpdateAPK;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
+import com.easy.recycleview.custom.baseview.ContentItemView;
 import com.easy.recycleview.custom.baseview.config.HeadImageViewConfig;
 import com.easy.recycleview.custom.baseview.config.HintTextViewConfig;
-import com.easy.recycleview.custom.baseview.item.ContentItemView;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
@@ -31,11 +31,6 @@ import com.ui.login.LoginActivity;
 import com.ui.setting.about.AboutFragment;
 
 import java.util.List;
-
-
-//import cn.smssdk.SMSSDK;
-
-
 
 public class SettingFragment extends BaseFragment implements ISafeSettingView{
 	DyLayout recycleView;
@@ -54,8 +49,10 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     }
     @Override
     public void initFragment() {
-    	initUIView();
-    	initData();
+//    	initUIView();
+//        initData();
+
+
     }
       @Override
     public void initUIView() {
@@ -136,6 +133,13 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     }
 
     @Override
+    public void loadDataStart() {
+        initUIView();
+
+        initData();
+    }
+
+    @Override
     public void showToast(String text) {
     ToastUtils.show(getActivity(),text);
     }
@@ -155,7 +159,7 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
               public void run() {
                   View  itemView= recycleView.getItemView(imgBean);
                   if(itemView!=null){
-                      ContentItemView  contentItemView=(ContentItemView) itemView;
+                      ContentItemView contentItemView=(ContentItemView) itemView;
                       contentItemView.mTitleTextView.setText(imgBean.getTitle());
 //                      contentItemView.mHintTextView.setText(imgBean.getHint());
                       HintTextViewConfig.load(contentItemView,imgBean);

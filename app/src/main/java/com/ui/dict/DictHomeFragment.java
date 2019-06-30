@@ -1,7 +1,6 @@
 package com.ui.dict;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,8 +26,6 @@ import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
 import com.ui.dict.start.DictStudyFragment;
 import com.ui.dict.translate.TranslateFragment;
-import com.ui.dict.view.CentImgView;
-import com.ui.dict.view.DictHomeView;
 import com.ui.dict.view.DictMainView;
 import com.ui.dict.yueping.DictYuePinyFragment;
 import com.utils.ThemeHelper;
@@ -47,58 +44,33 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
     private NavigationBar toolbar;
     SearchHeadView searchHeadView;
     View mRootLayout;
+    DictMainView mainView;
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.fragment_common, null);
-        setRootView(rootView);
-       return rootView;
+        mainView= new DictMainView(activity);
+        setRootView(mainView);
+       return mainView;
 
     }
     @Override
     public void initFragment() {
        initUIView();
+        initData();
        initListener();
     }
     @Override
     public void initUIView() {
-
-        recycleView = getViewById(R.id.dyLayout);
         mRootLayout = getViewById(R.id.rootLayout);
         toolbar=getViewById(R.id.toolbar);
-        searchHeadView=getViewById(R.id.searchView);
 
-        TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
-
-
-        TopBarBuilder.buildOnlyImageById(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST, ThemeHelper.getStoreThemeIcon(activity));
-
-        searchHeadView.getBackLayout().setVisibility(View.GONE);
-
-        persenter=new DictHomePresenter(this);
-        recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
-            @Override
-            public View getCustomView(Context context, int type) {
-                View  itemView =null;
-                if (type==3){
-                    itemView=new DictHomeView(context);
-                }
-                else if (type==4){
-                    itemView=new CentImgView(context);
-                }
-                else if (type==7){
-                    itemView=new DictMainView(context);
-                }
-                return itemView;
-            }
-        });
-        toolbar.resetConfig();
-        mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
-        persenter.initData();
     }
 
     @Override
     public void initData() {
-        super.initData();
+
+        TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
+
+        TopBarBuilder.buildOnlyImageById(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST, ThemeHelper.getStoreThemeIcon(activity));
 
     }
 
@@ -119,7 +91,26 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
                 }
             }
         });
+        mainView.startPerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toYuePing();
+            }
+        });
+        mainView.startLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                startStudy();
+
+            }
+        });
+        mainView.translateLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toTranslate();
+            }
+        });
     }
 
     @Override
@@ -197,6 +188,12 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
 
             }
         });
+    }
+
+    @Override
+    public void loadDataStart() {
+//        initData();
+
     }
 
     @Override

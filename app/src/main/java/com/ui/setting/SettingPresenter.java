@@ -5,8 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.business.BusinessBroadcastUtils;
 import com.business.bean.ResponseMsgData;
 import com.business.login.User;
-import com.business.service.music.MusiceHelper;
-import com.business.service.music.server.SongBean;
 import com.business.weixin.WeixinShare;
 import com.core.CoreApplication;
 import com.core.ServerUrl;
@@ -122,7 +120,17 @@ public class SettingPresenter   {
 				  repairBean.setOnItemListener(new IItemView.onItemClick() {
 					  @Override
 					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-						  DictBeanUtils.iniDbFile(iSafeSettingView);
+						  DictBeanUtils.iniDbFile(iSafeSettingView, new DictBeanUtils.parseDictcallback() {
+							  @Override
+							  public void parseDataBack(Object list) {
+
+							  }
+
+							  @Override
+							  public void showMsg(String msg) {
+                                   iSafeSettingView.showToast(msg);
+							  }
+						  });
 
 					  }
 				  });
@@ -275,38 +283,6 @@ public class SettingPresenter   {
 
 		  newSectionList.add(developBean);
 
-		    musicBean=new DyItemBean();
-		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
-		  musicBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_music).setHeadImgRadius(headRadius));
-
-		  musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
-		  musicBean.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-
-			  	  if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
-					  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
-						  @Override
-						  public void callBack(boolean isPlaying,SongBean songBean) {
-							  updateSongItemUI(isPlaying,songBean);
-						  }
-					  });
-
-				  }else if(clickTypeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
-					  MusiceHelper.getInstance(iSafeSettingView.getContext()).next(new MusiceHelper.playCallBack() {
-						  @Override
-						  public void callBack(boolean isPlaying,SongBean songBean) {
-							  updateSongItemUI(isPlaying,songBean);
-						  }
-					  });
-				  }
-
-
-
-			  }
-		  });
-		  newSectionList.add(musicBean);
-
 		  DyItemBean  testtBean=new DyItemBean();
 		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
 		  testtBean.setOnItemListener(new IItemView.onItemClick() {
@@ -326,29 +302,29 @@ public class SettingPresenter   {
 		  iSafeSettingView.initUI(newSection);
       }
 
-	private void updateSongItemUI(boolean isPlaying,SongBean songBean) {
-		musicBean.setHintShow(true);
-		if (isPlaying){
-			musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
-			musicBean.setHint(iSafeSettingView.getContext().getString(R.string.click_play_music));
-		}else {
-			String  musicTitle=songBean.getTitle();
-			if (musicTitle==null){
-				musicTitle=iSafeSettingView.getContext().getString(R.string.unknown);
-			}
-			AddressHeadImgeSettings  headImgeSettings=new AddressHeadImgeSettings();
-
-			headImgeSettings.setHeadImgRadius((int)iSafeSettingView.getContext().getResources().getDimension(R.dimen.comon_head_radius));
-			headImgeSettings.setHeadImgUrl(songBean.getPicture());
-			musicBean.setHeadImgeSettings(headImgeSettings);
-
-			musicBean.setTitle("正在播放:"+" (点击暂停)");
-			musicBean.setHint(musicTitle+" ("+songBean.getArtist()+")");
-
-		}
-		iSafeSettingView.updateUIItem(isPlaying,musicBean);
-
-	}
+//	private void updateSongItemUI(boolean isPlaying,SongBean songBean) {
+//		musicBean.setHintShow(true);
+//		if (isPlaying){
+//			musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
+//			musicBean.setHint(iSafeSettingView.getContext().getString(R.string.click_play_music));
+//		}else {
+//			String  musicTitle=songBean.getTitle();
+//			if (musicTitle==null){
+//				musicTitle=iSafeSettingView.getContext().getString(R.string.unknown);
+//			}
+//			AddressHeadImgeSettings  headImgeSettings=new AddressHeadImgeSettings();
+//
+//			headImgeSettings.setHeadImgRadius((int)iSafeSettingView.getContext().getResources().getDimension(R.dimen.comon_head_radius));
+//			headImgeSettings.setHeadImgUrl(songBean.getPicture());
+//			musicBean.setHeadImgeSettings(headImgeSettings);
+//
+//			musicBean.setTitle("正在播放:"+" (点击暂停)");
+//			musicBean.setHint(musicTitle+" ("+songBean.getArtist()+")");
+//
+//		}
+//		iSafeSettingView.updateUIItem(isPlaying,musicBean);
+//
+//	}
 
 	private void inportDictLJ() {
 

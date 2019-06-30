@@ -215,6 +215,11 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
     }
 
     @Override
+    public void loadDataStart() {
+
+    }
+
+    @Override
     public void showToast(String text) {
         super.showToast(text);
     }

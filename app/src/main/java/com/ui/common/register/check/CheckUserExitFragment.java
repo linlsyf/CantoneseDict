@@ -246,7 +246,12 @@ public class CheckUserExitFragment extends BaseFragment implements OnClickListen
 
 	}
 
-//	@Override
+	@Override
+	public void loadDataStart() {
+
+	}
+
+	//	@Override
 //	public Context getContext() {
 //		return getActivity();
 //	}

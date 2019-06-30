@@ -304,4 +304,9 @@ public class CommonBrowserFrament  extends BaseFragment{
     public boolean onBackPressed() {
         return false;
     }
+
+    @Override
+    public void loadDataStart() {
+
+    }
 }

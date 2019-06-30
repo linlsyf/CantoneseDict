@@ -2,10 +2,8 @@
 <com.easysoft.widget.fragment.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
      android:id="@+id/rootLayout"
     android:background="?attr/main_bg"
-    android:orientation="vertical"
                 >
 
     <com.easysoft.widget.toolbar.NavigationBar
@@ -13,17 +11,12 @@
         android:layout_width="match_parent"
         android:background="?attr/main_bg"
         android:layout_height="35dp"
-        ></com.easysoft.widget.toolbar.NavigationBar>
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="3dp" />
+        />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:orientation="vertical"
         >
         <com.easysoft.widget.search.SearchHeadView
@@ -35,6 +28,7 @@
             android:layout_height="wrap_content"/>
         <com.easy.recycleview.DyLayout
             android:id="@+id/dyLayout"
+            android:layout_below="@id/searchView"
             android:layout_width="match_parent"
 
             android:layout_height="match_parent"
@@ -55,7 +49,7 @@
             android:layout_height="1dp" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

@@ -30,6 +30,7 @@ public class DictStudyPresenter {
 	public Dict	mEditDict;
 	private int countRead=0;
 	private int countLimit=6;
+	private boolean isIniting;
 
 	public DictStudyPresenter(IStartView iSafeSettingView) {
     	this.iVideoHomeView =iSafeSettingView;
@@ -37,6 +38,7 @@ public class DictStudyPresenter {
 		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 	}
     public void  initData(){
+//		initAssets();
      List<Dict>  dictList ;
 
       if (countRead==0){
@@ -149,6 +151,20 @@ public class DictStudyPresenter {
     settingSection.setDataMaps(settingMaps);
 	iVideoHomeView.initUI(settingSection);
 	}
+//	public void initAssets() {
+//		List<Dict>  dictList =   mDictDao.loadAll();
+//		if (dictList.size()>0) {
+//			return;
+//		}
+//
+//		if (isIniting==false){
+//			iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
+//			isIniting=true;
+//			iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
+//			DictBeanUtils.iniDbFile(iVideoHomeView);
+//		}
+//
+//	}
 
 	private void longclick(Dict dict) {
 		mEditDict=dict;

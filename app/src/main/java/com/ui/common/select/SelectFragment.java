@@ -63,6 +63,11 @@ public class SelectFragment extends BaseFragment implements ISelectView {
         this.viewType = viewType;
     }
 
+    @Override
+    public void loadDataStart() {
+
+    }
+
 
     public interface OnUpdateSuccessListener{
         void updateSuccess(List<IDyItemBean> itemBeans);

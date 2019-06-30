@@ -24,13 +24,7 @@
     <string name="pwd_format_is_error">密码格式错误,长度为6–18位,必须包含字母、数字、符号中的两种</string>
     <string name="verify_code_no_complete">验证码位数不正确</string>
 
-    <!--聊天界面-->
 
-    <!--转发主界面-->
-
-    <!--文件预览界面-->
-
-    <!--群共享文件界面-->
 
     <!--通讯录界面 -->
     <!--通讯录界面 -->
@@ -81,6 +75,7 @@
 
 
     <string name="confirm">确定</string>
+    <string name="other">其他</string>
 
 
     <!--主窗口-->
@@ -88,11 +83,13 @@
     <!--各种广告形式窗口展示按钮-->
 
     <string name="cancel">取消</string>
+    <string name="catelog">分类</string>
 
     <string name="wait_dict_init_please">请等待字典加载完成</string>
     <string name="dict_init_error">初始化词典数据失败</string>
     <string name="laboratory_yueyu">粤语实验室</string>
     <string name="develop_setting">开发者选项</string>
+    <string name="developing">正在开发中。。。</string>
     <string name="click_play_music">点击播放歌曲</string>
     <string name="unknown">未知</string>
     <string name="radom_yuyu_music">随机粤语歌曲</string>

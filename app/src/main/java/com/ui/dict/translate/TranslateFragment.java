@@ -214,6 +214,11 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
     }
 
     @Override
+    public void loadDataStart() {
+
+    }
+
+    @Override
     public void showToast(String text) {
         super.showToast(text);
     }

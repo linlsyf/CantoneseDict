@@ -53,22 +53,9 @@ public class DictBeanUtils {
 
 //    private static String dbBackUpPath;
 
-    public static void iniDbFile(final  IBaseView iBaseView) {
+    public static void iniDbFile(final  IBaseView iBaseView, final parseDictcallback dictcallback) {
         DictBeanUtils.copyDbFile(iBaseView.getContext());
-        DictBeanUtils.initDb(iBaseView.getContext(), new DictBeanUtils.parseDictcallback() {
-            @Override
-            public void parseDataBack(Object obj) {
-//				  	DictBeanUtils.initLJ(idictHomeView.getContext(),);
-                //iBaseView.showToast(iBaseView.getContext().getResources().getString(R.string.exec_sucess));
-
-            }
-
-            @Override
-            public void showMsg(String msg) {
-                iBaseView.showToast(msg);
-
-            }
-        });
+        DictBeanUtils.initDb(iBaseView.getContext(), dictcallback);
 
     }
 

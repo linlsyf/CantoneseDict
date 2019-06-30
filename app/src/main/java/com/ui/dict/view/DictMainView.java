@@ -4,14 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
-import com.easy.recycleview.inter.IDyItemBean;
-import com.easy.recycleview.inter.IItemView;
 import com.linlsyf.area.R;
-import com.ui.dict.DictBusBean;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,7 +16,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2019/3/2 0002.
  */
 
-public class DictMainView extends LinearLayout implements IItemView {
+public class DictMainView extends RelativeLayout  {
 
     Context mContext;
 
@@ -30,15 +26,15 @@ public class DictMainView extends LinearLayout implements IItemView {
     @Bind(R.id.tvTranslate)
     TextView tvTranslate;
     @Bind(R.id.startPerLayout)
-    View startPerLayout;
+    public View startPerLayout;
 
 
     @Bind(R.id.tvBase)
     TextView tvBase;
     @Bind(R.id.translateLayout)
-    View translateLayout;
+    public  View translateLayout;
     @Bind(R.id.startLayout)
-    View startLayout;
+    public View startLayout;
     @Bind(R.id.rootLayout)
     View  mRootView;
 
@@ -63,51 +59,47 @@ public class DictMainView extends LinearLayout implements IItemView {
         ButterKnife.bind(this);
     }
 
+
 //    @Override
-    public void initSelectUtils(MutiTypeSelectUtils selectUtils) {
-
-    }
-
-    @Override
-    public void initData(IDyItemBean itemBean) {
-       final DictBusBean data=(DictBusBean)itemBean;
-
-
-
-        startLayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (data.getOnItemListener()!=null){
-                    data.getOnItemListener().onItemClick(ClickTypeEnum.ITEM,data);
-                }
-            }
-        });
-        tvBase.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (data.getOnItemListener()!=null){
-                    data.getOnItemListener().onItemClick(ClickTypeEnum.ITEM_LONG,data);
-                }
-            }
-        });
-        translateLayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (data.getOnItemListener()!=null){
-                    data.getOnItemListener().onItemClick(ClickTypeEnum.RIGHTBUTTION,data);
-                }
-            }
-        });
-        startPerLayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (data.getOnItemListener()!=null){
-                    data.getOnItemListener().onItemClick(ClickTypeEnum.CUSTOM,data);
-                }
-            }
-        });
-
-
-    }
+//    public void initData(IDyItemBean itemBean) {
+//       final DictBusBean data=(DictBusBean)itemBean;
+//
+//
+//
+//        startLayout.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (data.getOnItemListener()!=null){
+//                    data.getOnItemListener().onItemClick(ClickTypeEnum.ITEM,data);
+//                }
+//            }
+//        });
+//        tvBase.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (data.getOnItemListener()!=null){
+//                    data.getOnItemListener().onItemClick(ClickTypeEnum.ITEM_LONG,data);
+//                }
+//            }
+//        });
+//        translateLayout.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (data.getOnItemListener()!=null){
+//                    data.getOnItemListener().onItemClick(ClickTypeEnum.RIGHTBUTTION,data);
+//                }
+//            }
+//        });
+//        startPerLayout.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (data.getOnItemListener()!=null){
+//                    data.getOnItemListener().onItemClick(ClickTypeEnum.CUSTOM,data);
+//                }
+//            }
+//        });
+//
+//
+//    }
 
 }

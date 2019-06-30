@@ -5,10 +5,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
-import com.business.BusinessBroadcastUtils;
-import com.core.ServerUrl;
-import com.core.utils.SpUtils;
-import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ThreadPoolUtils;
 import com.utils.ThemeHelper;
 
@@ -23,39 +19,32 @@ import java.util.TimerTask;
 public class WellComeHelper   {
 	private int TIME = 200;
 	String TAG = WellComeHelper.class.getSimpleName();
-
 	Context  mContext;
-
 
 	public void init(Context context ){
 		mContext=context;
 
-//		PermissionCheckUtils.startDevelopmentActivity(this);
-//        if (GlobalConstants.getInstance().getAppType()==GlobalConstants.TYPE_SYSTEM_APP){
-//			gotoMainOrloginUI(this);
-//			return;
-//		}
 
 		ThreadPoolUtils.execute(new Runnable() {
 			@Override
 			public void run() {
 
 				ThemeHelper.initConfig(mContext);
-				BusinessBroadcastUtils.USER_VALUE_LOGIN_ID = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_ID,"");
-				BusinessBroadcastUtils.USER_VALUE_PWD 	   = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_USER_PWD,"");
-				BusinessBroadcastUtils.USER_VALUE_USER_ID  = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_USER_ID,"");
-
-				String ip = SpUtils.getString(mContext, ServerUrl.list_server_iP);
-				String port = SpUtils.getString(mContext,ServerUrl.list_server_port);
-				 if (StringUtils.isNotEmpty(ip)){
-					 ServerUrl.ip=ip;
-				 }
-				 if (StringUtils.isNotEmpty(port)){
-					 ServerUrl.port=Integer.parseInt(port);
-				 }
-				if (StringUtils.isNotEmpty(ip)&&StringUtils.isNotEmpty(port)){
-					ServerUrl.resetBaseUrl();
-				}
+//				BusinessBroadcastUtils.USER_VALUE_LOGIN_ID = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_ID,"");
+//				BusinessBroadcastUtils.USER_VALUE_PWD 	   = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_USER_PWD,"");
+//				BusinessBroadcastUtils.USER_VALUE_USER_ID  = SpUtils.getString(mContext, BusinessBroadcastUtils.STRING_LOGIN_USER_ID,"");
+//
+//				String ip = SpUtils.getString(mContext, ServerUrl.list_server_iP);
+//				String port = SpUtils.getString(mContext,ServerUrl.list_server_port);
+//				 if (StringUtils.isNotEmpty(ip)){
+//					 ServerUrl.ip=ip;
+//				 }
+//				 if (StringUtils.isNotEmpty(port)){
+//					 ServerUrl.port=Integer.parseInt(port);
+//				 }
+//				if (StringUtils.isNotEmpty(ip)&&StringUtils.isNotEmpty(port)){
+//					ServerUrl.resetBaseUrl();
+//				}
 				timer.schedule(task, TIME); // 1s后执行task
 			}
 		});

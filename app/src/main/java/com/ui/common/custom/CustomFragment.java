@@ -59,6 +59,11 @@ public class CustomFragment extends BaseFragment implements ICustomView {
         this.viewType = viewType;
     }
 
+    @Override
+    public void loadDataStart() {
+
+    }
+
 
     public interface OnUpdateSuccessListener{
         void updateSuccess(List<IDyItemBean> itemBeans);

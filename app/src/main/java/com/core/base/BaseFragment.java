@@ -27,6 +27,8 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 	public int tagId =0;
 	public boolean isshowdialog = true;
     protected FragmentActivity activity;
+	private boolean mHaveLoadData;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		activity=getActivity();
@@ -75,7 +77,16 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 		//初始化之后，重绘展现UI
 		this.rootView.invalidate();
 	}
-    
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		super.setUserVisibleHint(isVisibleToUser);
+		// 如果还没有加载过数据 && 用户切换到了这个fragment
+		// 那就开始加载数据
+		if (!mHaveLoadData && isVisibleToUser) {
+			loadDataStart();
+			mHaveLoadData = true;
+		}
+	}
     
 	/**必须实现这个函数*/
 	public void initFragment(){};

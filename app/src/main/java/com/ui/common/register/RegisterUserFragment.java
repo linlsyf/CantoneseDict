@@ -484,6 +484,11 @@ public class RegisterUserFragment extends BaseFragment implements OnClickListene
 	}
 
 	@Override
+	public void loadDataStart() {
+
+	}
+
+	@Override
 	public void showToast(String text) {
 		progressHUD.dismiss();
 		super.showToast(text);

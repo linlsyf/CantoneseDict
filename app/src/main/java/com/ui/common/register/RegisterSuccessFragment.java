@@ -80,5 +80,9 @@ public class RegisterSuccessFragment extends BaseFragment implements OnClickList
 		      FragmentHelper.cleanAllFragement(getActivity());
 		}
 	}
-	
+
+	@Override
+	public void loadDataStart() {
+
+	}
 }

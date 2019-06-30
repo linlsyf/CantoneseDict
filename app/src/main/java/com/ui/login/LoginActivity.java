@@ -382,6 +382,11 @@ public class LoginActivity extends BasicActivity implements IlogInView,
     }
 
     @Override
+    public void loadDataStart() {
+
+    }
+
+    @Override
     public void showToast(final  String text) {
         runOnUiThread(new Runnable() {
             @Override

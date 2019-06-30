@@ -75,4 +75,5 @@ public class BusinessBroadcastUtils {
 	public static final String TYPE_YY_REFRESH_HOME_COUNT ="TYPE_YY_REFRESH_HOME_COUNT" ;
 
     public static final String TYPE_CHANGE_THEME ="TYPE_CHANGE_THEME";
+    public static final String TYPE_CHANGE_TAB ="TYPE_CHANGE_TAB";
 }

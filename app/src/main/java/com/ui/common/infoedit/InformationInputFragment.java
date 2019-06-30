@@ -59,6 +59,11 @@ public class InformationInputFragment extends BaseFragment implements IinputView
         this.viewType = viewType;
     }
 
+    @Override
+    public void loadDataStart() {
+
+    }
+
 
     public interface OnUpdateSuccessListener{
         void updateSuccess( List<IDyItemBean>  itemBeans);
