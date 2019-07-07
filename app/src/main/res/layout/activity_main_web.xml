@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -124,5 +124,10 @@
             android:padding="10dp"
             android:src="@drawable/theme_menu_btn_quit_fg_normal0" />
     </LinearLayout>
+    <com.tencent.smtt.sdk.TbsReaderView
+        android:id="@+id/tbsReaderView"
 
-</LinearLayout>
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.tencent.smtt.sdk.TbsReaderView>
+</RelativeLayout>

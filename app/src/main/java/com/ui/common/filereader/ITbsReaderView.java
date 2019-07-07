@@ -1,4 +1,4 @@
-package com.ui.catalog;
+package com.ui.common.filereader;
 
 import com.business.bean.VideoBussinessItem;
 import com.core.base.IBaseView;
@@ -8,7 +8,7 @@ import com.easy.recycleview.bean.Section;
 import java.util.List;
 
 
-public interface ICatalogView extends IBaseView{
+public interface ITbsReaderView extends IBaseView{
 
 	 void initUI(Section section);
 
@@ -20,8 +20,7 @@ public interface ICatalogView extends IBaseView{
 
 	void toYuePing();
 	void showAllLearn();
-	void updateUIItem(boolean isPlaying,DyItemBean imgBean);
+	void updateUIItem(boolean isPlaying, DyItemBean imgBean);
 
 
-    void toOpenErrorFile();
 }

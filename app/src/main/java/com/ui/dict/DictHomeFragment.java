@@ -72,6 +72,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
 
         TopBarBuilder.buildOnlyImageById(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST, ThemeHelper.getStoreThemeIcon(activity));
         persenter=new DictHomePresenter(this);
+        persenter.initAssets();
     }
 
     @Override

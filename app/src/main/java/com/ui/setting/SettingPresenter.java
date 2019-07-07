@@ -156,6 +156,8 @@ public class SettingPresenter   {
 					  @Override
 					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
+
+
 						  DictBeanUtils.importDbSentence(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
 							  @Override
 							  public void parseDataBack(Object list) {
@@ -330,12 +332,18 @@ public class SettingPresenter   {
 
 		iSafeSettingView.showToast("开始导入:请耐心等待 不要重复点击");
 
+
+
+
+
 		DictBeanUtils.importFrombackUp(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
 			@Override
 			public void parseDataBack(Object obj) {
 				List<Dict> data=(List<Dict>) obj;
                if (data.size()>0){
                	iSafeSettingView.showToast("导入覆盖成功");
+
+
                	BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_YY_REFRESH_HOME_COUNT,null);
 
 				}else{

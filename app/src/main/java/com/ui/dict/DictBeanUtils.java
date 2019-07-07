@@ -13,6 +13,7 @@ import com.core.db.greenDao.gen.DaoSession;
 import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.easysoft.utils.lib.string.StringUtils;
+import com.easysoft.utils.lib.system.ThreadPoolUtils;
 import com.linlsyf.area.R;
 import com.utils.FileUtils;
 import com.utils.VideoUtils;
@@ -225,10 +226,17 @@ public class DictBeanUtils {
     }
     public static  void importFrombackUp(final Context context, final parseDictcallback dictcallback){
 
-        String path = "/data/data/" + context.getPackageName() + "/databases/"+ DB_NAME;
 
-        FileUtils.copyFile(dbBackPath,path);
-        initDb(context,dictcallback);
+        ThreadPoolUtils.execute(new Runnable() {
+            @Override
+            public void run() {
+                String path = "/data/data/" + context.getPackageName() + "/databases/"+ DB_NAME;
+
+                FileUtils.copyFile(dbBackPath,path);
+                initDb(context,dictcallback);
+            }
+        });
+
 
 //        dbBackUpPath
 

@@ -2,7 +2,6 @@ package com.ui.common.browser;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,7 +20,6 @@ import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.DownloadListener;
-import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -37,36 +35,21 @@ import java.net.URL;
  */
 
 public class CommonBrowserFrament  extends BaseFragment{
-    /**
-     * 作为一个浏览器的示例展示出来，采用android+web的模式
-     */
+
     private X5WebView mWebView;
     private ViewGroup mViewParent;
-
-
     private static final String mHomeUrl = "http://app.html5.qq.com/navi/index";
     private static final String TAG = "SdkDemo";
-    private static final int MAX_LENGTH = 14;
-    private boolean mNeedTestPage = false;
-
-    private final int disable = 120;
-    private final int enable = 255;
 
     private ProgressBar mPageLoadingProgressBar = null;
-
-    private ValueCallback<Uri> uploadFile;
-
     private URL mIntentUrl;
     NavigationBar toolbar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView=inflater.inflate(R.layout.fragment_common, null);
-
         setRootView(rootView);
         return rootView;
-
     }
     @Override
     public void initFragment() {
@@ -77,26 +60,16 @@ public class CommonBrowserFrament  extends BaseFragment{
     @Override
     public void initUIView()   {
         toolbar=getViewById(R.id.toolbar);
-
-
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.yy_web), 0);
-
         try {
              mIntentUrl = new URL(getArguments().get("url").toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
-
         mViewParent = (ViewGroup) getViewById(R.id.frame_layout);
         mViewParent.setVisibility(View.VISIBLE);
-
-
         mTestHandler.sendEmptyMessageDelayed(MSG_INIT_UI, 10);
     }
-
-
-
     private void initProgressBar() {
         mPageLoadingProgressBar = (ProgressBar)getViewById(R.id.progressBar1);// new
         // ProgressBar(getApplicationContext(),
@@ -105,18 +78,19 @@ public class CommonBrowserFrament  extends BaseFragment{
         mPageLoadingProgressBar.setMax(100);
         mPageLoadingProgressBar.setProgressDrawable(activity.getResources()
                 .getDrawable(R.drawable.color_progressbar));
+
+
     }
 
+
+
+
     private void init() {
-
         mWebView = new X5WebView(activity, null);
-
         mViewParent.addView(mWebView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.FILL_PARENT,
                 FrameLayout.LayoutParams.FILL_PARENT));
-
         initProgressBar();
-
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -134,7 +108,6 @@ public class CommonBrowserFrament  extends BaseFragment{
         });
 
         mWebView.setWebChromeClient(new WebChromeClient() {
-
             @Override
             public boolean onJsConfirm(WebView arg0, String arg1, String arg2,
                                        JsResult arg3) {
@@ -144,7 +117,6 @@ public class CommonBrowserFrament  extends BaseFragment{
             View myVideoView;
             View myNormalView;
             IX5WebChromeClient.CustomViewCallback callback;
-
             // /////////////////////////////////////////////////////////
             //
             /**
@@ -295,6 +267,16 @@ public class CommonBrowserFrament  extends BaseFragment{
             super.handleMessage(msg);
         }
     };
+
+    private void displayFromFile() {
+        try {
+
+
+        }catch (Exception e){
+            showToast(e.getMessage());
+        }
+    }
+
     @Override
     public void getBroadcastReceiverMessage(String type, Object mode) {
         

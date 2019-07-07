@@ -1,4 +1,4 @@
-package com.ui.catalog;
+package com.ui.common.filereader;
 
 import com.business.service.music.MusiceHelper;
 import com.business.service.music.server.SongBean;
@@ -19,12 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CatalogPresenter {
-	ICatalogView iSafeSettingView;
+public class TbsReaderPresenter {
+	ITbsReaderView iSafeSettingView;
 	private DictDao mDictDao;
 	private  int mSpanSize=3;
 	private DyItemBean musicBean;
-	public CatalogPresenter(ICatalogView iSafeSettingView) {
+	public TbsReaderPresenter(ITbsReaderView iSafeSettingView) {
     	this.iSafeSettingView=iSafeSettingView;
 	}
       public void init(){
@@ -147,10 +147,7 @@ public class CatalogPresenter {
 		  itemErrorBasen.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-
-
-
-				  iSafeSettingView.toOpenErrorFile();
+//				  iSafeSettingView.toYuePing();
 			  }
 		  });
 		  newSectionList.add(itemErrorBasen);

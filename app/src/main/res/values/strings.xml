@@ -101,6 +101,7 @@
     <string name="search">搜索</string>
     <string name="about">粤语开发词典只用于android 开发粤语交流，不用于盈利。必须遵守Apache开源协议</string>
     <string name="notice_yy">资料来自粤语学习网</string>
+    <string name="no_data">没有数据</string>
     <string name="yy_web">粤语开放平台网页</string>
     <string name="yp_sm">声母</string>
     <string name="yp_ym">韵母</string>
@@ -124,6 +125,7 @@
     <string name="exec_sucess">操作成功</string>
     <string name="exec_fail">操作失败</string>
     <string name="learn_base_yp">粤拼基础学习</string>
+    <string name="last_error_msg">上次崩溃信息</string>
     <!-- 请替换成在语音云官网申请的appid -->
     <string name="app_id">5c83ca61</string>
     <string name="example_explain">本示例为讯飞语音Android平台开发者提供语音听写、语法识别、语义理解和语音合成等代码样例，旨在让用户能够依据该示例快速开发出基于语音接口的应用程序。</string>

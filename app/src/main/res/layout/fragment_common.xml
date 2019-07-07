@@ -17,11 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
+        android:id="@+id/contentLayout"
         android:orientation="vertical"
         >
         <com.easysoft.widget.search.SearchHeadView
             android:id="@+id/searchView"
-            android:layout_width="match_parent"            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_marginLeft="@dimen/comon_margin_left"
             android:layout_marginRight="@dimen/comon_margin_right"
 

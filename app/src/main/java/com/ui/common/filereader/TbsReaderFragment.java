@@ -1,4 +1,4 @@
-package com.ui.catalog;
+package com.ui.common.filereader;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.business.BusinessBroadcastUtils;
 import com.business.bean.VideoBussinessItem;
@@ -18,29 +19,29 @@ import com.easy.recycleview.custom.baseview.ContentItemView;
 import com.easy.recycleview.custom.baseview.config.HeadImageViewConfig;
 import com.easy.recycleview.custom.baseview.config.HintTextViewConfig;
 import com.easysoft.utils.lib.system.ToastUtils;
-import com.easysoft.widget.config.WidgetConfig;
 import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
-import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.tencent.smtt.sdk.TbsReaderView;
 import com.ui.common.custom.CustomFragment;
-import com.ui.common.filereader.TbsReaderFragment;
 import com.ui.dict.DictTypeEnum;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
 import com.ui.dict.yueping.DictYuePinyFragment;
 
-import java.io.File;
 import java.util.List;
 
 import static com.ui.dict.search.SearchDictFragment.DICT_NAME;
 
 
-public class CatalogFragment extends BaseFragment implements ICatalogView {
-	DyLayout recycleView;
-	  CatalogPresenter presenter;
+public class TbsReaderFragment extends BaseFragment implements ITbsReaderView, TbsReaderView.ReaderCallback {
+    public static String FILE_PATH="path";
+    DyLayout recycleView;
+	  TbsReaderPresenter presenter;
     NavigationBar toolbar;
     View mRootLayout;
+
+    TbsReaderView mTbsReaderView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
@@ -51,24 +52,61 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
     }
     @Override
     public void initFragment() {
-//    	initUIView();
-//    	initData();
+    	initUIView();
+    	initData();
     }
       @Override
     public void initUIView() {
-    	  recycleView= getViewById(R.id.dyLayout);
-    	   toolbar=getViewById(R.id.toolbar);
-          mRootLayout = getViewById(R.id.rootLayout);
+
+         RelativeLayout contentLayout=getViewById(R.id.contentLayout);
+
+
+          mTbsReaderView = new TbsReaderView(activity, this);
+          //rl_tbsView为装载TbsReaderView的视图
+          contentLayout.addView(mTbsReaderView, new RelativeLayout.LayoutParams(
+                  ViewGroup.LayoutParams.MATCH_PARENT,
+                  ViewGroup.LayoutParams.MATCH_PARENT));
       }
       @Override
     public void initData() {
-          TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), "设置", 0);
-          toolbar.resetConfig();
-          mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
-      presenter=new CatalogPresenter(this);
-      presenter.init();
+//          TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), "设置", 0);
+//          toolbar.resetConfig();
+//          mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
+      presenter=new TbsReaderPresenter(this);
+
+
+       Bundle  bundle=getArguments();
+         String path=bundle.getString(FILE_PATH);
+
+
+
+          Bundle localBundle = new Bundle();
+          localBundle.putString("filePath",path);
+          localBundle.putString("tempPath", Environment.getExternalStorageDirectory() + "/" + "TbsReaderTemp");
+
+
+           String type=parseFormat(path);
+
+        boolean result=  mTbsReaderView.preOpen(type,false);
+
+          if (result) {
+              mTbsReaderView.openFile(localBundle);
+          }
+//      presenter.init();
     }
 
+    private String parseFormat(String fileName) {
+        return fileName.substring(fileName.lastIndexOf(".") + 1);
+    }
+
+
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mTbsReaderView.onStop();
+    }
 
     @Override
     public void showType(final VideoBussinessItem item, final int type) {
@@ -118,29 +156,6 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
             }
         });
     }
-
-    @Override
-    public void toOpenErrorFile() {
-
-
-        Bundle bundle=new Bundle();
-
-        File sd = Environment.getExternalStorageDirectory();
-        String fullPath = sd.getPath() + "/MMMDebug/";
-        File dir = new File(fullPath);
-        File[] array = dir.listFiles();
-           if (array.length>0){
-                String  path=array[0].getAbsolutePath();
-
-               bundle.putString(TbsReaderFragment.FILE_PATH, path);
-               FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new TbsReaderFragment(), bundle);
-           }else{
-               showToast(getString(R.string.no_data));
-           }
-
-
-    }
-
     @Override
     public void showAllLearn() {
         Bundle bundle=new Bundle();
@@ -178,8 +193,8 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
 
     @Override
     public void loadDataStart() {
-        initUIView();
-        initData();
+//        initUIView();
+//        initData();
     }
 
     @Override
@@ -190,7 +205,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
     @Override
     public void test() {
         Bundle bundle=new Bundle();
-        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new CatalogFragment(), bundle);
+        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new TbsReaderFragment(), bundle);
     }
     @Override
     public void toYuePing() {
@@ -206,5 +221,9 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
         FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);
     }
 
+    @Override
+    public void onCallBackAction(Integer integer, Object o, Object o1) {
+
+    }
 }
 

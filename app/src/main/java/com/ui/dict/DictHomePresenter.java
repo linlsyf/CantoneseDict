@@ -50,7 +50,7 @@ public class DictHomePresenter {
 
 		List<Dict>  dictList =   mDictDao.loadAll();
 		if (dictList.size()>0) {
-			idictHomeView.startStudy();
+//			idictHomeView.startStudy();
 			return;
 		}
 
@@ -62,7 +62,7 @@ public class DictHomePresenter {
 				DictBeanUtils.iniDbFile(idictHomeView, new DictBeanUtils.parseDictcallback() {
 					@Override
 					public void parseDataBack(Object list) {
-						idictHomeView.startStudy();
+//						idictHomeView.startStudy();
 					}
 
 					@Override
