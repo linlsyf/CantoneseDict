@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.core.base.BaseFragment;
@@ -41,7 +40,7 @@ public class CommonBrowserFrament  extends BaseFragment{
     private static final String mHomeUrl = "http://app.html5.qq.com/navi/index";
     private static final String TAG = "SdkDemo";
 
-    private ProgressBar mPageLoadingProgressBar = null;
+//    private ProgressBar mPageLoadingProgressBar = null;
     private URL mIntentUrl;
     NavigationBar toolbar;
 
@@ -71,13 +70,13 @@ public class CommonBrowserFrament  extends BaseFragment{
         mTestHandler.sendEmptyMessageDelayed(MSG_INIT_UI, 10);
     }
     private void initProgressBar() {
-        mPageLoadingProgressBar = (ProgressBar)getViewById(R.id.progressBar1);// new
+//        mPageLoadingProgressBar = (ProgressBar)getViewById(R.id.progressBar1);// new
         // ProgressBar(getApplicationContext(),
         // null,
         // android.R.attr.progressBarStyleHorizontal);
-        mPageLoadingProgressBar.setMax(100);
-        mPageLoadingProgressBar.setProgressDrawable(activity.getResources()
-                .getDrawable(R.drawable.color_progressbar));
+//        mPageLoadingProgressBar.setMax(100);
+//        mPageLoadingProgressBar.setProgressDrawable(activity.getResources()
+//                .getDrawable(R.drawable.color_progressbar));
 
 
     }

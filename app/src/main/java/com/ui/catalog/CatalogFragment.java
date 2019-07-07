@@ -133,14 +133,26 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
                 String  path=array[0].getAbsolutePath();
 
                bundle.putString(TbsReaderFragment.FILE_PATH, path);
-               FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new TbsReaderFragment(), bundle);
+
+//               Intent intent = new Intent();
+//               File file = new File(path);
+//               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//设置标记
+//               intent.setAction(Intent.ACTION_VIEW);//动作，查看pa
+//               intent.setDataAndType(Uri.fromFile(file), getMIMEType(path));//设置类型
+//               activity.startActivity(intent);
+
+
+
+//               FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new TbsReaderFragment(), bundle);
            }else{
                showToast(getString(R.string.no_data));
            }
 
 
     }
-
+    private String getMIMEType(String fileName) {
+        return fileName.substring(fileName.lastIndexOf(".") + 1);
+    }
     @Override
     public void showAllLearn() {
         Bundle bundle=new Bundle();

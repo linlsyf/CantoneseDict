@@ -153,7 +153,7 @@ public class CatalogPresenter {
 				  iSafeSettingView.toOpenErrorFile();
 			  }
 		  });
-		  newSectionList.add(itemErrorBasen);
+//		  newSectionList.add(itemErrorBasen);
 		  DyItemBean  testtBean=new DyItemBean();
 //		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
 
