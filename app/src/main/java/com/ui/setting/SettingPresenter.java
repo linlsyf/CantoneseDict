@@ -1,5 +1,7 @@
 package com.ui.setting;
 
+import android.support.annotation.NonNull;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.business.BusinessBroadcastUtils;
@@ -44,11 +46,11 @@ public class SettingPresenter   {
 	ISafeSettingView iSafeSettingView;
 	private String KEY_SETTING="setting";
 
-	private InfoCardBean infoCardBean;
+	 InfoCardBean infoCardBean;
 
-	private DyItemBean exportBean;
+	 DyItemBean exportBean;
 	SentenceYyDao sentenceYyDao;
-	private DyItemBean musicBean;
+	 DyItemBean musicBean;
 
 
 	public SettingPresenter(ISafeSettingView iSafeSettingView) {
@@ -99,92 +101,7 @@ public class SettingPresenter   {
 		  settingBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-				  List<DyItemBean> dataListCustom=new ArrayList<>();
-
-				  DyItemBean importBean =new DyItemBean();
-
-				  importBean.setTitle("覆盖当前进度（默认数据在SD上）");
-				  importBean.setOnItemListener(new IItemView.onItemClick() {
-					  @Override
-					  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-
-						  inportDictLJ();
-					  }
-				  });
-
-
-				  dataListCustom.add(importBean);
-
-				  DyItemBean repairBean=new DyItemBean();
-				  repairBean.setTitle(iSafeSettingView.getContext().getString(R.string.repair_db));
-				  repairBean.setOnItemListener(new IItemView.onItemClick() {
-					  @Override
-					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-						  DictBeanUtils.iniDbFile(iSafeSettingView, new DictBeanUtils.parseDictcallback() {
-							  @Override
-							  public void parseDataBack(Object list) {
-
-							  }
-
-							  @Override
-							  public void showMsg(String msg) {
-                                   iSafeSettingView.showToast(msg);
-							  }
-						  });
-
-					  }
-				  });
-				  dataListCustom.add(repairBean);
-
-				  DyItemBean emptyBean=new DyItemBean();
-				  emptyBean.setTitle(iSafeSettingView.getContext().getString(R.string.empty_db));
-
-				  emptyBean.setOnItemListener(new IItemView.onItemClick() {
-					  @Override
-					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-						  DictBeanUtils.emptyDb();
-						  iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.exec_sucess));
-						  BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_YY_REFRESH_HOME_COUNT,null);
-
-					  }
-				  });
-				  dataListCustom.add(emptyBean);
-
-				  DyItemBean  ljBean=new DyItemBean();
-				  ljBean.setTitle(iSafeSettingView.getContext().getString(R.string.init_sentence));
-				  ljBean.setOnItemListener(new IItemView.onItemClick() {
-					  @Override
-					  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-
-
-
-						  DictBeanUtils.importDbSentence(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
-							  @Override
-							  public void parseDataBack(Object list) {
-
-								  List<SentenceYy> sentenceYys=(List<SentenceYy>)list;
-								  sentenceYyDao.insertOrReplaceInTx(sentenceYys);
-								  iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.exec_sucess));
-
-							  }
-
-							  @Override
-							  public void showMsg(String msg) {
-
-							  }
-						  });
-					  }
-				  });
-				  dataListCustom.add(ljBean);
-				  exportBean=new DyItemBean();
-				  exportBean.setTitle("备份字典数据库到SD卡");
-				  exportBean.setOnItemListener(new IItemView.onItemClick() {
-					  @Override
-					  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-						  exportDict();
-					  }
-				  });
-				  dataListCustom.add(exportBean);
+				  List<DyItemBean> dataListCustom = DataBaseUtils.getDataDyItemBeans(iSafeSettingView,SettingPresenter.this);
 				  iSafeSettingView.openCustomView(dataListCustom);
 			  }
 		  });
@@ -304,6 +221,8 @@ public class SettingPresenter   {
 		  iSafeSettingView.initUI(newSection);
       }
 
+
+
 //	private void updateSongItemUI(boolean isPlaying,SongBean songBean) {
 //		musicBean.setHintShow(true);
 //		if (isPlaying){
@@ -328,65 +247,6 @@ public class SettingPresenter   {
 //
 //	}
 
-	private void inportDictLJ() {
-
-		iSafeSettingView.showToast("开始导入:请耐心等待 不要重复点击");
-
-
-
-
-
-		DictBeanUtils.importFrombackUp(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
-			@Override
-			public void parseDataBack(Object obj) {
-				List<Dict> data=(List<Dict>) obj;
-               if (data.size()>0){
-               	iSafeSettingView.showToast("导入覆盖成功");
-
-
-               	BusinessBroadcastUtils.sendBroadcast(iSafeSettingView.getContext(),BusinessBroadcastUtils.TYPE_YY_REFRESH_HOME_COUNT,null);
-
-				}else{
-				   iSafeSettingView.showToast("导入覆盖失败");
-				}
-
-			}
-
-			@Override
-			public void showMsg(String msg) {
-				iSafeSettingView.showToast(msg);
-
-			}
-		});
-
-	}
-
-
-	private void exportDict() {//导出字典数据
-		iSafeSettingView.showToast("开始导出:请耐心等待 不要重复点击");
-		DictBeanUtils.exportDb(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
-			@Override
-			public void parseDataBack(Object obj) {
-				String isSucess=(String) obj;
-				if (isSucess.equals("1")){
-//					exportBean.setTitle("成功导出词典成功_sd卡目录_cantonese.db");
-//					iSafeSettingView.updateItem(exportBean);
-					ToastUtils.show(iSafeSettingView.getContext(),"成功导出词典成功_sd卡目录_cantonese.db");
-				}else{
-					ToastUtils.show(iSafeSettingView.getContext(),"导出失败");
-				}
-
-
-			}
-
-			@Override
-			public void showMsg(String msg) {
-				iSafeSettingView.showToast(msg);
-
-			}
-		});
-
-	}
 
 	public void getLoginUserMsg(){
 		  if(StringUtils.isNotEmpty(BusinessBroadcastUtils.USER_VALUE_USER_ID)){{

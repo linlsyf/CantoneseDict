@@ -120,6 +120,8 @@
     <string name="change">切换</string>
     <string name="sentence">例句</string>
     <string name="init_sentence">重新导入例句</string>
+    <string name="init_data_suceess">初始化数据完成</string>
+
     <string name="empty_db">清除数据库数据</string>
     <string name="repair_db">数据库数据修复</string>
     <string name="exec_sucess">操作成功</string>

@@ -45,15 +45,19 @@ public class DictHomePresenter {
 //    settingSection.setAutoAddSpliteLine(false);
 //	idictHomeView.initUI(settingSection);
 //	}
-	public void initAssets() {
+	public boolean initAssets() {
 		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 
 		List<Dict>  dictList =   mDictDao.loadAll();
 		if (dictList.size()>0) {
 //			idictHomeView.startStudy();
-			return;
+			return true;
 		}
 
+		if (isIniting){
+			return false;
+		}
+		isIniting=true;
 			idictHomeView.showToast(idictHomeView.getContext().getString(R.string.wait_dict_init_please));
 
 		ThreadPoolUtils.execute(new Runnable() {
@@ -62,18 +66,24 @@ public class DictHomePresenter {
 				DictBeanUtils.iniDbFile(idictHomeView, new DictBeanUtils.parseDictcallback() {
 					@Override
 					public void parseDataBack(Object list) {
+						isIniting=false;
+
+						idictHomeView.showToast(idictHomeView.getContext().getString(R.string.init_data_suceess));
+
 //						idictHomeView.startStudy();
 					}
 
 					@Override
 					public void showMsg(String msg) {
-
+						idictHomeView.showToast(msg);
+						isIniting=false;
 					}
 				});
 
 			}
 		});
 
+		 return false;
 
 	}
 

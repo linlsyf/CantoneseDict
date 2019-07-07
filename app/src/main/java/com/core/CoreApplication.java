@@ -8,6 +8,7 @@ import android.support.multidex.MultiDexApplication;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.gen.DaoMaster;
 import com.core.db.greenDao.gen.DaoSession;
+import com.core.start.DbInit;
 import com.core.start.StartThirdPartRunnable;
 import com.utils.ThreadPoolExecutorFactory;
 
@@ -31,6 +32,10 @@ public class CoreApplication extends MultiDexApplication {
 	public void onCreate() {
 		super.onCreate();
 		instance = this;
+
+
+		initGlobalConstants();
+
 
 		StartThirdPartRunnable runnable=new StartThirdPartRunnable();
 
@@ -84,7 +89,26 @@ public class CoreApplication extends MultiDexApplication {
 //		QbSdk.initX5Environment(getApplicationContext(),  cb);
 
 	}
+	/**
+	 * 简化Application代码
+	 */
+	public void initGlobalConstants() {
+		//初始化全局变量
+		GlobalConstants 	globalConstants=	GlobalConstants.getInstance();
+		globalConstants.setApplicationContext(
+				CoreApplication.getAppContext());
+		globalConstants.initSystemData();
 
+		globalConstants.setDevDensityVal(
+				CoreApplication.getAppContext().getResources().getDisplayMetrics().density);
+
+		globalConstants.istabandTwoClomnstyle = false;
+
+
+		DbInit.setDatabase();
+
+
+	}
 
 //	/**
 //	 *

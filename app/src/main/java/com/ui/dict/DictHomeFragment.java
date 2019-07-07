@@ -101,7 +101,10 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
         mainView.startLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                persenter.initAssets();
+//             boolean isInit=   persenter.initAssets();
+//             if (isInit){
+                startStudy();
+//             }
 
             }
         });

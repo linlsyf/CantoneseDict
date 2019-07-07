@@ -34,14 +34,18 @@ android {
     }
     signingConfigs {
         release
+        config {
+            keyAlias 'area'
+            keyPassword 'lnsince1991'
+            storeFile file('F:/ldh/签名/AreaKeyStore.jks')
+            storePassword 'lnsince1991'
+        }
     }
     buildTypes {
         debug {
             minifyEnabled false
-            debuggable true
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.config
         }
-
         release {
             minifyEnabled false
             debuggable true
@@ -163,6 +167,4 @@ dependencies {
     // 微信图片选择器
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.3.1'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
-
-
 }

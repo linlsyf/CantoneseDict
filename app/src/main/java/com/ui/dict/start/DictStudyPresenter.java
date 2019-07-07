@@ -37,7 +37,9 @@ public class DictStudyPresenter {
 		service=new HttpService();
 		mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 	}
-    public void  initData(){
+    public void
+
+	initData(){
 //		initAssets();
      List<Dict>  dictList ;
 
