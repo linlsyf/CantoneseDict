@@ -83,15 +83,20 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     @Override
 	public void getBroadcastReceiverMessage(String type, Object mode) {
         if(type.equals(BusinessBroadcastUtils.TYPE_LOGIN_SUCESS)){
-            presenter.updateUserInfo();
+            if(presenter!=null) {
+                presenter.updateUserInfo();
+            }
         }
         else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME)){
 
             toolbar.resetConfig();
         }
         else if(type.equals(BusinessBroadcastUtils.TYPE_CHANGE_THEME_WB)){
+            if(presenter!=null){
+                presenter.changeTemeWB();
 
-            presenter.changeTemeWB();
+            }
+
         }
 	}
 	@Override
@@ -139,10 +144,6 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
         initData();
     }
 
-    @Override
-    public void showToast(String text) {
-    ToastUtils.show(getActivity(),text);
-    }
 
     @Override
     public void updateItem(final DyItemBean imgBean) {

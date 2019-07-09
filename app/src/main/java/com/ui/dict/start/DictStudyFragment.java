@@ -220,11 +220,6 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
     }
 
     @Override
-    public void showToast(String text) {
-        super.showToast(text);
-    }
-
-    @Override
     public void openVideo(VideoBussinessItem itemBean) {
 
     }

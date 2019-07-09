@@ -137,10 +137,6 @@ public class SearchSentenceFragment extends BaseFragment implements ISearchSente
 
     }
 
-    @Override
-    public void showToast(String text) {
-        super.showToast(text);
-    }
 
 
 

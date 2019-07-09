@@ -194,10 +194,6 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
         initData();
     }
 
-    @Override
-    public void showToast(String text) {
-    ToastUtils.show(getActivity(),text);
-    }
 
     @Override
     public void test() {
