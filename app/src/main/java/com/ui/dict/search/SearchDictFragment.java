@@ -199,10 +199,6 @@ public class SearchDictFragment extends BaseFragment implements IdictView {
 
     }
 
-    @Override
-    public void showToast(String text) {
-        super.showToast(text);
-    }
 
     @Override
     public void openVideo(VideoBussinessItem itemBean) {

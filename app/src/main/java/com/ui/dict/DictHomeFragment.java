@@ -199,10 +199,6 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
 
     }
 
-    @Override
-    public void showToast(String text) {
-        super.showToast(text);
-    }
 
     @Override
     public void openVideo(VideoBussinessItem itemBean) {
