@@ -1,8 +1,9 @@
-package com.ui.common.custom;
+package com.ui.common.tempview;
 
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.core.base.BaseFragment;
 import com.easy.recycleview.DyLayout;
@@ -24,7 +25,7 @@ import java.util.List;
 /**
  * 输入信息界面
  */
-public class CustomFragment extends BaseFragment implements ICustomView {
+public class TempViewFragment extends BaseFragment implements ITempView {
 
 
     EdittextLayoutView mEt;
@@ -48,7 +49,7 @@ public class CustomFragment extends BaseFragment implements ICustomView {
     public OnUpdateSuccessListener listener;
     private DyLayout recycleView;
     public static final String KEY_INTNET_LIST="KEY_INTNET_LIST";
-    CustomPresenter inputPresenter;
+    TempViewPresenter inputPresenter;
     private List<DyItemBean> itemBeanList =new ArrayList<>();
     private String viewType="TYPE_EDIT";
     private RelativeLayout contentLayout;
@@ -88,6 +89,7 @@ public class CustomFragment extends BaseFragment implements ICustomView {
               public void initUIView() {
 
                      recycleView = getViewById(R.id.dyLayout);
+                     contentLayout=getViewById(R.id.contentLayout);
 
             	 toolbar=getViewById(R.id.toolbar);
                      Bundle bundle=   getArguments();
@@ -95,7 +97,7 @@ public class CustomFragment extends BaseFragment implements ICustomView {
                      TopBarBuilder.buildOnlyText(toolbar, getActivity(), NavigationBar.Location.LEFT_FIRST, "返回", 0);
 
       		   TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.common_title), 0);
-                     inputPresenter=new CustomPresenter(this);
+                     inputPresenter=new TempViewPresenter(this);
                      inputPresenter.setViewType(viewType);
 
                      inputPresenter.init(itemBeanList);
@@ -145,7 +147,10 @@ public class CustomFragment extends BaseFragment implements ICustomView {
 
     @Override
     public void initUI(Section section) {
-            recycleView.updateSection(section);
+
+
+
+           // recycleView.updateSection(section);
 
     }
 
@@ -158,7 +163,17 @@ public class CustomFragment extends BaseFragment implements ICustomView {
 
     }
 
+    @Override
+    public void initAddView(List<IDyItemBean> selectList) {
 
+
+
+        IDyItemBean bean= selectList.get(0);
+        TextView itemTextView=new TextView(activity);
+        itemTextView.setText(bean.getTitle());
+        contentLayout.addView( itemTextView);
+
+    }
     @Override
 	public void getBroadcastReceiverMessage(String type, Object mode) {
 		// TODO Auto-generated method stub

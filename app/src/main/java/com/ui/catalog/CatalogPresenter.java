@@ -10,7 +10,9 @@ import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.custom.bean.CentLayoutConfig;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easysoft.utils.lib.system.DensityUtil;
 import com.linlsyf.area.R;
+import com.ui.dict.DictBeanUtils;
 import com.ui.dict.DictBusBean;
 import com.ui.dict.DictTypeEnum;
 import com.utils.TimeAreaUtils;
@@ -60,6 +62,13 @@ public class CatalogPresenter {
 			  }
 		  });
 		  newSectionList.add(musicBean);
+		  DyItemBean  splitItemBean=new DyItemBean();
+		  splitItemBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
+		  newSectionList.add(splitItemBean);
+
+
+
+
 		  DyItemBean  itemBean=new DyItemBean();
 //		  itemBean.setCentLayoutConfig(new CentLayoutConfig().setName(iSafeSettingView.getContext().getString(R.string.start_percent)));
 
@@ -149,11 +158,32 @@ public class CatalogPresenter {
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
 
 
+				  DictBeanUtils.getErrorMsg(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
+					  @Override
+					  public void parseDataBack(Object list) {
+						  List<DyItemBean> dataListCustom=new ArrayList<>();
 
-				  iSafeSettingView.toOpenErrorFile();
+						  final DictBusBean todayBean=new DictBusBean();
+						  todayBean.setTitle(list.toString());
+
+						  int hight= DensityUtil.dip2px(iSafeSettingView.getContext(),1200);
+						  todayBean.setItemHight(hight);
+//						  todayBean.setCentLayoutConfig(new CentLayoutConfig().setName(list.toString()));
+						  dataListCustom.add(todayBean);
+
+						  iSafeSettingView.openTempView(dataListCustom);
+					  }
+
+					  @Override
+					  public void showMsg(String msg) {
+					  	iSafeSettingView.showToast(msg);
+
+					  }
+				  });
+
 			  }
 		  });
-//		  newSectionList.add(itemErrorBasen);
+		  newSectionList.add(itemErrorBasen);
 		  DyItemBean  testtBean=new DyItemBean();
 //		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
 

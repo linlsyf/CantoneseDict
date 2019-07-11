@@ -22,6 +22,7 @@ import org.greenrobot.greendao.database.Database;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -204,7 +205,85 @@ public class DictBeanUtils {
         });
 
     }
+    public static  void getErrorMsg(final Context context, final parseDictcallback dictcallback){
 
+        Observable.create(new ObservableOnSubscribe<String   >() {
+            @Override
+            public void subscribe(ObservableEmitter< String  > emitter)
+                    throws Exception {
+               // ArrayList<SentenceYy>  dictNewList=new ArrayList<>();
+                String filecidanName= "liju_yue-jt-kfcd-2018620.txt";
+
+                String result = "";
+
+
+                File sd = Environment.getExternalStorageDirectory();
+                String fullPath = sd.getPath() + "/MMMDebug/";
+                File dir = new File(fullPath);
+                File[] array = dir.listFiles();
+                if (array.length>0){
+                   // String  path=array[0].getAbsolutePath();
+
+//               FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new TbsReaderFragment(), bundle);
+                }else{
+                    dictcallback.showMsg(context.getString(R.string.no_data));
+                    return;
+                }
+
+                 File   errorMsgFile=array[0];
+                try {
+                    InputStream inputStream =new FileInputStream(errorMsgFile);
+
+                    StringBuffer sBuffer = new StringBuffer();
+                    try {
+                        if (inputStream != null)
+                        {
+                            BufferedReader buffreader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
+                            String line;
+                            //分行读取
+                            while (( line = buffreader.readLine()) != null) {
+                                if (StringUtils.isNotEmpty(line)){
+                                    sBuffer.append(line + "\n");//strLine就是一行的内容
+
+                                }
+//						newList.add(line+"\n");
+                            }
+                            inputStream.close();
+                            result=sBuffer.toString();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Log.d("TestFile", "The File doesn't not exist.");
+                    }
+
+
+
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                emitter.onNext(result);
+
+            } })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io()).subscribe(new Observer<String >() {
+            @Override public void onSubscribe(Disposable d) {
+//				mDisposable=d;
+            }
+            @Override public void onNext( String list) {
+                dictcallback.parseDataBack(list);
+
+            }
+            @Override public void onError(Throwable e) {
+            }
+
+            @Override public void onComplete() {
+
+            }
+        });
+
+    }
      public static void  emptyDb(){
          GlobalConstants.getInstance().getDaoSession().getDictDao().deleteAll();
      }

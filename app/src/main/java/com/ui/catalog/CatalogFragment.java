@@ -2,7 +2,6 @@ package com.ui.catalog;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,20 +16,18 @@ import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.custom.baseview.ContentItemView;
 import com.easy.recycleview.custom.baseview.config.HeadImageViewConfig;
 import com.easy.recycleview.custom.baseview.config.HintTextViewConfig;
-import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.config.WidgetConfig;
 import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
 import com.ui.common.custom.CustomFragment;
-import com.ui.common.filereader.TbsReaderFragment;
+import com.ui.common.tempview.TempViewFragment;
 import com.ui.dict.DictTypeEnum;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
 import com.ui.dict.yueping.DictYuePinyFragment;
 
-import java.io.File;
 import java.util.List;
 
 import static com.ui.dict.search.SearchDictFragment.DICT_NAME;
@@ -120,36 +117,13 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
     }
 
     @Override
-    public void toOpenErrorFile() {
-
-
+    public void openTempView(List<DyItemBean> dataList) {
+        TempViewFragment inputFragment=new TempViewFragment();
         Bundle bundle=new Bundle();
-
-        File sd = Environment.getExternalStorageDirectory();
-        String fullPath = sd.getPath() + "/MMMDebug/";
-        File dir = new File(fullPath);
-        File[] array = dir.listFiles();
-           if (array.length>0){
-                String  path=array[0].getAbsolutePath();
-
-               bundle.putString(TbsReaderFragment.FILE_PATH, path);
-
-//               Intent intent = new Intent();
-//               File file = new File(path);
-//               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//设置标记
-//               intent.setAction(Intent.ACTION_VIEW);//动作，查看pa
-//               intent.setDataAndType(Uri.fromFile(file), getMIMEType(path));//设置类型
-//               activity.startActivity(intent);
-
-
-
-//               FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, new TbsReaderFragment(), bundle);
-           }else{
-               showToast(getString(R.string.no_data));
-           }
-
-
+        inputFragment.initDataMap(dataList);
+        FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);
     }
+
     private String getMIMEType(String fileName) {
         return fileName.substring(fileName.lastIndexOf(".") + 1);
     }

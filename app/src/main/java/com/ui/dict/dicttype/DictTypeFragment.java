@@ -18,7 +18,7 @@ import com.easysoft.widget.search.SearchHeadView;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.iflytek.IatDemoUtils;
+import com.iflytek.IatDemoNewUtils;
 import com.linlsyf.area.R;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;
 
@@ -33,6 +33,8 @@ public class DictTypeFragment extends BaseFragment implements IdictTypeView {
     DyLayout recycleView;
     private NavigationBar toolbar;
     SearchHeadView searchHeadView;
+    private IatDemoNewUtils utils;
+
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_common, null);
@@ -98,8 +100,8 @@ public class DictTypeFragment extends BaseFragment implements IdictTypeView {
 
             @Override
             public void onVoiceClick() {
-                IatDemoUtils utils=new IatDemoUtils();
-                utils.setcallBack(new IatDemoUtils.mcCallBack() {
+                 utils=new IatDemoNewUtils();
+                utils.setcallBack(new IatDemoNewUtils.mcCallBack() {
                     @Override
                     public void call(String msg) {
                         persenter.searchByGY(msg);
@@ -110,6 +112,12 @@ public class DictTypeFragment extends BaseFragment implements IdictTypeView {
             }
         });
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        utils.onDestroy();
     }
 
     @Override

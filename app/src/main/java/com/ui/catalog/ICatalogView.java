@@ -22,6 +22,8 @@ public interface ICatalogView extends IBaseView{
 	void showAllLearn();
 	void updateUIItem(boolean isPlaying,DyItemBean imgBean);
 
+	void openTempView(List<DyItemBean> dataListCustom);
 
-    void toOpenErrorFile();
+
+	/// void toOpenErrorFile();
 }

@@ -93,7 +93,7 @@
     <string name="click_play_music">点击播放歌曲</string>
     <string name="unknown">未知</string>
     <string name="radom_yuyu_music">随机粤语歌曲</string>
-    <string name="next_music">下一首</string>
+    <string name="next_music">切歌</string>
     <string name="change_theme">修改主题</string>
     <string name="share_lange_app">分享APP到微信</string>
     <string name="search_null">搜索结果为空</string>
@@ -126,8 +126,8 @@
     <string name="repair_db">数据库数据修复</string>
     <string name="exec_sucess">操作成功</string>
     <string name="exec_fail">操作失败</string>
-    <string name="learn_base_yp">粤拼基础学习</string>
-    <string name="last_error_msg">上次崩溃信息</string>
+    <string name="learn_base_yp">粤拼基础</string>
+    <string name="last_error_msg">崩溃信息</string>
     <!-- 请替换成在语音云官网申请的appid -->
     <string name="app_id">5c83ca61</string>
     <string name="example_explain">本示例为讯飞语音Android平台开发者提供语音听写、语法识别、语义理解和语音合成等代码样例，旨在让用户能够依据该示例快速开发出基于语音接口的应用程序。</string>
