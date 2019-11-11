@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.easy.recycleview.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.bean.DyItemBean;
-import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;

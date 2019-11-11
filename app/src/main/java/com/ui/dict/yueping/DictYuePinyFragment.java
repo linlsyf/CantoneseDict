@@ -160,7 +160,7 @@ public class DictYuePinyFragment extends BaseFragment implements IDictYuePiny {
             @Override
             public void run() {
                 KeyboardUtils.closeKeybord(activity);
-                recycleView.updateSection(nextSection,true);
+                recycleView.updateSection(nextSection);
             }
         });
 

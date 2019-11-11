@@ -167,7 +167,7 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
             @Override
             public void run() {
                 KeyboardUtils.closeKeybord(activity);
-                recycleView.updateSection(nextSection,true);
+                recycleView.updateSection(nextSection);
             }
         });
 

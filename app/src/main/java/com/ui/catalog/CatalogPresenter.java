@@ -4,10 +4,10 @@ import com.business.service.music.MusiceHelper;
 import com.business.service.music.server.SongBean;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.gen.DictDao;
+import com.easy.recycleview.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
-import com.easy.recycleview.custom.bean.CentLayoutConfig;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.utils.lib.system.DensityUtil;
@@ -33,12 +33,10 @@ public class CatalogPresenter {
 		  mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
 		  List<IDyItemBean>  newSectionList=new ArrayList<>();
 		  Section newSection=new Section("");
-		  int headRadius=(int)iSafeSettingView.getContext().getResources().getDimension(R.dimen.comon_setting_headimg_radius);
+		  int headRadius= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),25);
 		  musicBean=new DyItemBean();
 		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
 		  musicBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_music).setHeadImgRadius(headRadius));
-
-
 		    musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
 		  musicBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
@@ -66,18 +64,15 @@ public class CatalogPresenter {
 		  splitItemBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
 		  newSectionList.add(splitItemBean);
 
-
-
-
+		  int hight=DensityUtil.dip2pxInt(iSafeSettingView.getContext(),100);
 		  DyItemBean  itemBean=new DyItemBean();
+		    itemBean.setItemHight(hight);
 //		  itemBean.setCentLayoutConfig(new CentLayoutConfig().setName(iSafeSettingView.getContext().getString(R.string.start_percent)));
-
 		  itemBean.setCentLayoutConfig(
 				  new CentLayoutConfig()
-//						  .setImgRadius(headRadius).setImgResId(R.drawable.catalog_pro)
+						  .setImgRadius(headRadius).setImgResId(R.drawable.catalog_pro)
 						  .setName(iSafeSettingView.getContext().getString(R.string.start_percent))
 		  );
-
 		      itemBean.setSpanSize(mSpanSize);
 		    itemBean.setOnItemListener(new IItemView.onItemClick() {
 				@Override
@@ -126,11 +121,11 @@ public class CatalogPresenter {
 			});
 		     newSectionList.add(itemBean);
 		  DyItemBean  itemBeaBasen=new DyItemBean();
-//		  itemBeaBasen.setCentLayoutConfig(new CentLayoutConfig().setName(iSafeSettingView.getContext().getString(R.string.learn_base_yp)));
+		  itemBeaBasen.setItemHight(hight);
 
 		  itemBeaBasen.setCentLayoutConfig(
 				  new CentLayoutConfig()
-//						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
+						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
 						  .setName(iSafeSettingView.getContext().getString(R.string.learn_base_yp))
 		  );
 
@@ -145,10 +140,11 @@ public class CatalogPresenter {
 
 
 		  DyItemBean  itemErrorBasen=new DyItemBean();
+		  itemErrorBasen.setItemHight(hight);
 
 		  itemErrorBasen.setCentLayoutConfig(
 				  new CentLayoutConfig()
-//						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
+						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
 						  .setName(iSafeSettingView.getContext().getString(R.string.last_error_msg))
 		  );
 
@@ -156,13 +152,10 @@ public class CatalogPresenter {
 		  itemErrorBasen.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-
-
 				  DictBeanUtils.getErrorMsg(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
 					  @Override
 					  public void parseDataBack(Object list) {
 						  List<DyItemBean> dataListCustom=new ArrayList<>();
-
 						  final DictBusBean todayBean=new DictBusBean();
 						  todayBean.setTitle(list.toString());
 
@@ -186,8 +179,6 @@ public class CatalogPresenter {
 		  newSectionList.add(itemErrorBasen);
 		  DyItemBean  testtBean=new DyItemBean();
 //		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
-
-
 		  testtBean.setCentLayoutConfig(
 		  		new CentLayoutConfig().setImgRadius(headRadius).setImgResId(R.drawable.catalog_pro)
 		  .setName(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu))

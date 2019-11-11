@@ -15,9 +15,9 @@ import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.core.utils.SpUtils;
+import com.easy.recycleview.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.AddressHeadImgeSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.utils.lib.http.CallBackResult;
@@ -202,20 +202,31 @@ public class SettingPresenter   {
 
 		  newSectionList.add(developBean);
 
-		  DyItemBean  testtBean=new DyItemBean();
-		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
-		  testtBean.setOnItemListener(new IItemView.onItemClick() {
+		  DyItemBean  userPrivateBean=new DyItemBean();
+		  userPrivateBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
+
+//		  userPrivateBean.setViewType(4);
+		  userPrivateBean.setTitle(iSafeSettingView.getContext().getString(R.string.user_private));
+		  userPrivateBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 
-				  List<DyItemBean> dataList=new ArrayList<>();
+				  List<DyItemBean> dataListCustom=new ArrayList<>();
+
+
+				  DyItemBean  privateBean=new DyItemBean();
+				  privateBean.setViewType(4);
+				  privateBean.setTitle(iSafeSettingView.getContext().getString(R.string.user_content));
+				    dataListCustom.add(privateBean);
+
+				  iSafeSettingView.openCustomView(dataListCustom);
 
 //						   Intent intent = new Intent(iSafeSettingView.getContext(), TestActivity.class);
 //						   iSafeSettingView.getContext().startActivity(intent);
 
 			  }
 		  });
-//		  newSectionList.add(testtBean);
+		  newSectionList.add(userPrivateBean);
 
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);

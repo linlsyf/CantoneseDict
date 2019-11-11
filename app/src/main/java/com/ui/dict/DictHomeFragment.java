@@ -150,7 +150,7 @@ public class DictHomeFragment extends BaseFragment implements IdictHomeView {
             @Override
             public void run() {
                 KeyboardUtils.closeKeybord(activity);
-                recycleView.updateSection(nextSection,true);
+                recycleView.updateSection(nextSection);
             }
         });
 

@@ -119,7 +119,7 @@ public class SearchSentenceFragment extends BaseFragment implements ISearchSente
             @Override
             public void run() {
                 KeyboardUtils.closeKeybord(activity);
-                recycleView.updateSection(nextSection,true);
+                recycleView.updateSection(nextSection);
             }
         });
 

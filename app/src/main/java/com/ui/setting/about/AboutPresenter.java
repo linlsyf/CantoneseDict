@@ -2,7 +2,7 @@ package com.ui.setting.about;
 
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.bean.TitleSettings;
+import com.easy.recycleview.bean.TitleSettings;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.linlsyf.area.R;

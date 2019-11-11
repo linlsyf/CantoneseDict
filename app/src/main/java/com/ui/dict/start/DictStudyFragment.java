@@ -180,7 +180,7 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 
     @Override
     public void initUI(final Section nextSection) {
-                recycleView.updateSection(nextSection,true);
+                recycleView.updateSection(nextSection);
     }
 
     @Override

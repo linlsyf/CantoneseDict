@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import com.business.BusinessBroadcastUtils;
 import com.core.base.BaseFragment;
 import com.core.update.UpdateAPK;
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.baseview.ContentItemView;
 import com.easy.recycleview.custom.baseview.config.HeadImageViewConfig;
 import com.easy.recycleview.custom.baseview.config.HintTextViewConfig;
 import com.easy.recycleview.inter.IDyItemBean;
@@ -27,6 +27,7 @@ import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.common.custom.CustomFragment;
 import com.ui.common.select.SelectFragment;
+import com.ui.common.view.CommonTextItemView;
 import com.ui.login.LoginActivity;
 import com.ui.setting.about.AboutFragment;
 
@@ -59,6 +60,20 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     	  recycleView= getViewById(R.id.dyLayout);
     	   toolbar=getViewById(R.id.toolbar);
           mRootLayout = getViewById(R.id.rootLayout);
+
+
+//          recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
+//              @Override
+//              public View getCustomView(Context context, int i) {
+//                  View itemView=null;
+//                  if (i==4){
+//                      itemView=new CommonTextItemView(context);
+//                  }else{
+//                      itemView=new ContentItemView(context);
+//                  }
+//                  return itemView;
+//              }
+//          });
 
 
       }

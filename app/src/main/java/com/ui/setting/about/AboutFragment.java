@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.core.base.BaseFragment;
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.Section;
-import com.easy.recycleview.custom.baseview.ContentItemView;
 import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;

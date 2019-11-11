@@ -136,12 +136,10 @@ public class SearchDictFragment extends BaseFragment implements IdictView {
             @Override
             public void run() {
                 KeyboardUtils.closeKeybord(activity);
-                recycleView.updateSection(nextSection,true);
+                recycleView.updateSection(nextSection);
             }
         });
-
     }
-
     @Override
     public void showType(VideoBussinessItem item, int type) {
         Bundle bundle=new Bundle();

@@ -1,10 +1,13 @@
 package com.ui.common.custom;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.core.base.BaseFragment;
+import com.easy.recycleview.ContentItemView;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
@@ -16,6 +19,7 @@ import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.ui.common.view.CommonTextItemView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,8 +92,21 @@ public class CustomFragment extends BaseFragment implements ICustomView {
               public void initUIView() {
 
                      recycleView = getViewById(R.id.dyLayout);
+                     recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
+                         @Override
+                         public View getCustomView(Context context, int i) {
+                             View itemView=null;
+                             if (i==4){
+                                 itemView=new CommonTextItemView(context);
+                             }else{
+                                 itemView=new ContentItemView(context);
+                             }
+                             return itemView;
+                         }
+                     });
 
-            	 toolbar=getViewById(R.id.toolbar);
+
+                     toolbar=getViewById(R.id.toolbar);
                      Bundle bundle=   getArguments();
 
                      TopBarBuilder.buildOnlyText(toolbar, getActivity(), NavigationBar.Location.LEFT_FIRST, "返回", 0);

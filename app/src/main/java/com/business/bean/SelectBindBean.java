@@ -1,7 +1,7 @@
 package com.business.bean;
 
 
-import com.easy.recycleview.custom.bean.SelectBean;
+import com.easy.recycleview.bean.SelectBean;
 
 /**
  * Created by Chant on 2018/6/10.

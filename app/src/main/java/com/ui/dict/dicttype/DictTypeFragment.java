@@ -141,7 +141,7 @@ public class DictTypeFragment extends BaseFragment implements IdictTypeView {
             @Override
             public void run() {
                 KeyboardUtils.closeKeybord(activity);
-                recycleView.updateSection(nextSection,true);
+                recycleView.updateSection(nextSection);
             }
         });
 
