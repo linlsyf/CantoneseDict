@@ -109,7 +109,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
                     contentItemView.mTitleTextView.setText(imgBean.getTitle());
                     HintTextViewConfig.load(contentItemView,imgBean);
                     if (!isPlaying){
-                        HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mImageView);
+                        HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mHeadImageView);
                     }
                 }
             }
@@ -118,7 +118,8 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
 
     @Override
     public void openTempView(List<DyItemBean> dataList) {
-        TempViewFragment inputFragment=new TempViewFragment();
+        CustomFragment inputFragment=new CustomFragment();
+//        TempViewFragment inputFragment=new TempViewFragment();
         Bundle bundle=new Bundle();
         inputFragment.initDataMap(dataList);
         FragmentHelper.showFrag(getActivity(), R.id.container_framelayout, inputFragment, bundle);

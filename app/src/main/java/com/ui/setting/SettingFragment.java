@@ -60,22 +60,6 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     	  recycleView= getViewById(R.id.dyLayout);
     	   toolbar=getViewById(R.id.toolbar);
           mRootLayout = getViewById(R.id.rootLayout);
-
-
-//          recycleView.initCustomViewCallBack(new DyLayout.CustomViewCallBack() {
-//              @Override
-//              public View getCustomView(Context context, int i) {
-//                  View itemView=null;
-//                  if (i==4){
-//                      itemView=new CommonTextItemView(context);
-//                  }else{
-//                      itemView=new ContentItemView(context);
-//                  }
-//                  return itemView;
-//              }
-//          });
-
-
       }
       @Override
     public void initData() {
@@ -180,7 +164,7 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
 //                      contentItemView.mHintTextView.setText(imgBean.getHint());
                       HintTextViewConfig.load(contentItemView,imgBean);
                       if (!isPlaying){
-                          HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mImageView);
+                          HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mHeadImageView);
                       }
 
                   }

@@ -2,6 +2,7 @@ package com.ui.catalog;
 
 import com.business.service.music.MusiceHelper;
 import com.business.service.music.server.SongBean;
+import com.core.CommonDefined;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.gen.DictDao;
 import com.easy.recycleview.bean.AddressHeadImgeSettings;
@@ -158,6 +159,7 @@ public class CatalogPresenter {
 						  List<DyItemBean> dataListCustom=new ArrayList<>();
 						  final DictBusBean todayBean=new DictBusBean();
 						  todayBean.setTitle(list.toString());
+						  todayBean.setViewType(CommonDefined.ViewType_ScrollView);
 
 						  int hight= DensityUtil.dip2px(iSafeSettingView.getContext(),1200);
 						  todayBean.setItemHight(hight);

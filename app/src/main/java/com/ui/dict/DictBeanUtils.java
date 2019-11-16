@@ -322,6 +322,82 @@ public class DictBeanUtils {
 
     }
 
+
+     public static String getReadMeMsg(final Context context, final parseDictcallback dictcallback){
+        String  msg="";
+
+
+         Observable.create(new ObservableOnSubscribe< String   >() {
+             @Override
+             public void subscribe(ObservableEmitter<String> emitter)
+                     throws Exception {
+
+                 String readMsg="";
+                 String filecidanName= "readme.txt";
+
+                 try {
+                     InputStream inputStream = context.getAssets().open(filecidanName);
+
+                     String result = "";//如果path是传递过来的参数，可以做一个非目录的判断
+                     try {
+                         if (inputStream != null)
+                         {
+                             BufferedReader buffreader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
+                             String line;
+                             //分行读取
+                             while (( line = buffreader.readLine()) != null) {
+                                 if (StringUtils.isNotEmpty(line)){
+                                     try{
+                                         readMsg=readMsg+"\r\n"+line;
+                                     }catch (Exception e){
+                                         System.out.print(e.getMessage());
+                                     }
+
+
+                                 }
+//						newList.add(line+"\n");
+                             }
+                             inputStream.close();
+                         }
+                     }
+                     catch (Exception e)
+                     {
+                         Log.d("TestFile", "The File doesn't not exist.");
+                     }
+
+
+
+
+                 } catch (Exception e1) {
+                     e1.printStackTrace();
+                 }
+                 emitter.onNext(readMsg);
+
+             } })
+                 .observeOn(AndroidSchedulers.mainThread())
+                 .subscribeOn(Schedulers.io()).subscribe(new Observer<String   >() {
+             @Override public void onSubscribe(Disposable d) {
+//				mDisposable=d;
+             }
+             @Override public void onNext(String msg) {
+                 dictcallback.parseDataBack(msg);
+
+             }
+             @Override public void onError(Throwable e) {
+             }
+
+             @Override public void onComplete() {
+
+             }
+         });
+
+
+
+         return msg;
+     }
+
+
+
         public static  void importDbSentence(final Context context, final parseDictcallback dictcallback){
 
         Observable.create(new ObservableOnSubscribe< ArrayList<SentenceYy>   >() {

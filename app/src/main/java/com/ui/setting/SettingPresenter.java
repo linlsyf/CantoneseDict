@@ -1,5 +1,6 @@
 package com.ui.setting;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
@@ -8,6 +9,7 @@ import com.business.BusinessBroadcastUtils;
 import com.business.bean.ResponseMsgData;
 import com.business.login.User;
 import com.business.weixin.WeixinShare;
+import com.core.CommonDefined;
 import com.core.CoreApplication;
 import com.core.ServerUrl;
 import com.core.base.GlobalConstants;
@@ -29,6 +31,7 @@ import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
+import com.ui.dict.DictBean;
 import com.ui.dict.DictBeanUtils;
 import com.utils.PermissionCheckUtils;
 import com.utils.ThemeHelper;
@@ -211,15 +214,30 @@ public class SettingPresenter   {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
 
-				  List<DyItemBean> dataListCustom=new ArrayList<>();
 
 
-				  DyItemBean  privateBean=new DyItemBean();
-				  privateBean.setViewType(4);
-				  privateBean.setTitle(iSafeSettingView.getContext().getString(R.string.user_content));
-				    dataListCustom.add(privateBean);
+				  DictBeanUtils.getReadMeMsg(CoreApplication.instance, new DictBeanUtils.parseDictcallback() {
+					  @Override
+					  public void parseDataBack(Object msg) {
+						  List<DyItemBean> dataListCustom=new ArrayList<>();
 
-				  iSafeSettingView.openCustomView(dataListCustom);
+						  DyItemBean  privateBean=new DyItemBean();
+						  privateBean.setViewType(CommonDefined.ViewType_ScrollView);
+
+
+						  privateBean.setTitle(msg.toString());
+						  dataListCustom.add(privateBean);
+
+						  iSafeSettingView.openCustomView(dataListCustom);
+					  }
+
+					  @Override
+					  public void showMsg(String msg) {
+
+					  }
+				  });
+
+
 
 //						   Intent intent = new Intent(iSafeSettingView.getContext(), TestActivity.class);
 //						   iSafeSettingView.getContext().startActivity(intent);

@@ -150,7 +150,7 @@ public class TbsReaderFragment extends BaseFragment implements ITbsReaderView, T
                     contentItemView.mTitleTextView.setText(imgBean.getTitle());
                     HintTextViewConfig.load(contentItemView,imgBean);
                     if (!isPlaying){
-                        HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mImageView);
+                        HeadImageViewConfig.load((DyItemBean) imgBean,contentItemView.mHeadImageView);
                     }
                 }
             }
