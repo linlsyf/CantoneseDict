@@ -140,6 +140,8 @@ public class CatalogPresenter {
 		  newSectionList.add(itemBeaBasen);
 
 
+
+
 		  DyItemBean  itemErrorBasen=new DyItemBean();
 		  itemErrorBasen.setItemHight(hight);
 

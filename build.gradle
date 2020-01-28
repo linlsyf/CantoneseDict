@@ -12,7 +12,6 @@ buildscript {
         classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0' // Add this line
 
-        classpath 'com.antfortune.freeline:gradle:0.8.8'
     }
 
 

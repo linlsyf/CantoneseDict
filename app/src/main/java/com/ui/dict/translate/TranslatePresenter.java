@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.business.baidu.translate.SearchParam;
 import com.business.baidu.translate.TranSalteKey;
 import com.business.bean.VideoBussinessItem;
+import com.core.CoreApplication;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.entity.SentenceYy;
@@ -139,7 +140,7 @@ public class TranslatePresenter {
 								}else{
 									mDictDao.insertOrReplaceInTx(dict);
 								}
-								iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.exec_sucess));
+								iVideoHomeView.showToast(CoreApplication.instance.getString(R.string.exec_sucess));
 							}
 	     else if (clickTypeEnum.value()==IItemView.ClickTypeEnum.RIGHT_FIRST_IMG.value()){
 								if (StringUtils.isNotEmpty(dyItemBean.getTitle())){
@@ -157,7 +158,7 @@ public class TranslatePresenter {
 				}
 				DyItemBean dyItemBeanSentence=new DyItemBean();
 				dyItemBeanSentence.setViewType(IItemView.ViewTypeEnum.SECTION.value());
-				dyItemBeanSentence.setTitle(iVideoHomeView.getContext().getString(R.string.sentence));
+				dyItemBeanSentence.setTitle(CoreApplication.instance.getString(R.string.sentence));
 				settingMaps.add(dyItemBeanSentence);
 
 				List<SentenceYy>	 sentenceYyList =new ArrayList<>();

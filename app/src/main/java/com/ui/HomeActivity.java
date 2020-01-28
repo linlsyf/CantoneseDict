@@ -22,6 +22,7 @@ import com.ui.login.IlogInView;
 import com.ui.login.LoginActivity;
 import com.ui.login.LoginPresenter;
 import com.ui.setting.SettingFragment;
+import com.utils.NaviHightUtils;
 import com.utils.ThemeHelper;
 
 
@@ -54,7 +55,7 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 				mainViewAdapter.setHasMsgIndex(0);
 				tabContainerView.setAdapter(mainViewAdapter);
 
-
+		NaviHightUtils.setHight( this);
 
 	}
 

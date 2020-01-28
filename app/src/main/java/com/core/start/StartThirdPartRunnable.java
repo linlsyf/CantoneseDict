@@ -4,7 +4,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
 import android.util.Log;
 
-import com.antfortune.freeline.FreelineCore;
 import com.core.CoreApplication;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.gen.DaoMaster;
@@ -35,7 +34,6 @@ public class StartThirdPartRunnable   implements Runnable,  IstartRun{
     @Override
     public void run() {
 
-        FreelineCore.init(CoreApplication.getAppContext());
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(CoreApplication.getAppContext());     		// 初始化 JPush
         // 是否为平板

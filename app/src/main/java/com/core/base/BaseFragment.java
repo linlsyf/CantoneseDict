@@ -16,6 +16,8 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 
 import com.core.utils.BackHandledInterface;
+import com.easy.recycleview.DyLayout;
+import com.easy.recycleview.bean.Section;
 import com.easysoft.utils.lib.system.ToastUtils;
 
 import java.net.MalformedURLException;
@@ -148,7 +150,18 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 		}
 		return null;
 	}
-	
+
+	public   void  updateSection(final DyLayout recycleView, final Section section ){
+
+
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				recycleView.updateSection(section);
+			}
+		});
+	}
+
 	public int getLayoutResId(String layoutName) {
 		if(layoutName == null){
 			return 0;

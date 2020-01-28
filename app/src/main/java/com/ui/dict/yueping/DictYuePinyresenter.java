@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.business.bean.VideoBussinessItem;
+import com.core.CoreApplication;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
@@ -49,7 +50,7 @@ public class DictYuePinyresenter {
 		List<IDyItemBean> settingMaps=new ArrayList<>();
 
 		final DictBusBean dictNoticeBean=new DictBusBean();
-		dictNoticeBean.setTitle(iVideoHomeView.getContext().getString(R.string.notice_yy));
+		dictNoticeBean.setTitle(CoreApplication.instance.getString(R.string.notice_yy));
 		dictNoticeBean.setOnItemListener(new IItemView.onItemClick() {
 			@Override
 			public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
@@ -58,13 +59,13 @@ public class DictYuePinyresenter {
 				String url="http://www.fyan8.com/";
 				Uri uri = Uri.parse(url);
 				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-				iVideoHomeView.getContext().startActivity(intent);
+				CoreApplication.instance.startActivity(intent);
 			}
 		});
 //		settingMaps.add(dictNoticeBean);
 
 		final DictBusBean dictBusBean=new DictBusBean();
-		dictBusBean.setTitle(iVideoHomeView.getContext().getString(R.string.yp_sm));
+		dictBusBean.setTitle(CoreApplication.instance.getString(R.string.yp_sm));
 		dictBusBean.setViewType(IItemView.ViewTypeEnum.SECTION.value());
 //		dictBusBean.setOnItemListener(new IItemView.onItemClick() {
 //			@Override
@@ -85,13 +86,12 @@ public class DictYuePinyresenter {
 		dictPgBean.setViewType(4);
 		AddressHeadImgeSettings headImgeSettings=new AddressHeadImgeSettings();
 		headImgeSettings.setHeadImgDrawableId(R.drawable.yueysm);
-//		headImgeSettings.setHeadImgRadius(DensityUtil.dip2px(iVideoHomeView.getContext(),200));
 		dictPgBean.setHeadImgeSettings(headImgeSettings);
 		settingMaps.add(dictPgBean);
 
 
 		final DictBusBean dictYmBean=new DictBusBean();
-		dictYmBean.setTitle(iVideoHomeView.getContext().getString(R.string.yp_ym));
+		dictYmBean.setTitle(CoreApplication.instance.getString(R.string.yp_ym));
 		dictYmBean.setViewType(IItemView.ViewTypeEnum.SECTION.value());
 		settingMaps.add(dictYmBean);
 
@@ -99,13 +99,12 @@ public class DictYuePinyresenter {
 		dictymPgBean.setViewType(4);
 		 headImgeSettings=new AddressHeadImgeSettings();
 		headImgeSettings.setHeadImgDrawableId(R.drawable.yueyuym);
-//		headImgeSettings.setHeadImgRadius(DensityUtil.dip2px(iVideoHomeView.getContext(),250));
 		dictymPgBean.setHeadImgeSettings(headImgeSettings);
 		settingMaps.add(dictymPgBean);
 		//settingMaps
 
 		final DictBusBean dictsdBean=new DictBusBean();
-		dictsdBean.setTitle(iVideoHomeView.getContext().getString(R.string.yp_sd));
+		dictsdBean.setTitle(CoreApplication.instance.getString(R.string.yp_sd));
 		dictsdBean.setViewType(IItemView.ViewTypeEnum.SECTION.value());
 		settingMaps.add(dictsdBean);
 
@@ -114,7 +113,6 @@ public class DictYuePinyresenter {
 		dictysdBean.setViewType(4);
 		headImgeSettings=new AddressHeadImgeSettings();
 		headImgeSettings.setHeadImgDrawableId(R.drawable.yysd);
-//		headImgeSettings.setHeadImgRadius(DensityUtil.dip2px(iVideoHomeView.getContext(),200));
 		dictysdBean.setHeadImgeSettings(headImgeSettings);
 		settingMaps.add(dictysdBean);
 
@@ -165,14 +163,14 @@ public class DictYuePinyresenter {
 		  }
 
 		  if (isIniting==false){
-			  iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
+			  iVideoHomeView.showToast(CoreApplication.instance.getString(R.string.wait_dict_init_please));
 
 			  isIniting=true;
 
-			  iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
+			  iVideoHomeView.showToast(CoreApplication.instance.getString(R.string.wait_dict_init_please));
 
-			  DictBeanUtils.copyDbFile(iVideoHomeView.getContext());
-			  DictBeanUtils.initDb(iVideoHomeView.getContext(), new DictBeanUtils.parseDictcallback() {
+			  DictBeanUtils.copyDbFile(CoreApplication.instance);
+			  DictBeanUtils.initDb(CoreApplication.instance, new DictBeanUtils.parseDictcallback() {
 				  @Override
 				  public void parseDataBack(Object obj) {
 //					  List<Dict> list= (List<Dict>) obj;
@@ -196,10 +194,10 @@ public class DictYuePinyresenter {
 		List<Dict> dictlist = mDictDao.queryBuilder().where(DictDao.Properties.Name.like("%" +text+ "%")).list();
 
 		if (!isLoadDictSucess){
-		  	iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.wait_dict_init_please));
+		  	iVideoHomeView.showToast(CoreApplication.instance.getString(R.string.wait_dict_init_please));
 		  }else {
 			  if (dictlist.size()==0){
-				  iVideoHomeView.showToast(iVideoHomeView.getContext().getString(R.string.search_null));
+				  iVideoHomeView.showToast(CoreApplication.instance.getString(R.string.search_null));
 			  }else{
 				  settingSection=new Section(KEY_SETTING);
 				  settingSection.setShowSection(false);

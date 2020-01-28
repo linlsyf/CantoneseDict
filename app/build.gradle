@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.antfortune.freeline'
 apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 26

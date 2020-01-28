@@ -7,19 +7,32 @@
     android:layout_height="match_parent"
                 >
 
-    <com.easysoft.widget.tabview.widget.TabContainerView
-        android:id="@+id/tab_container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:tabTextColor="@color/common_title_color"
-        app:selectedTextColor="@color/common_title_color"
-        app:tabTextSize="12sp"
-        app:drawablePadding="1dp"
-        app:iconHeight="22dp"
-        app:iconWidth="22dp"
-        android:background="?attr/main_bg"
-        app:divideLineColor="@color/common_title_color"
-        app:divideLineHeight="0.3dp"/>
+        android:orientation="vertical"
+        >
+        <com.easysoft.widget.tabview.widget.TabContainerView
+            android:id="@+id/tab_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tabTextColor="@color/common_title_color"
+            app:selectedTextColor="@color/common_title_color"
+            android:layout_weight="1"
+            app:tabTextSize="12sp"
+            app:drawablePadding="1dp"
+            app:iconHeight="22dp"
+            app:iconWidth="22dp"
+            android:background="?attr/main_bg"
+            app:divideLineColor="@color/common_title_color"
+            app:divideLineHeight="0.3dp"/>
+        <LinearLayout
+            android:id="@+id/naLyout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"></LinearLayout>
+
+    </LinearLayout>
     <com.easysoft.widget.fragment.SlidingLayout
           android:id="@+id/container_framelayout"
         android:layout_width="match_parent"
