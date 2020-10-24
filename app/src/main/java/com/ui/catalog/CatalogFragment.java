@@ -1,6 +1,8 @@
 package com.ui.catalog;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
+import com.ui.common.browser.CommonBrowserFrament;
 import com.ui.common.custom.CustomFragment;
 import com.ui.common.tempview.TempViewFragment;
 import com.ui.dict.DictTypeEnum;
@@ -97,6 +100,18 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
                 }
             }
         });
+    }
+
+    @Override
+    public void openUrl(String url) {
+//        Uri uri = Uri.parse(url);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+
+        Bundle  bundle=new Bundle();
+        bundle.putString("url",url);
+
+        FragmentHelper.showFrag(activity,R.id.container_framelayout,new CommonBrowserFrament(),bundle);
     }
     @Override
     public void updateUIItem(final boolean isPlaying, final DyItemBean imgBean) {

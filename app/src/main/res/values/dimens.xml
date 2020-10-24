@@ -21,5 +21,5 @@
     <dimen name="comon_margin_right">5dp</dimen>
     <dimen name="comon_head_radius">40dp</dimen>
     <dimen name="comon_icon_radius">10dp</dimen>
-    <dimen name="comon_setting_headimg_radius">20dp</dimen>
+    <dimen name="comon_setting_headimg_radius">40dp</dimen>
 </resources>

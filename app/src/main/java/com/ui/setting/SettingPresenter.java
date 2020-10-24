@@ -246,6 +246,20 @@ public class SettingPresenter   {
 		  });
 		  newSectionList.add(userPrivateBean);
 
+		  DyItemBean  feedbackBean=new DyItemBean();
+		  feedbackBean.setTitle("反馈吐槽");
+		  feedbackBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
+
+		  feedbackBean.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+				  iSafeSettingView.openUrl("https://support.qq.com/products/281738?");
+			  }
+		  });
+		  newSectionList.add(feedbackBean);
+
+
+
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);
       }

@@ -14,7 +14,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 24
         versionCode 1
-        versionName "1.1.5"
+        versionName "1.1.6"
         flavorDimensions "versionCode"
         multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }//butterKnife注入使用到
@@ -166,4 +166,7 @@ dependencies {
     // 微信图片选择器
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.3.1'
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+
+    //implementation 'me.weyye.hipermission:library:1.0.7'
+
 }

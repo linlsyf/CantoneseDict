@@ -27,6 +27,8 @@ public class CatalogPresenter {
 	private DictDao mDictDao;
 	private  int mSpanSize=3;
 	private DyItemBean musicBean;
+	int hight=100;
+
 	public CatalogPresenter(ICatalogView iSafeSettingView) {
     	this.iSafeSettingView=iSafeSettingView;
 	}
@@ -35,37 +37,100 @@ public class CatalogPresenter {
 		  List<IDyItemBean>  newSectionList=new ArrayList<>();
 		  Section newSection=new Section("");
 		  int headRadius= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),25);
-		  musicBean=new DyItemBean();
-		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
-		  musicBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_music).setHeadImgRadius(headRadius));
-		    musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
-		  musicBean.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-				  if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
-					  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
-						  @Override
-						  public void callBack(boolean isPlaying,SongBean songBean) {
-							  updateSongItemUI(isPlaying,songBean);
-						  }
-					  });
+		  hight= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),100);
 
-				  }else if(clickTypeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
-					  MusiceHelper.getInstance(iSafeSettingView.getContext()).next(new MusiceHelper.playCallBack() {
-						  @Override
-						  public void callBack(boolean isPlaying,SongBean songBean) {
-							  updateSongItemUI(isPlaying,songBean);
-						  }
-					  });
-				  }
+//		  musicBean=new DyItemBean();
+//		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
+//		  musicBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_music).setHeadImgRadius(headRadius));
+//		    musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
+//		  musicBean.setOnItemListener(new IItemView.onItemClick() {
+//			  @Override
+//			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+//				  if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
+//					  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
+//						  @Override
+//						  public void callBack(boolean isPlaying,SongBean songBean) {
+//							  updateSongItemUI(isPlaying,songBean);
+//						  }
+//					  });
+//
+//				  }else if(clickTypeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
+//					  MusiceHelper.getInstance(iSafeSettingView.getContext()).next(new MusiceHelper.playCallBack() {
+//						  @Override
+//						  public void callBack(boolean isPlaying,SongBean songBean) {
+//							  updateSongItemUI(isPlaying,songBean);
+//						  }
+//					  });
+//				  }
+//			  }
+//		  });
+//		  newSectionList.add(musicBean);
+
+		  DyItemBean  testtBean=new DyItemBean();
+//		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
+		  testtBean.setCentLayoutConfig(
+				  new CentLayoutConfig().setImgRadius(headRadius).setImgResId(R.drawable.catalog_pro)
+						  .setName(iSafeSettingView.getContext().getString(R.string.feedback))
+		  );
+		  testtBean.setSpanSize(mSpanSize);
+		  testtBean.setItemHight(hight);
+
+		  testtBean.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+				  //iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.develop_setting));
+
+				  iSafeSettingView .openUrl("https://support.qq.com/products/281738?");
+
 			  }
 		  });
-		  newSectionList.add(musicBean);
+
+		  newSectionList.add(testtBean);
+
+
+		  DyItemBean  itemErrorBasen=new DyItemBean();
+		  itemErrorBasen.setItemHight(hight);
+
+		  itemErrorBasen.setCentLayoutConfig(
+				  new CentLayoutConfig()
+						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
+						  .setName(iSafeSettingView.getContext().getString(R.string.last_error_msg))
+		  );
+
+		  itemErrorBasen.setSpanSize(mSpanSize);
+		  itemErrorBasen.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+				  DictBeanUtils.getErrorMsg(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
+					  @Override
+					  public void parseDataBack(Object list) {
+						  List<DyItemBean> dataListCustom=new ArrayList<>();
+						  final DictBusBean todayBean=new DictBusBean();
+						  todayBean.setTitle(list.toString());
+						  todayBean.setViewType(CommonDefined.ViewType_ScrollView);
+
+//						  int hight= DensityUtil.dip2px(iSafeSettingView.getContext(),1200);
+						  todayBean.setItemHight(hight);
+//						  todayBean.setCentLayoutConfig(new CentLayoutConfig().setName(list.toString()));
+						  dataListCustom.add(todayBean);
+
+						  iSafeSettingView.openTempView(dataListCustom);
+					  }
+
+					  @Override
+					  public void showMsg(String msg) {
+						  iSafeSettingView.showToast(msg);
+
+					  }
+				  });
+
+			  }
+		  });
+		  newSectionList.add(itemErrorBasen);
 		  DyItemBean  splitItemBean=new DyItemBean();
 		  splitItemBean.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
 		  newSectionList.add(splitItemBean);
 
-		  int hight=DensityUtil.dip2pxInt(iSafeSettingView.getContext(),100);
 		  DyItemBean  itemBean=new DyItemBean();
 		    itemBean.setItemHight(hight);
 //		  itemBean.setCentLayoutConfig(new CentLayoutConfig().setName(iSafeSettingView.getContext().getString(R.string.start_percent)));
@@ -142,57 +207,7 @@ public class CatalogPresenter {
 
 
 
-		  DyItemBean  itemErrorBasen=new DyItemBean();
-		  itemErrorBasen.setItemHight(hight);
 
-		  itemErrorBasen.setCentLayoutConfig(
-				  new CentLayoutConfig()
-						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
-						  .setName(iSafeSettingView.getContext().getString(R.string.last_error_msg))
-		  );
-
-		  itemErrorBasen.setSpanSize(mSpanSize);
-		  itemErrorBasen.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-				  DictBeanUtils.getErrorMsg(iSafeSettingView.getContext(), new DictBeanUtils.parseDictcallback() {
-					  @Override
-					  public void parseDataBack(Object list) {
-						  List<DyItemBean> dataListCustom=new ArrayList<>();
-						  final DictBusBean todayBean=new DictBusBean();
-						  todayBean.setTitle(list.toString());
-						  todayBean.setViewType(CommonDefined.ViewType_ScrollView);
-
-						  int hight= DensityUtil.dip2px(iSafeSettingView.getContext(),1200);
-						  todayBean.setItemHight(hight);
-//						  todayBean.setCentLayoutConfig(new CentLayoutConfig().setName(list.toString()));
-						  dataListCustom.add(todayBean);
-
-						  iSafeSettingView.openTempView(dataListCustom);
-					  }
-
-					  @Override
-					  public void showMsg(String msg) {
-					  	iSafeSettingView.showToast(msg);
-
-					  }
-				  });
-
-			  }
-		  });
-		  newSectionList.add(itemErrorBasen);
-		  DyItemBean  testtBean=new DyItemBean();
-//		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
-		  testtBean.setCentLayoutConfig(
-		  		new CentLayoutConfig().setImgRadius(headRadius).setImgResId(R.drawable.catalog_pro)
-		  .setName(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu))
-		  );
-		  testtBean.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
-			  	 iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.develop_setting));
-			  }
-		  });
            newSection.setAutoAddSpliteLine(false);
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);

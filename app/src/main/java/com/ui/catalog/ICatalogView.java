@@ -24,6 +24,8 @@ public interface ICatalogView extends IBaseView{
 
 	void openTempView(List<DyItemBean> dataListCustom);
 
+    void openUrl(String s);
 
-	/// void toOpenErrorFile();
+
+    /// void toOpenErrorFile();
 }
