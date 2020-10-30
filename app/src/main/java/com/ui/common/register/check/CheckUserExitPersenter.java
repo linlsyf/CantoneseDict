@@ -26,7 +26,7 @@ public class CheckUserExitPersenter {
         final String json= JSON.toJSONString(loginUser);
         url=ServerUrl.getFinalUrl(url,json);
 
-        service.request( url ,new EasyHttpCallback(new IEasyResponse() {
+        service.request(icheckPhoneView.getContext(), url ,new IEasyResponse() {
             @Override
             public void onFailure(CallBackResult serviceCallBack) {
                 icheckPhoneView.checkPhoneUserExit(false);
@@ -47,7 +47,7 @@ public class CheckUserExitPersenter {
 
 //                ilogInView.showToast("登录成功");
             }
-        }));
+        });
 
     }
 }

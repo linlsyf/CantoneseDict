@@ -61,7 +61,8 @@ public class MusiceHelper {
     }
     public static  void get(String url,IEasyResponse iResponse) throws Exception{
 
-        EasyHttpUtils.getInStance().post(url,new EasyHttpCallback(iResponse).setOutside(true));
+//        EasyHttpUtils.getInStance().post(url,iResponse).setOutside(true));
+//        EasyHttpUtils.getInStance().post(url,new EasyHttpCallback(iResponse).setOutside(true));
 
     }
     public static  void checkPlay(playCallBack callBack)  {

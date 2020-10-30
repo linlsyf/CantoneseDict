@@ -15,6 +15,7 @@ public interface ISafeSettingView extends IBaseView{
 
 	void logOut();
 	void updateItem(DyItemBean imgBean);
+	void updateApk(String url,String name);
 	void updateUIItem(boolean isPlaying,DyItemBean imgBean);
 	void showNews();
 	void showTest();

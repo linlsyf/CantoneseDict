@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bean.AppMsg;
 import com.business.BusinessBroadcastUtils;
+import com.business.bean.BaseBean;
 import com.business.bean.ResponseMsgData;
 import com.business.login.User;
 import com.business.weixin.WeixinShare;
@@ -18,6 +20,7 @@ import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.core.utils.SpUtils;
 import com.easy.recycleview.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IDyItemBean;
@@ -29,10 +32,15 @@ import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.AppInfo;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
+import com.hjq.permissions.OnPermission;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
+import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBean;
 import com.ui.dict.DictBeanUtils;
+import com.ui.dict.DictBusBean;
 import com.utils.PermissionCheckUtils;
 import com.utils.ThemeHelper;
 
@@ -258,11 +266,77 @@ public class SettingPresenter   {
 		  });
 		  newSectionList.add(feedbackBean);
 
+		  DyItemBean  updateBean=new DyItemBean();
+		  updateBean.setTitle("检查更新");
+		  updateBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
+
+		  updateBean.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+				  //iSafeSettingView.openUrl("https://support.qq.com/products/281738?");
+				  updateCheck();
+			  }
+		  });
+		  newSectionList.add(updateBean);
 
 
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);
       }
+
+      public  void  updateCheck(){
+		  String url = ServerUrl.baseUrl+ ServerUrl.updateCheck;
+
+		  url=url+"?id=yueyu";
+
+//		  url=url+"?start="+offset+"&limit="+offsetNum;
+		  service.request(iSafeSettingView.getContext(), url ,new IEasyResponse() {
+			  @Override
+			  public void onFailure(CallBackResult serviceCallBack) {
+				  iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.exec_fail));
+			  }
+
+			  @Override
+			  public void onResponse(CallBackResult serviceCallBack) {
+				  if (serviceCallBack.isSucess()){
+					  ResponseMsg msg=   serviceCallBack.getResponseMsg();
+					  ResponseMsg serverUserResponseMsgData= JSONObject.parseObject(msg.getData().toString(), ResponseMsg.class);
+					  String data=serverUserResponseMsgData.getData().toString();
+					  if (null!=data){
+						  List<AppMsg> dataListFavorites= JSONObject.parseArray(data.toString(), AppMsg.class);
+
+
+						    if (dataListFavorites.size()>0){
+								AppMsg appMsg=dataListFavorites.get(0);
+
+							String  code=	AppInfo.getAppVersion(CoreApplication.getAppContext());
+
+							    if (!code.equals(appMsg.getVersion_code())){
+									String url = ServerUrl.baseUrl+ ServerUrl.updateUrl;
+									  url=url+"?name="+appMsg.getApk_name();
+									//https://www.linlsyf.cn/api/v1/file/downApk?name=cantonese.apk
+                                    iSafeSettingView.updateApk(url,"cantonese.apk");
+
+								}else{
+
+							    	iSafeSettingView.showToast("已经是最新版本");
+								}
+
+							}
+
+					  }
+				  }else{
+
+					  iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.exec_fail));
+				  }
+
+			  }
+		  });
+
+
+	  }
+
+
 
 
 
@@ -300,7 +374,7 @@ public class SettingPresenter   {
 			  final String json= JSON.toJSONString(loginUser);
 			  url=ServerUrl.getFinalUrl(url,json);
 
-			  service.request( url , new EasyHttpCallback(new IEasyResponse() {
+			  service.request( iSafeSettingView.getContext(),url , new IEasyResponse() {
 				  @Override
 				  public void onFailure(CallBackResult serviceCallBack) {
 				  }
@@ -324,7 +398,7 @@ public class SettingPresenter   {
 
 //                ilogInView.showToast("登录成功");
 				  }
-			  }));
+			  });
 		  }}
 	  }
 

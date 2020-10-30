@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 android {
-    compileSdkVersion 26
+    compileSdkVersion 30
     buildToolsVersion  '26.0.2'
     dexOptions {
         javaMaxHeapSize "6g"
@@ -11,10 +11,10 @@ android {
     aaptOptions.useNewCruncher = false
     defaultConfig {
         applicationId "com.linlsyf.area"
-        minSdkVersion 22
-        targetSdkVersion 24
+        minSdkVersion 24
+        targetSdkVersion 30
         versionCode 1
-        versionName "1.1.6"
+        versionName "1.1.7"
         flavorDimensions "versionCode"
         multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }//butterKnife注入使用到
@@ -136,6 +136,8 @@ greendao {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation(name: 'dynamicrecycleview', ext: 'aar')
+
+    implementation 'com.hjq:xxpermissions:8.8'
     //aar引用
     implementation(name: 'utils', ext: 'aar')
     //aar引用

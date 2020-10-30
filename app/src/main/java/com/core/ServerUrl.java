@@ -8,7 +8,9 @@ public class ServerUrl {
 	public static String ip="18.222.51.213";
 	public static String host="http://"+ip;
 	public static int port=8080;
-	public static String baseUrl=host+":"+port+"/easy";
+	public static String baseUrl="https://www.linlsyf.cn";
+//	public static String baseUrl=host+":"+port;
+//	public static String baseUrl=host+":"+port+"/easy";
 
 	public static String UPLOAD_URL="/api/v1/file/upload";
 	//图片
@@ -31,6 +33,7 @@ public class ServerUrl {
 
 	//更新apk
 	public static String updateUrl="/api/v1/file/downApk";
+	public static String updateCheck="/api/v1/applist/searchAppInfo";
 	//用户
 	public static String loginUrl="/api/v1/user/login";
 	public static String Get_UserUrl="/api/v1/user/get";

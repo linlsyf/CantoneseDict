@@ -205,7 +205,7 @@ public class CatalogPresenter {
 		  newSectionList.add(itemBeaBasen);
 
 
-
+//		  cantonese
 
 
            newSection.setAutoAddSpliteLine(false);

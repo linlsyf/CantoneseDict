@@ -58,7 +58,7 @@ public class   RegisterPersenter{
           final String json= JSON.toJSONString(loginUser);
           url=ServerUrl.getFinalUrl(url,json);
 
-          service.request( url , new EasyHttpCallback(new IEasyResponse() {
+          service.request(iregisterView.getContext(), url , new IEasyResponse() {
                @Override
                public void onFailure(CallBackResult serviceCallBack) {
                     iregisterView.showToast("连接服务器错误，注册失败");
@@ -75,7 +75,7 @@ public class   RegisterPersenter{
 
 //                ilogInView.showToast("登录成功");
                }
-          }));
+          });
      }
 
      // 请求验证码，其中country表示国家代码，如“86”；phone表示手机号码，如“13800138000”

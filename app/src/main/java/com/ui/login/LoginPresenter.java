@@ -30,7 +30,7 @@ public class LoginPresenter {
         final String json= JSON.toJSONString(loginUser);
         url=ServerUrl.getFinalUrl(url,json);
 
-        service.request( url ,new EasyHttpCallback(new IEasyResponse() {
+        service.request( ilogInView.getContext(),url ,new IEasyResponse() {
             @Override
             public void onFailure(CallBackResult serviceCallBack) {
                 ilogInView.showToast("登录失败");
@@ -59,7 +59,7 @@ public class LoginPresenter {
                  }
 
             }
-        }));
+        });
 
     }
 }
