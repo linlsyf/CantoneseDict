@@ -1,8 +1,12 @@
 package com.ui.catalog;
 
+import com.alibaba.fastjson.JSONObject;
+import com.bean.AppMsg;
 import com.business.service.music.MusiceHelper;
 import com.business.service.music.server.SongBean;
 import com.core.CommonDefined;
+import com.core.CoreApplication;
+import com.core.ServerUrl;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.gen.DictDao;
 import com.easy.recycleview.bean.AddressHeadImgeSettings;
@@ -11,8 +15,12 @@ import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
+import com.easysoft.utils.lib.http.CallBackResult;
+import com.easysoft.utils.lib.http.IEasyResponse;
+import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.DensityUtil;
 import com.linlsyf.area.R;
+import com.ui.HttpService;
 import com.ui.dict.DictBeanUtils;
 import com.ui.dict.DictBusBean;
 import com.ui.dict.DictTypeEnum;
@@ -28,17 +36,21 @@ public class CatalogPresenter {
 	private  int mSpanSize=3;
 	private DyItemBean musicBean;
 	int hight=100;
+	List<IDyItemBean>  newSectionList;
+	private HttpService service;
+	Section newSection;
+	private int headRadius;
 
 	public CatalogPresenter(ICatalogView iSafeSettingView) {
     	this.iSafeSettingView=iSafeSettingView;
 	}
       public void init(){
 		  mDictDao = GlobalConstants.getInstance().getDaoSession().getDictDao();
-		  List<IDyItemBean>  newSectionList=new ArrayList<>();
-		  Section newSection=new Section("");
-		  int headRadius= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),25);
+		  newSectionList=new ArrayList<>();
+		   newSection=new Section("");
+		   headRadius= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),25);
 		  hight= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),100);
-
+		  service=new HttpService();
 //		  musicBean=new DyItemBean();
 //		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
 //		  musicBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_music).setHeadImgRadius(headRadius));
@@ -204,15 +216,78 @@ public class CatalogPresenter {
 		  });
 		  newSectionList.add(itemBeaBasen);
 
+		  String url = ServerUrl.baseUrl+ ServerUrl.APP_LIST;
 
-//		  cantonese
+		  url=url+"?type=cantonese";
+//		  url=url+"?start="+offset+"&limit="+offsetNum;
+		  service.request(iSafeSettingView.getContext(), url ,new IEasyResponse() {
+			  @Override
+			  public void onFailure(CallBackResult serviceCallBack) {
+				  iSafeSettingView.showToast(R.string.exec_fail);
+			  }
 
+			  @Override
+			  public void onResponse(CallBackResult serviceCallBack) {
+				  if (serviceCallBack.isSucess()){
+					  refresh(serviceCallBack);
+				  }else{
 
+					  iSafeSettingView.showToast(R.string.exec_fail);
+				  }
+
+			  }
+		  });
            newSection.setAutoAddSpliteLine(false);
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);
 	}
+	public void refresh(CallBackResult serviceCallBack){
+		ResponseMsg msg=   serviceCallBack.getResponseMsg();
+		ResponseMsg serverUserResponseMsgData= JSONObject.parseObject(msg.getData().toString(), ResponseMsg.class);
+		String data=serverUserResponseMsgData.getData().toString();
 
+		if (null!=data){
+			List<AppMsg> dataListFavorites= JSONObject.parseArray(data.toString(), AppMsg.class);
+
+			for (final AppMsg  exam:dataListFavorites  ) {
+				final DyItemBean  itemBeanDb=new DyItemBean();
+				itemBeanDb.setBindObject(exam);
+				itemBeanDb.setCentLayoutConfig(
+						new CentLayoutConfig().setName(exam.getName())
+				)  ;
+
+				itemBeanDb.setId(exam.getId());
+//				itemBeanDb.setSpanSize(mSpanSize);
+
+
+				itemBeanDb.setItemHight(hight);
+//		  itemBean.setCentLayoutConfig(new CentLayoutConfig().setName(iSafeSettingView.getContext().getString(R.string.start_percent)));
+				itemBeanDb.setCentLayoutConfig(
+						new CentLayoutConfig()
+								.setImgRadius(headRadius).setImgResId(R.drawable.catalog_pro)
+								.setName(exam.getName())
+				);
+				itemBeanDb.setSpanSize(mSpanSize);
+				
+				itemBeanDb.setOnItemListener(new IItemView.onItemClick() {
+					@Override
+					public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+							iSafeSettingView.openUrl(exam.getContent());
+
+
+					}
+				});
+				newSectionList.add(itemBeanDb);
+
+			}
+
+			newSection.setAutoAddSpliteLine(false);
+			newSection.setDataMaps(newSectionList);
+			iSafeSettingView.initUI(newSection);
+
+
+		}
+	}
 	private void updateSongItemUI(boolean isPlaying,SongBean songBean) {
 		musicBean.setHintShow(true);
 		if (isPlaying){

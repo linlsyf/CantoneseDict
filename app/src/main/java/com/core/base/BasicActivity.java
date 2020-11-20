@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.business.BusinessBroadcastUtils;
+import com.easysoft.utils.lib.system.ToastUtils;
 
 @SuppressLint("HandlerLeak")
 public abstract class BasicActivity extends FragmentActivity implements BaseUiInterface{
@@ -55,7 +56,15 @@ public abstract class BasicActivity extends FragmentActivity implements BaseUiIn
 		super.onDestroy();
 	}
 
+	public void showToast(final int id) {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				ToastUtils.show(activity,activity.getResources().getString(id));
 
+			}
+		});
+	}
 	class MYBroadcastReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {

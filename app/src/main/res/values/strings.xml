@@ -6,7 +6,8 @@
     <string name="login">登录</string>
     <string name="dict">词典</string>
     <string name="inserting_coil_notification">下线通知</string>
-
+    <string name="pay_encourage">赞赏支持</string>
+    <string name="refresh">刷新</string>
     <!-- 注册界面-->
     <string name="next_step">下一步</string>
     <string name="new_account_register">新用户注册</string>

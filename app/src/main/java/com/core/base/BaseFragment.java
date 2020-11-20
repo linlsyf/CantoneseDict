@@ -231,11 +231,21 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 	}
 
 	@Override
+	public void showToast(final int id) {
+		getActivity().runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				ToastUtils.show(getActivity(),activity.getResources().getString(id));
+
+			}
+		});
+	}
+	@Override
 	public void showToast(final String text) {
 		getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				ToastUtils.show(getActivity(),text);
+				ToastUtils.show(activity,text);
 
 			}
 		});

@@ -12,6 +12,12 @@ public class ServerUrl {
 //	public static String baseUrl=host+":"+port;
 //	public static String baseUrl=host+":"+port+"/easy";
 
+	public static String APP_LIST="/api/v1/applist/search";
+
+
+
+
+
 	public static String UPLOAD_URL="/api/v1/file/upload";
 	//图片
 	public static final String IMG_URL="/api/v1/file/down?type=2&name=";

@@ -21,6 +21,7 @@ import com.easy.recycleview.custom.baseview.config.HintTextViewConfig;
 import com.easysoft.widget.config.WidgetConfig;
 import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
+import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.linlsyf.area.R;
 import com.ui.common.browser.CommonBrowserFrament;
@@ -63,12 +64,27 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
       @Override
     public void initData() {
           TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), "设置", 0);
+          TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.refresh),0);
           toolbar.resetConfig();
           mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
       presenter=new CatalogPresenter(this);
       presenter.init();
     }
 
+    @Override
+    public void initListener() {
+        toolbar.setNavigationBarListener(new NavigationBarListener() {
+
+            @Override
+            public void onClick(ViewGroup containView, NavigationBar.Location location) {
+
+                if (location == NavigationBar.Location.RIGHT_FIRST) {
+                    presenter.init();
+                }
+            }
+        });
+
+    }
 
     @Override
     public void showType(final VideoBussinessItem item, final int type) {
@@ -104,10 +120,6 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
 
     @Override
     public void openUrl(String url) {
-//        Uri uri = Uri.parse(url);
-//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//        startActivity(intent);
-
         Bundle  bundle=new Bundle();
         bundle.putString("url",url);
 
@@ -161,9 +173,15 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
         }
     }
 	@Override
-	public void initUI(Section section) {
-		recycleView.updateSection(section);
-		
+	public void initUI(final  Section section) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                recycleView.updateSection(section);
+
+            }
+        });
+
 	}
 
     @Override

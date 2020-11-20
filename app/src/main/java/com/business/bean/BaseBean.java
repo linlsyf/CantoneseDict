@@ -5,6 +5,7 @@ public class BaseBean {
     private String name;
     private String title;
     private String createTime;
+    private String content;
 
     public String getId() {
         return id;
@@ -36,5 +37,13 @@ public class BaseBean {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

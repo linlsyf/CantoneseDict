@@ -2,6 +2,10 @@ package com.ui.setting;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -30,8 +34,10 @@ import com.easysoft.utils.lib.http.EasyHttpCallback;
 import com.easysoft.utils.lib.http.IEasyResponse;
 import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.AppInfo;
+import com.easysoft.utils.lib.system.DensityUtil;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
+import com.easysoft.widget.dialog.CustomDialog;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
@@ -278,17 +284,41 @@ public class SettingPresenter   {
 			  }
 		  });
 		  newSectionList.add(updateBean);
+		  DyItemBean  payBean=new DyItemBean();
+		  payBean.setTitle("赞赏支持");
+		  payBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
+
+		  payBean.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+				  //iSafeSettingView.openUrl("https://support.qq.com/products/281738?");
+				  pay();
+			  }
+		  });
+		  newSectionList.add(payBean);
 
 
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);
       }
 
+        public void pay(){
+			CustomDialog dialog = new CustomDialog(iSafeSettingView.getContext(), false, false);
+			dialog.setTitle(iSafeSettingView.getContext().getString(R.string.pay_encourage));
+			ImageView imageView=new ImageView(iSafeSettingView.getContext());
+			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+			imageView.setImageResource(R.drawable.pay);
+			int width=DensityUtil.dip2pxInt(iSafeSettingView.getContext(),350);
+			int height=DensityUtil.dip2pxInt(iSafeSettingView.getContext(),500);
+			dialog.setBodyView(imageView,width,height);
+			dialog.setCancelVisible(View.VISIBLE);
+			dialog.setOKVisible(View.GONE);
+			dialog.show();
+
+		}
       public  void  updateCheck(){
 		  String url = ServerUrl.baseUrl+ ServerUrl.updateCheck;
-
 		  url=url+"?id=yueyu";
-
 //		  url=url+"?start="+offset+"&limit="+offsetNum;
 		  service.request(iSafeSettingView.getContext(), url ,new IEasyResponse() {
 			  @Override
