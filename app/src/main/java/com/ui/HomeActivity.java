@@ -68,6 +68,13 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 		if(checkReadPermission(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_READ_STOR_PERMISSION)){
 
 		}
+		ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_SETTINGS} , 1);
+
+		if(checkReadPermission(Manifest.permission.WRITE_SETTINGS, REQUEST_READ_STOR_PERMISSION)){
+
+		}
+
+
 
 	}
 

@@ -16,7 +16,6 @@ import com.linlsyf.area.R;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
 
-
 import static com.core.base.GlobalConstants.TYPE_SYSTEM_APP;
 
 /**
@@ -61,6 +60,7 @@ public class StartThirdPartRunnable   implements Runnable,  IstartRun{
         // Setting.setShowLog(false);
 
         //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+
         QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
 
             @Override
@@ -76,8 +76,7 @@ public class StartThirdPartRunnable   implements Runnable,  IstartRun{
             }
         };
         //x5内核初始化接口
-        QbSdk.initX5Environment(CoreApplication.getAppContext(), cb);
-
+        QbSdk.initX5Environment(CoreApplication.getAppContext(),  cb);
     }
 
 
