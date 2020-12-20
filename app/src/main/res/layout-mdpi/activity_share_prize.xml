@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingBottom="5dip"
+    android:paddingLeft="15dip"
+    android:paddingRight="15dip"
+    android:paddingTop="5dip" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:scrollbars="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qqshare_item_container_margin_left"
+            android:layout_marginRight="@dimen/qqshare_item_container_margin_right"
+            android:orientation="vertical" >
+
+            <!-- title -->
+
+            <LinearLayout
+                android:id="@+id/prize_title_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="@dimen/qqshare_item_container_margin_left"
+                android:layout_marginRight="@dimen/qqshare_item_container_margin_right"
+                android:layout_marginTop="@dimen/qqshare_item_container_margin_top"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/title" />
+
+                <EditText
+                    android:id="@+id/prize_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/qqshare_title_hint"
+                    android:text="@string/qqshare_title_content" />
+            </LinearLayout>
+
+            <!-- summary -->
+
+            <LinearLayout
+                android:id="@+id/prize_summary_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="@dimen/qqshare_item_container_margin_left"
+                android:layout_marginRight="@dimen/qqshare_item_container_margin_right"
+                android:layout_marginTop="@dimen/qqshare_item_container_margin_top"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/summary" />
+
+                <EditText
+                    android:id="@+id/prize_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/qqshare_summary_hint"
+                    android:text="@string/qqshare_summary_content" />
+            </LinearLayout>
+
+            <!-- imageUrl -->
+
+            <LinearLayout
+                android:id="@+id/prize_imageUrl_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginTop="@dimen/qqshare_item_container_margin_top"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="@dimen/qqshare_radioBtn_lable_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/qqshare_imageUrl_lable" />
+
+                <EditText
+                    android:id="@+id/prize_image_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qqshare_item_container_margin_left"
+                    android:layout_marginRight="@dimen/qqshare_item_container_margin_right"
+                    android:ems="10"
+                    android:hint="@string/qqshare_imageUrl_hint"
+                    android:inputType="textUri|textMultiLine"
+                    android:text="@string/qqshare_imageUrl_content" />
+            </LinearLayout>
+             <!-- 活动id -->
+
+            <LinearLayout
+                android:id="@+id/activityid_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginTop="@dimen/qqshare_item_container_margin_top"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="@dimen/qqshare_radioBtn_lable_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/share_prize_id" />
+
+                <EditText
+                    android:id="@+id/prize_id_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qqshare_item_container_margin_left"
+                    android:layout_marginRight="@dimen/qqshare_item_container_margin_right"
+                    android:ems="10"
+                    android:hint="@string/share_prize_id_hint"
+                    android:inputType="textUri|textMultiLine" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/qqshare_item_container_margin_top" >
+
+        <Button
+            android:id="@+id/shareqq_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="分享奖项" />
+        <Button
+            android:id="@+id/check_activity_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="查询奖项" />
+        <Button
+            android:id="@+id/exchange_prize_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="兑换奖项" />
+    </LinearLayout>
+
+</LinearLayout>

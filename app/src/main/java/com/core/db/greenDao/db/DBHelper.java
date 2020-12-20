@@ -1,4 +1,4 @@
-package  com.core.db.greenDao.db;
+package com.core.db.greenDao.db;
 
 import android.content.Context;
 

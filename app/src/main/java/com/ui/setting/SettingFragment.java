@@ -23,9 +23,7 @@ import com.easysoft.widget.config.WidgetConfig;
 import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.hjq.permissions.OnPermission;
-import com.hjq.permissions.Permission;
-import com.hjq.permissions.XXPermissions;
+
 import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.common.browser.CommonBrowserFrament;
@@ -35,6 +33,7 @@ import com.ui.common.view.CommonTextItemView;
 import com.ui.login.LoginActivity;
 import com.ui.setting.about.AboutFragment;
 
+import java.security.acl.Permission;
 import java.util.List;
 
 public class SettingFragment extends BaseFragment implements ISafeSettingView{
@@ -158,52 +157,52 @@ public class SettingFragment extends BaseFragment implements ISafeSettingView{
     @Override
     public void updateApk(final String url,final  String name) {
 
-
-        XXPermissions.with(activity)
-                // 申请安装包权限
-                .permission(Permission.REQUEST_INSTALL_PACKAGES)
-                // 申请悬浮窗权限
-                //.permission(Permission.SYSTEM_ALERT_WINDOW)
-                // 申请通知栏权限
-                //.permission(Permission.NOTIFICATION_SERVICE)
-                // 申请系统设置权限
-                //.permission(Permission.WRITE_SETTINGS)
-                // 申请单个权限
-                .permission(Permission.MANAGE_EXTERNAL_STORAGE)
-                // 申请多个权限
-//                .permission(Permission.Group.CALENDAR)
-                .request(new OnPermission() {
-
-                    @Override
-                    public void hasPermission(List<String> granted, boolean all) {
-                        if (all) {
-                           //showToast("获取存储和拍照权限成功");
-                            recycleView.post(new Runnable() {
-                                @Override
-                                public void run() {
-
-                                    UpdateAPK apk=new UpdateAPK(activity,url,name);
 //
-                                    apk.Beginning();
-                                }
-                            });
-
-                        } else {
-                            showToast("获取权限成功，部分权限未正常授予");
-                        }
-                    }
-
-                    @Override
-                    public void noPermission(List<String> denied, boolean never) {
-                        if (never) {
-                            showToast("被永久拒绝授权，请手动授予存储和拍照权限");
-                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
-                            XXPermissions.startPermissionActivity(activity, denied);
-                        } else {
-                            showToast("获取存储和拍照权限失败");
-                        }
-                    }
-                });
+//        XXPermissions.with(activity)
+//                // 申请安装包权限
+//                .permission(Permission.REQUEST_INSTALL_PACKAGES)
+//                // 申请悬浮窗权限
+//                //.permission(Permission.SYSTEM_ALERT_WINDOW)
+//                // 申请通知栏权限
+//                //.permission(Permission.NOTIFICATION_SERVICE)
+//                // 申请系统设置权限
+//                //.permission(Permission.WRITE_SETTINGS)
+//                // 申请单个权限
+//                .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+//                // 申请多个权限
+////                .permission(Permission.Group.CALENDAR)
+//                .request(new OnPermission() {
+//
+//                    @Override
+//                    public void hasPermission(List<String> granted, boolean all) {
+//                        if (all) {
+//                           //showToast("获取存储和拍照权限成功");
+//                            recycleView.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//
+//                                    UpdateAPK apk=new UpdateAPK(activity,url,name);
+////
+//                                    apk.Beginning();
+//                                }
+//                            });
+//
+//                        } else {
+//                            showToast("获取权限成功，部分权限未正常授予");
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void noPermission(List<String> denied, boolean never) {
+//                        if (never) {
+//                            showToast("被永久拒绝授权，请手动授予存储和拍照权限");
+//                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
+//                            XXPermissions.startPermissionActivity(activity, denied);
+//                        } else {
+//                            showToast("获取存储和拍照权限失败");
+//                        }
+//                    }
+//                });
 
 
 

@@ -20,7 +20,7 @@ public interface ICatalogView extends IBaseView{
 
 	void toYuePing();
 	void showAllLearn();
-	void updateUIItem(boolean isPlaying,DyItemBean imgBean);
+	void updateUIItem(boolean isPlaying, DyItemBean imgBean);
 
 	void openTempView(List<DyItemBean> dataListCustom);
 

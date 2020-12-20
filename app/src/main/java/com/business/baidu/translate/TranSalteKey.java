@@ -58,7 +58,7 @@ public class TranSalteKey {
 
     public  interface translatecallback extends Serializable {
 
-        void   call(Object  result);
+        void   call(Object result);
         void    showMsg(String msg);
 
     }

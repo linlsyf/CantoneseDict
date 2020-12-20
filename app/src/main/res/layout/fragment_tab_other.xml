@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/context_bg_grey" >
+
+    <com.easysoft.widget.toolbar.NavigationBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        ></com.easysoft.widget.toolbar.NavigationBar>
+    <com.ui.other.view.OtherContentView
+        android:id="@+id/recycleView"
+        android:background="@drawable/welcome_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        ></com.ui.other.view.OtherContentView>
+
+
+
+</LinearLayout>

@@ -1,10 +1,15 @@
 package com.ui;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.business.BusinessBroadcastUtils;
 import com.core.base.BaseFragment;
@@ -32,7 +37,7 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 	 long mExitTime=0;
 	 BaseFragment mBackHandedFragment;
 	 boolean hadIntercept;
-
+	public static final int REQUEST_READ_STOR_PERMISSION = 10111; //拨号请求码
 	@Override
     protected void onCreate( Bundle savedInstanceState) {
 		setTheme(ThemeHelper.getStoreTheme(this));
@@ -57,6 +62,37 @@ public class HomeActivity extends BasicActivity implements IlogInView,IHomeView 
 
 		NaviHightUtils.setHight( this);
 
+
+		ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE} , 1);
+
+		if(checkReadPermission(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_READ_STOR_PERMISSION)){
+
+		}
+
+	}
+
+
+	public boolean checkReadPermission(String string_permission,int request_code) {
+		boolean flag = false;
+		if (ContextCompat.checkSelfPermission(this, string_permission) ==  PackageManager.PERMISSION_GRANTED) {//已有权限
+			flag = true;
+		} else {//申请权限
+			ActivityCompat.requestPermissions(this, new String[]{string_permission}, request_code);
+		}
+		return flag;
+	}
+	@Override
+	public void onRequestPermissionsResult(int requestCode,  String[] permissions,  int[] grantResults) {
+		switch (requestCode) {
+			case REQUEST_READ_STOR_PERMISSION: //拨打电话
+				if (permissions.length != 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {//失败
+					 ToastUtils.show(this,"请求权限失败");
+				} else {//成功
+					// call("tel:"+"10086");
+					int i=0;
+				}
+				break;
+		}
 	}
 
 	@Override

@@ -1,6 +1,5 @@
 package com.ui.setting;
 
-import android.support.annotation.NonNull;
 
 import com.business.BusinessBroadcastUtils;
 import com.core.base.GlobalConstants;
@@ -24,7 +23,6 @@ import java.util.List;
 
 public class DataBaseUtils {
 
-    @NonNull
     public static List<DyItemBean> getDataDyItemBeans(final IBaseView iSafeSettingView, final SettingPresenter  presenter) {
         List<DyItemBean> dataListCustom=new ArrayList<>();
 

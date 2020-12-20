@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+   style ="@style/Activity_Padding_Style"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/start_wpa_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="创建一个临时会话" />
+            <Button
+                android:id="@+id/start_qq_group_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发起群会话" />
+
+            <Button
+                android:id="@+id/wpa_state_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="获取uin的在线状态" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

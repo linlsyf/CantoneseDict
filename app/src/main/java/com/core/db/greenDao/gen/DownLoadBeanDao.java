@@ -22,7 +22,7 @@ public class DownLoadBeanDao extends AbstractDao<DownLoadBean, String> {
     /**
      * Properties of entity DownLoadBean.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, String.class, "id", true, "ID");
         public final static Property Url = new Property(1, String.class, "url", false, "URL");
@@ -32,7 +32,7 @@ public class DownLoadBeanDao extends AbstractDao<DownLoadBean, String> {
         public final static Property TaskStatus = new Property(5, int.class, "taskStatus", false, "TASK_STATUS");
         public final static Property TaskId = new Property(6, long.class, "taskId", false, "TASK_ID");
         public final static Property ErrorCode = new Property(7, int.class, "errorCode", false, "ERROR_CODE");
-    };
+    }
 
 
     public DownLoadBeanDao(DaoConfig config) {
@@ -157,6 +157,11 @@ public class DownLoadBeanDao extends AbstractDao<DownLoadBean, String> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(DownLoadBean entity) {
+        return entity.getId() != null;
     }
 
     @Override

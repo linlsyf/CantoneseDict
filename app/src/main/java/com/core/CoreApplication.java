@@ -2,8 +2,9 @@ package com.core;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
+
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.gen.DaoMaster;

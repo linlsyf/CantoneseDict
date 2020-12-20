@@ -22,7 +22,7 @@ public class DictDao extends AbstractDao<Dict, String> {
     /**
      * Properties of entity Dict.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, String.class, "id", true, "ID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
@@ -36,7 +36,7 @@ public class DictDao extends AbstractDao<Dict, String> {
         public final static Property TranPy = new Property(9, String.class, "tranPy", false, "TRAN_PY");
         public final static Property Py = new Property(10, String.class, "py", false, "PY");
         public final static Property Content = new Property(11, String.class, "content", false, "CONTENT");
-    };
+    }
 
 
     public DictDao(DaoConfig config) {
@@ -221,6 +221,11 @@ public class DictDao extends AbstractDao<Dict, String> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(Dict entity) {
+        return entity.getId() != null;
     }
 
     @Override

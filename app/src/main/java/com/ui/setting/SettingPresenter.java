@@ -1,7 +1,6 @@
 package com.ui.setting;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,9 +37,7 @@ import com.easysoft.utils.lib.system.DensityUtil;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.dialog.CustomDialog;
-import com.hjq.permissions.OnPermission;
-import com.hjq.permissions.Permission;
-import com.hjq.permissions.XXPermissions;
+
 import com.iflytek.voicedemo.MainActivity;
 import com.linlsyf.area.R;
 import com.ui.HttpService;
@@ -54,8 +51,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import cn.jpush.android.api.JPushInterface;
-import cn.jpush.android.api.TagAliasCallback;
+
 
 
 public class SettingPresenter   {
@@ -260,17 +256,17 @@ public class SettingPresenter   {
 		  });
 		  newSectionList.add(userPrivateBean);
 
-		  DyItemBean  feedbackBean=new DyItemBean();
-		  feedbackBean.setTitle("反馈吐槽");
-		  feedbackBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
-
-		  feedbackBean.setOnItemListener(new IItemView.onItemClick() {
-			  @Override
-			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-				  iSafeSettingView.openUrl("https://support.qq.com/products/281738?");
-			  }
-		  });
-		  newSectionList.add(feedbackBean);
+//		  DyItemBean  feedbackBean=new DyItemBean();
+//		  feedbackBean.setTitle("反馈吐槽");
+//		  feedbackBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
+//
+//		  feedbackBean.setOnItemListener(new IItemView.onItemClick() {
+//			  @Override
+//			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
+//				  iSafeSettingView.openUrl("https://support.qq.com/products/281738?");
+//			  }
+//		  });
+//		  newSectionList.add(feedbackBean);
 
 		  DyItemBean  updateBean=new DyItemBean();
 		  updateBean.setTitle("检查更新");
@@ -283,7 +279,7 @@ public class SettingPresenter   {
 				  updateCheck();
 			  }
 		  });
-		  newSectionList.add(updateBean);
+//		  newSectionList.add(updateBean);
 		  DyItemBean  payBean=new DyItemBean();
 		  payBean.setTitle("赞赏支持");
 		  payBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
@@ -434,16 +430,16 @@ public class SettingPresenter   {
 
 
     public void initJpush(){
-    	JPushInterface.setAlias(CoreApplication.getAppContext(), 0, "ldh");
-    	  JPushInterface.setAlias(CoreApplication.getAppContext(),"ldh", new TagAliasCallback() {
-              @Override
-              public void gotResult(int i, String s, Set<String> set) {
-//            	  ToastUtils.show(CoreApplication.getAppContext(), "设置成功");
-//                  tvAlias.setText("当前alias："+alias);
-              }
-
-
-          });
+//    	JPushInterface.setAlias(CoreApplication.getAppContext(), 0, "ldh");
+//    	  JPushInterface.setAlias(CoreApplication.getAppContext(),"ldh", new TagAliasCallback() {
+//              @Override
+//              public void gotResult(int i, String s, Set<String> set) {
+////            	  ToastUtils.show(CoreApplication.getAppContext(), "设置成功");
+////                  tvAlias.setText("当前alias："+alias);
+//              }
+//
+//
+//          });
     }
     public void Logout() {
 		BusinessBroadcastUtils.USER_VALUE_LOGIN_ID = "";

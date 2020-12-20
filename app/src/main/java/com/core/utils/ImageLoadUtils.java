@@ -18,7 +18,7 @@ import com.core.CoreApplication;
 import com.easy.recycleview.custom.baseview.inter.IloadImage;
 import com.easysoft.utils.lib.imge.ImageUtils;
 
-public class ImageLoadUtils extends com.easysoft.utils.lib.imge.ImageUtils  implements IloadImage {
+public class ImageLoadUtils extends ImageUtils  implements IloadImage {
 	
 	static ImageLoadUtils utils;
 	static ImageUtils systemImageUtils;

@@ -22,7 +22,7 @@ public class ShopOrderDao extends AbstractDao<ShopOrder, String> {
     /**
      * Properties of entity ShopOrder.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, String.class, "id", true, "ID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
@@ -34,7 +34,7 @@ public class ShopOrderDao extends AbstractDao<ShopOrder, String> {
         public final static Property Price = new Property(7, double.class, "price", false, "PRICE");
         public final static Property Total = new Property(8, double.class, "total", false, "TOTAL");
         public final static Property Num = new Property(9, double.class, "num", false, "NUM");
-    };
+    }
 
 
     public ShopOrderDao(DaoConfig config) {
@@ -201,6 +201,11 @@ public class ShopOrderDao extends AbstractDao<ShopOrder, String> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(ShopOrder entity) {
+        return entity.getId() != null;
     }
 
     @Override

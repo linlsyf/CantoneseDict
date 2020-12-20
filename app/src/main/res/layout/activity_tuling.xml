@@ -1,0 +1,76 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome_page"
+
+    android:orientation="vertical">
+    <com.easysoft.widget.toolbar.NavigationBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        ></com.easysoft.widget.toolbar.NavigationBar>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/divider"
+            android:divider="#00000000"
+            android:dividerHeight="0px"
+            android:transcriptMode="normal"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@+id/rl_msg"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_msg"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_send_msg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/iv_send_msg"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white"
+                    android:imeOptions="actionSearch"
+                    android:hint="输入您的问题"
+                    android:maxLength="100"
+                    android:maxLines="4"
+                    android:minHeight="32dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

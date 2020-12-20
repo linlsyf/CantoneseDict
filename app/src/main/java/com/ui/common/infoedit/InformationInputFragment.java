@@ -66,7 +66,7 @@ public class InformationInputFragment extends BaseFragment implements IinputView
 
 
     public interface OnUpdateSuccessListener{
-        void updateSuccess( List<IDyItemBean>  itemBeans);
+        void updateSuccess(List<IDyItemBean> itemBeans);
     }
 
    @Override

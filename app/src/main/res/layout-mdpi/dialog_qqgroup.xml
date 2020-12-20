@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/key_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="left"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+    <EditText
+        android:id="@+id/key_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:autoText="false"
+        android:capitalize="none"
+        android:hint="输入组织ID"
+        android:gravity="fill_horizontal"
+        android:scrollHorizontally="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>

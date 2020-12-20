@@ -1,9 +1,10 @@
 package com.ui.common.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.Gravity;
 import android.view.ViewGroup;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.inter.IDyItemBean;

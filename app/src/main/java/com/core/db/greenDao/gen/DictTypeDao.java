@@ -22,12 +22,12 @@ public class DictTypeDao extends AbstractDao<DictType, String> {
     /**
      * Properties of entity DictType.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, String.class, "id", true, "ID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property Typecode = new Property(2, String.class, "typecode", false, "TYPECODE");
-    };
+    }
 
 
     public DictTypeDao(DaoConfig config) {
@@ -127,6 +127,11 @@ public class DictTypeDao extends AbstractDao<DictType, String> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(DictType entity) {
+        return entity.getId() != null;
     }
 
     @Override

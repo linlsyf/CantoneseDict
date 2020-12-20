@@ -12,6 +12,7 @@ import com.core.db.greenDao.entity.CustomTv;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.entity.DictType;
 import com.core.db.greenDao.entity.DownLoadBean;
+import com.core.db.greenDao.entity.Favorites;
 import com.core.db.greenDao.entity.SentenceYy;
 import com.core.db.greenDao.entity.ShopOrder;
 import com.core.db.greenDao.entity.User;
@@ -21,6 +22,7 @@ import com.core.db.greenDao.gen.CustomTvDao;
 import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.DictTypeDao;
 import com.core.db.greenDao.gen.DownLoadBeanDao;
+import com.core.db.greenDao.gen.FavoritesDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.core.db.greenDao.gen.ShopOrderDao;
 import com.core.db.greenDao.gen.UserDao;
@@ -39,6 +41,7 @@ public class DaoSession extends AbstractDaoSession {
     private final DaoConfig dictDaoConfig;
     private final DaoConfig dictTypeDaoConfig;
     private final DaoConfig downLoadBeanDaoConfig;
+    private final DaoConfig favoritesDaoConfig;
     private final DaoConfig sentenceYyDaoConfig;
     private final DaoConfig shopOrderDaoConfig;
     private final DaoConfig userDaoConfig;
@@ -48,6 +51,7 @@ public class DaoSession extends AbstractDaoSession {
     private final DictDao dictDao;
     private final DictTypeDao dictTypeDao;
     private final DownLoadBeanDao downLoadBeanDao;
+    private final FavoritesDao favoritesDao;
     private final SentenceYyDao sentenceYyDao;
     private final ShopOrderDao shopOrderDao;
     private final UserDao userDao;
@@ -69,6 +73,9 @@ public class DaoSession extends AbstractDaoSession {
         downLoadBeanDaoConfig = daoConfigMap.get(DownLoadBeanDao.class).clone();
         downLoadBeanDaoConfig.initIdentityScope(type);
 
+        favoritesDaoConfig = daoConfigMap.get(FavoritesDao.class).clone();
+        favoritesDaoConfig.initIdentityScope(type);
+
         sentenceYyDaoConfig = daoConfigMap.get(SentenceYyDao.class).clone();
         sentenceYyDaoConfig.initIdentityScope(type);
 
@@ -85,6 +92,7 @@ public class DaoSession extends AbstractDaoSession {
         dictDao = new DictDao(dictDaoConfig, this);
         dictTypeDao = new DictTypeDao(dictTypeDaoConfig, this);
         downLoadBeanDao = new DownLoadBeanDao(downLoadBeanDaoConfig, this);
+        favoritesDao = new FavoritesDao(favoritesDaoConfig, this);
         sentenceYyDao = new SentenceYyDao(sentenceYyDaoConfig, this);
         shopOrderDao = new ShopOrderDao(shopOrderDaoConfig, this);
         userDao = new UserDao(userDaoConfig, this);
@@ -94,6 +102,7 @@ public class DaoSession extends AbstractDaoSession {
         registerDao(Dict.class, dictDao);
         registerDao(DictType.class, dictTypeDao);
         registerDao(DownLoadBean.class, downLoadBeanDao);
+        registerDao(Favorites.class, favoritesDao);
         registerDao(SentenceYy.class, sentenceYyDao);
         registerDao(ShopOrder.class, shopOrderDao);
         registerDao(User.class, userDao);
@@ -101,14 +110,15 @@ public class DaoSession extends AbstractDaoSession {
     }
     
     public void clear() {
-        customTvDaoConfig.getIdentityScope().clear();
-        dictDaoConfig.getIdentityScope().clear();
-        dictTypeDaoConfig.getIdentityScope().clear();
-        downLoadBeanDaoConfig.getIdentityScope().clear();
-        sentenceYyDaoConfig.getIdentityScope().clear();
-        shopOrderDaoConfig.getIdentityScope().clear();
-        userDaoConfig.getIdentityScope().clear();
-        videoDBDaoConfig.getIdentityScope().clear();
+        customTvDaoConfig.clearIdentityScope();
+        dictDaoConfig.clearIdentityScope();
+        dictTypeDaoConfig.clearIdentityScope();
+        downLoadBeanDaoConfig.clearIdentityScope();
+        favoritesDaoConfig.clearIdentityScope();
+        sentenceYyDaoConfig.clearIdentityScope();
+        shopOrderDaoConfig.clearIdentityScope();
+        userDaoConfig.clearIdentityScope();
+        videoDBDaoConfig.clearIdentityScope();
     }
 
     public CustomTvDao getCustomTvDao() {
@@ -125,6 +135,10 @@ public class DaoSession extends AbstractDaoSession {
 
     public DownLoadBeanDao getDownLoadBeanDao() {
         return downLoadBeanDao;
+    }
+
+    public FavoritesDao getFavoritesDao() {
+        return favoritesDao;
     }
 
     public SentenceYyDao getSentenceYyDao() {

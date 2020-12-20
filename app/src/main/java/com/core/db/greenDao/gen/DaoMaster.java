@@ -25,6 +25,7 @@ public class DaoMaster extends AbstractDaoMaster {
         DictDao.createTable(db, ifNotExists);
         DictTypeDao.createTable(db, ifNotExists);
         DownLoadBeanDao.createTable(db, ifNotExists);
+        FavoritesDao.createTable(db, ifNotExists);
         SentenceYyDao.createTable(db, ifNotExists);
         ShopOrderDao.createTable(db, ifNotExists);
         UserDao.createTable(db, ifNotExists);
@@ -37,6 +38,7 @@ public class DaoMaster extends AbstractDaoMaster {
         DictDao.dropTable(db, ifExists);
         DictTypeDao.dropTable(db, ifExists);
         DownLoadBeanDao.dropTable(db, ifExists);
+        FavoritesDao.dropTable(db, ifExists);
         SentenceYyDao.dropTable(db, ifExists);
         ShopOrderDao.dropTable(db, ifExists);
         UserDao.dropTable(db, ifExists);
@@ -63,6 +65,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(DictDao.class);
         registerDaoClass(DictTypeDao.class);
         registerDaoClass(DownLoadBeanDao.class);
+        registerDaoClass(FavoritesDao.class);
         registerDaoClass(SentenceYyDao.class);
         registerDaoClass(ShopOrderDao.class);
         registerDaoClass(UserDao.class);

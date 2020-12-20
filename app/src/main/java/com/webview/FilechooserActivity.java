@@ -56,7 +56,7 @@ public class FilechooserActivity extends Activity {
             // For Android  >= 5.0
             public boolean onShowFileChooser(com.tencent.smtt.sdk.WebView webView,
                                              ValueCallback<Uri[]> filePathCallback,
-                                             WebChromeClient.FileChooserParams fileChooserParams) {
+                                             FileChooserParams fileChooserParams) {
                 Log.i("test", "openFileChooser 4:" + filePathCallback.toString());
                 FilechooserActivity.this.uploadFiles = filePathCallback;
                 openFileChooseProcess();

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+    >
+<com.easysoft.widget.toolbar.NavigationBar
+    android:id="@+id/toolbar"
+     android:layout_width="match_parent"
+        android:layout_height="35dp"
+    ></com.easysoft.widget.toolbar.NavigationBar>
+    <com.easy.recycleview.recycleview.AddressRecycleView
+        android:id="@+id/recycleView"
+        
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+       
+        />
+</LinearLayout>

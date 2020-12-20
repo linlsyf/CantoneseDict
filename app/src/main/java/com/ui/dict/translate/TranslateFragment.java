@@ -162,7 +162,7 @@ public class TranslateFragment extends BaseFragment implements ITranslateView {
 
     @Override
     public void initUI(final Section nextSection) {
-        getActivity().runOnUiThread(new Runnable() {
+        activity.runOnUiThread(new Runnable() {
 
             @Override
             public void run() {

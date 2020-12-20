@@ -11,7 +11,7 @@ import com.easy.recycleview.bean.Section;
 public interface IdictView extends IBaseView {
 
     void initUI(Section section);
-    void showType(VideoBussinessItem item,int type);
+    void showType(VideoBussinessItem item, int type);
     void openVideo(VideoBussinessItem itemBean);
 
     void editType();

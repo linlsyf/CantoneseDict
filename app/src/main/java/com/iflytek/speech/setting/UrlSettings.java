@@ -6,7 +6,6 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.support.annotation.Nullable;
 import android.view.Window;
 
 
@@ -27,7 +26,7 @@ public class UrlSettings extends PreferenceActivity implements Preference.OnPref
     private EditTextPreference url_edit;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate( Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         getPreferenceManager().setSharedPreferencesName(PREFER_NAME);

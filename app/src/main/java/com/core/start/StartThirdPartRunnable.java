@@ -16,7 +16,6 @@ import com.linlsyf.area.R;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
 
-import cn.jpush.android.api.JPushInterface;
 
 import static com.core.base.GlobalConstants.TYPE_SYSTEM_APP;
 
@@ -34,8 +33,8 @@ public class StartThirdPartRunnable   implements Runnable,  IstartRun{
     @Override
     public void run() {
 
-        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
-        JPushInterface.init(CoreApplication.getAppContext());     		// 初始化 JPush
+//        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+//        JPushInterface.init(CoreApplication.getAppContext());     		// 初始化 JPush
         // 是否为平板
 //        initGlobalConstants();
         init();

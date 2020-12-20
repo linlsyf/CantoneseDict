@@ -508,7 +508,7 @@ public class DictBeanUtils {
     }
     public  interface parseDictcallback extends Serializable {
 
-        void   parseDataBack(Object  list);
+        void   parseDataBack(Object list);
         void    showMsg(String msg);
 
     }

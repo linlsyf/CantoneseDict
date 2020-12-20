@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;

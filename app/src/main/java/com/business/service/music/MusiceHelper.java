@@ -147,7 +147,7 @@ public class MusiceHelper {
 
     public  interface  playCallBack{
 
-        void callBack(boolean isPlayIng,SongBean songBean);
+        void callBack(boolean isPlayIng, SongBean songBean);
 
     }
 

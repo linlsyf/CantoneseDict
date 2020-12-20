@@ -1,12 +1,19 @@
 package com.ui.catalog;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.business.BusinessBroadcastUtils;
 import com.business.bean.VideoBussinessItem;
@@ -38,7 +45,8 @@ import static com.ui.dict.search.SearchDictFragment.DICT_NAME;
 
 
 public class CatalogFragment extends BaseFragment implements ICatalogView {
-	DyLayout recycleView;
+    private static final int REQUEST_CALL_PERMISSION =100001 ;
+    DyLayout recycleView;
 	  CatalogPresenter presenter;
     NavigationBar toolbar;
     View mRootLayout;
@@ -69,6 +77,10 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
           mRootLayout.setBackgroundColor(WidgetConfig.getInstance().getBgColor());
       presenter=new CatalogPresenter(this);
       presenter.init();
+//
+//          if(checkReadPermission(Manifest.permission.READ_EXTERNAL_STORAGE,REQUEST_READ_STOR_PERMISSION)){
+//
+//          }
     }
 
     @Override
@@ -85,7 +97,28 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
         });
 
     }
-
+    public boolean checkReadPermission(String string_permission,int request_code) {
+        boolean flag = false;
+        if (ContextCompat.checkSelfPermission(activity, string_permission) == PackageManager.PERMISSION_GRANTED) {//已有权限
+            flag = true;
+        } else {//申请权限
+            ActivityCompat.requestPermissions(activity, new String[]{string_permission}, request_code);
+        }
+        return flag;
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CALL_PERMISSION: //拨打电话
+                if (permissions.length != 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {//失败
+                    showToast("请允许存储权限后再试");
+                } else {//成功
+                    // call("tel:"+"10086");
+//                    Toast.makeText(this,"请求成功可以使用",Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
     @Override
     public void showType(final VideoBussinessItem item, final int type) {
         getActivity().runOnUiThread(new Runnable() {

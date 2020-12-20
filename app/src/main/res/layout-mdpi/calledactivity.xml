@@ -1,0 +1,189 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="这是第三方程序的activity" />
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1" >
+
+        <RadioButton
+            android:id="@+id/imageradiobtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="发送图片" />
+
+        <RadioButton
+            android:id="@+id/videoradiobtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送视频" />
+        <RadioButton
+            android:id="@+id/textradiobtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送纯文本" />
+    </RadioGroup>
+    <LinearLayout 
+        android:id="@+id/textcontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/radioGroup1">
+        <TextView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="发送文本内容:"
+        	/>
+        <EditText 
+            android:id="@+id/sendcontent"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="测试发送的文本内容"
+            android:ems="10"
+            />
+    </LinearLayout>
+    <LinearLayout 
+        android:id="@+id/mainlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/textcontent"
+        >
+        <RelativeLayout 
+            android:id="@+id/imagelayout"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	>
+            <TextView
+		        android:id="@+id/textView2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBottom="@+id/picpath"
+		        android:layout_alignParentLeft="true"
+		        android:layout_alignParentTop="true"
+		        android:text="图片路径:" />
+		
+		    <EditText
+		        android:id="@+id/picpath"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentTop="true"
+		        android:layout_toRightOf="@+id/textView2"
+		        android:ems="10" >
+		    </EditText>
+			<Button
+		        android:id="@+id/pickpicbtn"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBaseline="@+id/textView2"
+		        android:layout_alignParentRight="true"
+		        android:layout_toRightOf="@+id/picpath"
+		        android:text="打开相册" />
+		    <ImageView
+		        android:id="@+id/pickedimage"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/textView2"
+		        android:layout_centerHorizontal="true"
+		        />
+		
+		    <Button
+		        android:id="@+id/sendimagepathbth"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/pickedimage"
+		        android:layout_centerHorizontal="true"
+		        android:text="发送图像" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/videolayout"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	>
+            <TextView
+		        android:id="@+id/videotextView2"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBottom="@+id/videopath"
+		        android:layout_alignParentLeft="true"
+		        android:layout_alignParentTop="true"
+		        android:text="视频路径:" />
+		
+		    <EditText
+		        android:id="@+id/videopath"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentTop="true"
+		        android:layout_toRightOf="@+id/videotextView2"
+		        android:ems="10" >
+		    </EditText>
+			<Button
+		        android:id="@+id/pickvideobtn"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignBaseline="@+id/videotextView2"
+		        android:layout_toRightOf="@+id/videopath"
+		        android:text="打开相册" />
+		    <ImageView
+		        android:id="@+id/pickedvideo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/videotextView2"
+		        android:layout_centerHorizontal="true"
+		        />
+		
+		    <Button
+		        android:id="@+id/sendvideopathbtn"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/pickedvideo"
+		        android:layout_centerHorizontal="true"
+		        android:text="发送视频" />
+        </RelativeLayout>
+        <RelativeLayout 
+            android:id="@+id/textlayout"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+            >
+            <Button
+		        android:id="@+id/sendtextbtn"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_centerHorizontal="true"
+		        android:text="发送文本" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainlayout"
+        android:text="错误码:" />
+
+    <TextView
+        android:id="@+id/errorcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
+        android:text="" />
+</RelativeLayout>
+</ScrollView>

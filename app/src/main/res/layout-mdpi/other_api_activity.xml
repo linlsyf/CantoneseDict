@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    style ="@style/Activity_Padding_Style"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/main_is_SupportShareToQQ_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="支持分享到QQ" />
+
+            <Button
+                android:id="@+id/main_is_SupportPushToQZone_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="支持分享到QZone" />
+
+            <Button
+                android:id="@+id/main_is_report_dau_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="上报DAU" />
+
+            <Button
+                android:id="@+id/get_openid_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="获取openId" />
+
+            <Button
+                android:id="@+id/check_login_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="验证Token" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

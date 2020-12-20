@@ -22,7 +22,7 @@ public class VideoDBDao extends AbstractDao<VideoDB, String> {
     /**
      * Properties of entity VideoDB.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, String.class, "id", true, "ID");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
@@ -32,7 +32,7 @@ public class VideoDBDao extends AbstractDao<VideoDB, String> {
         public final static Property Duration = new Property(5, long.class, "duration", false, "DURATION");
         public final static Property Size = new Property(6, long.class, "size", false, "SIZE");
         public final static Property DurationString = new Property(7, String.class, "durationString", false, "DURATION_STRING");
-    };
+    }
 
 
     public VideoDBDao(DaoConfig config) {
@@ -181,6 +181,11 @@ public class VideoDBDao extends AbstractDao<VideoDB, String> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(VideoDB entity) {
+        return entity.getId() != null;
     }
 
     @Override

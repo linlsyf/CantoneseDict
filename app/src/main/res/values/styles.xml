@@ -10,8 +10,31 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
-
-    
+    <style name="Dialog_Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Activity_Padding_Style">
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+    <style name="QQShare_RadioBtn_Style">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="DemoMainActivity_Button_Title_Style">
+        <item name="android:paddingLeft">20dip</item>
+        <item name="android:textColor">#FF505662</item>
+    </style>
+    <style name="DemoMainActivity_Button_Style">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_marginTop">3dip</item>
+        <item name="android:layout_marginBottom">3dip</item>
+    </style>
      <!-- 选择照片底部弹出层 -->
     <style name="ProgressHUD" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>

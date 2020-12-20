@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Activity_Padding_Style"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- <Button
+                android:id="@+id/appbarh5"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="应用吧(强制跳H5)" /> -->
+
+            <Button
+                android:id="@+id/appbar_detail"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="应用吧详情页" />
+
+            <Button
+                android:id="@+id/appbar_my_message"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="我的消息" />
+
+            <Button
+                android:id="@+id/appbar_send_blog"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发帖" />
+            
+            <Button
+                android:id="@+id/appbar_label"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="标签页" />
+            
+            <Button
+                android:id="@+id/appbar_thread"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="应用吧主题" />
+            
+            <!-- <Button
+                android:id="@+id/appbar_detail_h5"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="应用吧详情页H5" />
+            <Button
+                android:id="@+id/appbar_my_message_h5"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="我的消息H5" />
+            <Button
+                android:id="@+id/appbar_send_blog_h5"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发帖H5" /> -->
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

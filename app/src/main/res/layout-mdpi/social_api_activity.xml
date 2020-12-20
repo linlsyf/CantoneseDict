@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Activity_Padding_Style"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/main_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/send_story_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="send story" />
+
+            <Button
+                android:id="@+id/invite_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="发送应用邀请" />
+            
+            <Button
+                android:id="@+id/ask_gift_btn"
+                style="@style/DemoMainActivity_Button_Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="赠送礼物或请求礼物" />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="left"
+        android:text="@string/qqconnect_mini_app_id_tip"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+    <EditText
+        android:id="@+id/mini_app_id_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="fill_horizontal"
+        android:scrollHorizontally="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="left"
+        android:text="@string/qqconnect_mini_app_path_tip"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+    <EditText
+        android:id="@+id/mini_app_path_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="fill_horizontal"
+        android:scrollHorizontally="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="left"
+        android:text="@string/qqconnect_mini_app_version_tip"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+    <EditText
+        android:id="@+id/mini_app_version_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="fill_horizontal"
+        android:scrollHorizontally="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</LinearLayout>
