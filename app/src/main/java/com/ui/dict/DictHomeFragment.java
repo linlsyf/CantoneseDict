@@ -20,7 +20,7 @@ import com.easysoft.widget.search.SearchHeadView;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.common.custom.CustomFragment;
 import com.ui.dict.search.SearchDictFragment;
 import com.ui.dict.search.sentenceyy.SearchSentenceFragment;

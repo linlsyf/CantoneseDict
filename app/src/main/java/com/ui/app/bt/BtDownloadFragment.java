@@ -20,7 +20,7 @@ import com.core.base.BaseFragment;
 import com.easy.recycleview.DyLayout;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.video.IVideoHomeView;
 
 import java.util.List;

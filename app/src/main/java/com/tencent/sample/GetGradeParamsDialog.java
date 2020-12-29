@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 public class GetGradeParamsDialog extends Dialog implements
         View.OnClickListener {

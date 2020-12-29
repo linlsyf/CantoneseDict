@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.connect.UnionInfo;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.AuthAgent;

@@ -11,7 +11,7 @@ import com.core.CoreApplication;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.User;
 import com.core.db.greenDao.gen.UserDao;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import java.util.List;
 import java.util.Random;

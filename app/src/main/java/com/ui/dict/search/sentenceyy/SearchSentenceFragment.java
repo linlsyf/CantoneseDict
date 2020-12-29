@@ -16,7 +16,7 @@ import com.easysoft.widget.search.SearchHeadView;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 

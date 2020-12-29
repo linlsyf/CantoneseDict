@@ -22,7 +22,7 @@ import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
 import com.iflytek.IatDemoUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.common.infoedit.InformationInputFragment;
 import com.ui.common.select.SelectFragment;
 import com.ui.common.tts.TtsHelper;

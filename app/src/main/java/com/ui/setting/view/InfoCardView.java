@@ -13,7 +13,7 @@ import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

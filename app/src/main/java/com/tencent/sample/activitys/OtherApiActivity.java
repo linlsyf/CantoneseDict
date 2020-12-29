@@ -3,7 +3,7 @@ package com.tencent.sample.activitys;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.connect.UserInfo;
 import com.tencent.sample.BaseUIListener;
 import com.tencent.sample.Util;

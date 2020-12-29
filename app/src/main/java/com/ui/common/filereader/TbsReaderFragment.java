@@ -21,7 +21,7 @@ import com.easy.recycleview.custom.baseview.config.HintTextViewConfig;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.ui.common.custom.CustomFragment;
 import com.ui.dict.DictTypeEnum;

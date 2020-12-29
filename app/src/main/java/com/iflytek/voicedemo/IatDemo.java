@@ -38,7 +38,7 @@ import com.iflytek.cloud.util.ContactManager.ContactListener;
 import com.iflytek.speech.setting.IatSettings;
 import com.iflytek.speech.util.FucUtil;
 import com.iflytek.speech.util.JsonParser;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 public class IatDemo extends Activity implements OnClickListener {
 	private static String TAG = IatDemo.class.getSimpleName();

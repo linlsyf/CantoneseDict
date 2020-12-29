@@ -14,7 +14,7 @@ import com.core.db.greenDao.gen.DictDao;
 import com.core.db.greenDao.gen.SentenceYyDao;
 import com.easysoft.utils.lib.string.StringUtils;
 import com.easysoft.utils.lib.system.ThreadPoolUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.utils.FileUtils;
 import com.utils.VideoUtils;
 
@@ -47,7 +47,7 @@ public class DictBeanUtils {
 
 
     //数据库文件路径
-    private static final String DB_PATH = "/data/data/com.linlsyf.area/databases/";
+    private static final String DB_PATH = "/data/data/com.linlsyf.cantonese/databases/";
     //数据库文件名
     private static final String DB_NAME = "back.db";
     private static final String DB_EXPORT_NAME = "cantonese.db";

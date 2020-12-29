@@ -18,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 public class WebMainActivity extends Activity {

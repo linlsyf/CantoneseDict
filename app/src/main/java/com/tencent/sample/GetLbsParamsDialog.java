@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 public class GetLbsParamsDialog extends Dialog implements
 View.OnClickListener {

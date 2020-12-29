@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.core.base.BaseFragment;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.CookieSyncManager;

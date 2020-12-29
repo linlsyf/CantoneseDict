@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 public class MainActivity extends AppCompatActivity {

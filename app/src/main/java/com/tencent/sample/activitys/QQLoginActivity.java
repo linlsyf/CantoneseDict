@@ -32,7 +32,7 @@ import com.alibaba.fastjson.JSON;
 import com.business.BusinessBroadcastUtils;
 import com.core.base.BasicActivity;
 import com.core.base.GlobalConstants;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.connect.UnionInfo;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.AuthAgent;

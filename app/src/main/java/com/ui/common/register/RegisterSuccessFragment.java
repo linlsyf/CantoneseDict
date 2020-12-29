@@ -11,7 +11,7 @@ import com.core.base.BaseFragment;
 import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 /**

@@ -6,6 +6,6 @@ Android Tools》Rename Application Package
 
 
 
-com.linlsyf.area
+com.linlsyf.cantonese
 
 com.linlsyf.cantonese

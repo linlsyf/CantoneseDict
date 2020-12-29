@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.connect.common.Constants;
 import com.tencent.connect.emotion.QQEmotion;
 import com.tencent.sample.BaseUIListener;

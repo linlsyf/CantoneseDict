@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.widget.TextView;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.easysoft.utils.lib.system.StringUtils;
 
 

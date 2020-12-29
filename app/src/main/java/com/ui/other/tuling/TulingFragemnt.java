@@ -14,7 +14,7 @@ import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.other.tuling.adapter.ChatMessageAdapter;
 import com.ui.other.tuling.constant.TulingParams;
 import com.ui.other.tuling.entity.MessageEntity;

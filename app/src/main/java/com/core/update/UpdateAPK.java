@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.core.ServerUrl;
 import com.core.base.GlobalConstants;
 import com.easysoft.utils.lib.http.EasyHttpUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import org.json.JSONObject;
 

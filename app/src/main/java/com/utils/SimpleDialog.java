@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.easysoft.widget.utils.ResourcesUtil;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 public class SimpleDialog {

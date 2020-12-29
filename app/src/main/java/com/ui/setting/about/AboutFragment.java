@@ -16,7 +16,7 @@ import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.common.browser.CommonBrowserFrament;
 import com.ui.common.view.CommonTextItemView;
 

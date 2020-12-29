@@ -12,7 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.connect.UserInfo;
 import com.tencent.sample.BaseUIListener;
 import com.tencent.sample.Util;

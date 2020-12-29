@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.other.tuling.entity.NewsEntity;
 import com.ui.other.tuling.util.IsNullOrEmpty;
 

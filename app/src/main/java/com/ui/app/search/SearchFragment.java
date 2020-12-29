@@ -20,7 +20,7 @@ import com.easysoft.widget.search.SearchHeadView;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.app.tv.cate.TVFragment;
 import com.ui.other.tuling.news.NewsFragment;
 import com.ui.video.IVideoHomeView;

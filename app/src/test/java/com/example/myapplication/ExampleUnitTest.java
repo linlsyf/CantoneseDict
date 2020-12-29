@@ -1,4 +1,4 @@
-package com.linlsyf.area;
+package com.linlsyf.cantonese;
 
 import org.junit.Test;
 

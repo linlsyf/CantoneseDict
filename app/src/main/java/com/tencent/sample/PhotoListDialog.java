@@ -30,7 +30,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 /**
  * 用来显示从数据库拉取的照片信息

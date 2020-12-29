@@ -62,7 +62,7 @@ public class GlobalConstants {
 	public  String sessionId = "";
 
 	/**用于标识是当前应用 当前局标识 程序发送的广播*/
-	private  String BROAD_CAST_RECEIVER_ACTION_NAME = "com.linlsyf.area";
+	private  String BROAD_CAST_RECEIVER_ACTION_NAME = "com.linlsyf.cantonese";
 	int listRowTextColor, listRowSubTextColor, listColumnLineColor;
 
 	String   deviceId;

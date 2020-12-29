@@ -10,7 +10,7 @@ import com.core.db.greenDao.gen.DaoMaster;
 import com.core.db.greenDao.gen.DaoSession;
 import com.core.db.greenDao.gen.DictDao;
 import com.easysoft.utils.lib.system.FileUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import org.greenrobot.greendao.database.Database;
 

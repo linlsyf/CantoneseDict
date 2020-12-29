@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.utils.ThreadPoolExecutorFactory;
 
 public class TestActivity extends AppCompatActivity {

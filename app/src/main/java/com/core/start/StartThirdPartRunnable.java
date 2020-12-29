@@ -12,7 +12,7 @@ import com.core.utils.ImageLoadUtils;
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.utils.lib.DebugUtlis.CrashHandler;
 import com.iflytek.cloud.SpeechUtility;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
 

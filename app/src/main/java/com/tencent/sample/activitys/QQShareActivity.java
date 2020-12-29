@@ -1,6 +1,6 @@
 package com.tencent.sample.activitys;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.connect.common.Constants;
 import com.tencent.connect.share.QQShare;
 import com.tencent.sample.ThreadManager;

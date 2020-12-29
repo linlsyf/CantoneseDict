@@ -13,7 +13,7 @@ import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easysoft.utils.lib.system.DensityUtil;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.HttpService;
 
 import java.util.ArrayList;

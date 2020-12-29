@@ -30,7 +30,7 @@ import com.easysoft.widget.fragment.FragmentHelper;
 import com.easysoft.widget.imgeview.MultiShapeView;
 import com.easysoft.widget.process.ProgressHUD;
 import com.easysoft.widget.statusview.SoftKeyBoardSatusView;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.common.register.check.CheckUserExitFragment;
 import com.ui.common.setting.SettingActivity;
 

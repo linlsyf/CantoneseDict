@@ -4,7 +4,7 @@ import com.core.base.GlobalConstants;
 import com.core.db.greenDao.entity.Dict;
 import com.core.db.greenDao.gen.DictDao;
 import com.easysoft.utils.lib.system.ThreadPoolUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import java.util.List;
 

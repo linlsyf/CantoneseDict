@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import static com.tencent.open.SocialOperation.*;
 

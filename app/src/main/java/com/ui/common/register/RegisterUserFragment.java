@@ -34,7 +34,7 @@ import com.easysoft.widget.process.ProgressHUD;
 import com.easysoft.widget.toolbar.NavigationBar;
 import com.easysoft.widget.toolbar.NavigationBarListener;
 import com.easysoft.widget.toolbar.TopBarBuilder;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 //import cn.smssdk.SMSSDK;

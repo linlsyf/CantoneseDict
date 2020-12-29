@@ -8,7 +8,7 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.webview.utils.WebViewJavaScriptFunction;
 
 

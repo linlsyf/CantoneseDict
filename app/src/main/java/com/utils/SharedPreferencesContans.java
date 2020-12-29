@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import com.core.CoreApplication;
 import com.easysoft.utils.lib.system.ToastUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 /**
  * Created by Administrator on 2019/9/20 0020.

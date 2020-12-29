@@ -20,7 +20,7 @@ import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.tabview.adapter.MainViewAdapter;
 import com.easysoft.widget.tabview.widget.TabContainerView;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.catalog.CatalogFragment;
 import com.ui.dict.DictHomeFragment;
 import com.ui.login.IlogInView;

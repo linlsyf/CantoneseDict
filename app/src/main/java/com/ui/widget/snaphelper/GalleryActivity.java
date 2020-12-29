@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.easy.recycleview.bean.DyItemBean;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import java.util.ArrayList;
 import java.util.List;

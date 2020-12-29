@@ -12,7 +12,7 @@ import com.core.CoreApplication;
 import com.core.base.BasicActivity;
 import com.easy.recycleview.utils.FastClickUtils;
 import com.easysoft.utils.lib.imge.ImageUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.widget.imageshower.ImageLoadingDialog;
 import com.ui.widget.zoom.ZoomImageView;
 

@@ -3,7 +3,7 @@ package com.ui.other.tuling.util;
 import android.content.Context;
 
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

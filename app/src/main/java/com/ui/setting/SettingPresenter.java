@@ -39,7 +39,7 @@ import com.easysoft.utils.lib.system.ToastUtils;
 import com.easysoft.widget.dialog.CustomDialog;
 
 import com.iflytek.voicedemo.MainActivity;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBean;
 import com.ui.dict.DictBeanUtils;

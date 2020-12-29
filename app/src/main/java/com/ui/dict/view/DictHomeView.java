@@ -11,7 +11,7 @@ import com.easy.recycleview.custom.baseview.base.select.MutiTypeSelectUtils;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
 import com.easy.recycleview.outinter.RecycleConfig;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.dict.DictBusBean;
 
 import butterknife.Bind;

@@ -9,7 +9,7 @@ import android.preference.PreferenceActivity;
 import android.view.Window;
 
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import java.util.List;
 

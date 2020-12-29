@@ -8,7 +8,7 @@ import android.preference.PreferenceActivity;
 import android.view.Window;
 
 import com.iflytek.speech.util.SettingTextWatcher;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 /**
  * 听写设置界面

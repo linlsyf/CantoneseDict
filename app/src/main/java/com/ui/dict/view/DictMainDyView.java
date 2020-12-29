@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.dict.DictBusBean;
 
 import butterknife.Bind;

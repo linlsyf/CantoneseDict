@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
 

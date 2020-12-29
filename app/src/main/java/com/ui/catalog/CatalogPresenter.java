@@ -19,7 +19,7 @@ import com.easysoft.utils.lib.http.CallBackResult;
 import com.easysoft.utils.lib.http.IEasyResponse;
 import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.DensityUtil;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBeanUtils;
 import com.ui.dict.DictBusBean;

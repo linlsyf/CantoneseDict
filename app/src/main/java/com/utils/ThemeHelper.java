@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import com.easy.recycleview.outinter.RecycleConfig;
 import com.easysoft.widget.config.WidgetConfigManger;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 public class ThemeHelper {
 

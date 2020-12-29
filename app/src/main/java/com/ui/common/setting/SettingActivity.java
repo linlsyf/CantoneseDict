@@ -12,7 +12,7 @@ import com.core.ServerUrl;
 import com.core.base.BasicActivity;
 
 import com.core.utils.SpUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.easysoft.utils.lib.system.KeyboardUtils;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;

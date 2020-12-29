@@ -13,7 +13,7 @@ import com.easysoft.utils.lib.http.EasyHttpUtils;
 import com.easysoft.utils.lib.http.IEasyResponse;
 import com.easysoft.utils.lib.http.ResponseMsg;
 import com.easysoft.utils.lib.system.ToastUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import java.util.List;
 

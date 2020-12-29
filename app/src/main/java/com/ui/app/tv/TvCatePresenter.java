@@ -12,7 +12,7 @@ import com.easy.recycleview.bean.Section;
 import com.easy.recycleview.bean.SelectBean;
 import com.easy.recycleview.inter.IDyItemBean;
 import com.easy.recycleview.inter.IItemView;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.HttpService;
 import com.ui.video.IVideoHomeView;
 

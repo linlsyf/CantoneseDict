@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
 
 import com.easysoft.widget.fragment.FragmentHelper;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.other.tuling.constant.TulingParams;
 import com.ui.other.tuling.entity.MessageEntity;
 import com.ui.other.tuling.news.NewsFragment;

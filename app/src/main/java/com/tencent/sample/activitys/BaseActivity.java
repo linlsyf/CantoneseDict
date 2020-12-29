@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.tencent.sample.AppConstants;
 import com.tencent.sample.Util;
 import com.tencent.tauth.Tencent;

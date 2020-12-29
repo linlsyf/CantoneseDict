@@ -11,7 +11,7 @@ import com.easy.recycleview.inter.IItemView;
 import com.easysoft.utils.lib.system.DensityUtil;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.TimeUtils;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.HttpService;
 import com.ui.dict.DictBusBean;
 import com.ui.dict.DictTypeEnum;

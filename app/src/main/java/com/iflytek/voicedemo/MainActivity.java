@@ -2,7 +2,7 @@ package com.iflytek.voicedemo;
 
 import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.speech.setting.UrlSettings;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.webview.WebMainActivity;
 
 import android.Manifest;

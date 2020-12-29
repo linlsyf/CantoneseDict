@@ -11,7 +11,7 @@ android {
     aaptOptions.cruncherEnabled = false
     aaptOptions.useNewCruncher = false
     defaultConfig {
-        applicationId "com.linlsyf.area"
+        applicationId "com.linlsyf.cantonese"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
@@ -96,12 +96,12 @@ android {
     }
     productFlavors {
         app1 {
-            manifestPlaceholders = [str: "releaseStr", package_name: "com.linlsyf.area"]
-            applicationId "com.linlsyf.area"
+            manifestPlaceholders = [str: "releaseStr", package_name: "com.linlsyf.cantonese"]
+            applicationId "com.linlsyf.cantonese"
             resValue "string", "app_name", "一方"
             manifestPlaceholders = [ENVIRONMENT: "app1",
                                     app_icon   : "@drawable/ic_launcher",
-                                    JPUSH_PKGNAME : "com.linlsyf.area",
+                                    JPUSH_PKGNAME : "com.linlsyf.cantonese",
                                     JPUSH_APPKEY : "4227f603d9fdcdb04b5e4c48", //JPush上注册的包名对应的appkey.
                                     JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
             ]

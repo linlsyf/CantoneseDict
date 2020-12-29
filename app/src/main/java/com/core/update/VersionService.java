@@ -10,7 +10,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.widget.RemoteViews;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 /**

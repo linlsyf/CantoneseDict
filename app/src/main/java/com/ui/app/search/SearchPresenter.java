@@ -16,7 +16,7 @@ import com.easy.recycleview.inter.IItemView;
 import com.easysoft.utils.lib.http.CallBackResult;
 import com.easysoft.utils.lib.http.EasyHttpCallback;
 import com.easysoft.utils.lib.http.IEasyResponse;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 import com.ui.HttpService;
 import com.ui.app.search.bean.ResultsBean;
 import com.ui.app.search.bean.SearchResultBean;

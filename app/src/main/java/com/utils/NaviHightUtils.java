@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 
 import java.lang.reflect.Method;

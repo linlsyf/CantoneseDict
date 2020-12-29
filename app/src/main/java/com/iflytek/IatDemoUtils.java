@@ -23,7 +23,7 @@ import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.iflytek.speech.setting.IatSettings;
 import com.iflytek.speech.util.FucUtil;
 import com.iflytek.speech.util.JsonParser;
-import com.linlsyf.area.R;
+import com.linlsyf.cantonese.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
