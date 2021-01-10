@@ -256,18 +256,6 @@ public class SettingPresenter   {
 		  });
 		  newSectionList.add(userPrivateBean);
 
-//		  DyItemBean  feedbackBean=new DyItemBean();
-//		  feedbackBean.setTitle("反馈吐槽");
-//		  feedbackBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
-//
-//		  feedbackBean.setOnItemListener(new IItemView.onItemClick() {
-//			  @Override
-//			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-//				  iSafeSettingView.openUrl("https://support.qq.com/products/281738?");
-//			  }
-//		  });
-//		  newSectionList.add(feedbackBean);
-
 		  DyItemBean  updateBean=new DyItemBean();
 		  updateBean.setTitle("检查更新");
 		  updateBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
@@ -281,14 +269,14 @@ public class SettingPresenter   {
 		  });
 //		  newSectionList.add(updateBean);
 		  DyItemBean  payBean=new DyItemBean();
-		  payBean.setTitle("赞赏支持");
+		  payBean.setTitle("开源支持");
 		  payBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_about).setHeadImgRadius(headRadius));
 
 		  payBean.setOnItemListener(new IItemView.onItemClick() {
 			  @Override
 			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-				  //iSafeSettingView.openUrl("https://support.qq.com/products/281738?");
-				  pay();
+				  iSafeSettingView.openUrl("https://github.com/linlsyf/CantoneseDict");
+//				  pay();
 			  }
 		  });
 		  newSectionList.add(payBean);

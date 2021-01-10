@@ -18,6 +18,7 @@ import com.core.base.GlobalConstants;
 import com.core.utils.BackHandledInterface;
 import com.easysoft.utils.lib.system.StringUtils;
 import com.easysoft.utils.lib.system.ToastUtils;
+import com.easysoft.widget.tabview.adapter.BaseAdapter;
 import com.easysoft.widget.tabview.adapter.MainViewAdapter;
 import com.easysoft.widget.tabview.widget.TabContainerView;
 import com.linlsyf.cantonese.R;

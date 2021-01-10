@@ -30,9 +30,6 @@ import java.util.List;
  */
 public class CustomFragment extends BaseFragment implements ICustomView {
 
-
-    EdittextLayoutView mEt;
-
     public static final String ID = "id";
 
     public static final String TITLE = "title";
