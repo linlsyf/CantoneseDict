@@ -81,7 +81,8 @@ public class CatalogPresenter {
 		  DyItemBean  testtBean=new DyItemBean();
 //		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
 		  testtBean.setCentLayoutConfig(
-				  new CentLayoutConfig().setImgRadius(headRadius).setImgResId(R.drawable.catalog_pro)
+				  new CentLayoutConfig().setImgRadius(headRadius)
+//						  .setImgResId(R.drawable.catalog_pro)
 						  .setName(iSafeSettingView.getContext().getString(R.string.feedback))
 		  );
 		  testtBean.setSpanSize(mSpanSize);
@@ -105,7 +106,8 @@ public class CatalogPresenter {
 
 		  itemErrorBasen.setCentLayoutConfig(
 				  new CentLayoutConfig()
-						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
+						  .setImgRadius(headRadius)
+//						  .setImgResId(R.drawable.setting_about)
 						  .setName(iSafeSettingView.getContext().getString(R.string.last_error_msg))
 		  );
 
@@ -203,7 +205,7 @@ public class CatalogPresenter {
 
 		  itemBeaBasen.setCentLayoutConfig(
 				  new CentLayoutConfig()
-						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
+//						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
 						  .setName(iSafeSettingView.getContext().getString(R.string.learn_base_yp))
 		  );
 

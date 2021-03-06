@@ -44,13 +44,11 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
     private NavigationBar toolbar;
     SearchHeadView searchHeadView;
     private WebView webview;
-
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_common, null);
         setRootView(rootView);
        return rootView;
-
     }
     @Override
     public void initFragment() {
@@ -68,18 +66,14 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
         TopBarBuilder.buildCenterTextTitle(toolbar, getActivity(), getString(R.string.dict), 0);
         TopBarBuilder.buildOnlyText(toolbar,getActivity(), NavigationBar.Location.RIGHT_FIRST,getString(R.string.change),0);
         searchHeadView.getBackLayout().setVisibility(View.GONE);
-
         searchHeadView.getSearchEditText().setFocusable(true);
         searchHeadView.getSearchEditText().setFocusableInTouchMode(true);
         searchHeadView.getSearchEditText().requestFocus();
-
         if (persenter==null){
             persenter=new DictStudyPresenter(this);
         }
-
         persenter.initData();
         TtsHelper.initWeb(webview);
-
 //        WebSettings webSettings = webview.getSettings();
 //        webSettings.setBuiltInZoomControls(true);
 //        webSettings.setSupportZoom(true);
@@ -89,7 +83,6 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 ////        webview.loadUrl("file:///android_asset/html.html");
 ////        webview.addJavascriptInterface(this,"android");
 //        webview.addJavascriptInterface(this,"android");
-
     }
 
     @Override
@@ -100,7 +93,6 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 
     @Override
     public void initListener() {
-
         toolbar.setNavigationBarListener(new NavigationBarListener() {
 
             @Override
@@ -109,7 +101,6 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
                   FragmentHelper.popBackFragment(activity);
 
                 }   else if (location== NavigationBar.Location.RIGHT_FIRST) {
-
 
                     SelectFragment inputFragment=new SelectFragment();
 
@@ -120,9 +111,7 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
                         }
                     });
 
-
                     List<DyItemBean> dataList=persenter.getReadListCount();
-
 
                     Bundle bundle=new Bundle();
 
@@ -171,7 +160,6 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
     @Override
 	public void getBroadcastReceiverMessage(String type, Object mode) {
 
-
 //         if(type.equals(BusinessBroadcastUtils.TYPE_REFRESH_VIDEO)){
 //            persenter.init();
 //        }
@@ -185,7 +173,7 @@ public class DictStudyFragment extends BaseFragment implements IStartView {
 
     @Override
     public void showType(final  VideoBussinessItem item,final int type) {
-        getActivity().runOnUiThread(new Runnable() {
+        activity.runOnUiThread(new Runnable() {
 
             @Override
             public void run() {
