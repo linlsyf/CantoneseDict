@@ -9,7 +9,9 @@ import com.core.CoreApplication;
 import com.core.ServerUrl;
 import com.core.base.GlobalConstants;
 import com.core.db.greenDao.gen.DictDao;
+import com.easy.recycleview.bean.AddressEditSettings;
 import com.easy.recycleview.bean.AddressHeadImgeSettings;
+import com.easy.recycleview.bean.BgSetting;
 import com.easy.recycleview.bean.CentLayoutConfig;
 import com.easy.recycleview.bean.DyItemBean;
 import com.easy.recycleview.bean.Section;
@@ -77,12 +79,18 @@ public class CatalogPresenter {
 //			  }
 //		  });
 //		  newSectionList.add(musicBean);
+		  DyItemBean  logoBean=new DyItemBean();
+		  BgSetting setting =new BgSetting();
+
+		   setting.setContentBgResid(R.drawable.openlogo);
+		  logoBean.setBgSetting(setting);
+		  newSectionList.add(logoBean);
 
 		  DyItemBean  testtBean=new DyItemBean();
 //		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
 		  testtBean.setCentLayoutConfig(
 				  new CentLayoutConfig().setImgRadius(headRadius)
-//						  .setImgResId(R.drawable.catalog_pro)
+						  .setImgResId(R.drawable.catalog_pro)
 						  .setName(iSafeSettingView.getContext().getString(R.string.feedback))
 		  );
 		  testtBean.setSpanSize(mSpanSize);
@@ -107,7 +115,7 @@ public class CatalogPresenter {
 		  itemErrorBasen.setCentLayoutConfig(
 				  new CentLayoutConfig()
 						  .setImgRadius(headRadius)
-//						  .setImgResId(R.drawable.setting_about)
+						  .setImgResId(R.drawable.setting_about)
 						  .setName(iSafeSettingView.getContext().getString(R.string.last_error_msg))
 		  );
 

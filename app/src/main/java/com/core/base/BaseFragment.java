@@ -36,12 +36,12 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		activity=getActivity();
-		this.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏  
+		this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏  
 		super.onCreate(savedInstanceState);
 		
 	    registerBoradcastReceiver();
 
-		this.mBackHandledInterface = (BackHandledInterface)getActivity();
+		this.mBackHandledInterface = (BackHandledInterface)activity;
 	    //Fragment的 onCreate（）基本上不做其他事，必须重写initFragment()
 	}
 	//2
@@ -168,7 +168,7 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 		if(layoutName == null){
 			return 0;
 		}
-		return this.getResources().getIdentifier(layoutName, "layout",getActivity().getPackageName());
+		return this.getResources().getIdentifier(layoutName, "layout",activity.getPackageName());
 	}
 
 
@@ -212,7 +212,7 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
         IntentFilter myIntentFilter = new IntentFilter();  
         myIntentFilter.addAction(GlobalConstants.getInstance().getBroadCastReceiverActionName());
 
-        getActivity().registerReceiver(mBroadcastReceiver, myIntentFilter); 
+        activity.registerReceiver(mBroadcastReceiver, myIntentFilter); 
         isregisterBoradcastReceiver = true;
         //DebugUtil.setLog(TAG, "注册广播");
     } 
@@ -222,29 +222,29 @@ public abstract class BaseFragment extends Fragment implements BaseUiInterface,I
 		super.onDestroy();
 		
 		if(isregisterBoradcastReceiver){
-			getActivity().unregisterReceiver(mBroadcastReceiver);
+			activity.unregisterReceiver(mBroadcastReceiver);
 			//DebugUtil.setLog(TAG, "注销广播");
 			isregisterBoradcastReceiver = false;
 		}
 	}
 	@Override
 	public Context getContext() {
-		return getActivity();
+		return activity;
 	}
 
 	@Override
 	public void showToast(final int id) {
-		getActivity().runOnUiThread(new Runnable() {
+		activity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				ToastUtils.show(getActivity(),activity.getResources().getString(id));
+				ToastUtils.show(activity,activity.getResources().getString(id));
 
 			}
 		});
 	}
 	@Override
 	public void showToast(final String text) {
-		getActivity().runOnUiThread(new Runnable() {
+		activity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				ToastUtils.show(activity,text);
