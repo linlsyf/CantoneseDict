@@ -100,7 +100,7 @@ android {
             applicationId "com.linlsyf.cantonese"
             resValue "string", "app_name", "一方"
             manifestPlaceholders = [ENVIRONMENT: "app1",
-                                    app_icon   : "@drawable/ic_launcher",
+                                    app_icon   : "@drawable/cantonese",
                                     JPUSH_PKGNAME : "com.linlsyf.cantonese",
                                     JPUSH_APPKEY : "4227f603d9fdcdb04b5e4c48", //JPush上注册的包名对应的appkey.
                                     JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
