@@ -213,7 +213,7 @@ public class CatalogPresenter {
 
 		  itemBeaBasen.setCentLayoutConfig(
 				  new CentLayoutConfig()
-//						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
+						  .setImgRadius(headRadius).setImgResId(R.drawable.setting_about)
 						  .setName(iSafeSettingView.getContext().getString(R.string.learn_base_yp))
 		  );
 
