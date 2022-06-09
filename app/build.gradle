@@ -98,7 +98,7 @@ android {
         app1 {
             manifestPlaceholders = [str: "releaseStr", package_name: "com.linlsyf.cantonese"]
             applicationId "com.linlsyf.cantonese"
-            resValue "string", "app_name", "一方"
+            resValue "string", "app_name", "粤语开放词典"
             manifestPlaceholders = [ENVIRONMENT: "app1",
                                     app_icon   : "@drawable/cantonese",
                                     JPUSH_PKGNAME : "com.linlsyf.cantonese",
