@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://www.kaifangcidian.com/han/yue/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>開放粵語詞典查詢</title>
+  <link rel="stylesheet" type="text/css" href="./yueyu/picnic.min.css">
+  <link rel="stylesheet" href="./yueyu/cidian.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./yueyu/favicon.ico">
+  <script src="./yueyu/cidian.min.js" type="text/javascript"></script>
+  <script src="./yueyu/pydata.js" type="text/javascript"></script>
+  <script src="./yueyu/yueci.js" type="text/javascript"></script>
+  <script src="./yueyu/fjdata.js" type="text/javascript"></script>
+  <script src="./yueyu/yuezi.js" type="text/javascript"></script>
+  <script src="./yueyu/liju.js" type="text/javascript"></script>
+  <script src="./yueyu/shumianyu.js" type="text/javascript"></script>
+</head>
+<body onload="initpref();">
+  <input class="dark" type="checkbox">
+  <input class="light" type="checkbox">
+  <article>
+    <section>
+      <div id="container">
+        <h1><a href="https://www.kaifangcidian.com/han/yue/index.html" style="color:inherit"><img class="logo" src="https://www.kaifangcidian.com/han/yue/css/kfcd.svg"> 粵語詞典</a></h1>
+
+        <select id="ziti" name="ziti" accesskey="f" tabindex="4" onchange="switchFj(this.value)">
+          <option disabled="">字體</option>
+          <option value="j2f">正體</option>
+          <option value="f2j">簡體</option>
+        </select>
+
+        <select id="chaxun" name="chaxun" accesskey="c" tabindex="3" onchange="switchCx(this.value)">
+          <option disabled="">查詢模式</option>
+          <option value="hz">漢字</option>
+          <option value="py">拼音</option>
+        </select>
+
+        <select id="pingyam" name="pingyam" accesskey="p" tabindex="2" onchange="switchPy(this.value)">
+          <option disabled="">拼音方案</option>
+          <option value="yale">耶魯 (數)</option>
+          <option value="yalesym">耶魯 (調)</option>
+          <option value="cantpin">教院</option>
+          <option value="slw">黃錫凌 (數)</option>
+          <option value="slwsym">黃錫凌 (調)</option>
+          <option value="ipa">國際音標</option>
+          <option value="jyutping">粵拼</option>
+          <option value="gz">廣州拼音</option>
+          <option value="slau">劉錫祥</option>
+          <option value="pyamp">粵語拼音字 (數)</option>
+          <option value="pyampsym">粵語拼音字 (調)</option>
+        </select>
+
+        <input id="searchbar" name="q" type="text" class="search" accesskey="s" placeholder="輸入量詞、名詞、動詞、或粵語拼音" autocomplete="off" tabindex="1" onkeypress="enterSubmit(window.event)"><button onclick="cdSearch(window.searchbar.value)">搜索</button>
+
+        <div id="msg" class="results">&nbsp;</div>
+        <div id="yzoutput" class="results">&nbsp;</div>
+        <div id="smyoutput" class="results">&nbsp;</div>
+        <div id="ycoutput" class="results">&nbsp;</div>
+        <div id="ljoutput" class="results">&nbsp;</div>
+
+      </div>
+    </section>
+    <footer>
+      <center>
+        <p><a rel="license" href="https://www.kaifangcidian.com/han/yue/cc"><img alt="創作共用“署名”許可協議" style="border-width:0" src="https://www.kaifangcidian.com/han/yue/css/czgy.png"></a></p>
+        <p><a href="https://kaifangcidian.com/">首頁</a> · <a href="https://github.com/kfcd">GitHub</a></p>
+      </center>
+    </footer>
+  </article>
+
+
+</body></html>

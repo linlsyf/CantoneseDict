@@ -230,6 +230,8 @@
     <string name="dict_init_error">初始化词典数据失败</string>
     <string name="laboratory_yueyu">粤语实验室</string>
     <string name="feedback">反馈吐槽</string>
+    <string name="websearch">网页查询</string>
+    <string name="developingtite">开发中</string>
     <string name="user_private">用户隐私协议</string>
     <string name="develop_setting">开发者选项</string>
     <string name="developing">正在开发中。。。</string>

@@ -13,7 +13,13 @@
         android:background="?attr/main_bg"
         android:layout_height="35dp"
         />
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:id="@+id/headImgeView"
+        android:scaleType="fitXY"
+        android:src="@drawable/openlogo"
+        android:visibility="gone"
+        android:layout_height="100dp"></ImageView>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

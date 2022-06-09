@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -53,6 +56,7 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+//    	View rootView=inflater.inflate(R.layout.catelog_fragment, null);
     	View rootView=inflater.inflate(R.layout.fragment_common, null);
     	setRootView(rootView);
        return rootView;
@@ -68,6 +72,9 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
     	  recycleView= getViewById(R.id.dyLayout);
     	   toolbar=getViewById(R.id.toolbar);
           mRootLayout = getViewById(R.id.rootLayout);
+          ImageView imageView=getViewById(R.id.headImgeView);
+          imageView.setVisibility(View.VISIBLE);
+//          recycleView.initCustomViewCallBack();
       }
       @Override
     public void initData() {
@@ -153,6 +160,8 @@ public class CatalogFragment extends BaseFragment implements ICatalogView {
 
     @Override
     public void openUrl(String url) {
+
+
         Bundle  bundle=new Bundle();
         bundle.putString("url",url);
 

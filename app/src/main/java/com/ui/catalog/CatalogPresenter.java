@@ -53,38 +53,14 @@ public class CatalogPresenter {
 		   headRadius= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),25);
 		  hight= DensityUtil.dip2pxInt(iSafeSettingView.getContext(),100);
 		  service=new HttpService();
-//		  musicBean=new DyItemBean();
-//		  musicBean.setTitle(iSafeSettingView.getContext().getString(R.string.radom_yuyu_music));
-//		  musicBean.setHeadImgeSettings(new AddressHeadImgeSettings().setHeadImgDrawableId(R.drawable.setting_music).setHeadImgRadius(headRadius));
-//		    musicBean.setRightFirstButtonText(iSafeSettingView.getContext().getString(R.string.next_music));
-//		  musicBean.setOnItemListener(new IItemView.onItemClick() {
-//			  @Override
-//			  public void onItemClick(IItemView.ClickTypeEnum clickTypeEnum, IDyItemBean iDyItemBean) {
-//				  if (clickTypeEnum== IItemView.ClickTypeEnum.ITEM){
-//					  MusiceHelper.getInstance(iSafeSettingView.getContext()).checkPlay(new MusiceHelper.playCallBack() {
-//						  @Override
-//						  public void callBack(boolean isPlaying,SongBean songBean) {
-//							  updateSongItemUI(isPlaying,songBean);
-//						  }
-//					  });
-//
-//				  }else if(clickTypeEnum== IItemView.ClickTypeEnum.RIGHTBUTTION){
-//					  MusiceHelper.getInstance(iSafeSettingView.getContext()).next(new MusiceHelper.playCallBack() {
-//						  @Override
-//						  public void callBack(boolean isPlaying,SongBean songBean) {
-//							  updateSongItemUI(isPlaying,songBean);
-//						  }
-//					  });
-//				  }
-//			  }
-//		  });
-//		  newSectionList.add(musicBean);
-		  DyItemBean  logoBean=new DyItemBean();
-		  BgSetting setting =new BgSetting();
 
-		   setting.setContentBgResid(R.drawable.openlogo);
-		  logoBean.setBgSetting(setting);
-		  newSectionList.add(logoBean);
+//		  DyItemBean  logoBean=new DyItemBean();
+//		  BgSetting setting =new BgSetting();
+//
+//		   setting.setContentBgResid(R.drawable.openlogo);
+//		  logoBean.setItemHight(hight*4);
+//		  logoBean.setViewType(2);
+//		  newSectionList.add(logoBean);
 
 		  DyItemBean  testtBean=new DyItemBean();
 //		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
@@ -247,6 +223,44 @@ public class CatalogPresenter {
 
 			  }
 		  });
+		  DyItemBean  splitItemBean2=new DyItemBean();
+		  splitItemBean2.setViewType(IItemView.ViewTypeEnum.SPLITE.value());
+		  newSectionList.add(splitItemBean2);
+		  DyItemBean  homeBean=new DyItemBean();
+//		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
+		  homeBean.setCentLayoutConfig(
+				  new CentLayoutConfig().setImgRadius(headRadius)
+						  .setImgResId(R.drawable.catalog_pro)
+						  .setName(iSafeSettingView.getContext().getString(R.string.websearch))
+		  );
+		  homeBean.setSpanSize(mSpanSize);
+		  homeBean.setItemHight(hight);
+
+		  homeBean.setOnItemListener(new IItemView.onItemClick() {
+			  @Override
+			  public void onItemClick(IItemView.ClickTypeEnum typeEnum, IDyItemBean bean) {
+				  //iSafeSettingView.showToast(iSafeSettingView.getContext().getString(R.string.develop_setting));
+
+//				  iSafeSettingView .openUrl("https://www.linlsyf.cn/yueyu.html");
+				  iSafeSettingView .openUrl("file:///android_asset/yueyu.html");
+
+			  }
+		  });
+
+		  newSectionList.add(homeBean);
+		   homeBean=new DyItemBean();
+//		  testtBean.setTitle(iSafeSettingView.getContext().getString(R.string.laboratory_yueyu));
+		  homeBean.setCentLayoutConfig(
+				  new CentLayoutConfig().setImgRadius(headRadius)
+						  .setImgResId(R.drawable.catalog_pro)
+						  .setName(iSafeSettingView.getContext().getString(R.string.developingtite))
+		  );
+		  homeBean.setSpanSize(mSpanSize);
+		  homeBean.setItemHight(hight);
+
+		  newSectionList.add(homeBean);
+
+
            newSection.setAutoAddSpliteLine(false);
 		  newSection.setDataMaps(newSectionList);
 		  iSafeSettingView.initUI(newSection);
