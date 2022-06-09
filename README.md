@@ -4,8 +4,11 @@ test  app
 
 Android Tools》Rename Application Package
 
-![image](img/home.jpg)
-![img/websearch.jpg]
-com.linlsyf.cantonese
+
 
 com.linlsyf.cantonese
+
+![image](img/home.jpg)
+![image](img/websearch.jpg)
+![image](img/voice.jpg)
+![image](img/setting.jpg)
