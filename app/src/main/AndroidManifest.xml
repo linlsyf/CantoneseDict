@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.linlsyf.cantonese">
+    package="com.linlsyf.ime">
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,78 +19,22 @@
 
         android:icon="${app_icon}"
         android:authorities="${applicationId}"
-        android:name="com.core.CoreApplication"
         android:hardwareAccelerated="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/theme_light"
         android:label="@string/app_name" >
-        <activity
-            android:name="com.ui.HomeActivity"
+        <service
+            android:name="com.MyImeService"
+            android:label="MyCustomIME"
+            android:permission="android.permission.BIND_INPUT_METHOD" >
 
-            android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.view.InputMethod" />
             </intent-filter>
-        </activity>
-        <service android:name="com.core.update.VersionService" >
+
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
         </service>
-
-
-        <activity   android:name="com.TestActivity"></activity>
-        <activity   android:name="com.core.db.greenDao.DbTestActivity"></activity>
-        <activity   android:name="com.ui.login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            ></activity>
-        <!--<activity   android:name="comHomeAutoActivityvity"></activity>-->
-        <activity   android:name="com.ui.common.setting.SettingActivity"></activity>
-
-        <activity
-            android:name="com.ui.weixin.WXEntryActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:exported="true"
-            android:taskAffinity="com.ui.weixin"
-            android:launchMode="singleTask">
-        </activity>
-
-        <activity
-            android:name="com.iflytek.voicedemo.MainActivity"
-            />
-
-        <activity android:name="com.iflytek.speech.setting.IatSettings" >
-        </activity>
-        <activity
-            android:name="com.iflytek.voicedemo.IatDemo"/>
-
-
-        <activity
-            android:name="com.iflytek.speech.setting.UrlSettings"/>
-
-
-        <activity
-            android:name="com.webview.FullScreenActivity"/>
-
-        <activity
-            android:name="com.webview.FilechooserActivity"/>
-        <activity
-            android:name="com.webview.BrowserActivity"/>
-
-        <activity
-            android:name="com.webview.WebMainActivity"/>
-        <service android:name="com.business.service.music.MusicService"
-            android:enabled="true"
-            android:exported="true"
-            />
-        <!-- 移动统计分析 -->
-        <meta-data
-            android:name="IFLYTEK_APPKEY"
-            android:value="'5c83ca61'" />
-        <meta-data
-            android:name="IFLYTEK_CHANNEL"
-            android:value="Android_Demo" />
 
     </application >
     <!--<uses-permission android:name= "android.permission.INTERNET" />-->

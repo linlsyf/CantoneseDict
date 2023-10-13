@@ -6,11 +6,10 @@
         <entry key="..\:/CantoneseDictSecond/app/src/main/res/layout/catelog_fragment.xml" value="0.17074275362318841" />
         <entry key="..\:/CantoneseDictSecond/app/src/main/res/layout/common_layout.xml" value="0.12291666666666666" />
         <entry key="..\:/CantoneseDictSecond/app/src/main/res/layout/fragment_common.xml" value="0.17074275362318841" />
+        <entry key="..\:/LsyfIME/app/src/main/res/layout/key_priview.xml" value="0.10914855072463768" />
+        <entry key="..\:/LsyfIME/app/src/main/res/xml/iat_setting.xml" value="0.11005434782608696" />
       </map>
     </option>
-  </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/.idea/libraries/Gradle____local_aars___G__CantoneseDictSecond_app_libs_tbs_sdk_thirdapp_jar_unspecified_jar.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
